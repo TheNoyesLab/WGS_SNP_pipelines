@@ -1,0 +1,55 @@
+name: nf-core-deepvariant-1.0
+channels:
+  - bioconda
+  - conda-forge
+  - defaults
+dependencies:
+  - python=2.7.15
+  - pip=10.0.1
+  #- deepvariant=0.7.0
+  - picard=2.18.7
+  - samtools=1.9
+  - htslib=1.9
+  - lbzip2=2.5
+  - bzip2=1.0.6
+  - snp-pipeline
+  
+  
+  
+ete3
+numba
+numpy
+pandas
+sklearn
+  
+  
+raxml
+fasttree
+rapidnj
+bbmap
+mmseqs
+ncbi-blast
+usearch
+spades
+megahit
+samtools
+pilon
+gatk
+bwa
+bowtie2
+minimap2
+kraken2 & minikraken2
+pilercr
+trf
+
+## SNP pipeline
+#https://snp-pipeline.readthedocs.io/en/latest/installation.html#step-2-executable-software-dependencies
+Bowtie2	2.3.4.1	A tool for aligning reads to long reference sequences
+SMALT	0.7.6	A tool for aligning reads to long reference sequences
+SAMtools	1.8	Utilities for manipulating alignments in the SAM format
+Picard	2.18.4	A set of tools for manipulating sequence data
+GATK	3.8-1-0	Variant discovery and genotyping tools
+VarScan	2.3.9	A tool to detect variants in NGS data
+tabix	1.8	A generic indexer for tab-delimited genome position files
+bgzip	1.8	Part of the tabix package, bgzip is a block compression utility
+BcfTools	1.8	Utilities for variant calling and manipulating VCFs and BCFs
