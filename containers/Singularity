@@ -29,7 +29,7 @@ From: debian:jessie-slim
     conda config --add channels bioconda
 
     # install bulk of bioinformatic tools using conda
-    conda create -n snp-tools snp-pipeline
+    conda create -n snp-tools snp-pipeline smalt samtools picard gatk varscan tabix bcftools bowtie2
     
     . /usr/local/bin/activate snp-tools
     
@@ -37,6 +37,9 @@ From: debian:jessie-slim
     
     #Still experimenting with how to change $PATH location. 
     echo 'export PATH=$PATH:/usr/local/envs/snp-tools/bin/' >> $SINGULARITY_ENVIRONMENT
+    echo 'export CLASSPATH=/usr/local/envs/snp-tools/share/varscan-2.4.4-0/VarScan.jar:$CLASSPATH' >> $SINGULARITY_ENVIRONMENT
+    echo 'export CLASSPATH=/usr/local/envs/snp-tools/share/picard-2.21.4-0/picard.jar:$CLASSPATH' >> $SINGULARITY_ENVIRONMENT
+    echo 'export CLASSPATH=/usr/local/envs/snp-tools/share/gatk4-4.1.4.1-0/gatk-package-4.1.4.1-local.jar:$CLASSPATH' >> $SINGULARITY_ENVIRONMENT
 
     # Make sure all the tools have the right permissions to use the tools
     chmod -R 777 /usr/local/
