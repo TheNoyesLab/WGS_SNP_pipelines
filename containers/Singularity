@@ -29,7 +29,7 @@ From: debian:jessie-slim
     conda config --add channels bioconda
 
     # install bulk of bioinformatic tools using conda
-    conda create -n snp-tools snp-pipeline smalt samtools picard gatk varscan tabix bcftools bowtie2
+    conda create -n snp-tools snp-pipeline smalt samtools picard gatk4 varscan tabix bcftools bowtie2
     
     . /usr/local/bin/activate snp-tools
     
