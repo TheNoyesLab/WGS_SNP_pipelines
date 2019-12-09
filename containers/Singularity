@@ -1,66 +1,49 @@
 Bootstrap: docker
 From: debian:jessie-slim
 
-#Includes rgi idba trimmomatic bwa samtools bedtools freebayes bbmap vcftools htslib resistomeanalyzer, rarefactionanalyzer, SNPfinder
+#Includes idba, trimmomatic, samtools, bwa, bedtools, freebayes, bbmap, vcftools, htslib, ncurses, kraken2, resistomeanalyzer, rarefactionanalyzer, SNPfinder
 
 %environment
-    echo 'export PATH=/usr/local/bin/anaconda/bin:${PATH}' >> $SINGULARITY_ENVIRONMENT
-    echo 'export PATH=~/kSNP3.1_Linux_package/kSNP3.1_Linux_package/kSNP3/:${PATH}' >> $SINGULARITY_ENVIRONMENT
-    export PATH=/usr/local/envs/compute/bin/:${PATH}
-
-%files
-    environment.yml /
+    export LC_ALL=C
 
 %post
     ## Jave install doesn't work, but can load java module from summit
-    apt update
-    apt install -y software-properties-common
     apt update \
-    && apt install -y --no-install-recommends tcsh \
-    build-essential ca-certificates sudo \
-    git make automake autoconf wget unzip sed \
+    && apt install -y --no-install-recommends \
+    build-essential ca-certificates sudo tcsh\
+    git make automake autoconf openjdk-7-jre wget gzip unzip sed\
     zlib1g-dev curl libbz2-dev locales libncurses5-dev liblzma-dev libcurl4-openssl-dev software-properties-common apt-transport-https\
-    libglib2.0-0 libxext6 libsm6 libxrender1 \
     python3-pip python3-docopt python3-pytest python-dev python3-dev\
-    libssl-dev zlib1g-dev fonts-texgyre \
-    gcc g++ gfortran libblas-dev liblapack-dev dos2unix tabix \
+    libcurl4-openssl-dev libssl-dev zlib1g-dev fonts-texgyre \
+    gcc g++ gfortran libblas-dev liblapack-dev dos2unix\
     r-base-core r-recommended hmmer\
     && rm -rf /var/lib/apt/lists/*
 
-    #install kSNP3
-    wget https://sourceforge.net/projects/ksnp/files/kSNP3.1_Linux_package.zip
-    unzip kSNP3.1_Linux_package.zip
-    cp kSNP3.1_Linux_package/kSNP3/kSNP3 /usr/local/
-
     #Installing Anaconda 2 and Conda 4.5.11
-    #wget -c https://repo.continuum.io/archive/Anaconda2-5.3.0-Linux-x86_64.sh
-    #Anaconda2-5.3.0-Linux-x86_64.sh -bfp /usr/local
+    wget -c https://repo.continuum.io/archive/Anaconda2-5.3.0-Linux-x86_64.sh
+    sh Anaconda2-5.3.0-Linux-x86_64.sh -bfp /usr/local
 
-    # Add channels
-    #conda config --add channels conda-forge
-    #conda config --add channels bioconda
-    #conda config --add channels hcc
+    # add bioconda channels
+    conda config --add channels defaults
+    conda config --add channels conda-forge
+    conda config --add channels bioconda
 
-    # create environment
-    #conda create -n compute python2.7 lyve-set
+    # install bulk of bioinformatic tools using conda
+    conda create -n snp-tools snp-pipeline
+    
+    . /usr/local/bin/activate snp-tools
+    
+    #ln -s /usr/local/envs/snp-tools/bin/* /usr/local/bin/
+    
+    #Still experimenting with how to change $PATH location. 
+    echo 'export PATH=$PATH:/usr/local/envs/snp-tools/bin/' >> $SINGULARITY_ENVIRONMENT
 
-    # Anaconda installation
-    #wget -c https://repo.continuum.io/archive/Anaconda2-5.3.0-Linux-x86_64.sh
-    #sh Anaconda2-5.3.0-Linux-x86_64.sh -bfp /usr/local
-    #conda env create -f /environment.yml
-    #conda clean -a
-
-    # licensed program - may need new license
-    # need to get this first http://www.drive5.com/usearch/download_academic_site.html
-    # Following license is for edoster@colostate.edu
-    #USEARCH_URL="https://drive5.com/cgi-bin/upload3.py?license=2019072616094726223"
-    #wget -O /usr/local/bin/usearch $USEARCH_URL
-    #chmod 111 /usr/local/bin/usearch
-
-
-
-%runscript
+    # Make sure all the tools have the right permissions to use the tools
+    chmod -R 777 /usr/local/
 
 
 %test
-
+    #which bwa
+    #which bedtools
+    #which samtools
+    #which freebayes
