@@ -19,6 +19,9 @@ From: debian:jessie-slim
     r-base-core r-recommended hmmer\
     && rm -rf /var/lib/apt/lists/*
 
+    # Not my favorite workaround, but to get cfsan snp to work with samtools, we have to change which libncurses library is used. Problem is anaconda doesn't have the right version of samtools.
+    sudo ln -s /lib/x86_64-linux-gnu/libncursesw.so.5  /lib/x86_64-linux-gnu/libncursesw.so.6
+
     #Installing Anaconda 2 and Conda 4.5.11
     wget -c https://repo.continuum.io/archive/Anaconda2-5.3.0-Linux-x86_64.sh
     sh Anaconda2-5.3.0-Linux-x86_64.sh -bfp /usr/local
@@ -35,7 +38,7 @@ From: debian:jessie-slim
     
     #ln -s /usr/local/envs/snp-tools/bin/* /usr/local/bin/
     
-    #Still experimenting with how to change $PATH location. 
+    #Still experimenting with how to change $PATH location. Need to remove GATK jar file to work with cfsan snp
     echo 'export PATH=$PATH:/usr/local/envs/snp-tools/bin/' >> $SINGULARITY_ENVIRONMENT
     echo 'export CLASSPATH=/usr/local/envs/snp-tools/share/varscan-2.4.4-0/VarScan.jar:$CLASSPATH' >> $SINGULARITY_ENVIRONMENT
     echo 'export CLASSPATH=/usr/local/envs/snp-tools/share/picard-2.21.4-0/picard.jar:$CLASSPATH' >> $SINGULARITY_ENVIRONMENT
