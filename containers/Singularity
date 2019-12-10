@@ -7,7 +7,6 @@ From: debian:jessie-slim
     export LC_ALL=C
 
 %post
-    ## Jave install doesn't work, but can load java module from summit
     apt update \
     && apt install -y --no-install-recommends \
     build-essential ca-certificates sudo tcsh\
@@ -53,7 +52,7 @@ From: debian:jessie-slim
     ## SAMTOOLS
     cd /usr/local/
     HTSLIB_VERSION=1.8 # indexes versions for samtools and bcftools
-    wget https://github.com/samtools/samtools/releases/download/1.9/samtools-${HTSLIB_VERSION}.tar.bz2
+    wget https://github.com/samtools/samtools/releases/download/${HTSLIB_VERSION}/samtools-${HTSLIB_VERSION}.tar.bz2
     tar xvjf samtools-${HTSLIB_VERSION}.tar.bz2
     cd samtools-${HTSLIB_VERSION}
     autoheader
