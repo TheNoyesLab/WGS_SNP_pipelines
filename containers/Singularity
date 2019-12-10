@@ -29,7 +29,7 @@ From: debian:jessie-slim
     conda config --add channels bioconda
 
     # install bulk of bioinformatic tools using conda
-    conda create -n snp-tools snp-pipeline smalt samtools picard gatk4 varscan tabix bcftools bowtie2
+    conda create -n snp-tools snp-pipeline smalt picard gatk4 varscan tabix bcftools bowtie2
     
     . /usr/local/bin/activate snp-tools
     
@@ -39,10 +39,25 @@ From: debian:jessie-slim
     echo 'export PATH=$PATH:/usr/local/envs/snp-tools/bin/' >> $SINGULARITY_ENVIRONMENT
     echo 'export CLASSPATH=/usr/local/envs/snp-tools/share/varscan-2.4.4-0/VarScan.jar:$CLASSPATH' >> $SINGULARITY_ENVIRONMENT
     echo 'export CLASSPATH=/usr/local/envs/snp-tools/share/picard-2.21.4-0/picard.jar:$CLASSPATH' >> $SINGULARITY_ENVIRONMENT
-    echo 'export CLASSPATH=/usr/local/envs/snp-tools/share/gatk4-4.1.4.1-0/gatk-package-4.1.4.1-local.jar:$CLASSPATH' >> $SINGULARITY_ENVIRONMENT
+    mv /usr/local/envs/snp-tools/share/gatk4-4.1.4.1-0/gatk-package-4.1.4.1-local.jar /usr/local/envs/snp-tools/share/gatk4-4.1.4.1-0/GenomeAnalysisTK.jar
+    echo 'export CLASSPATH=/usr/local/envs/snp-tools/share/gatk4-4.1.4.1-0/GenomeAnalysisTK.jar:$CLASSPATH' >> $SINGULARITY_ENVIRONMENT
 
     # Make sure all the tools have the right permissions to use the tools
     chmod -R 777 /usr/local/
+
+    ## SAMTOOLS
+    cd /usr/local/
+    HTSLIB_VERSION=1.9 # indexes versions for samtools and bcftools
+    wget https://github.com/samtools/samtools/releases/download/1.9/samtools-${HTSLIB_VERSION}.tar.bz2
+    tar xvjf samtools-${HTSLIB_VERSION}.tar.bz2
+    cd samtools-${HTSLIB_VERSION}
+    autoheader
+    autoconf -Wno-syntax
+    ./configure --prefix /usr/local/bin
+    make
+    make install
+    ln -s /usr/local/samtools-${HTSLIB_VERSION}/* /usr/local/bin/
+    cd /
 
 
 %test
