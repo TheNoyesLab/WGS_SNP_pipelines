@@ -31,20 +31,21 @@ From: debian:jessie-slim
     conda config --add channels bioconda
 
     # install bulk of bioinformatic tools using conda
-    conda create -n snp-tools snp-pipeline smalt picard gatk4 varscan tabix bcftools bowtie2 bwa openjdk
-    conda clean --all -y
+    conda install snp-pipeline openjdk
+    #smalt picard varscan tabix bcftools bowtie2 bwa openjdk
+    #conda clean --all -y
     
-    . /usr/local/bin/activate snp-tools
-    
+    ## Workaround to get 3.8 version of GenomeAnalysisTK.jar
+    git clone https://github.com/EnriqueDoster/sing_biotools.git
+    mv sing_biotools/bin/GenomeAnalysisTK.jar /usr/local/bin/GenomeAnalysisTK.jar
     
     #ln -s /usr/local/envs/snp-tools/bin/* /usr/local/bin/
     
     #Still experimenting with how to change $PATH location. Need to remove GATK jar file to work with cfsan snp
-    echo 'export PATH=$PATH:/usr/local/envs/snp-tools/bin/' >> $SINGULARITY_ENVIRONMENT
-    echo 'export CLASSPATH=/usr/local/envs/snp-tools/share/varscan-2.4.4-0/VarScan.jar:$CLASSPATH' >> $SINGULARITY_ENVIRONMENT
-    echo 'export CLASSPATH=/usr/local/envs/snp-tools/share/picard-2.21.4-0/picard.jar:$CLASSPATH' >> $SINGULARITY_ENVIRONMENT
-    mv /usr/local/envs/snp-tools/share/gatk4-4.1.4.1-0/gatk-package-4.1.4.1-local.jar /usr/local/envs/snp-tools/share/gatk4-4.1.4.1-0/GenomeAnalysisTK.jar
-    echo 'export CLASSPATH=/usr/local/envs/snp-tools/share/gatk4-4.1.4.1-0/GenomeAnalysisTK.jar:$CLASSPATH' >> $SINGULARITY_ENVIRONMENT
+    #echo 'export PATH=$PATH:/usr/local/envs/snp-tools/bin/' >> $SINGULARITY_ENVIRONMENT
+    echo 'export CLASSPATH=/usr/local/share/varscan-2.4.4-0/VarScan.jar:$CLASSPATH' >> $SINGULARITY_ENVIRONMENT
+    echo 'export CLASSPATH=/usr/local/share/picard-2.21.4-0/picard.jar:$CLASSPATH' >> $SINGULARITY_ENVIRONMENT
+    echo 'export CLASSPATH=/usr/local/bin/GenomeAnalysisTK.jar:$CLASSPATH' >> $SINGULARITY_ENVIRONMENT
 
     # Make sure all the tools have the right permissions to use the tools
     chmod -R 777 /usr/local/
@@ -60,10 +61,11 @@ From: debian:jessie-slim
     ./configure --prefix /usr/local/bin
     make
     make install
-    ln -s /usr/local/samtools-${HTSLIB_VERSION}/* /usr/local/bin/
-    cd /
+    #ln -s /usr/local/samtools-${HTSLIB_VERSION}/* /usr/local/bin/
+    #cd /
 
-
+    
+    
 %test
     #which bwa
     #which bedtools
