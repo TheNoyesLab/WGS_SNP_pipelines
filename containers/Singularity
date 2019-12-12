@@ -31,8 +31,7 @@ From: debian:jessie-slim
     conda config --add channels bioconda
 
     # install bulk of bioinformatic tools using conda
-    conda install snp-pipeline openjdk
-    #smalt picard varscan tabix bcftools bowtie2 bwa openjdk
+    conda install snp-pipeline openjdk smalt picard varscan tabix bcftools bowtie2 bwa gatk
     #conda clean --all -y
     
     ## Workaround to get 3.8 version of GenomeAnalysisTK.jar
@@ -61,8 +60,7 @@ From: debian:jessie-slim
     ./configure --prefix /usr/local/bin
     make
     make install
-    #ln -s /usr/local/samtools-${HTSLIB_VERSION}/* /usr/local/bin/
-    #cd /
+    echo 'export PATH=/usr/local/samtools-${HTSLIB_VERSION}/:$PATH' >> $SINGULARITY_ENVIRONMENT
 
     
     
