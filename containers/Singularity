@@ -14,7 +14,7 @@ From: debian:jessie-slim
     zlib1g-dev curl libbz2-dev locales libncurses5-dev liblzma-dev libcurl4-openssl-dev software-properties-common apt-transport-https\
     python3-pip python3-docopt python3-pytest python-dev python3-dev\
     libcurl4-openssl-dev libssl-dev zlib1g-dev fonts-texgyre \
-    gcc g++ gfortran libblas-dev liblapack-dev dos2unix libdeflate\
+    gcc g++ gfortran libblas-dev liblapack-dev dos2unix\
     r-base-core r-recommended hmmer\
     && rm -rf /var/lib/apt/lists/*
 
@@ -51,7 +51,7 @@ From: debian:jessie-slim
 
     ## SAMTOOLS
     cd /usr/local/
-    wget https://github.com/samtools/samtools/releases/download/${HTSLIB_VERSION}/samtools-1.8.tar.bz2
+    wget https://github.com/samtools/samtools/releases/download/1.8/samtools-1.8.tar.bz2
     tar xvjf samtools-1.8.tar.bz2
     cd samtools-1.8
     autoheader
