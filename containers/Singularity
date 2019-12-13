@@ -1,7 +1,7 @@
 Bootstrap: docker
 From: debian:jessie-slim
 
-#Includes idba, trimmomatic, samtools, bwa, bedtools, freebayes, bbmap, vcftools, htslib, ncurses, kraken2, resistomeanalyzer, rarefactionanalyzer, SNPfinder
+#Includes cfsan-snp-pipeline smalt picard varscan tabix bcftools bowtie2 bwa gatk libdeflate samtools
 
 %environment
     export LC_ALL=C
@@ -33,7 +33,6 @@ From: debian:jessie-slim
     # install bulk of bioinformatic tools using conda
     conda install snp-pipeline smalt picard varscan tabix bcftools bowtie2 bwa gatk libdeflate samtools
     conda install -c cyclus java-jdk
-    #conda clean --all -y
     
     ## Workaround to get 3.8 version of GenomeAnalysisTK.jar
     git clone https://github.com/EnriqueDoster/sing_biotools.git
@@ -50,21 +49,7 @@ From: debian:jessie-slim
     # Make sure all the tools have the right permissions to use the tools
     chmod -R 777 /usr/local/
 
-    ## SAMTOOLS
-    #cd /usr/local/
-    #wget https://github.com/samtools/samtools/releases/download/1.8/samtools-1.8.tar.bz2
-    #tar xvjf samtools-1.8.tar.bz2
-    #cd samtools-1.8
-    #autoheader
-    #autoconf -Wno-syntax
-    #./configure --prefix /usr/local/bin
-    #make
-    #make install
-    #echo 'export PATH=/usr/local/samtools-1.8/:$PATH' >> $SINGULARITY_ENVIRONMENT
-    
     
 %test
-    #which bwa
-    #which bedtools
-    #which samtools
-    #which freebayes
+    which bwa
+
