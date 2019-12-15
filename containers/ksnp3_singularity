@@ -1,0 +1,33 @@
+Bootstrap: docker
+From: debian:jessie-slim
+
+#Includes idba, trimmomatic, samtools, bwa, bedtools, freebayes, bbmap, vcftools, htslib, ncurses, kraken2, resistomeanalyzer, rarefactionanalyzer, SNPfinder
+
+%environment
+    export LC_ALL=C
+
+%post
+    apt update \
+    && apt install -y --no-install-recommends \
+    build-essential ca-certificates sudo tcsh\
+    git make automake autoconf openjdk-7-jre wget gzip unzip sed\
+    zlib1g-dev curl libbz2-dev locales libncurses5-dev liblzma-dev libcurl4-openssl-dev software-properties-common apt-transport-https\
+    python3-pip python3-docopt python3-pytest python-dev python3-dev\
+    libcurl4-openssl-dev libssl-dev zlib1g-dev fonts-texgyre \
+    gcc g++ gfortran libblas-dev liblapack-dev dos2unix\
+    r-base-core r-recommended hmmer\
+    && rm -rf /var/lib/apt/lists/*
+
+    cd /usr/local/bin/
+    wget https://sourceforge.net/projects/ksnp/files/kSNP3.021_Linux_package.zip
+    unzip kSNP3.021_Linux_package.zip
+    cd kSNP3.021_Linux_package/kSNP3
+    echo 'export PATH=$PATH:/usr/local/bin/kSNP3.021_Linux_package/kSNP3/' >> $SINGULARITY_ENVIRONMENT
+
+    
+%test
+    #which bwa
+    #which bedtools
+    #which samtools
+    #which freebayes
+
