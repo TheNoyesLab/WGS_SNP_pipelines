@@ -4,13 +4,13 @@
 Goal: Create a pipeline that wraps popular WGS analysis tools.
 
   * Tools included:
-    [LYVE-SET](https://github.com/lskatz/lyve-SET)
-    [CFSAN-SNP](https://github.com/CFSAN-Biostatistics/snp-pipeline)
-    [KSNP3](https://sourceforge.net/projects/ksnp/files/)
+    * [LYVE-SET](https://github.com/lskatz/lyve-SET)
+    * [CFSAN-SNP](https://github.com/CFSAN-Biostatistics/snp-pipeline)
+    * [KSNP3](https://sourceforge.net/projects/ksnp/files/)
 
   * Other GUI tools:
-    [ENTEROBASE](https://github.com/zheminzhou/EToKi)
-    [wgMLST](https://www.applied-maths.com/applications/wgmlst)
+    * [ENTEROBASE](https://github.com/zheminzhou/EToKi)
+    * [wgMLST](https://www.applied-maths.com/applications/wgmlst)
 
 
 # Running pipeline
