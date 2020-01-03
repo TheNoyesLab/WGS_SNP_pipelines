@@ -63,6 +63,8 @@ process RunLYVESET {
     cp interleaved_reads/*.fastq.gz Lyveset_results/reads/
     cp ${reference_genome} Lyveset_results/reference/ref_genome.fasta
     launch_set.pl --numcpus ${threads} -ref Lyveset_results/reference/ref_genome.fasta Lyveset_results --noqsub
+    kSNP3 -in ksnp_sample_list_15genomes -CPU ${threads} -NJ -ML -k 13 -outdir kSNP3_results -annotate annotated_genomes | tee kSNP3RunLogfile
+
     """
 }
 
