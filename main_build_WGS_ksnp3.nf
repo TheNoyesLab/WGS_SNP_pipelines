@@ -63,7 +63,7 @@ process RunFastqConvert {
       file("interleaved_reads/ksnp3_genome_list.tsv") into genome_list
 
     """
-    shuffleSplitReads.pl --numcpus 8 -o interleaved_reads/ *_{1,2}.fastq.gz
+    shuffleSplitReads.pl --numcpus 8 -o interleaved_reads/ *_{1,2}.fastq
     cd interleaved_reads/
     zcat ${sample_id}.fastq.gz | paste - - - - | sed 's/^@/>/g'| cut -f1-2 | tr '\t' '\n' > ${sample_id}.fasta
     echo '${params.output}/Interleaved_fasta/${sample_id}.fasta\t${sample_id}\n' > ksnp3_genome_list.tsv
