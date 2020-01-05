@@ -49,18 +49,47 @@ slidingwindow = params.slidingwindow
 minlen = params.minlen
 
 
+Channel
+    .fromFilePairs( params.reads, flat: true )
+    .ifEmpty { exit 1, "Read pair files could not be found: ${params.reads}" }
+    .set { reads }
+
+
+process RunFastqConvert {
+    tag {sample_id}
+
+    publishDir "${params.output}/Interleaved_fasta", mode: "symlink"
+
+    input:
+      set sample_id, file(forward), file(reverse) from reads
+
+    output:
+      file("interleaved_reads/${sample_id}.fasta") into (interleaved_fasta)
+
+    """
+    shuffleSplitReads.pl --numcpus 8 -o interleaved_reads/ *_{1,2}.fastq
+    cd interleaved_reads/
+    zcat ${sample_id}.fastq.gz | paste - - - - | sed 's/^@/>/g'| cut -f1-2 | tr '\t' '\n' > ${sample_id}.fasta
+    """
+}
+
+interleaved_fasta.toSortedList().set { combined_interleaved_fasta }
+
+
 process RunLYVESET {
     tag { sample_id }
 
-    publishDir "${params.output}", mode: "copy"
+    publishDir "${params.output}/Lyveset_results", mode: "copy"
+
+    input:
+      file combined_interleaved_fasta
 
     output:
       file "Lyveset_results/*" into (lyveset_results)
 
     """
     set_manage.pl --create Lyveset_results
-    shuffleSplitReads.pl --numcpus 8 -o interleaved_reads/ ${input_dir}/*_{1,2}.fastq
-    cp interleaved_reads/*.fastq.gz Lyveset_results/reads/
+    cp $combined_interleaved_fasta Lyveset_results/reads/
     cp ${reference_genome} Lyveset_results/reference/ref_genome.fasta
     launch_set.pl --numcpus ${threads} -ref Lyveset_results/reference/ref_genome.fasta Lyveset_results --noqsub
     """
