@@ -48,24 +48,89 @@ trailing = params.trailing
 slidingwindow = params.slidingwindow
 minlen = params.minlen
 
+Channel
+    .fromFilePairs( params.reads, flat: true )
+    .ifEmpty { exit 1, "Read pair files could not be found: ${params.reads}" }
+    .set { reads }
+
+
+process RunCFSANFastqDirs {
+    tag {sample_id}
+
+    publishDir "${params.output}", mode: "symlink"
+
+    input:
+      set sample_id, file(forward), file(reverse) from reads
+
+    output:
+      file("${sample_id}/") into (fastq_dir)
+
+    """
+    mkdir ${sample_id}
+    cp ${forward} ${sample_id}/
+    cp ${reverse} ${sample_id}/
+    """
+}
 
 process RunCFSAN {
     tag { sample_id }
 
     publishDir "${params.output}", mode: "copy"
 
-    output: 
+    input:
+      file fastq_dir
+      file reference_genome
+
+    output:
       file "CFSAN_snp_results/*" into (cfsan_results)
 
     """
-    #mkdir run_samples
-    #< cfsan_sample_list_63genomes xargs -I % sh -c 'mkdir 63_samples/%; cp ../150_genomes/150_interleaved/%.fastq.gz 63_samples/%/ ;'
-    ${CFSAN} run -m soft -o CFSAN_snp_results -s ${input_dir} ${reference_genome}
+    cfsan_snp_pipeline run -m soft -o CFSAN_snp_results -s ${fastq_dir} $reference_genome
+    """ 
+}
+
+process RunCFSANFastqDirs {
+    tag {sample_id}
+
+    publishDir "${params.output}/Organized_reads", mode: "symlink"
+
+    input:
+      set sample_id, file(forward), file(reverse) from reads
+
+    output:
+      file("${sample_id}/") into (fastq_dir)
+
+    """
+    mkdir ${sample_id}
+    cp ${forward} ${sample_id}/
+    cp ${reverse} ${sample_id}/
     """
 }
 
+fastq_dir.toList().set { all_fastq_dir }
 
 
+process RunCFSAN {
+    tag { sample_id }
+
+    publishDir "${params.output}", mode: "copy"
+
+    input:
+      file all_fastq_dir
+      file reference_genome
+
+    output:
+      file "CFSAN_snp_results/*" into (cfsan_results)
+
+    """
+    mkdir run_samples
+    mv $all_fastq_dir run_samples/
+    cfsan_snp_pipeline run -m soft -o CFSAN_snp_results -s run_samples/ $reference_genome
+    rm -rf CFSAN_snp_results/samples
+    rm -rf run_samples/
+    """
+}
+ 
 
 
 
