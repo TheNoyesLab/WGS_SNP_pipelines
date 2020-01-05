@@ -57,41 +57,6 @@ Channel
 process RunCFSANFastqDirs {
     tag {sample_id}
 
-    publishDir "${params.output}", mode: "symlink"
-
-    input:
-      set sample_id, file(forward), file(reverse) from reads
-
-    output:
-      file("${sample_id}/") into (fastq_dir)
-
-    """
-    mkdir ${sample_id}
-    cp ${forward} ${sample_id}/
-    cp ${reverse} ${sample_id}/
-    """
-}
-
-process RunCFSAN {
-    tag { sample_id }
-
-    publishDir "${params.output}", mode: "copy"
-
-    input:
-      file fastq_dir
-      file reference_genome
-
-    output:
-      file "CFSAN_snp_results/*" into (cfsan_results)
-
-    """
-    cfsan_snp_pipeline run -m soft -o CFSAN_snp_results -s ${fastq_dir} $reference_genome
-    """ 
-}
-
-process RunCFSANFastqDirs {
-    tag {sample_id}
-
     publishDir "${params.output}/Organized_reads", mode: "symlink"
 
     input:
@@ -127,10 +92,9 @@ process RunCFSAN {
     mv $all_fastq_dir run_samples/
     cfsan_snp_pipeline run -m soft -o CFSAN_snp_results -s run_samples/ $reference_genome
     rm -rf CFSAN_snp_results/samples
-    rm -rf run_samples/
     """
 }
- 
+
 
 
 
