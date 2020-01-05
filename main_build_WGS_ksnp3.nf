@@ -8,10 +8,6 @@ vim: syntax=groovy
 if (params.help ) {
     return help()
 }
-if( params.input_dir ) {
-    input_dir = params.input_dir
-    //if( host_index.isEmpty() ) return index_error(host_index)
-}
 if( params.reference_genome ) {
     reference_genome = file(params.reference_genome)
     if( !reference_genome.exists() ) return host_error(reference_genome)
@@ -48,22 +44,63 @@ trailing = params.trailing
 slidingwindow = params.slidingwindow
 minlen = params.minlen
 
+Channel
+    .fromFilePairs( params.reads, flat: true )
+    .ifEmpty { exit 1, "Read pair files could not be found: ${params.reads}" }
+    .set { reads }
 
-process RunLYVESET {
+
+process RunFastqConvert {
+    tag {sample_id}
+
+    publishDir "${params.output}/Interleaved_fasta", mode: "symlink"
+
+    input:
+      set sample_id, file(forward), file(reverse) from reads
+
+    output:
+      file("interleaved_reads/${sample_id}.fasta") into (interleaved_fasta)
+      file("interleaved_reads/ksnp3_genome_list.tsv") into genome_list
+
+    """
+    shuffleSplitReads.pl --numcpus 8 -o interleaved_reads/ *_{1,2}.fastq.gz
+    cd interleaved_reads/
+    zcat ${sample_id}.fastq.gz | paste - - - - | sed 's/^@/>/g'| cut -f1-2 | tr '\t' '\n' > ${sample_id}.fasta
+    echo '${params.output}/Interleaved_fasta/${sample_id}.fasta\t${sample_id}\n' > ksnp3_genome_list.tsv
+    """
+}
+
+genome_list.toSortedList().set { combined_genome_path }
+
+process RunMakeList {
     tag { sample_id }
 
-    publishDir "${params.output}", mode: "copy"
+    input:
+      file combined_genome_path
+
+    output:
+      file "fasta_genome_location.tsv" into (full_genome_list)
+
+    """
+    cat $combined_genome_list > fasta_genome_location.tsv
+    
+    """
+}
+
+
+process RunKSNP3 {
+    tag { sample_id }
+
+    publishDir "${params.output}/kSNP3_results", mode: "copy"
+
+    input:
+      file full_genome_list
 
     output:
       file "Lyveset_results/*" into (lyveset_results)
 
     """
-    set_manage.pl --create Lyveset_results
-    shuffleSplitReads.pl --numcpus 8 -o interleaved_reads/ ${input_dir}/*_{1,2}.fastq
-    cp interleaved_reads/*.fastq.gz Lyveset_results/reads/
-    cp ${reference_genome} Lyveset_results/reference/ref_genome.fasta
-    launch_set.pl --numcpus ${threads} -ref Lyveset_results/reference/ref_genome.fasta Lyveset_results --noqsub
-    kSNP3 -in ksnp_sample_list_15genomes -CPU ${threads} -NJ -ML -k 13 -outdir kSNP3_results -annotate annotated_genomes | tee kSNP3RunLogfile
+    kSNP3 -in $full_genome_list -CPU ${threads} -NJ -ML -k 13 -outdir kSNP3_results -annotate annotated_genomes | tee kSNP3RunLogfile
 
     """
 }
