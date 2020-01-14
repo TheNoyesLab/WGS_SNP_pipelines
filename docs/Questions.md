@@ -5,7 +5,7 @@
 # Questions
 
 1. The https://www.ncbi.nlm.nih.gov/pathogens website allows a user to browse all isolate genomes, but downloading the metadata is limited to 10k lines. How can we obtain the metadata for all genomes in the pathogen database?
-  A. Obtaining all of the metadata is a bit tricky and consists of downloading all of the metadata files in the SFTP site, which is divided into folders for "SNP groups, and then the file must be paresed for unique entries.
+  * Obtaining all of the metadata is a bit tricky and consists of downloading all of the metadata files in the SFTP site, which is divided into folders for "SNP groups, and then the file must be paresed for unique entries.
  ```
 ftp ftp.ncbi.nlm.nih.gov
 # Username: anonymous
