@@ -23,7 +23,7 @@ less /Listeria/PDG000000001.1234/Metadata/PDG000000001.1234.metadata.tsv
   
   
 2. How can we tell who submitted each genome in the pathogen database?
-  A.Answer from Ruth Timme "The metadata file on the FTP site should contain all the salmonella isolates in the Pathogen Detection database. This includes all the GenomeTrakr contributions as well as PulseNet, Public Health England, and other submitters.  If you want to filter for GT-only isolates I can help you identify some flags, like the sra_center or bioproject_center that you can filter on for isolates submitted by GenomeTrakr.  We don’t draw a clear distinction in the database for the submitting networks since the data are all collected as part of the same surveillance effort, from the same SOP, QC thresholds, etc."
+  * Answer from Ruth Timme: "The metadata file on the FTP site should contain all the salmonella isolates in the Pathogen Detection database. This includes all the GenomeTrakr contributions as well as PulseNet, Public Health England, and other submitters.  If you want to filter for GT-only isolates I can help you identify some flags, like the sra_center or bioproject_center that you can filter on for isolates submitted by GenomeTrakr.  We don’t draw a clear distinction in the database for the submitting networks since the data are all collected as part of the same surveillance effort, from the same SOP, QC thresholds, etc."
   
 3. How do we know which genomes were submitted by GenomeTrakr? For example, which portion of Salmonella genomes were submitted by GenomeTrakr?
-  A. Answer from Ruth Timme "I did a quick filter for sra_center = FDA, CFSAN, FDA,CFSAN or FDA/CFSAN and the numbers look about right for what we’ve submitted for the network (almost 40K isolates)".
+  * Answer from Ruth Timme: "I did a quick filter for sra_center = FDA, CFSAN, FDA,CFSAN or FDA/CFSAN and the numbers look about right for what we’ve submitted for the network (almost 40K isolates)".
