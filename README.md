@@ -35,12 +35,11 @@ Title of Proposal: How does analytic approach impact pathogen population structu
 
 ### Example command
 ```bash
-nextflow run main_build_WGS_cfsan_snp.nf --reference_genome /home/enriquedoster/Documents/Projects/Mann_heim_69_genomes/genome_assemblies/ncbi-genomes-2019-08-28/GCF_007963885.1_ASM796388v1_genomic.fna --input_dir /home/enriquedoster/Documents/Projects/63_genomes/test_dir -profile singularity --output test_WGS
 
 # Lyveset
 nextflow run main_build_WGS_lyveset.nf --reference_genome /home/enriquedoster/Documents/Projects/Mann_heim_69_genomes/genome_assemblies/ncbi-genomes-2019-08-28/GCF_007963885.1_ASM796388v1_genomic.fna --input_dir /home/enriquedoster/Documents/Projects/63_genomes/test_dir -profile singularity --output test_WGS_lyve
 
-# KSNP3
+# cfsan_snp
 
 nextflow run main_build_WGS_cfsan_snp.nf --reference_genome "/scratch.global/test_WGS/ref_genome.fasta" --reads "/scratch.global/test_WGS/test_genomes/*_{1,2}.fastq" -profile singularity --output test_WGS_ksnp
 
