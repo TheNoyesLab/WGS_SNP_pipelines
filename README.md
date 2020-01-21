@@ -20,12 +20,13 @@ Title of Proposal: How does analytic approach impact pathogen population structu
     * [ENTEROBASE](https://github.com/zheminzhou/EToKi)
     * [wgMLST](https://www.applied-maths.com/applications/wgmlst)
 
-# Accessing genomes in NCBI's pathogen database
+
+
+## NCBI's pathogen database and genome analysis
 ------------
-SFTP site: ftp.ncbi.nlm.nih.gov/pathogen/
-
 [FAQs](https://github.com/TheNoyesLab/WGS_SNP_pipelines/blob/master/docs/Questions.md)
-
+[NCBI pathogen database](https://github.com/TheNoyesLab/WGS_SNP_pipelines/blob/master/docs/Accessing_NCBI_pathogen_genomes.md)
+[Using Common WGS tools](https://github.com/TheNoyesLab/WGS_SNP_pipelines/blob/master/docs/Using_common_WGS_tools.md)
 
 
 # Running pipeline
