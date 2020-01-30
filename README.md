@@ -20,9 +20,6 @@ Title of Proposal: How does analytic approach impact pathogen population structu
     * [ENTEROBASE](https://github.com/zheminzhou/EToKi)
     * [wgMLST](https://www.applied-maths.com/applications/wgmlst)
 
-  * Other tools to consider:
-    * [Kalign 3](https://academic.oup.com/bioinformatics/advance-article/doi/10.1093/bioinformatics/btz795/5607735?rss=1)
-
 
 ## NCBI's pathogen database and genome analysis
 ------------
@@ -58,5 +55,11 @@ nextflow run main_build_WGS_ksnp3.nf --reference_genome "/scratch.global/test_WG
 ## WGS pipeline manuscripts
 
 
-## Other useful links:
-https://github.com/jhcepas
+## Misc resources
+
+* Ways to compare the results from WGS pipelines
+  * https://github.com/lskatz/Lyve-SET-paper/blob/master/compareSnps.sh
+* WGS tools to consider:
+  * [Kalign 3](https://academic.oup.com/bioinformatics/advance-article/doi/10.1093/bioinformatics/btz795/5607735?rss=1)
+* Other useful links:
+  * https://github.com/jhcepas
