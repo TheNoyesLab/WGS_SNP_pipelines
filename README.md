@@ -61,5 +61,6 @@ nextflow run main_build_WGS_ksnp3.nf --reference_genome "/scratch.global/test_WG
   * https://github.com/lskatz/Lyve-SET-paper/blob/master/compareSnps.sh
 * WGS tools to consider:
   * [Kalign 3](https://academic.oup.com/bioinformatics/advance-article/doi/10.1093/bioinformatics/btz795/5607735?rss=1)
+  * [Tormes](https://github.com/nmquijada/tormes)
 * Other useful links:
   * https://github.com/jhcepas
