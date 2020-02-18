@@ -68,6 +68,7 @@ Process reads to fasta
 process RunFastqConvert {
     tag {sample_id}
 
+    module 'singularity'    
 
     publishDir "${params.output}/Interleaved_fasta", mode: "symlink"
 
@@ -82,7 +83,7 @@ process RunFastqConvert {
       file("${sample_id}.fasta") into (fasta_files)
 
     """
-    shuffleSplitReads.pl --numcpus ${threads} -o interleaved_reads/ *_{1,2}.fastq.gz
+    shuffleSplitReads.pl --numcpus ${threads} -o interleaved_reads/ *_{1,2}.fastq
     cp interleaved_reads/${sample_id}.fastq.gz ${sample_id}.cp.fastq.gz
     zcat ${sample_id}.cp.fastq.gz | paste - - - - | sed 's/^@/>/g'| cut -f1-2 | tr '\t' '\n' > ${sample_id}.fasta
     echo '${params.output}/Interleaved_fasta/${sample_id}.fasta\t${sample_id}' > ${sample_id}.ksnp3_genome_list.tsv
@@ -105,6 +106,7 @@ interleaved_fastq.toSortedList().set { combined_interleaved_fastq }
 process RunMakeList {
     tag { sample_id }
 
+    module 'singularity'
 
     input:
       file combined_genome_path
@@ -125,8 +127,9 @@ Run CFSAN
 
 
 process RunCFSAN {
-    container 'shub://TheNoyesLab/WGS_SNP_pipelines'
 
+    module 'singularity'
+    container 'shub://TheNoyesLab/WGS_SNP_pipelines'
 
     publishDir "${params.output}/CFSAN", mode: "copy"
 
@@ -155,7 +158,7 @@ Run kSNP3
 process RunKSNP3 {
     tag { sample_id }
 
-
+    module 'singularity'
     publishDir "${params.output}/kSNP3_results", mode: "copy"
 
     input:
@@ -177,7 +180,7 @@ Run Lyveset
 
 process RunLYVESET {
     tag { sample_id }
-
+    module 'singularity'
 
     publishDir "${params.output}/Lyveset_results", mode: "copy"
 
