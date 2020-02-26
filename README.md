@@ -55,6 +55,9 @@ nextflow run main_build_WGS_ksnp3.nf --reference_genome "/scratch.global/test_WG
 ## WGS pipeline manuscripts
 
 
+## WGS and regulations
+* https://www.efsa.europa.eu/en/consultations/call/public-consultation-efsa-statement-requirements-whole-genome
+
 ## Misc resources
 
 * Ways to compare the results from WGS pipelines
