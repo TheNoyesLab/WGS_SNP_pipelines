@@ -169,6 +169,7 @@ process RunKSNP3 {
 
     """
     kSNP3 -in $full_genome_list -CPU ${threads} -NJ -ML -k 13 -outdir kSNP3_results -annotate annotated_genomes | tee kSNP3RunLogfile
+    rm -rf kSNP3_results/TemporaryFilesToDelete/
     """
 }
 
