@@ -68,8 +68,8 @@ Process reads to fasta
 process RunFastqConvert {
     tag {sample_id}
 
-    module 'singularity'    
-
+    module 'singularity'
+    errorStrategy 'ignore'
     publishDir "${params.output}/Interleaved_fasta", mode: "symlink"
 
 
@@ -83,7 +83,7 @@ process RunFastqConvert {
       file("${sample_id}.fasta") into (fasta_files)
 
     """
-    shuffleSplitReads.pl --numcpus ${threads} -o interleaved_reads/ *_{1,2}.fastq
+    shuffleSplitReads.pl --numcpus ${threads} -o interleaved_reads/ *_{1,2}.fastq.gz
     cp interleaved_reads/${sample_id}.fastq.gz ${sample_id}.cp.fastq.gz
     zcat ${sample_id}.cp.fastq.gz | paste - - - - | sed 's/^@/>/g'| cut -f1-2 | tr '\t' '\n' > ${sample_id}.fasta
     echo '${params.output}/Interleaved_fasta/${sample_id}.fasta\t${sample_id}' > ${sample_id}.ksnp3_genome_list.tsv
@@ -107,6 +107,8 @@ process RunMakeList {
     tag { sample_id }
 
     module 'singularity'
+
+    publishDir "${params.output}/Fasta_location_file", mode: "copy"
 
     input:
       file combined_genome_path
@@ -143,7 +145,7 @@ process RunCFSAN {
     """
     mkdir run_samples
     mv $all_fastq_dir run_samples/
-    cfsan_snp_pipeline run -m soft -o CFSAN_snp_results -s run_samples/ $reference_genome
+    cfsan_snp_pipeline run -m soft -o CFSAN_snp_results -s run_samples/ $reference_genome -c $baseDir/bin/snppipeline.conf
     rm -rf CFSAN_snp_results/samples
     rm -rf run_samples/
     """
@@ -168,7 +170,7 @@ process RunKSNP3 {
       file "kSNP3_results/*" into (ksnp3_results)
 
     """
-    kSNP3 -in $full_genome_list -CPU ${threads} -NJ -ML -k 13 -outdir kSNP3_results -annotate annotated_genomes | tee kSNP3RunLogfile
+    kSNP3 -in $full_genome_list -CPU ${threads} -NJ -ML -core -vcf -k 13 -outdir kSNP3_results -annotate annotated_genomes | tee kSNP3RunLogfile
     rm -rf kSNP3_results/TemporaryFilesToDelete/
     """
 }
@@ -195,7 +197,7 @@ process RunLYVESET {
     """
     set_manage.pl --create Lyveset_results
     mv ${combined_interleaved_fastq} Lyveset_results/reads/
-    cp ${reference_genome} Lyveset_results/reference/ref_genome.fasta
+    mv ${reference_genome} Lyveset_results/reference/ref_genome.fasta
     launch_set.pl --numcpus ${threads} -ref Lyveset_results/reference/ref_genome.fasta Lyveset_results --noqsub
     rm -rf Lyveset_results/reads/
     """

@@ -8,16 +8,11 @@ vim: syntax=groovy
 if (params.help ) {
     return help()
 }
-if( params.input_dir ) {
-    input_dir = params.input_dir
-    //if( host_index.isEmpty() ) return index_error(host_index)
-}
-/*
+
 if( params.reference_genome ) {
     reference_genome = file(params.reference_genome)
-    if( !reference_genome.exists() ) return host_error(reference_genome)
 }
-*/
+
 if( params.amr ) {
     amr = file(params.amr)
     if( !amr.exists() ) return amr_error(amr)
@@ -35,8 +30,12 @@ if(params.kraken_db) {
     kraken_db = file(params.kraken_db)
 }
 
+clusterOptions = ''
+
 threads = params.threads
 output = params.output
+
+fastq_dir_path = params.fastq_dir_path
 
 threshold = params.threshold
 
@@ -50,158 +49,38 @@ trailing = params.trailing
 slidingwindow = params.slidingwindow
 minlen = params.minlen
 
+/*
 Channel
     .fromFilePairs( params.reference_genome, size: 1)
     .ifEmpty { exit 1, "Reference genome could not be found: ${params.reference_genome}" }
     .set { reference_genome }
-
-
-
-Channel
-    .fromFilePairs( params.reads, flat: true )
-    .ifEmpty { exit 1, "Read pair files could not be found: ${params.reads}" }
-    .set { reads }
-
-
-
-/*
-Process reads to fasta
 */
-
-
-
-process RunFastqConvert {
-    tag {sample_id}
-
-    publishDir "${params.output}/Interleaved_fasta", mode: "symlink"
-
-    input:
-      set sample_id, file(forward), file(reverse) from reads
-
-    output:
-      file("interleaved_reads/${sample_id}.fasta") into (interleaved_fasta)
-      file("interleaved_reads/${sample_id}.ksnp3_genome_list.tsv") into (genome_list)
-      file("${sample_id}/") into (fastq_dir)
-
-    """
-    shuffleSplitReads.pl --numcpus 8 -o interleaved_reads/ *_{1,2}.fastq
-    cd interleaved_reads/
-    zcat ${sample_id}.fastq.gz | paste - - - - | sed 's/^@/>/g'| cut -f1-2 | tr '\t' '\n' > ${sample_id}.fasta
-    echo '${params.output}/Interleaved_fasta/interleaved_reads/${sample_id}.fasta\t${sample_id}\n' > ${sample_id}.ksnp3_genome_list.tsv
-
-    cd ../
-    mkdir ${sample_id}
-    cp ${forward} ${sample_id}/
-    cp ${reverse} ${sample_id}/
-    """
-}
-
-
-genome_list.toSortedList().set { combined_genome_path }
-
-fastq_dir.toList().set { all_fastq_dir }
-
-interleaved_fasta.toSortedList().set { combined_interleaved_fasta }
-
-
-process RunMakeList {
-    tag { sample_id }
-
-    input:
-      file combined_genome_path
-
-    output:
-      file "fasta_genome_location.tsv" into (full_genome_list)
-
-    """
-    cat $combined_genome_path > fasta_genome_location.tsv
-    
-    """
-}
-
-
 
 /*
 Run CFSAN
 */
 
 
-/*
 process RunCFSAN {
-    tag { sample_id }
 
-    publishDir "${params.output}", mode: "copy"
+    module 'singularity'
+    container 'shub://TheNoyesLab/WGS_SNP_pipelines'
+
+    publishDir "${params.output}/CFSAN", mode: "copy"
 
     input:
-      file all_fastq_dir
       file reference_genome
 
     output:
       file "CFSAN_snp_results/*" into (cfsan_results)
 
     """
-    mkdir run_samples
-    mv $all_fastq_dir run_samples/
-    cfsan_snp_pipeline run -m soft -o CFSAN_snp_results -s run_samples/ $reference_genome
+    cfsan_snp_pipeline run -m soft -o CFSAN_snp_results -s $fastq_dir_path $reference_genome -c $baseDir/bin/snppipeline.conf
     rm -rf CFSAN_snp_results/samples
-    """
-}
-*/
-
-/*
-Run kSNP3
-*/
-
-
-process RunKSNP3 {
-    tag { sample_id }
-
-    publishDir "${params.output}/kSNP3_results", mode: "copy"
-
-    input:
-      file full_genome_list
-
-    output:
-      file "kSNP3_results/*" into (ksnp3_results)
-
-    """
-    kSNP3 -in $full_genome_list -CPU ${threads} -NJ -ML -k 13 -outdir kSNP3_results -annotate annotated_genomes | tee kSNP3RunLogfile
+    rm -rf run_samples/
     """
 }
 
-
-/*
-Run Lyveset
-*/
-
-
-
-
-/*
-
-
-process RunLYVESET {
-    tag { sample_id }
-
-    publishDir "${params.output}/Lyveset_results", mode: "copy"
-
-    input:
-      file combined_interleaved_fasta
-      set sample_id, file(reference_genome) from reference_genome
-
-    output:
-      file "Lyveset_results/*" into (lyveset_results)
-
-    """
-    set_manage.pl --create Lyveset_results
-    cp $combined_interleaved_fasta Lyveset_results/reads/
-    cp ${reference_genome} Lyveset_results/reference/ref_genome.fasta
-    launch_set.pl --numcpus ${threads} -ref Lyveset_results/reference/ref_genome.fasta Lyveset_results --noqsub
-    """
-}
-
-
-*/
 
 
 

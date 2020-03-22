@@ -8,14 +8,11 @@ vim: syntax=groovy
 if (params.help ) {
     return help()
 }
-if( params.input_dir ) {
-    input_dir = params.input_dir
-    //if( host_index.isEmpty() ) return index_error(host_index)
-}
+
 if( params.reference_genome ) {
     reference_genome = file(params.reference_genome)
-    if( !reference_genome.exists() ) return host_error(reference_genome)
 }
+
 if( params.amr ) {
     amr = file(params.amr)
     if( !amr.exists() ) return amr_error(amr)
@@ -33,6 +30,9 @@ if(params.kraken_db) {
     kraken_db = file(params.kraken_db)
 }
 
+clusterOptions = ''
+
+genomes = file(params.genomes)
 threads = params.threads
 output = params.output
 
@@ -48,50 +48,22 @@ trailing = params.trailing
 slidingwindow = params.slidingwindow
 minlen = params.minlen
 
-Channel
-    .fromFilePairs( params.reads, flat: true )
-    .ifEmpty { exit 1, "Read pair files could not be found: ${params.reads}" }
-    .set { reads }
 
-
-process RunCFSANFastqDirs {
-    tag {sample_id}
-
-    publishDir "${params.output}/Organized_reads", mode: "symlink"
-
-    input:
-      set sample_id, file(forward), file(reverse) from reads
-
-    output:
-      file("${sample_id}/") into (fastq_dir)
-
-    """
-    mkdir ${sample_id}
-    cp ${forward} ${sample_id}/
-    cp ${reverse} ${sample_id}/
-    """
-}
-
-fastq_dir.toList().set { all_fastq_dir }
-
-
-process RunCFSAN {
+process RunKSNP3 {
     tag { sample_id }
 
-    publishDir "${params.output}", mode: "copy"
+    module 'singularity'
+    publishDir "${params.output}/kSNP3_results", mode: "copy"
 
     input:
-      file all_fastq_dir
-      file reference_genome
+      file genomes
 
     output:
-      file "CFSAN_snp_results/*" into (cfsan_results)
+      file "kSNP3_results/*" into (ksnp3_results)
 
     """
-    mkdir run_samples
-    mv $all_fastq_dir run_samples/
-    cfsan_snp_pipeline run -m soft -o CFSAN_snp_results -s run_samples/ $reference_genome
-    rm -rf CFSAN_snp_results/samples
+    kSNP3 -in ${genomes} -CPU ${threads} -NJ -ML -k 13 -outdir kSNP3_results -annotate annotated_genomes | tee kSNP3RunLogfile
+    rm -rf kSNP3_results/TemporaryFilesToDelete/
     """
 }
 
