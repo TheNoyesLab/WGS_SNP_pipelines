@@ -37,7 +37,7 @@ Title of Proposal: How does analytic approach impact pathogen population structu
 
 # Main combined pipeline
 # Input is paired end reads
-/home/noyes046/edoster/.conda/envs/compute/bin/nextflow run main_combined_pipeline.nf --reference_genome /scratch.global/Salmonella_WGS/ref_L_monocytogenes_NC_003210.fasta --reads /scratch.global/Salmonella_WGS/List_test_genomes/*_{1,2}.fastq.gz -profile test_singularity_pbs --output /scratch.global/Salmonella_WGS/test_GenomeTrakr_L_monocytogenes_WGS_results --threads 128 -w /scratch.global/Salmonella_WGS/work_test_qsub_l_latest -resume -with-report test_250_Listeria_WGS_tools.report -with-trace -with-timelineq
+nextflow run main_combined_pipeline.nf --reference_genome /scratch.global/Salmonella_WGS/ref_L_monocytogenes_NC_003210.fasta --reads "/scratch.global/Salmonella_WGS/List_test_genomes/*_{1,2}.fastq.gz" -profile test_singularity_pbs --output /scratch.global/Salmonella_WGS/test_GenomeTrakr_L_monocytogenes_WGS_results --threads 128 -w /scratch.global/Salmonella_WGS/work_test_qsub_l_latest -resume -with-report test_250_Listeria_WGS_tools.report -with-trace -with-timeline
 
 
 # Lyveset
