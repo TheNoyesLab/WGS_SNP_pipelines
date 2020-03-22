@@ -35,17 +35,25 @@ Title of Proposal: How does analytic approach impact pathogen population structu
 ### Example command
 ```bash
 
+# Main combined pipeline
+# Input is paired end reads
+/home/noyes046/edoster/.conda/envs/compute/bin/nextflow run main_combined_pipeline.nf --reference_genome /scratch.global/Salmonella_WGS/ref_L_monocytogenes_NC_003210.fasta --reads /scratch.global/Salmonella_WGS/List_test_genomes/*_{1,2}.fastq.gz -profile test_singularity_pbs --output /scratch.global/Salmonella_WGS/test_GenomeTrakr_L_monocytogenes_WGS_results --threads 128 -w /scratch.global/Salmonella_WGS/work_test_qsub_l_latest -resume -with-report test_250_Listeria_WGS_tools.report -with-trace -with-timelineq
+
+
 # Lyveset
-nextflow run main_build_WGS_lyveset.nf --reference_genome /home/enriquedoster/Documents/Projects/Mann_heim_69_genomes/genome_assemblies/ncbi-genomes-2019-08-28/GCF_007963885.1_ASM796388v1_genomic.fna --input_dir /home/enriquedoster/Documents/Projects/63_genomes/test_dir -profile singularity --output test_WGS_lyve
+# Input is interleaved fastq files
+nextflow run main_LYVESET.nf --reference_genome /scratch.global/Salmonella_WGS/ref_L_monocytogenes_NC_003210.fasta --interleaved_fastq "/scratch.global/Salmonella_WGS/test_GenomeTrakr_L_monocytogenes_WGS_results/Interleaved_fasta/interleaved_reads/*.fastq.gz" -profile singularity --output /scratch.global/Salmonella_WGS/test_LYVESET_250_GenomeTrakr_L_monocytogenes_WGS_results --threads 3 -w /scratch.global/Salmonella_WGS/work_250_lyveset_qsub_l_latest -resume -with-report 250_Listeria_WGS_tools.report -with-trace -with-timeline --singleEnd true
 
 # cfsan_snp
+# Input file is a directory containing one directory per sample with the corresponding paired reads
+nextflow run main_CFSAN_snp.nf --reference_genome /scratch.global/Salmonella_WGS/ref_L_monocytogenes_NC_003210.fasta --fastq_dir_path '/scratch.global/Salmonella_WGS/test_GenomeTrakr_L_monocytogenes_WGS_results/Interleaved_fasta/' -profile singularity --output /scratch.global/Salmonella_WGS/test_250_GenomeTrakr_L_monocytogenes_WGS_results --threads 128 -w /scratch.global/Salmonella_WGS/work_250_qsub_l_latest -resume -with-report 250_Listeria_WGS_tools.report -with-trace -with-timeline
 
-nextflow run main_build_WGS_cfsan_snp.nf --reference_genome "/scratch.global/test_WGS/ref_genome.fasta" --reads "/scratch.global/test_WGS/test_genomes/*_{1,2}.fastq" -profile singularity --output test_WGS_ksnp
 
 # KSNP3
-
-nextflow run main_build_WGS_ksnp3.nf --reference_genome "/scratch.global/test_WGS/ref_genome.fasta" --reads "/scratch.global/test_WGS/test_genomes/*_{1,2}.fastq" -profile singularity --output test_WGS_ksnp
-
+# Input file is ".tsv" file containing a column with an absolute path to each sample file and it's sample ID
+# Example below
+# /path/to/file/SRR10001252.fasta    SRR10001252
+nextflow run main_kSNP3.nf --reference_genome /scratch.global/Salmonella_WGS/ref_L_monocytogenes_NC_003210.fasta --genomes /scratch.global/Salmonella_WGS/WGS_SNP_pipelines/Listeria_genome_location.tsv -profile singularity_pbs --output /scratch.global/Salmonella_WGS/kSNP3_GenomeTrakr_L_monocytogenes_WGS_results --threads 128 -w /scratch.global/Salmonella_WGS/work_kSNP3_l_latest -resume -with-report kSNP3_Listeria_WGS_tools.report -with-trace -with-timeline
 ```
 
 
