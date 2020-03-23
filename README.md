@@ -13,7 +13,9 @@ Title of Proposal: How does analytic approach impact pathogen population structu
 
   * Tools included in the study:
     * [LYVE-SET](https://github.com/lskatz/lyve-SET)
+      * https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5346554/
     * [CFSAN-SNP](https://github.com/CFSAN-Biostatistics/snp-pipeline)
+      * https://www.ifsh.iit.edu/sites/ifsh/files/departments/James_Pettengill.pdf
     * [KSNP3](https://sourceforge.net/projects/ksnp/files/)
 
   * GUI tools included in the study:
@@ -27,6 +29,9 @@ Title of Proposal: How does analytic approach impact pathogen population structu
 * [FAQs](https://github.com/TheNoyesLab/WGS_SNP_pipelines/blob/master/docs/Questions.md)
 * [NCBI pathogen database](https://github.com/TheNoyesLab/WGS_SNP_pipelines/blob/master/docs/Accessing_NCBI_pathogen_genomes.md)
 * [Using Common WGS tools](https://github.com/TheNoyesLab/WGS_SNP_pipelines/blob/master/docs/Using_common_WGS_tools.md)
+
+
+
 
 
 # Running pipeline
