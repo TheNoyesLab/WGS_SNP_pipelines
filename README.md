@@ -2,8 +2,6 @@
 ## How does analytic approach impact pathogen population structure when analyzing whole genome sequence data?
 ------------
 
-
-
 The overall goal of this project is to support an accurate, reproducible, transparent and uniform approach to whole-genome sequence (WGS) analysis for purposes of outbreak detection and pathogen surveillance.
 * The overarching objective is to demonstrate how different analytic approaches to whole-genome sequence analysis can impact analysis results.
 * Supporting objectives are to evaluate the impacts:
@@ -12,17 +10,23 @@ The overall goal of this project is to support an accurate, reproducible, transp
   * genome comparison approach (i.e., using SNPs, k-mers, gene-by-gene alleles, or functional domains).
 * Additionally, we wil provide information regarding the usability of different WGS pipelines and NCBI's pathogen genome database.
 
+## Table of contents
+* [Study design](https://github.com/TheNoyesLab/WGS_SNP_pipelines/blob/master/docs/Study_design.md)
+* [WGS tool descriptions](https://github.com/TheNoyesLab/WGS_SNP_pipelines/blob/master/docs/WGS_tool_descriptions.md)
+* [Installing WGS tools](https://github.com/TheNoyesLab/WGS_SNP_pipelines/blob/master/docs/Installing_WGS_tools.md)
+* [Accessing NCBI's pathogen genomes](https://github.com/TheNoyesLab/WGS_SNP_pipelines/blob/master/docs/Accessing_NCBI_pathogen_genomes.md)
+* [FAQs](https://github.com/TheNoyesLab/WGS_SNP_pipelines/blob/master/docs/Questions.md)
 
 ## WGS analysis tools
 ------------
-
 * [Tools included in the study](https://github.com/TheNoyesLab/WGS_SNP_pipelines/blob/master/docs/WGS_tool_descriptions.md):
-  * [LYVE-SET](https://github.com/lskatz/lyve-SET)
-  * [CFSAN-SNP](https://github.com/CFSAN-Biostatistics/snp-pipeline)
-  * [KSNP3](https://sourceforge.net/projects/ksnp/files/)
-* GUI tools included in the study:
-  * [ENTEROBASE](https://github.com/zheminzhou/EToKi)
-  * [wgMLST/BioNumerics](https://www.applied-maths.com/applications/wgmlst)
+ * Command-line tools
+   * [LYVE-SET](https://github.com/lskatz/lyve-SET)
+   * [CFSAN-SNP](https://github.com/CFSAN-Biostatistics/snp-pipeline)
+   * [KSNP3](https://sourceforge.net/projects/ksnp/files/)
+ * GUI tools included in the study:
+   * [ENTEROBASE](https://github.com/zheminzhou/EToKi)
+   * [wgMLST/BioNumerics](https://www.applied-maths.com/applications/wgmlst)
   
 
 
