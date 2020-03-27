@@ -170,7 +170,7 @@ process RunKSNP3 {
       file "kSNP3_results/*" into (ksnp3_results)
 
     """
-    kSNP3 -in ${genomes} -CPU ${threads} -NJ -ML -core -vcf -min_frac 0.5 -k 31 -outdir kSNP3_results -annotate annotated_genomes | tee kSNP3RunLogfile
+    kSNP3 -in ${full_genome_list} -CPU ${threads} -NJ -ML -core -vcf -min_frac 0.5 -k 31 -outdir kSNP3_results -annotate annotated_genomes | tee kSNP3RunLogfile
     rm -rf kSNP3_results/TemporaryFilesToDelete/
     """
 }
@@ -198,7 +198,7 @@ process RunLYVESET {
     set_manage.pl --create Lyveset_results
     mv ${combined_interleaved_fastq} Lyveset_results/reads/
     mv ${reference_genome} Lyveset_results/reference/ref_genome.fasta
-    launch_set.pl --numcpus ${threads} -ref Lyveset_results/reference/ref_genome.fasta Lyveset_results --noqsub
+    launch_set.pl --numcpus ${threads} -ref Lyveset_results/reference/ref_genome.fasta Lyveset_results --noqsub --read_cleaner CGP
     rm -rf Lyveset_results/reads/
     """
 }
