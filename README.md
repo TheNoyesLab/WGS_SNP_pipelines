@@ -20,13 +20,13 @@ The overall goal of this project is to support an accurate, reproducible, transp
 ## WGS analysis tools
 ------------
 * [Tools included in the study](https://github.com/TheNoyesLab/WGS_SNP_pipelines/blob/master/docs/WGS_tool_descriptions.md):
- * Command-line tools
-   * [LYVE-SET](https://github.com/lskatz/lyve-SET)
-   * [CFSAN-SNP](https://github.com/CFSAN-Biostatistics/snp-pipeline)
-   * [KSNP3](https://sourceforge.net/projects/ksnp/files/)
- * GUI tools included in the study:
-   * [ENTEROBASE](https://github.com/zheminzhou/EToKi)
-   * [wgMLST/BioNumerics](https://www.applied-maths.com/applications/wgmlst)
+  * Command-line tools
+    * [LYVE-SET](https://github.com/lskatz/lyve-SET)
+    * [CFSAN-SNP](https://github.com/CFSAN-Biostatistics/snp-pipeline)
+    * [KSNP3](https://sourceforge.net/projects/ksnp/files/)
+  * GUI tools included in the study:
+    * [ENTEROBASE](https://github.com/zheminzhou/EToKi)
+    * [wgMLST/BioNumerics](https://www.applied-maths.com/applications/wgmlst)
   
 
 
