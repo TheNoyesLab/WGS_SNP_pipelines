@@ -11,15 +11,18 @@ Title of Proposal: How does analytic approach impact pathogen population structu
   * genome comparison approach (i.e., using SNPs, k-mers, gene-by-gene alleles, or functional domains).
 * Additionaly, we wil provide information regarding the usability of different WGS pipelines and NCBI's pathogen genome database.
 
-  * Tools included in the study:
-    * [LYVE-SET](https://github.com/lskatz/lyve-SET)
-      * https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5346554/
-    * [CFSAN-SNP](https://github.com/CFSAN-Biostatistics/snp-pipeline)
-      * https://www.ifsh.iit.edu/sites/ifsh/files/departments/James_Pettengill.pdf
-    * [KSNP3](https://sourceforge.net/projects/ksnp/files/)
-  * GUI tools included in the study:
-    * [ENTEROBASE](https://github.com/zheminzhou/EToKi)
-    * [wgMLST/BioNumerics](https://www.applied-maths.com/applications/wgmlst)
+
+## WGS analysis tools
+------------
+
+* [Tools included in the study](https://github.com/TheNoyesLab/WGS_SNP_pipelines/blob/master/docs/WGS_tool_descriptions.md):
+  * [LYVE-SET](https://github.com/lskatz/lyve-SET)
+  * [CFSAN-SNP](https://github.com/CFSAN-Biostatistics/snp-pipeline)
+  * [KSNP3](https://sourceforge.net/projects/ksnp/files/)
+* GUI tools included in the study:
+  * [ENTEROBASE](https://github.com/zheminzhou/EToKi)
+  * [wgMLST/BioNumerics](https://www.applied-maths.com/applications/wgmlst)
+  
 
 
 
