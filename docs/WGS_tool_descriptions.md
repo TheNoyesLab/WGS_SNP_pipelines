@@ -17,7 +17,9 @@
 ## CFSAN-snp
 * [CFSAN-SNP](https://github.com/CFSAN-Biostatistics/snp-pipeline)
   * https://www.ifsh.iit.edu/sites/ifsh/files/departments/James_Pettengill.pdf
-* [KSNP3](https://sourceforge.net/projects/ksnp/files/)
+
+## kSNP3
+* [kSNP3](https://sourceforge.net/projects/ksnp/files/)
   * kSNP identifies the pan-genome SNPs in a set of genome sequences, and estimates phylogenetic trees based upon those SNPs. SNP discovery is based on k-mer analysis, and requires no multiple sequence alignment or the selection of a reference genome, so kSNP can take 100's of microbial genomes as input. A SNP locus is defined by an oligo of length k surrounding a central SNP allele. kSNP can analyze both complete (finished) genomes and unfinished genomes in assembled contigs or raw, unassembled reads. Finished and unfinished genomes can be analyzed together, and kSNP can automatically download Genbank files of the finished genomes and incorporate the information in those files into the SNP annotation
 
 -----
