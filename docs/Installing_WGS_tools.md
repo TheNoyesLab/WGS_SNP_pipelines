@@ -1,4 +1,4 @@
-# Overview of process for using common WGS tools
+# Overview of process for installing WGS tools
 
 ## CFSAN SNP
 
