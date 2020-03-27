@@ -4,7 +4,7 @@
 
 
 
-"The overall goal of this project is to support an accurate, reproducible, transparent and uniform approach to whole-genome sequence (WGS) analysis for purposes of outbreak detection and pathogen surveillance.
+The overall goal of this project is to support an accurate, reproducible, transparent and uniform approach to whole-genome sequence (WGS) analysis for purposes of outbreak detection and pathogen surveillance.
 * The overarching objective is to demonstrate how different analytic approaches to whole-genome sequence analysis can impact analysis results.
 * Supporting objectives are to evaluate the impacts:
   * dataset
@@ -38,7 +38,7 @@
 
 
 
-# Running pipeline
+# Running the pipelines with this repository
 ------------
 
 ### Example command
@@ -68,9 +68,6 @@ nextflow run main_kSNP3.nf --reference_genome /scratch.global/Salmonella_WGS/ref
 
 # Documents
 ------------
-
-## WGS pipeline manuscripts
-
 
 ## WGS and regulations
 * https://www.efsa.europa.eu/en/consultations/call/public-consultation-efsa-statement-requirements-whole-genome
