@@ -1,7 +1,8 @@
-# Collection of WGS SNP pipelines to analyze assembled genomes
+# Title of Proposal:
+## How does analytic approach impact pathogen population structure when analyzing whole genome sequence data?
 ------------
 
-Title of Proposal: How does analytic approach impact pathogen population structure when analyzing whole genome sequence data?
+
 
 "The overall goal of this project is to support an accurate, reproducible, transparent and uniform approach to whole-genome sequence (WGS) analysis for purposes of outbreak detection and pathogen surveillance.
 * The overarching objective is to demonstrate how different analytic approaches to whole-genome sequence analysis can impact analysis results.
@@ -9,7 +10,7 @@ Title of Proposal: How does analytic approach impact pathogen population structu
   * dataset
   * core- vs. pan-genome inclusion
   * genome comparison approach (i.e., using SNPs, k-mers, gene-by-gene alleles, or functional domains).
-* Additionaly, we wil provide information regarding the usability of different WGS pipelines and NCBI's pathogen genome database.
+* Additionally, we wil provide information regarding the usability of different WGS pipelines and NCBI's pathogen genome database.
 
 
 ## WGS analysis tools
