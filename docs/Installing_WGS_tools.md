@@ -56,11 +56,6 @@ cfsan_snp_pipeline run -m soft -o outputDirectory -s 63_samples /media/AngusWork
  ```
  #https://github.com/lskatz/lyve-SET
 conda install -c hcc lyve-set
-# WARNING conda.gateways.disk.delete:unlink_or_rename_to_trash(140): Could not remove or rename /home/enriquedoster/anaconda3/envs/WGS_tools/lib/5.26.2/x86_64-linux-thread-multi/perllocal.pod.  Please remove this file manually (you may need to reboot to free file handles)
-#WARNING conda.gateways.disk.delete:unlink_or_rename_to_trash(140): Could not remove or rename /home/enriquedoster/anaconda3/envs/WGS_tools/lib/5.26.2/x86_64-linux-thread-multi/perllocal.pod.  Please remove this file manually (you may need to reboot to free file handles)
-#\ b'\nThe config, phast, and testdata directories are in /home/enriquedoster/anaconda3/envs/WGS_tools/config, /home/enriquedoster/anaconda3/envs/WGS_tools/lib/phast, and /home/enriquedoster/anaconda3/envs/WGS_tools/testdata respectively.\n\n'
-#done
-
 ## Has to be java 8
 conda install -c cyclus java-jdk
 # need zsh shell
@@ -74,34 +69,12 @@ install CPAN
 install Sgtty
 install Term::ReadKey
 
-# maybe not
-#install Term::#https://github.com/lskatz/lyve-SET
-conda install -c hcc lyve-set
-# WARNING conda.gateways.disk.delete:unlink_or_rename_to_trash(140): Could not remove or rename /home/enriquedoster/anaconda3/envs/WGS_tools/lib/5.26.2/x86_64-linux-thread-multi/perllocal.pod.  Please remove this file manually (you may need to reboot to free file handles)
-#WARNING conda.gateways.disk.delete:unlink_or_rename_to_trash(140): Could not remove or rename /home/enriquedoster/anaconda3/envs/WGS_tools/lib/5.26.2/x86_64-linux-thread-multi/perllocal.pod.  Please remove this file manually (you may need to reboot to free file handles)
-#\ b'\nThe config, phast, and testdata directories are in /home/enriquedoster/anaconda3/envs/WGS_tools/config, /home/enriquedoster/anaconda3/envs/WGS_tools/lib/phast, and /home/enriquedoster/anaconda3/envs/WGS_tools/testdata respectively.\n\n'
-#done
-
-## Has to be java 8
-conda install -c cyclus java-jdk
-# need zsh shell
-conda install -c conda-forge zsh
-
-# log into perl shell, install tools
-perl -MCPAN -e shell
-install File::Slurp
-install URI::Escape
-install CPAN
-install Sgtty
-install Term::ReadKey
-ReadLine::Perl
 # https://github.com/lskatz/Schedule--SGELK
-#perl -MSchedule::SGELK -e '$sge=Schedule::SGELK->new(numnodes=>5); for(1..3){$sge->pleaseExecute("sleep 3");}$sge->wrapItUp();'
-#install Schedule::SGELK
-
+perl -MSchedule::SGELK -e '$sge=Schedule::SGELK->new(numnodes=>5); for(1..3){$sge->pleaseExecute("sleep 3");}$sge->wrapItUp();'
+install Schedule::SGELK
 PREFIX=~/perl5lib/ LIB=~/perl5lib/lib INSTALLMAN1DIR=~/perl5lib/man1 INSTALLMAN3DIR=~/perl5lib/man3
-$ PERL5LIB=~/perl5lib/lib
-$ export PERL5LIB
+PERL5LIB=~/perl5lib/lib
+export PERL5LIB
 
 
 
