@@ -1,8 +1,11 @@
 # Command line tools
 
+
 ## LYVE-set
 * The CDC published Lyve-SET as an update to SET. 
 * [LYVE-SET](https://github.com/lskatz/lyve-SET)
+  * Docker hub website contains many useful docker containers:
+    * https://hub.docker.com/r/staphb/lyveset
   * https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5346554/
     *  Lyve-SET requires as input a set of raw reads
     * phylogenetically related reference genome assembly
@@ -26,6 +29,10 @@
 ## kSNP3
 * [kSNP3](https://sourceforge.net/projects/ksnp/files/)
   * kSNP identifies the pan-genome SNPs in a set of genome sequences, and estimates phylogenetic trees based upon those SNPs. SNP discovery is based on k-mer analysis, and requires no multiple sequence alignment or the selection of a reference genome, so kSNP can take 100's of microbial genomes as input. A SNP locus is defined by an oligo of length k surrounding a central SNP allele. kSNP can analyze both complete (finished) genomes and unfinished genomes in assembled contigs or raw, unassembled reads. Finished and unfinished genomes can be analyzed together, and kSNP can automatically download Genbank files of the finished genomes and incorporate the information in those files into the SNP annotation
+* Personal opinion comments
+  * Easy to install, but not available as an anaconda package. 
+  * Does not provide any useful warnings if an error is caused.
+  
   
 ## IBM functional approach
 * This approach uses IBM's OMXWare software.
