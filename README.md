@@ -45,6 +45,9 @@ The overall goal of this project is to support an accurate, reproducible, transp
 # Running the pipelines with this repository
 ------------
 
+* This pipeline requires singularity to be installed and available in your $PATH.
+
+
 ### Example command
 ```bash
 
