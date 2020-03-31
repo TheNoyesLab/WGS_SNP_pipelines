@@ -18,8 +18,11 @@
         * improved production of intermediate files in standard formats
         * the use of RAxML v8 to infer trees instead of PhyML (Guindon et al., 2010; Garrison and Marth, 2012; Koboldt et al., 2012; Stamatakis, 2014). The source code is available at https://github.com/lskatz/Lyve-SET (v1.1.4f, doi: 10.5281/zenodo.163647).
 .
-      * Lyve-SET has only been tested with Illumina reads and default settings are optimized for Illumina data, but it can accept FASTQ files from any platform. 
-
+      * Lyve-SET has only been tested with Illumina reads and default settings are optimized for Illumina data, but it can accept FASTQ files from any platform.
+* Output Files
+  * [Detailed description of each output file](https://github.com/lskatz/lyve-SET/blob/master/docs/OUTPUT.md)
+  * [Visualizing the output files](https://github.com/lskatz/lyve-SET/blob/master/docs/VIZ.md)
+    * If available, we recommend using Geneious to visualize the tree.dnd file.
 
 ## CFSAN-snp
 * The FDA uses a core genome SNP-based approach with CFSAN-snp.
