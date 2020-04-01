@@ -88,5 +88,6 @@ nextflow run main_kSNP3.nf --reference_genome /scratch.global/Salmonella_WGS/ref
   * [Kalign 3](https://academic.oup.com/bioinformatics/advance-article/doi/10.1093/bioinformatics/btz795/5607735?rss=1)
   * [Tormes](https://github.com/nmquijada/tormes)
   * [SPANDx](https://www.ncbi.nlm.nih.gov/pubmed/25201145)
+  * wgMLST [chewBBACA](https://anaconda.org/bioconda/chewbbaca)
 * Other useful links:
   * https://github.com/jhcepas
