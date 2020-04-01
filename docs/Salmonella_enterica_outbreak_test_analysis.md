@@ -11,7 +11,7 @@ launch_set.pl --numcpus 3 -ref Lyveset_results/reference/ref_genome.fasta Lyvese
 rm -rf Lyveset_results/reads/
 ```
 * Kept getting errors with singularity container and had to switch to docker container.
-* launch_set.pl:  Duration: 349 minutes, 59 seconds
+* launch_set.pl:  Duration: 349 minutes, 59 seconds (5.8 hours, 9.4 mins/sample)
 
 
 ### kSNP3
@@ -19,7 +19,7 @@ rm -rf Lyveset_results/reads/
 kSNP3 -in fasta_genome_location.tsv -CPU 3 -NJ -ML -core -vcf -min_frac 0.5 -k 31 -outdir kSNP3_results -annotate annotated_genomes | tee kSNP3RunLogfile
 rm -rf kSNP3_results/TemporaryFilesToDelete/
 ```
-* Elapsed time for kSNP in hours: 2.46055555555556
+* Elapsed time for kSNP in hours: 2.46055555555556 (3.8 min/sample)
 
 ### CFSAN snp
 ```
@@ -30,7 +30,7 @@ rm -rf CFSAN_snp_results/samples
 rm -rf run_samples
 ```
 
-* There were errors processing some samples.Elapsed time = 17359.759876
+* There were errors processing some samples.Elapsed time = 17359.759876 (4.8 hours , 7.8 min/sample)
 
 
 
