@@ -37,7 +37,23 @@ rm -rf run_samples
 ## Comparing trees
 Using phylo.io (http://phylo.io/)
 
-* Between MJ kSNP3 and Lyve-SET (
+* Between MJ kSNP3 and Lyve-SET 
 Robinson-Foulds: 47/0.76
 Euclidean: 1.808
 SPR: 15
+
+
+* Between MJ kSNP3 and CFSAN-snp
+Robinson-Foulds: 41/0.68
+Euclidean: 1.796
+SPR: 11
+
+
+* Between Lyve-SET and CFSAN-snp
+Robinson-Foulds: 25/0.42
+Euclidean: 0.052
+SPR: 8
+
+
+
+
