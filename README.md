@@ -89,9 +89,14 @@ nextflow run main_kSNP3.nf --reference_genome /scratch.global/Salmonella_WGS/ref
   * [Tormes](https://github.com/nmquijada/tormes)
   * [SPANDx](https://www.ncbi.nlm.nih.gov/pubmed/25201145)
   * wgMLST [chewBBACA](https://anaconda.org/bioconda/chewbbaca)
+  * MLST [STRAIN](https://bmcbioinformatics.biomedcentral.com/articles/10.1186/s12859-019-2887-1) R package
 * WGS analysis
   * Core genome
     * https://www.pnas.org/content/102/39/13950
   * Pan-genome
+  * MLST
+    * https://pubmlst.org/
+    * Enterobase
+    * BioNumerics
 * Other useful links:
   * https://github.com/jhcepas
