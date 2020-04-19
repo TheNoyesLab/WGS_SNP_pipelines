@@ -33,7 +33,7 @@ From: debian:jessie-slim
     conda config --add channels etetoolkit
  
 
-#    usearch will have to be linked using the nextflow code
+    # usearch will have to be linked using the nextflow code
 
 
     # install bulk of bioinformatic tools required by enterobase (ETOKI)
