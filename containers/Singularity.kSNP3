@@ -1,0 +1,32 @@
+Bootstrap: docker
+From: debian:jessie-slim
+
+#Includes kSNP3 and LYVEset (couldn't get CFSAN-snp to work on this container)
+
+%environment
+    export LC_ALL=C
+
+%post
+    apt update \
+    && apt install -y --no-install-recommends \
+    build-essential ca-certificates sudo tcsh\
+    git make automake autoconf wget gzip unzip sed\
+    zlib1g-dev curl libbz2-dev locales libncurses5-dev liblzma-dev libcurl4-openssl-dev software-properties-common apt-transport-https\
+    python3-pip python3-docopt python3-pytest python-dev python3-dev\
+    libcurl4-openssl-dev libssl-dev zlib1g-dev fonts-texgyre \
+    gcc g++ gfortran libblas-dev liblapack-dev dos2unix libstdc++6\
+    r-base-core r-recommended hmmer\
+    && rm -rf /var/lib/apt/lists/*
+
+    # kSNP3 installation
+    cd /usr/local/bin/
+    wget https://sourceforge.net/projects/ksnp/files/kSNP3.021_Linux_package.zip
+    unzip kSNP3.021_Linux_package.zip
+    # kSNP by default looks for the it's tools within /usr/local/kSNP3/
+    # Move the downloaded folder to that location
+    mv /usr/local/bin/kSNP3.021_Linux_package/kSNP3 /usr/local/kSNP3
+    echo 'export PATH=/usr/local/kSNP3/:$PATH' >> $SINGULARITY_ENVIRONMENT
+
+
+%test
+
