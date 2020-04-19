@@ -33,30 +33,36 @@ From: debian:jessie-slim
     conda config --add channels etetoolkit
  
 
-    # usearch will have to be linked using the nextflow code
+#    usearch will have to be linked using the nextflow code
 
 
     # install bulk of bioinformatic tools required by enterobase (ETOKI)
-    conda install python=3.5 samtools bwa gatk bowtie2 kraken2 raxml fasttree rapidnj bbmap mmseqs2 blast spades megahit pilon minimap2 last trf ete3 numba numpy pandas scikit-learn
+    conda install python=3.5 ete3 numba numpy pandas scikit-learn
+    #samtools bwa gatk bowtie2 kraken2 raxml fasttree rapidnj bbmap mmseqs2 blast spades megahit pilon minimap2 last trf
     
     
     cd /usr/local/
     
-    wget https://www.drive5.com/pilercr/pilercr1.06.tar.gz
-    tar -xzvf pilercr1.06.tar.gz
-    cd pilercr1.06/
-    make
-    echo 'export PATH=$PATH:/usr/local/pilercr1.06/' >> $SINGULARITY_ENVIRONMENT
-    cd ../
+    #wget https://www.drive5.com/pilercr/pilercr1.06.tar.gz
+    #tar -xzvf pilercr1.06.tar.gz
+    #cd pilercr1.06/
+    #make
+    #echo 'export PATH=$PATH:/usr/local/pilercr1.06/' >> $SINGULARITY_ENVIRONMENT
+    #cd ../
 
     # Download EToKi github repository
     git clone https://github.com/zheminzhou/EToKi.git
     chmod +x /usr/local/EToKi/EToKi.py
     echo 'export PATH=$PATH:/usr/local/EToKi/' >> $SINGULARITY_ENVIRONMENT
-
+    
+    
+    git clone https://github.com/EnriqueDoster/sing_biotools.git
+    
+    # Etoki installation
+    /usr/local/EToKi/EToKi.py configure --install --usearch /usr/local/sing_biotools/bin/usearch11.0.667_i86linux32
+    
     # Make sure all the tools have the right permissions to use the tools
     chmod -R 777 /usr/local/
 
 
 %test
-    which bwa
