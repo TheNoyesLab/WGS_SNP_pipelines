@@ -59,7 +59,7 @@ From: debian:jessie-slim
     git clone https://github.com/EnriqueDoster/sing_biotools.git
     
     # Etoki installation
-    /usr/local/EToKi/EToKi.py configure --install --usearch /usr/local/sing_biotools/bin/usearch11.0.667_i86linux32
+    python /usr/local/EToKi/EToKi.py configure --install --usearch /usr/local/sing_biotools/bin/usearch11.0.667_i86linux32
     
     # Make sure all the tools have the right permissions to use the tools
     chmod -R 777 /usr/local/
