@@ -26,6 +26,8 @@ The overall goal of this project is to support an accurate, reproducible, transp
     * [KSNP3](https://sourceforge.net/projects/ksnp/files/)
   * GUI tools included in the study:
     * [ENTEROBASE](https://github.com/zheminzhou/EToKi)
+      * Has "EBEis" in silico serotype prediction for Escherichia coli and Shigella spp.
+      * Also has "isCRISPOL" in silico prediction of CRISPOL array for Salmonella enterica serovar Typhimurium
     * [wgMLST/BioNumerics](https://www.applied-maths.com/applications/wgmlst)
  
 * [Repository of useful docker containers](https://hub.docker.com/r/staphb/lyveset)
