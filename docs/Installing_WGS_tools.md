@@ -105,4 +105,18 @@ launch_set.pl --numcpus 12 -ref test_63_lyve_set/reference/ref_NC_003197.fasta t
  ```
 
 
+## Enterobase
+* According to the enterobase documentation, you should be able to use a single command to download all software requirements (except Usearch). However, this doesn't work and I get errors for multiple tools.
+```
+   # Download EToKi github repository
+    git clone https://github.com/zheminzhou/EToKi.git
+    chmod +x /usr/local/EToKi/EToKi.py
+    echo 'export PATH=$PATH:/usr/local/EToKi/' >> $SINGULARITY_ENVIRONMENT
+    
+    
+    git clone https://github.com/EnriqueDoster/sing_biotools.git
+    
+    # Etoki installation
+    python3 /usr/local/EToKi/EToKi.py configure --install --usearch /usr/local/sing_biotools/bin/usearch11.0.667_i86linux32
+```
 
