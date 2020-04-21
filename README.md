@@ -86,6 +86,7 @@ nextflow run main_kSNP3.nf --reference_genome /scratch.global/Salmonella_WGS/ref
 * Ways to compare the results from WGS pipelines
   * https://github.com/lskatz/Lyve-SET-paper/blob/master/compareSnps.sh
   * [Phylo.io](https://academic.oup.com/mbe/article/33/8/2163/2579233)
+  * Timme et. al. 2019 [Phylogenomic Pipeline Validation for Foodborne Pathogen Disease Surveillance](https://jcm.asm.org/content/57/5/e01816-18)
 * WGS tools to consider:
   * [Kalign 3](https://academic.oup.com/bioinformatics/advance-article/doi/10.1093/bioinformatics/btz795/5607735?rss=1)
   * [Tormes](https://github.com/nmquijada/tormes)
