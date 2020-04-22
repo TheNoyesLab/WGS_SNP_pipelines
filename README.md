@@ -1,6 +1,7 @@
 # Title of Proposal:
 ## How does analytic approach impact pathogen population structure when analyzing whole genome sequence data?
 ------------
+conctact enriquedoster@gmail.com
 
 The overall goal of this project is to support an accurate, reproducible, transparent and uniform approach to whole-genome sequence (WGS) analysis for purposes of outbreak detection and pathogen surveillance.
 * The overarching objective is to demonstrate how different analytic approaches to whole-genome sequence analysis can impact analysis results.
