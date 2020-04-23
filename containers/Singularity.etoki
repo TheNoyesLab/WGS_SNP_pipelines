@@ -84,7 +84,7 @@ From: debian:jessie-slim
     
     # Make sure all the tools have the right permissions to use the tools
     chmod -R 777 /usr/local/
-
+    chmod -R 777 /usr/local/EToKi/
 
 %test
     # Etoki installation
