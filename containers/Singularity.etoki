@@ -36,7 +36,7 @@ From: debian:jessie-slim
 
 
     # install bulk of bioinformatic tools required by enterobase (ETOKI), "flye" only works with python 2.7
-    conda install python=3.5 ete3 numba numpy pandas scikit-learn samtools bwa gatk bowtie2 kraken2 raxml fasttree rapidnj bbmap mmseqs2 blast spades megahit pilon minimap2 last trf diamond
+    conda install python=3.5 ete3 numba numpy pandas scikit-learn samtools bwa gatk bowtie2 kraken2 raxml fasttree rapidnj bbmap mmseqs2 blast spades megahit pilon minimap2 last trf diamond psutil
     
     
     cd /usr/local/
