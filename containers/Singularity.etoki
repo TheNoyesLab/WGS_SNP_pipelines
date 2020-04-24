@@ -32,11 +32,16 @@ From: debian:jessie-slim
     conda config --add channels etetoolkit
  
 
-    # usearch will have to be linked using the nextflow code
-
-
     # install bulk of bioinformatic tools required by enterobase (ETOKI), "flye" only works with python 2.7
-    conda install python=3.5 ete3 numba numpy pandas scikit-learn samtools bwa gatk bowtie2 kraken2 raxml fasttree rapidnj bbmap mmseqs2 blast spades megahit pilon minimap2 last trf diamond psutil
+    conda create -n ETOKI_env python=2.7 ete3 numba numpy pandas scikit-learn samtools bwa gatk bowtie2 kraken2 raxml fasttree rapidnj bbmap mmseqs2 blast spades megahit pilon minimap2 last trf diamond psutil flye
+    
+    . /usr/local/bin/activate ETOKI_env
+    
+    #Still experimenting with how to change $PATH location. 
+    echo 'export PATH=$PATH:/usr/local/envs/ETOKI_env/bin/' >> $SINGULARITY_ENVIRONMENT
+
+    
+    
     
     
     cd /usr/local/
@@ -80,28 +85,30 @@ From: debian:jessie-slim
     
     
     
-    
+    #source ~/.bashrc
     
     # Make sure all the tools have the right permissions to use the tools
     chmod -R 777 /usr/local/
-    chmod -R 777 /usr/local/EToKi/
+
+    # Etoki installation
+    python /usr/local/EToKi/EToKi.py configure --usearch /usr/local/sing_biotools/bin/usearch11.0.667_i86linux32 --path bbduk=/usr/local/envs/ETOKI_env/bin/bbduk.sh
+    python /usr/local/EToKi/EToKi.py configure --path bbmerge=/usr/local/envs/ETOKI_env/bin/bbmerge.sh 
+    python /usr/local/EToKi/EToKi.py configure --path blastn=/usr/local/envs/ETOKI_env/bin/blastn
+    python /usr/local/EToKi/EToKi.py configure --path bowtie2=/usr/local/envs/ETOKI_env/bin/bowtie2
+    python /usr/local/EToKi/EToKi.py configure --path bowtie2build=/usr/local/envs/ETOKI_env/bin/bowtie2-build 
+    python /usr/local/EToKi/EToKi.py configure --path bwa=/usr/local/envs/ETOKI_env/bin/bwa 
+    python /usr/local/EToKi/EToKi.py configure --path diamond=/usr/local/envs/ETOKI_env/bin/diamond 
+    python /usr/local/EToKi/EToKi.py configure --path gatk=/usr/local/envs/ETOKI_env/bin/GenomeAnalysisTK.jar 
+    python /usr/local/EToKi/EToKi.py configure --path kraken2=/usr/local/envs/ETOKI_env/bin/kraken2 
+    python /usr/local/EToKi/EToKi.py configure --path lastal=/usr/local/envs/ETOKI_env/bin/lastal 
+    python /usr/local/EToKi/EToKi.py configure --path lastdb=/usr/local/envs/ETOKI_env/bin/lastdb 
+    python /usr/local/EToKi/EToKi.py configure --path makeblastdb=/usr/local/envs/ETOKI_env/bin/makeblastdb 
+    python /usr/local/EToKi/EToKi.py configure --path megahit=/usr/local/envs/ETOKI_env/bin/megahit 
+    python /usr/local/EToKi/EToKi.py configure --path mmseqs=/usr/local/envs/ETOKI_env/bin/mmseqs 
+    python /usr/local/EToKi/EToKi.py configure --path raxml_ng=/usr/local/install_raxml/raxml-ng 
+    python /usr/local/EToKi/EToKi.py configure --path repair=/usr/local/envs/ETOKI_env/bin/repair.sh 
+    python /usr/local/EToKi/EToKi.py configure --path spades=/usr/local/envs/ETOKI_env/bin/spades.py
+    python /usr/local/EToKi/EToKi.py configure --path flye=/usr/local/envs/ETOKI_env/bin/flye
 
 %test
-    # Etoki installation
-    #python3 /usr/local/EToKi/EToKi.py configure --usearch /usr/local/sing_biotools/bin/usearch11.0.667_i86linux32 --path bbduk=/usr/local/bin/bbduk.sh 
-    #python3 /usr/local/EToKi/EToKi.py configure --path bbmerge=/usr/local/bin/bbmerge.sh 
-    #python3 /usr/local/EToKi/EToKi.py configure --path blastn=/usr/local/bin/blastn
-    #python3 /usr/local/EToKi/EToKi.py configure --path bowtie2=/usr/local/bin/bowtie2
-    #python3 /usr/local/EToKi/EToKi.py configure --path bowtie2build=/usr/local/bin/bowtie2-build 
-    #python3 /usr/local/EToKi/EToKi.py configure --path bwa=/usr/local/bin/bwa 
-    #python3 /usr/local/EToKi/EToKi.py configure --path diamond=/usr/local/bin/diamond 
-    #python3 /usr/local/EToKi/EToKi.py configure --path gatk=/usr/local/bin/GenomeAnalysisTK.jar 
-    #python3 /usr/local/EToKi/EToKi.py configure --path kraken2=/usr/local/bin/kraken2 
-    #python3 /usr/local/EToKi/EToKi.py configure --path lastal=/usr/local/bin/lastal 
-    #python3 /usr/local/EToKi/EToKi.py configure --path lastdb=/usr/local/bin/lastdb 
-    #python3 /usr/local/EToKi/EToKi.py configure --path makeblastdb=/usr/local/bin/makeblastdb 
-    #python3 /usr/local/EToKi/EToKi.py configure --path megahit=/usr/local/bin/megahit 
-    #python3 /usr/local/EToKi/EToKi.py configure --path mmseqs=/usr/local/bin/mmseqs 
-    #python3 /usr/local/EToKi/EToKi.py configure --path raxml_ng=/usr/local/install_raxml/raxml-ng 
-    #python3 /usr/local/EToKi/EToKi.py configure --path repair=/usr/local/bin/repair.sh 
-    #python3 /usr/local/EToKi/EToKi.py configure --path spades=/usr/local/bin/spades.py
+
