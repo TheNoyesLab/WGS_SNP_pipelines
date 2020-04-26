@@ -52,8 +52,10 @@ From: debian:jessie-slim
     ./configure --prefix /usr/local/bin
     make
     make install
-    ln -s /usr/local/samtools-${HTSLIB_VERSION}/* /usr/local/bin/
-    cd /
+    ln -s /usr/local/samtools-${HTSLIB_VERSION}/samtools /usr/local/bin/
+    echo 'export PATH=$PATH:/usr/local/samtools-${HTSLIB_VERSION}/' >> $SINGULARITY_ENVIRONMENT
+    
+    cd /usr/local/
     
     
     # Download EToKi github repository
