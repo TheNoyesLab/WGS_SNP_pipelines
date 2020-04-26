@@ -14,8 +14,8 @@ From: debian:jessie-slim
     zlib1g-dev curl libbz2-dev locales libncurses5-dev liblzma-dev libcurl4-openssl-dev software-properties-common apt-transport-https\
     python3-pip python3-docopt python3-pytest python-dev python3-dev\
     libcurl4-openssl-dev libssl-dev zlib1g-dev fonts-texgyre \
-    gcc g++ gfortran libblas-dev liblapack-dev dos2unix libc6-dev\
-    r-base-core r-recommended\
+    gcc g++ gfortran libblas-dev liblapack-dev dos2unix\
+    r-base-core r-recommended hmmer\
     && rm -rf /var/lib/apt/lists/*
 
     # Not my favorite workaround, but to get cfsan snp to work with samtools, we have to change which libncurses library is used. Problem is anaconda doesn't have the right version of samtools.
@@ -33,30 +33,18 @@ From: debian:jessie-slim
  
 
     # install bulk of bioinformatic tools required by enterobase (ETOKI), "flye" only works with python 2.7
-    conda create -n ETOKI_env python=2.7 ete3 numba numpy pandas scikit-learn bwa gatk bowtie2 kraken2 raxml fasttree rapidnj bbmap mmseqs2 blast spades megahit pilon minimap2 last trf diamond psutil
+    conda create -n ETOKI_env python=2.7 ete3 numba numpy pandas scikit-learn bwa gatk bowtie2 kraken2 raxml fasttree rapidnj bbmap mmseqs2 blast spades megahit pilon minimap2 last trf diamond psutil flye
     
     . /usr/local/bin/activate ETOKI_env
     
     #Still experimenting with how to change $PATH location. 
     echo 'export PATH=$PATH:/usr/local/envs/ETOKI_env/bin/' >> $SINGULARITY_ENVIRONMENT
+
+    
+    
+    
     
     cd /usr/local/
-    
-    # Install samtools
-    HTSLIB_VERSION=1.9 # indexes versions for samtools and bcftools
-    wget https://github.com/samtools/samtools/releases/download/1.9/samtools-${HTSLIB_VERSION}.tar.bz2
-    tar xvjf samtools-${HTSLIB_VERSION}.tar.bz2
-    cd samtools-${HTSLIB_VERSION}
-    autoheader
-    autoconf -Wno-syntax
-    ./configure --prefix /usr/local/bin
-    make
-    make install
-    ln -s /usr/local/samtools-${HTSLIB_VERSION}/samtools /usr/local/bin/
-    echo 'export PATH=$PATH:/usr/local/samtools-${HTSLIB_VERSION}/' >> $SINGULARITY_ENVIRONMENT
-    
-    cd /usr/local/
-    
     
     # Download EToKi github repository
     git clone https://github.com/zheminzhou/EToKi.git
@@ -81,6 +69,18 @@ From: debian:jessie-slim
     #ln -s /usr/local/install_raxml/raxml-ng /usr/local/EToKi/externals/
     cd ../
     
+    # Install samtools
+    HTSLIB_VERSION=1.9 # indexes versions for samtools and bcftools
+    wget https://github.com/samtools/samtools/releases/download/1.9/samtools-${HTSLIB_VERSION}.tar.bz2
+    tar xvjf samtools-${HTSLIB_VERSION}.tar.bz2
+    cd samtools-${HTSLIB_VERSION}
+    autoheader
+    autoconf -Wno-syntax
+    ./configure --prefix /usr/local/bin
+    make
+    make install
+    ln -s /usr/local/samtools-${HTSLIB_VERSION}/samtools /usr/local/bin/
+    echo 'export PATH=$PATH:/usr/local/samtools-${HTSLIB_VERSION}/' >> $SINGULARITY_ENVIRONMENT
     
     
     ## Download github repository with Usearch and GATK executables
@@ -93,12 +93,7 @@ From: debian:jessie-slim
     ## Add all tools to EToKi external location
     
     
-    #ln -s /usr/local/bin/* /usr/local/EToKi/externals/
-    
-    
-    
-    #source ~/.bashrc
-    
+     
     # Make sure all the tools have the right permissions to use the tools
     chmod -R 777 /usr/local/
 
@@ -121,7 +116,6 @@ From: debian:jessie-slim
     python /usr/local/EToKi/EToKi.py configure --path repair=/usr/local/envs/ETOKI_env/bin/repair.sh 
     python /usr/local/EToKi/EToKi.py configure --path spades=/usr/local/envs/ETOKI_env/bin/spades.py
     python /usr/local/EToKi/EToKi.py configure --path flye=/usr/local/envs/ETOKI_env/bin/flye
-    python /usr/local/EToKi/EToKi.py configure --path samtools=/usr/local/bin/samtools
+    python /usr/local/EToKi/EToKi.py configure --path samtools=/usr/local/samtools-${HTSLIB_VERSION}/samtools
 
 %test
-
