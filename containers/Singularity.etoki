@@ -84,7 +84,7 @@ From: debian:jessie-slim
     ./configure --prefix /usr/local/bin/samtools
     make
     make install
-    echo 'export PATH=$PATH:/usr/local/bin/samtools/' >> $SINGULARITY_ENVIRONMENT
+    echo 'export PATH=$PATH:/usr/local/bin/samtools/bin/' >> $SINGULARITY_ENVIRONMENT
     
     
     ## Add all tools to EToKi external location
@@ -114,7 +114,7 @@ From: debian:jessie-slim
     python /usr/local/EToKi/EToKi.py configure --path repair=/usr/local/envs/ETOKI_env/bin/repair.sh 
     python /usr/local/EToKi/EToKi.py configure --path spades=/usr/local/envs/ETOKI_env/bin/spades.py
     python /usr/local/EToKi/EToKi.py configure --path flye=/usr/local/envs/ETOKI_env/bin/flye
-    python /usr/local/EToKi/EToKi.py configure --path samtools=/usr/local/bin/samtools
+    python /usr/local/EToKi/EToKi.py configure --path samtools=/usr/local/bin/samtools/bin/samtools
     python /usr/local/EToKi/EToKi.py configure --path pilon=/usr/local/envs/ETOKI_env/bin/pilon
     
 
