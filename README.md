@@ -102,5 +102,7 @@ nextflow run main_kSNP3.nf --reference_genome /scratch.global/Salmonella_WGS/ref
     * https://pubmlst.org/
     * Enterobase
     * BioNumerics
+* Phylogenetic tree comparison
+  * [Practical Performance of Tree Comparison Metrics](https://academic.oup.com/sysbio/article/64/2/205/1630737)
 * Other useful links:
   * https://github.com/jhcepas
