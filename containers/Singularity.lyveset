@@ -1,0 +1,54 @@
+Bootstrap: docker
+From: debian:jessie-slim
+
+#Includes cfsan-snp-pipeline smalt picard varscan tabix bcftools bowtie2 bwa gatk libdeflate samtools
+
+%environment
+    export LC_ALL=C
+
+%post
+    apt update \
+    && apt install -y --no-install-recommends \
+    build-essential ca-certificates sudo tcsh\
+    git make automake autoconf wget gzip unzip sed\
+    zlib1g-dev curl libbz2-dev locales libncurses5-dev libncursesw5-dev liblzma-dev libcurl4-openssl-dev software-properties-common apt-transport-https\
+    python3-pip python3-docopt python3-pytest python-dev python3-dev\
+    libcurl4-openssl-dev libssl-dev zlib1g-dev fonts-texgyre \
+    gcc g++ gfortran libblas-dev liblapack-dev dos2unix\
+    r-base-core r-recommended \
+    && rm -rf /var/lib/apt/lists/*
+
+
+    # Install blast
+    cd /usr/local
+    wget https://ftp.ncbi.nlm.nih.gov/blast/executables/LATEST/ncbi-blast-2.10.0+-x64-linux.tar.gz
+    tar -xvzf ncbi-blast-2.10.0+-x64-linux.tar.gz
+    echo 'export PATH=$PATH:/usr/local/ncbi-blast-2.10.0+/bin' >> $SINGULARITY_ENVIRONMENT
+
+    cd /usr/local
+    wget https://github.com/lskatz/lyve-SET/archive/v1.1.4f.zip
+    unzip v1.1.4f.zip
+    cd lyve-SET-1.1.4f/
+    make install-config
+    make install-perlModules
+    make install-smalt
+    make install-CGP
+    make install-SGELK
+    make install-vcftools
+    make install-samtools
+    make install-varscan
+    make install-snpEff
+    make install-bcftools
+    make install-raxml
+    make env
+        
+    echo 'export PATH=$PATH:/usr/local/lyve-SET-1.1.4f/' >> $SINGULARITY_ENVIRONMENT
+    
+    # Automatic quake installation causes error
+    #make install-quake    
+    wget http://www.cbcb.umd.edu/software/quake/downloads/quake-0.3.5.tar.gz -O /usr/local/lyve-SET-1.1.4f/build/quake-0.3.5.tar.gz
+    tar zxvf /usr/local/lyve-SET-1.1.4f/build/quake-0.3.5.tar.gz
+    
+    echo 'export PATH=$PATH:/usr/local/lyve-SET-1.1.4f/build/Quake/bin' >> $SINGULARITY_ENVIRONMENT
+
+%test
