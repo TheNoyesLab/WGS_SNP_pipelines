@@ -70,60 +70,85 @@ process etoki_FastqQC {
 
     module 'singularity'
     errorStrategy 'ignore'
-    publishDir "${params.output}/FastqQC", mode: "symlink"
+    publishDir "${params.output}/etoki_fastqQC", mode: "symlink"
 
+    container 'shub://TheNoyesLab/WGS_SNP_pipelines:etoki'
 
     input:
       set sample_id, file(forward), file(reverse) from reads
 
     output:
-      set sample_id, file("${sample_id}_trimmed*") into (trimmed_fastq)
+       set sample_id, file("${sample_id}_trimmed*R1.fastq.gz"), file("${sample_id}_trimmed*R2.fastq.gz") into (trimmed_fastq)
 
     """
-    python EToKi.py prepare --pe ${forward},${reverse} -p ${sample_id}_trimmed --merge
-
+    python /usr/local/EToKi/EToKi.py prepare --pe ${forward},${reverse} -p ${sample_id}_trimmed --merge
     """
 }
+
 
 process etoki_assemble {
     tag {sample_id}
 
     module 'singularity'
     errorStrategy 'ignore'
-    publishDir "${params.output}/Assembly", mode: "symlink"
+    publishDir "${params.output}/etoki_assemble", mode: "symlink"
 
     container 'shub://TheNoyesLab/WGS_SNP_pipelines:etoki'
 
     input:
-      set sample_id, file(forward) from trimmed_fastq
+      set sample_id, file(forward), file(reverse) from trimmed_fastq
       file reference_genome
 
     output:
-      set sample_id, file("${sample_id}_assembled*") into (assembled_fastq)
+      set sample_id, file("${sample_id}_assembled/megahit/final.contigs.fa") into (assembled_fasta)
 
     """
-    python EToKi.py assemble --metagenome --se ${forward} -p ${sample_id}_assembled -r ${reference_genome}
+    python /usr/local/EToKi/EToKi.py assemble --pe ${forward},${reverse} -p ${sample_id}_assembled --assembler megahit -r ${reference_genome} --reassemble
     """
 }
 
-process etoki_MLSTdb {
+assembled_fasta.toSortedList().set { all_assembled_genomes }
+
+process etoki_align {
     tag {sample_id}
 
     module 'singularity'
     errorStrategy 'ignore'
-    publishDir "${params.output}/MLSTdb_output", mode: "symlink"
+    publishDir "${params.output}/etoki_align", mode: "symlink"
 
     container 'shub://TheNoyesLab/WGS_SNP_pipelines:etoki'
 
 
     input:
       file reference_genome
+      file all_assembled_genomes
 
     output:
-      file("reference*") into (mlst_output)
+      file("reference*") into (aligned_output)
 
     """
-    python EToKi.py MLSTdb -i ${reference_genome} -r reference_calculated_alleles.fasta -d reference.convert.tab
+    python /usr/local/EToKi/EToKi.py align -r ${reference_genome} -p phylo_out/ ${all_assembled_genomes}
+    """
+}
+
+process etoki_phylo {
+    tag {sample_id}
+
+    module 'singularity'
+    errorStrategy 'ignore'
+    publishDir "${params.output}/etoki_phylo_output", mode: "symlink"
+
+    container 'shub://TheNoyesLab/WGS_SNP_pipelines:etoki'
+
+    input:
+      file reference_genome
+      file aligned_output
+
+    output:
+      file("phylo_out*") into (phylo_output)
+
+    """
+    python /usr/local/EToKi/EToKi.py phylo -t snp2mut -p phylo_out -s phylo_out.matrix.gz
 
     """
 }
