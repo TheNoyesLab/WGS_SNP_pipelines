@@ -101,7 +101,7 @@ From: debian:jessie-slim
 
     # Etoki installation
     python /usr/local/EToKi/EToKi.py configure --usearch /usr/local/sing_biotools/bin/usearch11.0.667_i86linux32
-    python /usr/local/EToKi/EToKi.py configure --install --link_krakenDB /usr/local/minikraken_8GB_202003  
+    python /usr/local/EToKi/EToKi.py configure --install --link_krakenDB /usr/local/minikraken_8GB_202003/minikraken_8GB_20200312 
     python /usr/local/EToKi/EToKi.py configure --path bbduk=/usr/local/envs/ETOKI_env/bin/bbduk.sh
     python /usr/local/EToKi/EToKi.py configure --path bbmerge=/usr/local/envs/ETOKI_env/bin/bbmerge.sh 
     python /usr/local/EToKi/EToKi.py configure --path blastn=/usr/local/envs/ETOKI_env/bin/blastn
