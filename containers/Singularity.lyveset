@@ -42,7 +42,7 @@ From: debian:jessie-slim
     make install-raxml
     make env
         
-    echo 'export PATH=$PATH:/usr/local/lyve-SET-1.1.4f/' >> $SINGULARITY_ENVIRONMENT
+    echo 'export PATH=$PATH:/usr/local/lyve-SET-1.1.4f/scripts' >> $SINGULARITY_ENVIRONMENT
     
     # Automatic quake installation causes error
     #make install-quake    
