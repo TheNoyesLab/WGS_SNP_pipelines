@@ -96,14 +96,15 @@ From: debian:jessie-slim
     chmod -R 777 /usr/local/
 
     # Etoki installation
-    python /usr/local/EToKi/EToKi.py configure --usearch /usr/local/sing_biotools/bin/usearch11.0.667_i86linux32 --path bbduk=/usr/local/envs/ETOKI_env/bin/bbduk.sh
+    python /usr/local/EToKi/EToKi.py configure --download_krakenDB --usearch /usr/local/sing_biotools/bin/usearch11.0.667_i86linux32
+    python /usr/local/EToKi/EToKi.py configure --path bbduk=/usr/local/envs/ETOKI_env/bin/bbduk.sh
     python /usr/local/EToKi/EToKi.py configure --path bbmerge=/usr/local/envs/ETOKI_env/bin/bbmerge.sh 
     python /usr/local/EToKi/EToKi.py configure --path blastn=/usr/local/envs/ETOKI_env/bin/blastn
     python /usr/local/EToKi/EToKi.py configure --path bowtie2=/usr/local/envs/ETOKI_env/bin/bowtie2
     python /usr/local/EToKi/EToKi.py configure --path bowtie2build=/usr/local/envs/ETOKI_env/bin/bowtie2-build 
     python /usr/local/EToKi/EToKi.py configure --path bwa=/usr/local/envs/ETOKI_env/bin/bwa 
     python /usr/local/EToKi/EToKi.py configure --path diamond=/usr/local/envs/ETOKI_env/bin/diamond 
-    python /usr/local/EToKi/EToKi.py configure --path gatk=/usr/local/envs/ETOKI_env/bin/GenomeAnalysisTK.jar 
+    python /usr/local/EToKi/EToKi.py configure --path gatk=/usr/local/bin/GenomeAnalysisTK.jar
     python /usr/local/EToKi/EToKi.py configure --path kraken2=/usr/local/envs/ETOKI_env/bin/kraken2 
     python /usr/local/EToKi/EToKi.py configure --path lastal=/usr/local/envs/ETOKI_env/bin/lastal 
     python /usr/local/EToKi/EToKi.py configure --path lastdb=/usr/local/envs/ETOKI_env/bin/lastdb 
