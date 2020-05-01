@@ -96,13 +96,12 @@ From: debian:jessie-slim
     chmod -R 777 /usr/local/
 
     cd /usr/local/
-    wget ftp://ftp.ccb.jhu.edu/pub/data/kraken2_dbs/minikraken_8GB_202003.tgz 
+    wget -q ftp://ftp.ccb.jhu.edu/pub/data/kraken2_dbs/minikraken_8GB_202003.tgz 
     tar -xvzf minikraken_8GB_202003.tgz
 
 
     # Etoki installation
     python /usr/local/EToKi/EToKi.py configure --usearch /usr/local/sing_biotools/bin/usearch11.0.667_i86linux32
-    python /usr/local/EToKi/EToKi.py configure --link_krakenDB /usr/local/minikraken_8GB_202003/minikraken_8GB_20200312
     python /usr/local/EToKi/EToKi.py configure --path bbduk=/usr/local/envs/ETOKI_env/bin/bbduk.sh
     python /usr/local/EToKi/EToKi.py configure --path bbmerge=/usr/local/envs/ETOKI_env/bin/bbmerge.sh 
     python /usr/local/EToKi/EToKi.py configure --path blastn=/usr/local/envs/ETOKI_env/bin/blastn
@@ -123,6 +122,7 @@ From: debian:jessie-slim
     python /usr/local/EToKi/EToKi.py configure --path flye=/usr/local/envs/ETOKI_env/bin/flye
     python /usr/local/EToKi/EToKi.py configure --path samtools=/usr/local/bin/samtools/bin/samtools
     python /usr/local/EToKi/EToKi.py configure --path pilon=/usr/local/envs/ETOKI_env/bin/pilon
+    python /usr/local/EToKi/EToKi.py configure --link_krakenDB /usr/local/minikraken_8GB_20200312
     
 
 %test
