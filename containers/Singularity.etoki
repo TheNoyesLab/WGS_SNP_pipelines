@@ -12,7 +12,7 @@ From: debian:jessie-slim
     build-essential ca-certificates sudo tcsh\
     git make automake autoconf wget gzip unzip sed\
     zlib1g-dev curl libbz2-dev locales libncurses5-dev liblzma-dev libcurl4-openssl-dev software-properties-common apt-transport-https\
-    python-dev \
+    python3-pip python3-docopt python3-pytest python-dev python3-dev\
     libcurl4-openssl-dev libssl-dev zlib1g-dev fonts-texgyre \
     gcc g++ gfortran libblas-dev liblapack-dev dos2unix\
     && rm -rf /var/lib/apt/lists/*
@@ -94,9 +94,10 @@ From: debian:jessie-slim
     # Make sure all the tools have the right permissions to use the tools
     chmod -R 777 /usr/local/
 
-    cd /usr/local/
-    wget -q ftp://ftp.ccb.jhu.edu/pub/data/kraken2_dbs/minikraken_8GB_202003.tgz 
-    tar -xvzf minikraken_8GB_202003.tgz
+    # Can't add the kraken database currently because the singularity hub server has a time limit for container building
+    #cd /usr/local/
+    #wget -q ftp://ftp.ccb.jhu.edu/pub/data/kraken2_dbs/minikraken_8GB_202003.tgz 
+    #tar -xvzf minikraken_8GB_202003.tgz
 
 
     # Etoki installation
@@ -121,7 +122,7 @@ From: debian:jessie-slim
     python /usr/local/EToKi/EToKi.py configure --path flye=/usr/local/envs/ETOKI_env/bin/flye
     python /usr/local/EToKi/EToKi.py configure --path samtools=/usr/local/bin/samtools/bin/samtools
     python /usr/local/EToKi/EToKi.py configure --path pilon=/usr/local/envs/ETOKI_env/bin/pilon
-    python /usr/local/EToKi/EToKi.py configure --link_krakenDB /usr/local/minikraken_8GB_20200312
+    #python /usr/local/EToKi/EToKi.py configure --link_krakenDB /usr/local/minikraken_8GB_20200312
     
 
 %test
