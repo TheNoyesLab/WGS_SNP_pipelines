@@ -44,6 +44,8 @@ From: debian:jessie-slim
         
     echo 'export PATH=$PATH:/usr/local/lyve-SET-1.1.4f/scripts' >> $SINGULARITY_ENVIRONMENT
     
+    cpanm Bio::DB::EUtilities
+    
     # Automatic quake installation causes error
     #make install-quake    
     wget http://www.cbcb.umd.edu/software/quake/downloads/quake-0.3.5.tar.gz -O /usr/local/lyve-SET-1.1.4f/build/quake-0.3.5.tar.gz
