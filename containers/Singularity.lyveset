@@ -19,6 +19,12 @@ From: debian:jessie-slim
     && rm -rf /var/lib/apt/lists/*
 
 
+    # Install perl cpanm and other modules
+    curl -L https://cpanmin.us | perl - --sudo App::cpanminus
+    cpanm Bio::DB::EUtilities
+    
+
+
     # Install blast
     cd /usr/local
     wget https://ftp.ncbi.nlm.nih.gov/blast/executables/LATEST/ncbi-blast-2.10.0+-x64-linux.tar.gz
@@ -44,8 +50,7 @@ From: debian:jessie-slim
         
     echo 'export PATH=$PATH:/usr/local/lyve-SET-1.1.4f/scripts' >> $SINGULARITY_ENVIRONMENT
     
-    cpanm Bio::DB::EUtilities
-    
+
     # Automatic quake installation causes error
     #make install-quake    
     wget http://www.cbcb.umd.edu/software/quake/downloads/quake-0.3.5.tar.gz -O /usr/local/lyve-SET-1.1.4f/build/quake-0.3.5.tar.gz
