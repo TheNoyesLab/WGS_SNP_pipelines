@@ -24,6 +24,7 @@ From: debian:jessie-slim
     cpanm Bio::Perl --force
     cpanm File::Slurp --force
     cpanm URI::Escape --force
+    cpanm Bio::FeatureIO --force
     
     #cpanm Bio::DB::EUtilities
     
