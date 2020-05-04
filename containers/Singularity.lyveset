@@ -29,23 +29,7 @@ From: debian:jessie-slim
     
 
 
-    # Install perl cpanm and other modules
-    #curl -L https://cpanmin.us | perl - --sudo App::cpanminus
-    #cpanm Bio::DB::EUtilities
-    #perl -MCPAN -e shell
-    #install CPAN
-    #install File::Slurp
-    #install URI::Escape
-    #install Sgtty
-    #install Term::ReadKey
-
-    #install File
-    #install URI
-    #install Sgtty
-    #install Term
-    #install Bio
-    #exit
-    
+  
 
 
     # Install blast
