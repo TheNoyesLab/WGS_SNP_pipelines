@@ -121,7 +121,7 @@ From: debian:jessie-slim
     python /usr/local/EToKi/EToKi.py configure --path spades=/usr/local/envs/ETOKI_env/bin/spades.py
     python /usr/local/EToKi/EToKi.py configure --path flye=/usr/local/envs/ETOKI_env/bin/flye
     python /usr/local/EToKi/EToKi.py configure --path samtools=/usr/local/bin/samtools/bin/samtools
-    python /usr/local/EToKi/EToKi.py configure --path pilon=/usr/local/envs/ETOKI_env/bin/pilon
+    python /usr/local/EToKi/EToKi.py configure --path pilon=/usr/local/envs/ETOKI_env/share/pilon-1.23-2/pilon-1.23.jar
     #python /usr/local/EToKi/EToKi.py configure --link_krakenDB /usr/local/minikraken_8GB_20200312
     
 
