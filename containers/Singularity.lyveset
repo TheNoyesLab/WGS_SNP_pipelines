@@ -22,6 +22,9 @@ From: debian:jessie-slim
     # Install perl cpanm and other modules
     curl -L https://cpanmin.us | perl - --sudo App::cpanminus
     cpanm Bio::Perl --force
+    cpanm File::Slurp --force
+    cpanm URI::Escape --force
+    
     #cpanm Bio::DB::EUtilities
     
 
