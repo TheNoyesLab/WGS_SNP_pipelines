@@ -94,23 +94,25 @@ process etoki_assemble {
     publishDir "${params.output}/etoki_assemble", mode: "symlink"
 
     container 'shub://TheNoyesLab/WGS_SNP_pipelines:etoki'
+    /* container '/home/noyes046/shared/tools/Singularity_etoki_kraken.simg' */
 
     input:
       set sample_id, file(forward), file(reverse) from trimmed_fastq
       file reference_genome
 
     output:
-      set sample_id, file("${sample_id}_assembled/megahit/final.contigs.fa") into (assembled_fasta)
+      file("${sample_id}_assemble.result.fasta") into (assembled_fasta)
 
     """
-    python /usr/local/EToKi/EToKi.py assemble --pe ${forward},${reverse} -p ${sample_id}_assembled --assembler megahit -r ${reference_genome} --reassemble
+    python /usr/local/EToKi/EToKi.py assemble --pe ${forward},${reverse} -p ${sample_id}_assemble --assembler megahit --reassemble
     """
 }
+
 
 assembled_fasta.toSortedList().set { all_assembled_genomes }
 
 process etoki_align {
-    tag {sample_id}
+    tag {etoki_align}
 
     module 'singularity'
     errorStrategy 'ignore'
@@ -124,14 +126,14 @@ process etoki_align {
       file all_assembled_genomes
 
     output:
-      file("reference*") into (aligned_output)
+      file("phylo_out*") into (phylo_output)
 
     """
-    python /usr/local/EToKi/EToKi.py align -r ${reference_genome} -p phylo_out/ ${all_assembled_genomes}
+    python /usr/local/EToKi/EToKi.py align -r ${reference_genome} -p phylo_out ${all_assembled_genomes}
     """
 }
 
-process etoki_phylo {
+process etoki_phylo_tree {
     tag {sample_id}
 
     module 'singularity'
@@ -142,14 +144,13 @@ process etoki_phylo {
 
     input:
       file reference_genome
-      file aligned_output
+      file phylo_output
 
     output:
-      file("phylo_out*") into (phylo_output)
+      file("phylo_tree*") into (phylo_tree)
 
     """
-    python /usr/local/EToKi/EToKi.py phylo -t snp2mut -p phylo_out -s phylo_out.matrix.gz
-
+    python /usr/local/EToKi/EToKi.py phylo -t snp2mut -p phylo_tree -s ${phylo_output}
     """
 }
 
