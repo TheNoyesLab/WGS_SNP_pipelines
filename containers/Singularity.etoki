@@ -47,7 +47,8 @@ From: debian:jessie-slim
 
     cd /usr/local
     git clone https://github.com/zheminzhou/PEPPA.git
-    echo 'export PATH=$PATH:/usr/local/PEPPA/' >> $SINGULARITY_ENVIRONMENT
+    echo 'export PATH=$PATH:/usr/local/PEPPA' >> $SINGULARITY_ENVIRONMENT
+    chmod 755 /usr/local/PEPPA/*
     
     # Download EToKi github repository
     cd /usr/local/
