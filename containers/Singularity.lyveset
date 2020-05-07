@@ -9,7 +9,7 @@ From: debian:jessie-slim
 %post
     apt update \
     && apt install -y --no-install-recommends perl\
-    build-essential ca-certificates sudo tcsh\
+    build-essential ca-certificates sudo tcsh default-jdk\
     git make automake autoconf wget gzip unzip sed\
     zlib1g-dev curl libbz2-dev locales libncurses5-dev libncursesw5-dev liblzma-dev libcurl4-openssl-dev software-properties-common apt-transport-https\
     python3-pip python3-docopt python3-pytest python-dev python3-dev\
@@ -28,10 +28,6 @@ From: debian:jessie-slim
     
     #cpanm Bio::DB::EUtilities
     
-
-
-  
-
 
     # Install blast
     cd /usr/local
@@ -66,25 +62,6 @@ From: debian:jessie-slim
     
     echo 'export PATH=$PATH:/usr/local/lyve-SET-1.1.4f/build/Quake/bin' >> $SINGULARITY_ENVIRONMENT
     
-    
-    #Installing Anaconda 2 and Conda 4.5.11
-    wget -c https://repo.continuum.io/archive/Anaconda2-5.3.0-Linux-x86_64.sh
-    sh Anaconda2-5.3.0-Linux-x86_64.sh -bfp /usr/local
 
-    # add bioconda channels
-    conda config --add channels defaults
-    conda config --add channels conda-forge
-    conda config --add channels bioconda
-    conda config --add channels anaconda
-
-    conda create -n EToKi_env python=3.7 mmseqs2 diamond rapidnj fasttree numpy pyqt lxml ete3
-    . /usr/local/bin/activate ETOKI_env
-    
-
-    cd /usr/local
-    
-    git clone https://github.com/zheminzhou/PEPPA.git
-    echo 'export PATH=$PATH:/usr/local/PEPPA/' >> $SINGULARITY_ENVIRONMENT
-    
 
 %test
