@@ -50,6 +50,7 @@ From: debian:jessie-slim
     make install-snpEff
     make install-bcftools
     make install-raxml
+    make install-snap
     make env
         
     echo 'export PATH=$PATH:/usr/local/lyve-SET-1.1.4f/scripts' >> $SINGULARITY_ENVIRONMENT
