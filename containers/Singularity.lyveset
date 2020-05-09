@@ -17,7 +17,7 @@ From: debian:jessie-slim
     gcc-multilib gfortran libblas-dev liblapack-dev dos2unix\
     && rm -rf /var/lib/apt/lists/*
     
-    sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-5 60 --slave /usr/bin/g++ g++ /usr/bin/g++-5
+    #sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-5 60 --slave /usr/bin/g++ g++ /usr/bin/g++-5
     
     #apt-utils
     
