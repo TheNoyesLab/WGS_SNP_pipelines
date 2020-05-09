@@ -38,9 +38,9 @@ From: debian:jessie-slim
     echo 'export PATH=$PATH:/usr/local/ncbi-blast-2.10.0+/bin' >> $SINGULARITY_ENVIRONMENT
 
     cd /usr/local
-    wget https://github.com/lskatz/lyve-SET/archive/v1.1.4g.zip
-    unzip v1.1.4g.zip
-    cd lyve-SET-1.1.4g/
+    wget https://github.com/lskatz/lyve-SET/archive/v2.0.1.zip
+    unzip v2.0.1.zip
+    cd lyve-SET-2.0.1
     make install-config
     make install-perlModules
     make install-smalt
@@ -55,15 +55,15 @@ From: debian:jessie-slim
     make install-snap
     make env
         
-    echo 'export PATH=$PATH:/usr/local/lyve-SET-1.1.4g/scripts' >> $SINGULARITY_ENVIRONMENT
+    echo 'export PATH=$PATH:/usr/local/lyve-SET-2.0.1/scripts' >> $SINGULARITY_ENVIRONMENT
     
 
     # Automatic quake installation causes error
     #make install-quake    
-    wget http://www.cbcb.umd.edu/software/quake/downloads/quake-0.3.5.tar.gz -O /usr/local/lyve-SET-1.1.4g/build/quake-0.3.5.tar.gz
-    tar zxvf /usr/local/lyve-SET-1.1.4g/build/quake-0.3.5.tar.gz
+    wget http://www.cbcb.umd.edu/software/quake/downloads/quake-0.3.5.tar.gz -O /usr/local/lyve-SET-2.0.1/build/quake-0.3.5.tar.gz
+    tar zxvf /usr/local/lyve-SET-2.0.1/build/quake-0.3.5.tar.gz
     
-    echo 'export PATH=$PATH:/usr/local/lyve-SET-1.1.4g/build/Quake/bin' >> $SINGULARITY_ENVIRONMENT
+    echo 'export PATH=$PATH:/usr/local/lyve-SET-2.0.1/build/Quake/bin' >> $SINGULARITY_ENVIRONMENT
     
 
     #Installing Anaconda 2 and Conda 4.5.11
