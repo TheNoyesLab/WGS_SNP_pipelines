@@ -8,7 +8,7 @@ From: debian:jessie-slim
 
 %post
     apt update \
-    && apt install -y --no-install-recommends perl gcc-5 g++-5\
+    && apt install -y --no-install-recommends perl \
     build-essential ca-certificates sudo tcsh \
     git make automake autoconf wget gzip unzip sed\
     zlib1g-dev curl libbz2-dev locales libncurses5-dev libncursesw5-dev liblzma-dev libcurl4-openssl-dev software-properties-common apt-transport-https\
