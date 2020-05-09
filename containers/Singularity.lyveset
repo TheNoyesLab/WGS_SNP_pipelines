@@ -53,6 +53,7 @@ From: debian:jessie-slim
     make install-bcftools
     make install-raxml
     make install-snap
+    make install
     make env
         
     echo 'export PATH=$PATH:/usr/local/lyve-SET-2.0.1/scripts' >> $SINGULARITY_ENVIRONMENT
