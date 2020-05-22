@@ -76,33 +76,42 @@ PREFIX=~/perl5lib/ LIB=~/perl5lib/lib INSTALLMAN1DIR=~/perl5lib/man1 INSTALLMAN3
 PERL5LIB=~/perl5lib/lib
 export PERL5LIB
 
+```
+
+Lyve-SET installation on UMN's servers
+
+```
+# Load the correct perl module (the default does not support perl module installation)
+module load perl/modules.centos7.5.26.1
 
 
+# Installation of perl modules
+perl -MCPAN -Mlocal::lib -e 'CPAN::install(File::Slurp)'
+perl -MCPAN -Mlocal::lib -e 'CPAN::install(URI::Escape)'
+perl -MCPAN -Mlocal::lib -e 'CPAN::install(Bio::DB::EUtilities)'
+
+# Download lyve SET
+wget https://github.com/lskatz/lyve-SET/archive/v2.0.1.zip
+unzip v2.0.1.zip
+cd lyve-SET-2.0.1
+make install-config
+make install-perlModules
+make install-smalt
+make install-CGP
+make install-SGELK
+make install-vcftools
+make install-samtools
+make install-varscan
+make install-snpEff
+make install-bcftools
+make install-raxml
+make install-snap
+make env
 
 
-#https://github.com/lskatz/lyve-SET
-
-set_manage.pl --create test_63_lyve_set
-# paired end reads have to be shuffled into one file per sample
-#shuffleSplitReads.pl --numcpus 8 -o ../150_interleaved *_{1,2}.fastq
-# then moved into your project dir
-#cp interleaved/*.fastq.gz test_lyve_set/reads/
-
-cd test_63_lyve_set/reads/
-ln -sv ../../150_genomes/150_interleaved/*fastq.gz .
-
-cd test_lyve_set/reference/
-#ln -sv /home/enriquedoster/Dropbox/Projects/WGS_analysis/June2019_Salmonella_metadata/salmonella_raw_metadata/ref_NC_003197.fasta .
-
-#cp /home/enriquedoster/Dropbox/Projects/WGS_analysis/June2019_Salmonella_metadata/salmonella_raw_metadata/ref_NC_003197.fasta test_lyve_set/reference/ref_NC_003197.fasta
-#cp /home/enriquedoster/Dropbox/Projects/WGS_analysis/June2019_Salmonella_metadata/salmonella_raw_metadata/NC_003197.gb test_lyve_set/reference/NC_003197.gbk
-cp /home/enriquedoster/Dropbox/Projects/WGS_analysis/June2019_Salmonella_metadata/salmonella_raw_metadata/ref_NC_003197.fasta test_lyve_set/reference/NC_003197.fasta
+```
 
 
-ref_NC_003197.fasta
-
-launch_set.pl --numcpus 12 -ref test_63_lyve_set/reference/ref_NC_003197.fasta test_63_lyve_set --noqsub
- ```
 
 
 ## Enterobase
