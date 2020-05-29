@@ -20,9 +20,15 @@ WGS pipelines
     * We spoke with the Bionumerics agent to discuss pricing and potential discounts.
     * The standard price for performing wgMLST on raw reads (not assembled) with Bionumerics is $8.75 per sample.
     * Even with quoting the price for analyzing 150,000 genomes, the best price available was $7/sample.
-      * This price is prohibitively high considering that the price for 150,000 genomes would be > $1 million dollars.
-  * All other pipelines 
-
+      * This price is prohibitively high considering that the cost for 150,000 genomes would be > $1 million dollars.
+  * IBM's pipeline for genome comparison
+    * We have all of the necessary bioinformatic results from this pipeline and are now working through the statistical analysis of phylogenetic trees.
+  * All other pipelines including kSNP3, lyve-SET, CFSAN-snp, and enterobase have been "containerized" for easier use. In combination with our newly developed pipeline, it's possible to install two programs 
+  (singularity and nextflow) and be able to run all 4 pipelines with a single command. This is highly beneficial because one of the first challenges for using WGS pipelines is getting all of the software requirements. By using Singularity containers, we remove this hurdle and allow for the use of these 4 different pipelines, which each require different software tools, without the need for individual installation.
+  
+Analyzing WGS results
+  
+  
 Dataset creation and ongoing analysis
   * As proposed, the selection of 15 different datasets was finalized.
   * Datasets are being analyzed sequentially
