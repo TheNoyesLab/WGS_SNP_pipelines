@@ -12,24 +12,18 @@ Whole Genome Sequencing (WGS) is now a common tool for outbreak detection and pa
 
 The objective of this project is to demonstrate how different analytic approaches to WGS analysis may impact subsequent population structure and cluster membership. Supporting activities are to evaluate the impacts of 1) different databases of WGS, 2) core- vs. pan-genome inclusion, and 3) genome comparison approach (i.e., using SNPs, k-mers, gene-by-gene alleles, or functional domains). The long term goal of this work is to provide concrete guidance to industry on the significance of differing WGS analysis approaches and the accessibility to adopt to a commercial workflow.
 
-## Accomplishments for period September 2019 - May 2020
+# Accomplishments for period September 2019 - May 2020
 
-
-WGS pipelines
-  * The Bionumerics software has not been tested as it not open-source and has different costs associated with different components of the pipeline.
-    * We spoke with the Bionumerics agent to discuss pricing and potential discounts.
-    * The standard price for performing wgMLST on raw reads (not assembled) with Bionumerics is $8.75 per sample.
-    * Even with quoting the price for analyzing 150,000 genomes, the best price available was $7/sample.
-      * This price is prohibitively high considering that the cost for 150,000 genomes would be > $1 million dollars.
-  * IBM's pipeline for genome comparison
-    * We have all of the necessary bioinformatic results from this pipeline and are now working through the statistical analysis of phylogenetic trees.
-  * All other pipelines including kSNP3, lyve-SET, CFSAN-snp, and enterobase have been "containerized" for easier use. In combination with our newly developed pipeline, it's possible to install two programs 
-  (singularity and nextflow) and be able to run all 4 pipelines with a single command. This is highly beneficial because one of the first challenges for using WGS pipelines is getting all of the software requirements. By using Singularity containers, we remove this hurdle and allow for the use of these 4 different pipelines, which each require different software tools, without the need for individual installation.
-  
-Analyzing WGS results
-  
-  
-Dataset creation and ongoing analysis
-  * As proposed, the selection of 15 different datasets was finalized.
-  * Datasets are being analyzed sequentially
-  * The first dataset is currently being analyzed.
+* The WGS pipelines, kSNP3, lyve-SET, CFSAN-snp, and enterobase have been "containerized" for easier use. In combination with our newly developed pipeline written in the nextflow language, it's possible to install two programs (singularity and nextflow) and be able to run all 4 pipelines with a single command.
+  * This is highly beneficial because one of the first challenges for using WGS pipelines is getting all of the software requirements installed and setup correctly. By using Singularity containers, we remove this hurdle and allow for the use of these 4 different pipelines without the need for individual installation of coplicated s.
+* The Bionumerics software has not been tested as it not open-source and has different costs associated with different components of the pipeline.
+  * We spoke with the Bionumerics agent to discuss pricing and potential discounts.
+  * The standard price for performing wgMLST on raw reads (not assembled) with Bionumerics is $8.75 per sample.
+  * Even with quoting the price for analyzing 150,000 genomes, the best price available was $7/sample.
+    * This price is prohibitively high considering that the cost for 150,000 genomes would be > $1 million dollars
+* IBM's pipeline using functional classification for genome comparison
+  * We have all of the necessary bioinformatic results from this pipeline and are now working through the statistical analysis of phylogenetic trees. 
+* Genome dataset creation and ongoing bioinformatic analysis
+  * The selection of 15 genome datasets was finalized.
+  * To address computing challenges in running large datasets, we purchased access to a computing node with 2TB of RAM and a storage node with 180 TB of capacity.
+  * Datasets are being analyzed sequentially analysis and is currently underway.
