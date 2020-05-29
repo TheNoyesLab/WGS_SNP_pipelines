@@ -84,6 +84,10 @@ Lyve-SET installation on UMN's servers
 # Load the correct perl module (the default does not support perl module installation)
 module load perl/modules.centos7.5.26.1
 
+# On MSI, had to be done from shell
+perl -MCPAN -e shell
+install XML::DOM::XPath
+install Bio::FeatureIO
 
 # Installation of perl modules
 perl -MCPAN -Mlocal::lib -e 'CPAN::install(File::Slurp)'
@@ -107,6 +111,13 @@ make install-bcftools
 make install-raxml
 make install-snap
 make env
+
+## Very important to make these two changes:
+# Error with location of "varscan.sh"
+cp /home/noyes046/edoster/.conda/envs/lyve_set_conda/bin/varscan /home/noyes046/edoster/.conda/envs/lyve_set_conda/bin/varscan.sh
+# error with location of /panfs/roc/groups/11/noyes046/edoster/.conda/envs/lyve_set_conda/bin/VarScan.jar
+cp /home/noyes046/edoster/.conda/envs/lyve_set_conda/share/varscan-2.4.4-0/VarScan.jar /home/noyes046/edoster/.conda/envs/lyve_set_conda/bin/VarScan.jar
+
 
 
 ```
