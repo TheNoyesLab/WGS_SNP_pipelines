@@ -17,8 +17,8 @@ The objective of this project is to demonstrate how different analytic approache
 # Accomplishments for period September 2019 - May 2020
 
 * The WGS pipelines, kSNP3, lyve-SET, CFSAN-snp, and enterobase have been "containerized" for easier use. In combination with our newly developed pipeline written in the nextflow language, it's possible to install two programs (singularity and nextflow) and be able to run all 4 pipelines with a single command.
-  * This is highly beneficial because one of the first challenges for using WGS pipelines is getting all of the software requirements installed and setup correctly. By using Singularity containers, we remove this hurdle and allow for the use of these 4 different pipelines without the need for individual installation of coplicated s.
-* The Bionumerics software has not been tested as it not open-source and has different costs associated with different components of the pipeline.
+  * This is highly beneficial because one of the main challenges for using WGS pipelines is getting all of the software requirements installed and setup correctly. By using Singularity containers, we remove this hurdle and allow for the use of these 4 different pipelines without the need for individual installation of complicated software requirements.
+* The Bionumerics software has not been tested because it is not open-source and has different costs associated with using components of the pipeline.
   * We spoke with the Bionumerics agent to discuss pricing and potential discounts.
   * The standard price for performing wgMLST on raw reads (not assembled) with Bionumerics is $8.75 per sample.
   * Even with quoting the price for analyzing 150,000 genomes, the best price available was $7/sample.
