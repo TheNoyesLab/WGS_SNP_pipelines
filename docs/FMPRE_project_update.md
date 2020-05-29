@@ -5,7 +5,9 @@
 **Lead Investigator**:
 Noelle Noyes, Assistant Professor, Veterinary Population Medicine Department, University of
 Minnesota, 1365 Gortner Avenue, St. Paul, MN 55108
-Phone: 612-624-3562 Fax: 612-625-6241 Email: nnoyes@umn.edu
+
+Phone: 612-624-3562
+Fax: 612-625-6241 Email: nnoyes@umn.edu
 
 ## Project summary
 Whole Genome Sequencing (WGS) is now a common tool for outbreak detection and pathogen surveillance. However, there are still open questions regarding the most suitable, accessible and reproducible analytical approach for addressing the critical question of sequence relatedness. The overall goal of the project is to support an accurate, reproducible, transparent and uniform approach to WGS analysis for purposes of cluster detection. 
@@ -25,5 +27,7 @@ The objective of this project is to demonstrate how different analytic approache
   * We have all of the necessary bioinformatic results from this pipeline and are now working through the statistical analysis of phylogenetic trees. 
 * Genome dataset creation and ongoing bioinformatic analysis
   * The selection of 15 genome datasets was finalized.
-  * To address computing challenges in running large datasets, we purchased access to a computing node with 2TB of RAM and a storage node with 180 TB of capacity.
-  * Datasets are being analyzed sequentially analysis and is currently underway.
+  * To address computing challenges in running large datasets, we purchased access to a computing node with 2TB of RAM and 180 TB of storage capacity.
+  * Datasets are being analyzed sequentially and this process is currently underway.
+* Statistical analysis of phylogenetic trees
+  * 
