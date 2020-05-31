@@ -7,7 +7,10 @@ Noelle Noyes, Assistant Professor, Veterinary Population Medicine Department, Un
 Minnesota, 1365 Gortner Avenue, St. Paul, MN 55108
 
 Phone: 612-624-3562
-Fax: 612-625-6241 Email: nnoyes@umn.edu
+
+Fax: 612-625-6241
+
+Email: nnoyes@umn.edu
 
 ## Project summary
 Whole Genome Sequencing (WGS) is now a common tool for outbreak detection and pathogen surveillance. However, there are still open questions regarding the most suitable, accessible and reproducible analytical approach for addressing the critical question of sequence relatedness. The overall goal of the project is to support an accurate, reproducible, transparent and uniform approach to WGS analysis for purposes of cluster detection. 
