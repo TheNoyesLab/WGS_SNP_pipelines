@@ -16,7 +16,7 @@ The objective of this project is to demonstrate how different analytic approache
 
 # Accomplishments for period September 2019 - May 2020
 
-* The WGS pipelines, kSNP3, lyve-SET, CFSAN-snp, and enterobase have been "containerized" for easier use. In combination with our newly developed pipeline, this means it's possible to just install two programs (singularity and nextflow) and then be able to run all 4 pipelines with a single command.
+* The WGS pipelines, kSNP3, lyve-SET, CFSAN-snp, and enterobase have been "containerized" for easier use and "wrapped" into our newly developed pipeline. This means it's possible to just install two programs (singularity and nextflow) and then be able to run all 4 pipelines with a single command.
   * This is highly beneficial because one of the main challenges for using WGS pipelines is getting all of the software requirements installed and setup correctly. By using Singularity containers, we remove this hurdle and allow for the use of these 4 different pipelines without the need for individual installation of complicated software requirements.
 * The Bionumerics software has not been tested because it is not open-source and has different costs associated with using components of the pipeline.
   * We spoke with the Bionumerics agent to discuss pricing and potential discounts.
@@ -29,5 +29,5 @@ The objective of this project is to demonstrate how different analytic approache
   * The selection of 15 genome datasets was finalized.
   * To address computing challenges in running large datasets, we purchased access to a computing node with 2TB of RAM and 180 TB of storage capacity.
   * Datasets are being analyzed sequentially and this process is currently underway.
-* Statistical analysis of phylogenetic trees
-  * 
+* Statistical comparison of phylogenetic trees
+  * We are finalizing the workflow for comparing the phylogenetic trees resulting from WGS analysis using 4 different WGS pipelines. We are developing R scripts to automatically create summary statistics as well as convert the results from each pipeline to facilite the use with other software.
