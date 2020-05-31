@@ -35,18 +35,23 @@ The objective of this project is to demonstrate how different analytic approache
   * We are finalizing the workflow for comparing the phylogenetic trees resulting from WGS analysis using 4 different WGS pipelines (Figure 1). We are developing R scripts to automatically create summary statistics as well as convert the results from each pipeline to facilite the use with other software. Below are examples comparing phylogenetic trees from kSNP3 and enterobase (Figures 2-5).
 
 Figure 1:
+
 ![example_phylogenetic_stats](https://github.com/TheNoyesLab/WGS_SNP_pipelines/blob/master/docs/Misc_files/example_phylogenetic_comparisons.png)
 
 Figure 2:
+
 ![example_ksnp_enterobase](https://github.com/TheNoyesLab/WGS_SNP_pipelines/blob/master/docs/Misc_files/example_ksnp_vs_enterobase.png)
 
 Figure 3:
-![example_knsp_vs_enterobase_clade](https://github.com/TheNoyesLab/WGS_SNP_pipelines/blob/master/docs/Misc_files/example_knsp_vs_enterobase_clade.png)
+
+![example_knsp_vs_enterobase_clade](https://github.com/TheNoyesLab/WGS_SNP_pipelines/blob/master/docs/Misc_files/example_ksnp_vs_enterobase_clade.png)
 
 Figure 4:
-![example_knsp_vs_enterobase_density](https://github.com/TheNoyesLab/WGS_SNP_pipelines/blob/master/docs/Misc_files/example_knsp_enterobase_density_tree.png)
+
+![example_knsp_vs_enterobase_density](https://github.com/TheNoyesLab/WGS_SNP_pipelines/blob/master/docs/Misc_files/example_ksnp_enterobase_density_tree.png)
 
 Figure 5:
-![example_knsp_vs_enterobase_cladogram](https://github.com/TheNoyesLab/WGS_SNP_pipelines/blob/master/docs/Misc_files/example_knsp_enterobase_cladogram.png)
+
+![example_knsp_vs_enterobase_cladogram](https://github.com/TheNoyesLab/WGS_SNP_pipelines/blob/master/docs/Misc_files/example_ksnp_enterobase_cladogram.png)
 
 
