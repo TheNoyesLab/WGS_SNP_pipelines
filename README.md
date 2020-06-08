@@ -63,6 +63,11 @@ nextflow run main_combined_pipeline.nf --reference_genome /scratch.global/Salmon
 # Input is interleaved fastq files
 nextflow run main_LYVESET.nf --reference_genome /scratch.global/Salmonella_WGS/ref_L_monocytogenes_NC_003210.fasta --interleaved_fastq "/scratch.global/Salmonella_WGS/test_GenomeTrakr_L_monocytogenes_WGS_results/Interleaved_fasta/interleaved_reads/*.fastq.gz" -profile singularity --output /scratch.global/Salmonella_WGS/test_LYVESET_250_GenomeTrakr_L_monocytogenes_WGS_results --threads 3 -w /scratch.global/Salmonella_WGS/work_250_lyveset_qsub_l_latest -resume -with-report 250_Listeria_WGS_tools.report -with-trace -with-timeline --singleEnd true
 
+
+# lyveset sometimes requires
+/home/noyes046/shared/tools/lyve-SET-1.1.4g/scripts/mergeVcf.sh -o msa/out.p
+ooled.vcf.gz vcf/*.vcf.gz
+
 # cfsan_snp
 # Input file is a directory containing one directory per sample with the corresponding paired reads
 nextflow run main_CFSAN_snp.nf --reference_genome /scratch.global/Salmonella_WGS/ref_L_monocytogenes_NC_003210.fasta --fastq_dir_path '/scratch.global/Salmonella_WGS/test_GenomeTrakr_L_monocytogenes_WGS_results/Interleaved_fasta/' -profile singularity --output /scratch.global/Salmonella_WGS/test_250_GenomeTrakr_L_monocytogenes_WGS_results --threads 128 -w /scratch.global/Salmonella_WGS/work_250_qsub_l_latest -resume -with-report 250_Listeria_WGS_tools.report -with-trace -with-timeline
