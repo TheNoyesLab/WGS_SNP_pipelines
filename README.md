@@ -89,6 +89,8 @@ nextflow run main_kSNP3.nf --reference_genome /scratch.global/Salmonella_WGS/ref
 
 ## Misc resources
 
+* Differences in results by analytic method
+  * [Neuroimaging results altered by varying analysis pipelines](https://www.nature.com/articles/d41586-020-01282-z?utm_source=twitter&utm_medium=social&utm_content=organic&utm_campaign=NGMT_USG_JC01_GL_Nature)
 * Ways to compare the results from WGS pipelines
   * https://github.com/lskatz/Lyve-SET-paper/blob/master/compareSnps.sh
   * [Phylo.io](https://academic.oup.com/mbe/article/33/8/2163/2579233)
@@ -107,7 +109,8 @@ nextflow run main_kSNP3.nf --reference_genome /scratch.global/Salmonella_WGS/ref
     * https://pubmlst.org/
     * Enterobase
     * BioNumerics
-* Phylogenetic tree comparison
+* Phylogenetic trees
   * [Practical Performance of Tree Comparison Metrics](https://academic.oup.com/sysbio/article/64/2/205/1630737)
+  * [Review: Phylogenetic tree building in the genomic age (Kapli et. al. 2020)](https://www.nature.com/articles/s41576-020-0233-0)
 * Other useful links:
   * https://github.com/jhcepas
