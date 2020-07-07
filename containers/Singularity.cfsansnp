@@ -43,7 +43,7 @@ From: debian:jessie-slim
     #Still experimenting with how to change $PATH location. Need to remove GATK jar file to work with cfsan snp
     #echo 'export PATH=$PATH:/usr/local/envs/snp-tools/bin/' >> $SINGULARITY_ENVIRONMENT
     echo 'export CLASSPATH=/usr/local/share/varscan-2.4.4-0/VarScan.jar:$CLASSPATH' >> $SINGULARITY_ENVIRONMENT
-    echo 'export CLASSPATH=/usr/local/share/picard-2.22.3-0/picard.jar:$CLASSPATH' >> $SINGULARITY_ENVIRONMENT
+    echo 'export CLASSPATH=/usr/local/share/picard-2.22.4-0/picard.jar:$CLASSPATH' >> $SINGULARITY_ENVIRONMENT
     echo 'export CLASSPATH=/usr/local/bin/GenomeAnalysisTK.jar:$CLASSPATH' >> $SINGULARITY_ENVIRONMENT
 
     # Make sure all the tools have the right permissions to use the tools
