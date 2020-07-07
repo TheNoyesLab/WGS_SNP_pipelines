@@ -48,7 +48,6 @@ From: debian:jessie-slim
 
     # Make sure all the tools have the right permissions to use the tools
     chmod -R 777 /usr/local/
-
     
 %test
     which bwa
