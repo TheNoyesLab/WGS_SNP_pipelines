@@ -15,7 +15,6 @@ From: debian:jessie-slim
     python3-pip python3-docopt python3-pytest python-dev python3-dev\
     libcurl4-openssl-dev libssl-dev zlib1g-dev fonts-texgyre \
     gcc g++ gfortran libblas-dev liblapack-dev dos2unix\
-    r-base-core r-recommended hmmer\
     && rm -rf /var/lib/apt/lists/*
 
     # Not my favorite workaround, but to get cfsan snp to work with samtools, we have to change which libncurses library is used. Problem is anaconda doesn't have the right version of samtools.
@@ -32,7 +31,7 @@ From: debian:jessie-slim
     conda config --add channels cyclus
     
     # install bulk of bioinformatic tools using conda
-    conda install smalt picard varscan tabix bcftools bowtie2 bwa gatk libdeflate samtools java-jdk snp-pipeline
+    conda install smalt picard varscan tabix gatk libdeflate java-jdk snp-pipeline
     
     ## Workaround to get 3.8 version of GenomeAnalysisTK.jar
     git clone https://github.com/EnriqueDoster/sing_biotools.git
