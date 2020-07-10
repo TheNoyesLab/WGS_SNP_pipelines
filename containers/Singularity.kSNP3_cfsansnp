@@ -34,7 +34,7 @@ From: debian:jessie-slim
     conda config --add channels hcc
 
     # install bulk of bioinformatic tools using conda
-    conda install picard varscan snp-pipeline
+    #conda install picard varscan snp-pipeline
     
     ## Workaround to get 3.8 version of GenomeAnalysisTK.jar
     git clone https://github.com/EnriqueDoster/sing_biotools.git
