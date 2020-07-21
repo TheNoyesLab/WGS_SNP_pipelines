@@ -57,7 +57,7 @@ Channel
 Channel
     .fromFilePairs( params.reads, flat: true )
     .ifEmpty { exit 1, "Read pair files could not be found: ${params.reads}" }
-    .set { reads }
+    .into { reads; etoki_reads }
 
 
 
@@ -70,7 +70,7 @@ process RunFastqConvert {
 
     module 'singularity'
     errorStrategy 'ignore'
-    publishDir "${params.output}/Interleaved_fasta", mode: "symlink"
+    publishDir "${params.output}/processed_reads", mode: "symlink"
 
 
     input:
@@ -86,7 +86,7 @@ process RunFastqConvert {
     shuffleSplitReads.pl --numcpus ${threads} -o interleaved_reads/ *_{1,2}.fastq.gz
     cp interleaved_reads/${sample_id}.fastq.gz ${sample_id}.cp.fastq.gz
     zcat ${sample_id}.cp.fastq.gz | paste - - - - | sed 's/^@/>/g'| cut -f1-2 | tr '\t' '\n' > ${sample_id}.fasta
-    echo '${params.output}/Interleaved_fasta/${sample_id}.fasta\t${sample_id}' > ${sample_id}.ksnp3_genome_list.tsv
+    echo '${params.output}/processed_reads/${sample_id}.fasta\t${sample_id}' > ${sample_id}.ksnp3_genome_list.tsv
 
     mkdir ${sample_id}
     mv ${forward} ${sample_id}/
@@ -127,11 +127,11 @@ process RunMakeList {
 Run CFSAN
 */
 
-
 process RunCFSAN {
 
     module 'singularity'
     container 'docker://staphb/cfsan-snp-pipeline'
+    errorStrategy 'ignore'
 
     publishDir "${params.output}/CFSAN", mode: "copy"
 
@@ -162,6 +162,7 @@ process RunKSNP3 {
 
     module 'singularity'
     publishDir "${params.output}/kSNP3_results", mode: "copy"
+    errorStrategy 'ignore'
 
     input:
       file full_genome_list
@@ -176,16 +177,16 @@ process RunKSNP3 {
 }
 
 
-
 /*
 Run Lyveset
 */
 
+
 process RunLYVESET {
     tag { sample_id }
     module 'singularity'
-    container 'docker://staphb/lyveset'
-
+    container 'docker://staphb/lyveset:1.1.4f'
+    errorStrategy 'ignore'
     publishDir "${params.output}/Lyveset_results", mode: "copy"
 
     input:
@@ -199,10 +200,83 @@ process RunLYVESET {
     set_manage.pl --create Lyveset_results
     mv ${combined_interleaved_fastq} Lyveset_results/reads/
     mv ${reference_genome} Lyveset_results/reference/ref_genome.fasta
-    launch_set.pl --numcpus ${threads} -ref Lyveset_results/reference/ref_genome.fasta Lyveset_results --noqsub --read_cleaner CGP
-    rm -rf Lyveset_results/reads/
+    mkdir Lyveset_temp/
+    launch_set.pl --numcpus ${threads} -ref Lyveset_results/reference/ref_genome.fasta Lyveset_results --noqsub --read_cleaner CGP --tmpdir Lyveset_temp/
+    #rm -rf Lyveset_results/reads/
     """
 }
+
+
+
+process etoki_FastqQC {
+    tag {sample_id}
+
+    module 'singularity'
+    errorStrategy 'ignore'
+    publishDir "${params.output}/etoki_fastqQC", mode: "symlink"
+
+    container 'shub://TheNoyesLab/WGS_SNP_pipelines:etoki'
+
+    input:
+      set sample_id, file(forward), file(reverse) from etoki_reads
+
+    output:
+       set sample_id, file("${sample_id}_trimmed*R1.fastq.gz"), file("${sample_id}_trimmed*R2.fastq.gz") into (trimmed_fastq)
+
+    """
+    python /usr/local/EToKi/EToKi.py prepare --pe ${forward},${reverse} -p ${sample_id}_trimmed --merge
+    """
+}
+
+
+process etoki_assemble {
+    tag {sample_id}
+
+    module 'singularity'
+    errorStrategy 'ignore'
+    publishDir "${params.output}/etoki_assemble", mode: "symlink"
+
+    container 'shub://TheNoyesLab/WGS_SNP_pipelines:etoki'
+
+    input:
+      set sample_id, file(forward), file(reverse) from trimmed_fastq
+      file reference_genome
+
+    output:
+      file("${sample_id}_assemble.result.fasta") into (assembled_fasta)
+
+    """
+    python /usr/local/EToKi/EToKi.py assemble --pe ${forward},${reverse} -p ${sample_id}_assemble --assembler megahit --reassemble
+    """
+}
+
+assembled_fasta.toSortedList().set { all_assembled_genomes }
+
+process etoki_align {
+    tag {sample_id}
+
+    module 'singularity'
+    errorStrategy 'ignore'
+    publishDir "${params.output}/etoki_align", mode: "symlink"
+
+    container 'shub://TheNoyesLab/WGS_SNP_pipelines:etoki'
+
+
+    input:
+      file reference_genome
+      file all_assembled_genomes
+
+    output:
+      file("phylo_tree*") into (phylo_output)
+      file("align_out*") into (align_output)
+
+    """
+    python /usr/local/EToKi/EToKi.py align -r ${reference_genome} -a -p align_out ${all_assembled_genomes}
+    python /usr/local/EToKi/EToKi.py phylo -p phylo_tree -s align_out.matrix.gz -m align_out.fasta.gz
+    rm *assemble.result*
+    """
+}
+
 
 
 def nextflow_version_error() {
