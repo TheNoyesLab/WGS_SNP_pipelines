@@ -4,9 +4,20 @@ Location of results:
 
 
 
-
-
 # Geography
+
+## E coli - South Dakota - 
+screen -x run_Ecoli
+/tempalloc/noyes042/WGS_project/run_Ecoli_WGS_SNP_pipelines
+
+```
+nextflow run main_combined_pipeline.nf --reference_genome /tempalloc/noyes042/WGS_project/ref_Ecoli_NC_000913.fasta --reads '/tempalloc/noyes042/WGS_project/genomes_Ecoli_SD/*_{1,2}.fastq.gz' -profile singularity --output /tempalloc/noyes042/WGS_project/E_coli_SD_WGS_results --threads 30 -w /tempalloc/noyes042/WGS_project/work_ecoli_SD -resume -with-report Ecoli_SD_WGS_tools.report -with-trace -with-timeline
+
+
+```
+
+
+
 
 ## Listeria - New York - 56
 
@@ -63,9 +74,6 @@ cfsan_snp_pipeline map_reads --threads 30 List_Cali_CFSAN_snp_results/reference/
 java  -jar /home/noyes046/edoster/.conda/envs/WGS_tools/share/picard-2.21.6-0/picard.jar MarkDuplicates INPUT=List_Cali_CFSAN_snp_results/samples/SRR9617633/reads.sorted.bam OUTPUT=List_Cali_CFSAN_snp_results/samples/SRR9617633/reads.sorted.deduped.bam METRICS_FILE=List_Cali_CFSAN_snp_results/samples/SRR9617633/duplicate_reads_metrics.txt VALIDATION_STRINGENCY=LENIENT
  
  ```
-  
-  
-  du 
   
 ## Salmonella - Mississippi - 697
   
