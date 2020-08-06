@@ -1,32 +1,22 @@
 
 # Main questions and clarification points
+Comparing trees
 * How can I setup the WGS pipeline results for comparison with the "compareTrees.py" script?
-
-
-
-
-# Pickled data
-
-Summary:
-* Data is based on results from assembly of all target genomes, identification of "functional domains", and comparison of differences between:
-  * Genomes from a single species
-  * Functional domains across multiple species
-  
-Questions:
-* Can you show us how you calculate the linkage scores between genomes?
-* What exactly is the "linkage()" function being run on? 
-  * In Jamie's example he just has matrix with 10 rows, 2 columns (adds labels for each genus seperately)
-  * Each row is a genus and the columns correspond with NodeA and Node B?
-  
-
-# Comparing binary trees
-
-Questions:
-* When creating my own binary trees:
-  * Does the order of the nodes matter when specifying the membership for each tree?
-  * In our case, we should theoretically be testing for differences in tree topology and not necessarily it's membership since we expect most genomes to be present in both analysis (results from different tools).
-    * The "root" for each tree, as defined by the code example, would most often be identical.
-* In the "runLinkageDemo()" function:
+  * In the "runLinkageDemo()" function:
   * What do you mean by "positions" of the genera?
-* When calculating "getMinDifference()", would we have to calculate the difference between all of the nodes in "tree2" and each node in "tree1"?
-  * Would need to modify this function to accept a node from "tree2", and compare it to X number of nodes in "tree 1"?
+    * Confirm: Does this correspond with the "edge" matrix
+  * When calculating "getMinDifference()", would we have to calculate the difference between all of the nodes in "tree2" and each node in "tree1"?
+    * Confirm: Goal is to modify this function to accept a single node from "tree2", and compare it to X number of nodes in "tree 1"?
+
+Pickled data
+* Confirm: What exactly is the "linkage()" function being run on? Based on some of Jamie's code, it seems like we run linkage() on the edge list of a tree?
+* Confirm: If for example, we wanted to compare the results of your analysis on Salmonella genome functional domains with our other WGS pipelines. Are these the right steps:
+  * We would extract the genome IDs from the Salmonella pickled data
+  * Re-run the linkage() function on the subset edge list (do we need to recalculate a tree?) 
+  * Convert to binary tree
+  * Run with Jamie's compareTrees.py code
+* Extra: 
+  * Example code for heatmaps
+
+
+
