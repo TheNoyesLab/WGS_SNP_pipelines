@@ -23,10 +23,26 @@ nextflow run main_combined_pipeline.nf --reference_genome /tempalloc/noyes042/WG
 
 * Need to copy "/tempalloc/noyes042/WGS_project/L_monocytogenes_NewYork_WGS_results" over to Noelle's server
 
+```
+~> TaskHandler[id: 1212; name: RunKSNP3 (null); status: RUNNING; exit: -; error: -; workDir: /tempalloc/noyes042/WGS_project/work_salm_ms/5d/c0e137d5a55044636dd6e992d2634b]
+
+
+
+~> TaskHandler[id: 1209; name: RunLYVESET (null); status: RUNNING; exit: -; error: -; workDir: /tempalloc/noyes042/WGS_project/work_salm_ms/d4/23464e3dfd8479110f990a7a1cd3aa]
+
+
+```
+
+
 * Lyveset
-  * screen -x 3_lyveset
+  * screen -x run_list_NY_lyve
+  * Aug 5, 2020 - 7:08pm
+  
+  
 * kSNP
-  * screen -x 3_WGS
+  * screen -x run_list_NY_ksnp
+  * Aug 5, 2020 - 7:08pm
+  
 * cfsansnp
   * completed July 13, 2020
 * enterobase
