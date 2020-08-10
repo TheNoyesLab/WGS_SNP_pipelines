@@ -95,7 +95,7 @@ java  -jar /home/noyes046/edoster/.conda/envs/WGS_tools/share/picard-2.21.6-0/pi
   
 * Downloading files on July 20, 2020.
 * Results: /home/noyes046/shared/projects/WGS_project/Salmonella_Mississippi_WGS_results
-* Enterobase completed successfully
+* Enterobase, ksnp3 completed successfully
 
 ```
 nextflow run main_combined_pipeline.nf --reference_genome /tempalloc/noyes042/WGS_project/Senterica_LT2_ref_genome.fasta --reads '/tempalloc/noyes042/WGS_project/genomes_Salm_MS/*_{1,2}.fastq.gz' -profile singularity --output /tempalloc/noyes042/WGS_project/S_enterica_MS_WGS_results --threads 20 -w /tempalloc/noyes042/WGS_project/work_salm_ms -resume -with-report Salm_MS_WGS_tools_20200721.report -with-trace -with-timeline
@@ -119,12 +119,9 @@ Succeeded   : 2'073
 Ignored     : 2
 ```
 
-RunKSNP3 
-* Running screen -x run_Salm
-/tempalloc/noyes042/WGS_project/work_salm_ms/5d/c0e137d5a55044636dd6e992d2634b
 
 CFSAN
-screen -x 3_cfsan_snp
+screen -x run_sal_ms_ksnp
 /tempalloc/noyes042/WGS_project/work_salm_ms/20/dc46ec80e5583548af430bec740554
 
 RunLYVESET
@@ -132,7 +129,7 @@ screen -x finish_lyve
 /tempalloc/noyes042/WGS_project/work_salm_ms/d4/23464e3dfd8479110f990a7a1cd3aa
 
 
-
+/tempalloc/noyes042/WGS_project/work_salm_ms/d4/23464e3dfd8479110f990a7a1cd3aa
 
 
 
