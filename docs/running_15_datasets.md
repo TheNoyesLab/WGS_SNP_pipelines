@@ -1,7 +1,17 @@
 # Overview
 
-Location of results:
+Unfortunately, running the full nextflow pipeline still has issues for each 
 
+Anaconda environments
+```
+AmrPlusPlus_env          /home/noyes046/edoster/.conda/envs/AmrPlusPlus_env
+WGS_tools                /home/noyes046/edoster/.conda/envs/WGS_tools
+catch                    /home/noyes046/edoster/.conda/envs/catch
+cfsan_snp                /home/noyes046/edoster/.conda/envs/cfsan_snp
+compute                  /home/noyes046/edoster/.conda/envs/compute
+ksnp3_env                /home/noyes046/edoster/.conda/envs/ksnp3_env
+lyve_set_conda           /home/noyes046/edoster/.conda/envs/lyve_set_conda
+```
 
 
 # Geography
@@ -12,6 +22,21 @@ screen -x run_Ecoli
 
 ```
 nextflow run main_combined_pipeline.nf --reference_genome /tempalloc/noyes042/WGS_project/ref_Ecoli_NC_000913.fasta --reads '/tempalloc/noyes042/WGS_project/genomes_Ecoli_SD/*_{1,2}.fastq.gz' -profile singularity --output /tempalloc/noyes042/WGS_project/E_coli_SD_WGS_results --threads 30 -w /tempalloc/noyes042/WGS_project/work_ecoli_SD -resume -with-report Ecoli_SD_WGS_tools.report -with-trace -with-timeline
+
+
+# Failed after 1 day, started each pipeline below at 10pm
+
+# RunCFSAN
+screen -x run_ecoli_cfsan
+/tempalloc/noyes042/WGS_project/work_ecoli_SD/75/65ae63e8499faa9b7246ffc028e578
+
+# Lyve set
+# RunLYVESET (null); status: RUNNING; exit: -; error: -; workDir:
+screen -x run_ecoli_lyve
+/tempalloc/noyes042/WGS_project/work_ecoli_SD/18/8f1dd5cada35dfaf6706aa356d4842
+
+# kSNP3 
+/tempalloc/noyes042/WGS_project/work_ecoli_SD/5e/68619add4d52fe6eccebe4188cfec4
 
 
 ```
@@ -42,6 +67,8 @@ nextflow run main_combined_pipeline.nf --reference_genome /tempalloc/noyes042/WG
 * kSNP
   * screen -x run_list_NY_ksnp
   * Aug 5, 2020 - 7:08pm
+  * Most output was done by August 8, but NJ tree step 
+  * copied over results August 11, 2020
   
 * cfsansnp
   * completed July 13, 2020
