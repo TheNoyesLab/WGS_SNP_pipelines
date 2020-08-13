@@ -122,7 +122,8 @@ java  -jar /home/noyes046/edoster/.conda/envs/WGS_tools/share/picard-2.21.6-0/pi
   
 * Downloading files on July 20, 2020.
 * Results: /home/noyes046/shared/projects/WGS_project/Salmonella_Mississippi_WGS_results
-* Enterobase, ksnp3 completed successfully
+* Enterobase completed in 3d 23h 45m 17s
+* ksnp3: Elapsed time for kSNP in hours: 176.629166666667
 
 ```
 nextflow run main_combined_pipeline.nf --reference_genome /tempalloc/noyes042/WGS_project/Senterica_LT2_ref_genome.fasta --reads '/tempalloc/noyes042/WGS_project/genomes_Salm_MS/*_{1,2}.fastq.gz' -profile singularity --output /tempalloc/noyes042/WGS_project/S_enterica_MS_WGS_results --threads 20 -w /tempalloc/noyes042/WGS_project/work_salm_ms -resume -with-report Salm_MS_WGS_tools_20200721.report -with-trace -with-timeline
