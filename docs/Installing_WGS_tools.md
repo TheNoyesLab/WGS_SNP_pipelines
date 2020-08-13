@@ -7,25 +7,13 @@
 conda install -c bioconda snp-pipeline
 #https://snp-pipeline.readthedocs.io/en/latest/usage.html#step-by-step-workflows
 
-# Step 1, gather data
-# Create sample directories and download sample data from SRA at NCBI. Note that
-#   we use the fastq.gz-dump command from the NCBI SRA-toolkit to fetch sample
-#   sequences. There are other ways to get the data, but the SRA-toolkit is
-#   easy to install, and does a good job of downloading large files.
+
+# Dependencies
+Make sure you have the following tools in your path
+  * samtools v1.9
 
 
-conda install -c bioconda smalt
-conda install -c bioconda samtools
-conda install -c bioconda picard
-conda install -c bioconda gatk
-conda install -c bioconda varscan
-conda install -c bioconda tabix
-conda install -c bioconda bcftools
-conda install -c bioconda bowtie2
-
-/s/angus/index/common/tools/miniconda3/envs/WGS_tools/bin/varscan
-
-# On Angus
+# On server, or singularity container, you have to specify the following CLASSPATHs
 export CLASSPATH=/s/angus/index/common/tools/VarScan.jar:$CLASSPATH
 export CLASSPATH=/s/angus/index/common/tools/picard.jar:$CLASSPATH
 https://software.broadinstitute.org/gatk/download/archive
@@ -36,20 +24,16 @@ mkdir samples
 < cfsan_sample_list_15genomes xargs -I % sh -c 'mkdir samples/%; fastq.gz-dump --gzip --origfmt --split-files --outdir samples/% %;'
 
 
-# On Computer
-export CLASSPATH=/home/enriquedoster/Downloads/installed_software/VarScan.jar:$CLASSPATH
-export CLASSPATH=/home/enriquedoster/Downloads/installed_software/picard.jar:$CLASSPATH
-https://software.broadinstitute.org/gatk/download/archive
-export CLASSPATH=/home/enriquedoster/Downloads/installed_software/GenomeAnalysisTK.jar:$CLASSPATH
 
-# or move the files to the required sample directory
-mkdir 63_samples
-< cfsan_sample_list_63genomes xargs -I % sh -c 'mkdir 63_samples/%; cp ../150_genomes/150_interleaved/%.fastq.gz 63_samples/%/ ;'
+
 
 ## Run the pipelines
 cfsan_snp_pipeline run -m soft -o outputDirectory -s 63_samples /media/AngusWorkspace/WGS_test/ref_NC_003197.fasta
 
 ```
+
+
+
 
  ## Lyve-set 
  
