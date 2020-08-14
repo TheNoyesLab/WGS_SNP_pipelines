@@ -37,7 +37,27 @@ cfsan_snp_pipeline run -m soft -o outputDirectory -s 63_samples /media/AngusWork
 
  ## Lyve-set 
  
+ 
+ 
  ```
+module load  ncbi_toolkit
+# Load the correct perl module (the default does not support perl module installation)
+module load perl/modules.centos7.5.26.1
+
+make install
+
+
+make env
+
+perl -MCPAN -Mlocal::lib -e 'CPAN::install(File::Basename)'
+
+perl -MCPAN -Mlocal::lib -e 'CPAN::install(Bio::FeatureIO)'
+
+
+```
+ 
+ 
+```
  #https://github.com/lskatz/lyve-SET
 conda install -c hcc lyve-set
 ## Has to be java 8
@@ -65,8 +85,7 @@ export PERL5LIB
 Lyve-SET installation on UMN's servers
 
 ```
-# Load the correct perl module (the default does not support perl module installation)
-module load perl/modules.centos7.5.26.1
+
 
 # On MSI, had to be done from shell
 perl -MCPAN -e shell
