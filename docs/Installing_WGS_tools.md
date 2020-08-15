@@ -19,16 +19,26 @@ export CLASSPATH=/s/angus/index/common/tools/picard.jar:$CLASSPATH
 https://software.broadinstitute.org/gatk/download/archive
 export CLASSPATH=/s/angus/index/common/tools/GenomeAnalysisTK.jar:$CLASSPATH
 
-# The sampleList consists of just SRR values, and actually download one per line
-mkdir samples
-< cfsan_sample_list_15genomes xargs -I % sh -c 'mkdir samples/%; fastq.gz-dump --gzip --origfmt --split-files --outdir samples/% %;'
 
 
-
-
-
-## Run the pipelines
+## Run the pipeline using the main_combined_pipelines.nf script which uses the following command to run cfsansnp
 cfsan_snp_pipeline run -m soft -o outputDirectory -s 63_samples /media/AngusWorkspace/WGS_test/ref_NC_003197.fasta
+
+#
+##
+### If there is an error, you can find the working directory in the .nextflow.log and try running the individual steps of the pipeline by manually
+##
+# https://snp-pipeline.readthedocs.io/en/latest/usage.html
+
+
+# Step 1 - Align the samples to the reference:
+cat CFSAN_snp_results/sampleFullPathNames.txt | xargs -n 2 -L 1 cfsan_snp_pipeline map_reads --threads 30 CFSAN_snp_results/reference/ref_Ecoli_NC_000913.fasta
+
+# Step 2 - Find the sites having high-confidence SNPs:
+# Process the samples in parallel using all CPU cores
+export SamtoolsMpileup_ExtraParams="-q 0 -Q 13 -A"
+export VarscanMpileup2snp_ExtraParams="--min-var-freq 0.90"
+cat sampleDirectories.txt | xargs -n 1 -P $numCores cfsan_snp_pipeline call_sites reference/lambda_virus.fasta
 
 ```
 
