@@ -46,11 +46,11 @@ screen -x run_ecoli_lyve
 
 ## Listeria - New York - 56
 
-* Need to copy "/tempalloc/noyes042/WGS_project/L_monocytogenes_NewYork_WGS_results" over to Noelle's server
+* All pipelines completed and results were copied over to /home/noyes046/shared/projects/WGS_project/List_NY_WGS_results/
 
 ```
 
-RunLYVESET (null); status: COMPLETED; exit: 25; error: -; workDir: /tempalloc/noyes042/WGS_project/work_ny_list/e3/b8f8b722b12e5b100a34c6ea27f1b2
+nextflow run main_combined_pipeline.nf --reference_genome /tempalloc/noyes042/WGS_project/ref_L_monocytogenes_NC_003210.fasta --reads '/tempalloc/noyes042/WGS_project/genomes_NY_L_monocytogenes/*_{1,2}.fastq.gz' -profile singularity --output /tempalloc/noyes042/WGS_project/L_monocytogenes_NewYork_WGS_results --threads 20 -w /tempalloc/noyes042/WGS_project/work_ny_list -resume -with-report List_NY_WGS_tools.report -with-trace -with-timeline
 
 ~> TaskHandler[id: 110; name: RunLYVESET (null); status: RUNNING; exit: -; error: -; workDir: /tempalloc/noyes042/WGS_project/work_ny_list/e3/b8f8b722b12e5b100a34c6ea27f1b2]
 ~> TaskHandler[id: 109; name: RunCFSAN; status: RUNNING; exit: -; error: -; workDir: /tempalloc/noyes042/WGS_project/work_ny_list/a2/9ab363096d39db6fea5fdd16fefded]
@@ -60,16 +60,9 @@ RunLYVESET (null); status: COMPLETED; exit: 25; error: -; workDir: /tempalloc/no
 
 ```
 
-
-
-
-
-
 * Lyveset
   * screen -x run_list_NY_lyve
   * Aug 5, 2020 - 7:08pm
-  
-  
 * kSNP
   * screen -x run_list_NY_ksnp
   * Aug 5, 2020 - 7:08pm
@@ -144,4 +137,8 @@ screen -x run_sal_ms_lyve
 # High quality
 
 ## Listeria - high-quality - 6539
-* already downloaded 
+* started running August 12, 2020 @ 12am
+
+```
+nextflow run main_combined_pipeline.nf --reference_genome /tempalloc/noyes042/WGS_project/ref_L_monocytogenes_NC_003210.fasta --reads '/tempalloc/noyes042/WGS_project/genomes_List_high_quality/*_{1,2}.fastq.gz' -profile singularity --output /tempalloc/noyes042/WGS_project/L_monocytogenes_IBM_WGS_results --threads 20 -w /tempalloc/noyes042/WGS_project/work_ibm_list -resume -with-report List_IBM_WGS_tools.report -with-trace -with-timeline
+```
