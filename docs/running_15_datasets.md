@@ -64,11 +64,11 @@ nextflow run main_combined_pipeline.nf --reference_genome /tempalloc/noyes042/WG
   * screen -x run_list_NY_lyve
   * Aug 5, 2020 - 7:08pm
 * kSNP
-  * screen -x run_list_NY_ksnp
-  * Aug 5, 2020 - 7:08pm
-  * Most output was done by August 8, but NJ tree step 
+  * Most output was done by August 8, but NJ tree step kept getting stuck
   * copied over results August 11, 2020
-  
+  Thu Aug 13 17:02:32 CDT 2020
+Elapsed time for kSNP in hours: 2.51305555555556
+
 * cfsansnp
   * completed July 13, 2020
 * enterobase
