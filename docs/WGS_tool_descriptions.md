@@ -29,6 +29,48 @@
 * [CFSAN-SNP](https://github.com/CFSAN-Biostatistics/snp-pipeline)
   * https://www.ifsh.iit.edu/sites/ifsh/files/departments/James_Pettengill.pdf
 
+### CFSAN workflow
+
+1. Gather data
+2. Prep work
+3. Prep the reference
+4. Align samples to reference
+5. Find sites having high-confidence SNPs
+6. Identify regions with abnormal SNP density and remove SNPs in these regions
+7. Combine the SNP positions across all samples into the SNP list file
+8. Call the consensus base at SNP positions for each sample
+9. Create the SNP matrix
+10. Create the reference base sequence
+11. Collect metrics for each sample
+12. Tabulate the metrics for all samples
+13. Merge the VCF files for all samples into a multiple-sample VCF file
+14. Compute the SNP distances between samples
+
+### CFSAN snp output files
+
+By sample
+
+* ``consensus.fasta`` : for each sample, the consensus base calls at the high-confidence positions where SNPs were detected in any of the samples. The corresponding consensus_preserved.fasta file is produced when snp filtering removes the abnormal snps.
+* ``consensus.vcf`` : for each sample, the VCF file of SNPs called, as well as failed SNPs at the high-confidence positions where SNPs were detected in any of the samples. The corresponding consensus_preserved.vcf file is produced when snp filtering removes the abnormal snps.
+* ``metrics`` : for each sample, contains the size of the sample, number of reads, alignment rate, pileup depth, and number of SNPs found.
+metrics.tsv : a tab-separated table of metrics for all samples containing the size of the samples, number of reads, alignment rate, pileup depth, and number of SNPs found.
+
+Final output
+* ``snplist.txt`` : contains a list of the high-confidence SNP positions identified by the phase 1 SNP caller (VarScan) in at least one of the samples. These are the only positions where the consensus caller subsequently looks for SNPs in all samples. The consensus caller often finds SNPs at the same positions in other samples, and those additional SNPs are not listed in the snplist.txt file. While the snplist.txt file has an accurate list of SNP positions, it does not contain the final list of samples having SNPs at those positions. If you need the final set of SNPs per sample, you should not use the snplist.txt file. Instead, refer to the snpma.fasta file or the snpma.vcf file. The corresponding ``snplist_preserved.txt`` file is produced when snp filtering removes the abnormal snps.
+* ``snpma.fasta`` : the SNP matrix containing the consensus base for each of the samples at the high-confidence positions where SNPs were identified in any of the samples. The matrix contains one row per sample and one column per SNP position. Non-SNP positions are not included in the matrix. The matrix is formatted as a fasta file, with each sequence (all of identical length) corresponding to the SNPs in the correspondingly named sequence. The corresponding snpma_preserved.fasta file is produced when snp filtering removes the abnormal snps.
+* ``snp_distance_pairwise.tsv`` : contains the pairwise SNP distance between all pairs of samples. The file is tab-separated, with a header row and three columns identifing the two sequences and their distance. The corresponding snp_distance_pairwise_preserved.tsv file is produced when snp filtering removes the abnormal snps.
+* ``snp_distance_matrix.tsv`` : contains a matrix of the SNP distances between all pairs of samples. The file is tab-separated, with a header row and rows and columns for all samples. The corresponding snp_distance_matrix_preserved.tsv file is produced when snp filtering removes the abnormal snps.
+* ``snpma.vcf`` : contains the merged multi-sample VCF file identifying the positions and snps for all samples. The corresponding ``snpma_preserved.vcf`` file is produced when snp filtering removes the abnormal snps.
+* ``referenceSNP.fasta`` : a fasta file containing the reference sequence bases at all the SNP locations. The corresponding referenceSNP_preserved.fasta file is produced when snp filtering removes the abnormal snps.
+
+
+
+
+
+
+
+
+
 ## kSNP3
 * [kSNP3](https://sourceforge.net/projects/ksnp/files/)
   * kSNP identifies the pan-genome SNPs in a set of genome sequences, and estimates phylogenetic trees based upon those SNPs. SNP discovery is based on k-mer analysis, and requires no multiple sequence alignment or the selection of a reference genome, so kSNP can take 100's of microbial genomes as input. A SNP locus is defined by an oligo of length k surrounding a central SNP allele. kSNP can analyze both complete (finished) genomes and unfinished genomes in assembled contigs or raw, unassembled reads. Finished and unfinished genomes can be analyzed together, and kSNP can automatically download Genbank files of the finished genomes and incorporate the information in those files into the SNP annotation
