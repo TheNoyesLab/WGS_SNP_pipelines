@@ -25,6 +25,10 @@
       * Similarly, other user-defined regions in a BED-formatted file can be supplied to mask unwanted sequences from SNP calling. One example is that, although phages can be useful for typing in their own right (Chen and Knabel, 2008), phage sequences should be removed from a SNP analysis because they often display different rates of mutation than bacterial core genomes. If phages appear to contribute to phylogenetic noise in an investigation, Lyve-SET can provide phage sequence identification with a script set_findPhages.pl which is based on a BLAST search against the PHAST database (Zhou et al., 2011).
       * Another way for Lyve-SET to detect troublesome regions is to discard clustered SNPs. For most organisms, this option is preset to 5 bp, such that only one SNP per 5 bp passes the filter. Much like MLST, discarding clustered SNPs reduces noise introduced by horizontal gene transfer. This flanking distance hypothetically should approximate the average recombination cassette length (Vos and Didelot, 2009), but empirically we have found that having a low flanking distance, e.g., 5 bp, is sufficient. 
 
+### lyve-set workflow
+
+Includes presets for Salmonella, Listeria
+
 ### Lyve-SET Output Files
   * [Detailed description of each output file](https://github.com/lskatz/lyve-SET/blob/master/docs/OUTPUT.md)
   * [Visualizing the output files](https://github.com/lskatz/lyve-SET/blob/master/docs/VIZ.md)
