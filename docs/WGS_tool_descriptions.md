@@ -37,6 +37,8 @@
 
 ### CFSAN workflow
 
+No need to specify other flags other than the standard flags.
+
 1. Gather data
 2. Prep work
 3. Prep the reference
