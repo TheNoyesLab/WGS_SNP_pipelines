@@ -19,7 +19,8 @@ export CLASSPATH=/s/angus/index/common/tools/picard.jar:$CLASSPATH
 https://software.broadinstitute.org/gatk/download/archive
 export CLASSPATH=/s/angus/index/common/tools/GenomeAnalysisTK.jar:$CLASSPATH
 
-
+# ALso need to load bowtie2
+module load bowtie2
 
 ## Run the pipeline using the main_combined_pipelines.nf script which uses the following command to run cfsansnp
 cfsan_snp_pipeline run -m soft -o outputDirectory -s 63_samples /media/AngusWorkspace/WGS_test/ref_NC_003197.fasta
