@@ -118,6 +118,15 @@ Ignored     : 2
 CFSAN
 screen -x run_sal_ms_ksnp
 /tempalloc/noyes042/WGS_project/work_salm_ms/20/dc46ec80e5583548af430bec740554
+2020-08-15 19:13:05 cfsan_snp_pipeline map_reads finished
+(cfsan_snp) edoster@cn4201 [/tempalloc/noyes042/WGS_project/work_salm_ms/20/dc46ec80e5583548af430bec740554/CFSAN_snp_results] % du --max-depth=1 -h
+44M     ./logs-20200813.005847
+18M     ./reference
+1.7T    ./samples
+44M     ./logs-20200813.175830
+1.7T    .
+
+
 
 RunLYVESET
 screen -x run_sal_ms_lyve
