@@ -1,5 +1,14 @@
 # Overview of process for installing WGS tools
 
+## To run all 4 pipelines on MSI
+```
+module load bowtie2
+module load perl/modules.centos7.5.26.1
+module load  ncbi_toolkit
+# make sure samtools v1.9 is in your PATH
+```
+
+
 ## CFSAN SNP
 
 ```
