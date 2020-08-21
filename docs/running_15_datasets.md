@@ -31,7 +31,13 @@ escherichia_coli
 * mask-phages = 1
 
 
+# Outbreak 
 
+
+```
+nextflow run main_combined_pipeline.nf --reference_genome /tempalloc/noyes042/WGS_project/ref_Ecoli_NC_000913.fasta --reads '/tempalloc/noyes042/WGS_project/genomes_romaine_outbreak/*_{1,2}.fastq.gz' -profile singularity --output /tempalloc/noyes042/WGS_project/E_coli_SD_WGS_results --threads 30 -w /tempalloc/noyes042/WGS_project/work_ecoli_SD -resume -with-report Ecoli_SD_WGS_tools.report -with-trace -with-timeline
+
+```
 
 
 # Geography
