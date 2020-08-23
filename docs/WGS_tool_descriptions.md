@@ -107,6 +107,11 @@ bacterial genomes.
 ## Enterobase
 * [ENTEROBASE](https://github.com/zheminzhou/EToKi)
 
+* Downloading MLST profiles and allele sequences
+  * wgMLST E coli/Shigella: 25002
+  * cgMLST V1 + HierCC V1: 2513
+  * 7 gene Achtman allele set
+
 ## BioNumerics
 * PulseNet International has recommended a so-called whole-genome MLST approach (wgMLST) in which genomes are compared on a gene-by-gene basis.
 * [wgMLST/BioNumerics](https://www.applied-maths.com/applications/wgmlst)
