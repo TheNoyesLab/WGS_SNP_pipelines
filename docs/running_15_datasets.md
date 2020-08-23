@@ -40,6 +40,7 @@ screen -x run_Ecoli
 nextflow run final_no_etoki_combined_pipeline.nf --reference_genome /tempalloc/noyes042/WGS_project/ref_Ecoli_NC_000913.fasta --reads '/tempalloc/noyes042/WGS_project/genomes_romaine_outbreak/*_{1,2}.fastq.gz' -profile singularity --output /tempalloc/noyes042/WGS_project/E_coli_romaine_oubtbreak_WGS_results --threads 20 -w /tempalloc/noyes042/WGS_project/work_ecoli_outbreak -resume -with-report Ecoli_outbreak_WGS_tools.report -with-trace -with-timeline
 
 
+nextflow run final_only_etoki_pipeline.nf --reference_genome /tempalloc/noyes042/WGS_project/ref_Ecoli_NC_000913.fasta --reads '/tempalloc/noyes042/WGS_project/genomes_romaine_outbreak/*_{1,2}.fastq.gz' -profile singularity --output /tempalloc/noyes042/WGS_project/E_coli_romaine_oubtbreak_etoki_WGS_results --threads 20 -w /tempalloc/noyes042/WGS_project/work_ecoli_etoki_outbreak -resume -with-report Ecoli_outbreak_etoki_WGS_tools.report -with-trace -with-timeline
 
 ```
 
