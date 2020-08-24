@@ -42,7 +42,22 @@ nextflow run final_no_etoki_combined_pipeline.nf --reference_genome /tempalloc/n
 
 nextflow run final_only_etoki_pipeline.nf --reference_genome /tempalloc/noyes042/WGS_project/ref_Ecoli_NC_000913.fasta --reads '/tempalloc/noyes042/WGS_project/genomes_romaine_outbreak/*_{1,2}.fastq.gz' -profile singularity --output /tempalloc/noyes042/WGS_project/E_coli_romaine_oubtbreak_etoki_WGS_results --threads 20 -w /tempalloc/noyes042/WGS_project/work_ecoli_etoki_outbreak -resume -with-report Ecoli_outbreak_etoki_WGS_tools.report -with-trace -with-timeline
 
+
 ```
+* kSNP3
+  * Starting kSNP - Fri Aug 21 20:47:40 CDT 2020
+  * Finished running kSNP - Sat Aug 22 06:28:49 CDT 2020 Elapsed time for kSNP in hours: 9.6858333333333
+* Cfsan-snp
+  * re-started 9/22/2020 at 8:13pm CST
+  * 2020-08-23 15:57:06 cfsan_snp_pipeline run finished
+* lyve-set
+  * launch_set.pl:  Finished at 2020-08-24 05:31:36
+  * launch_set.pl:  Duration: 1985 minutes, 42 seconds
+
+
+
+
+
 
 
 # Geography
@@ -162,13 +177,7 @@ screen -x run_sal_ms_ksnp
 RunLYVESET
 screen -x run_sal_ms_lyve
 /tempalloc/noyes042/WGS_project/work_salm_ms/d4/23464e3dfd8479110f990a7a1cd3aa
-
-
-~> TaskHandler[id: 1212; name: RunKSNP3 (null); status: RUNNING; exit: -; error: -; workDir: /tempalloc/noyes042/WGS_project/work_salm_ms/5d/c0e137d5a55044636dd6e992d2634b]
-
-
-
-~> TaskHandler[id: 1209; name: RunLYVESET (null); status: RUNNING; exit: -; error: -; workDir: /tempalloc/noyes042/WGS_project/work_salm_ms/d4/23464e3dfd8479110f990a7a1cd3aa]
+* after many failed starts, lyveset reports:launch_set.pl:  Finished at 2020-08-23 13:43:57 launch_set.pl:  Duration: 6610 minutes, 11 seconds
 
 
 
