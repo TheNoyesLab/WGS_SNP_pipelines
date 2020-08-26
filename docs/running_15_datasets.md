@@ -53,6 +53,15 @@ nextflow run final_only_etoki_pipeline.nf --reference_genome /tempalloc/noyes042
 * lyve-set
   * launch_set.pl:  Finished at 2020-08-24 05:31:36
   * launch_set.pl:  Duration: 1985 minutes, 42 seconds
+* Enterobase
+
+Completed at: 25-Aug-2020 07:16:28
+Duration    : 14h 7m 57s
+CPU hours   : 66.9 (17.2% cached, 0.4% failed)
+Succeeded   : 243
+Cached      : 243
+Ignored     : 1
+
 
 
 
@@ -75,6 +84,12 @@ nextflow run main_combined_pipeline.nf --reference_genome /tempalloc/noyes042/WG
 # RunCFSAN
 screen -x run_ecoli_cfsan
 /tempalloc/noyes042/WGS_project/work_ecoli_SD/75/65ae63e8499faa9b7246ffc028e578
+There were errors processing some samples.
+See the log file CFSAN_snp_results/error.log for a summary of errors.
+Elapsed time = 5655.657072067261
+
+# 2020-08-24 16:25:24 cfsan_snp_pipeline run finished
+
 
 # Lyve set
 # RunLYVESET (null); status: RUNNING; exit: -; error: -; workDir:
@@ -86,6 +101,9 @@ screen -x run_ecoli_lyve
 
 
 ```
+
+
+
 
 
 
