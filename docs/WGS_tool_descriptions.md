@@ -33,7 +33,28 @@ Includes presets for Salmonella, Listeria
   * [Detailed description of each output file](https://github.com/lskatz/lyve-SET/blob/master/docs/OUTPUT.md)
   * [Visualizing the output files](https://github.com/lskatz/lyve-SET/blob/master/docs/VIZ.md)
     * If available, we recommend using Geneious to visualize the tree.dnd file.
-  * align_out.fasta.gz imported into geneious
+  * align_out.fasta.gz can be imported into geneious
+```
+# In case of error, pick up from having vcf files
+mergeVcf.sh -o msa/out.pooled.vcf.gz vcf/*.vcf.gz # get a pooled VCF
+cd msa
+pooledToMatrix.sh -o out.bcftoolsquery.tsv out.pooled.vcf.gz  # Create a readable matrix
+filterMatrix.pl --noambiguities --noinvariant  < out.bcftoolsquery.tsv > out.filteredbcftoolsquery.tsv # Filter out low-quality sites
+matrixToAlignment.pl < out.filteredbcftoolsquery.tsv > out.aln.fas  # Create an alignment in standard fasta format
+set_processMsa.pl --numcpus 12 --auto --force out.aln.fas # Run the next steps in this mini-pipeline
+
+
+
+# Commands to add for creating trees
+removeUninformativeSites.pl --gaps-allowed --ambiguities-allowed out.aln.fas > variantSites.fasta
+pairwiseDistances.pl --numcpus 12 variantSites.fasta | sort -k3,3n | tee pairwise.tsv | pairwiseTo2d.pl > pairwise.matrix.tsv && rm variantSites.fasta
+set_indexCase.pl pairwise.tsv | sort -k2,2nr > eigen.tsv # Figure out the most "connected" genome which is the most likely index case
+launch_raxml.sh -n 12 informative.aln.fas informative # create a tree with the suffix 'informative'
+applyFstToTree.pl --numcpus 12 -t RAxML_bipartitions.informative -p pairwise.tsv --outprefix fst --outputType averages > fst.avg.tsv  # look at the Fst for your tree (might result in an error for some trees, like polytomies)
+applyFstToTree.pl --numcpus 12 -t RAxML_bipartitions.informative -p pairwise.tsv --outprefix fst --outputType samples > fst.samples.tsv  # instead of average Fst values per tree node, shows you each repetition
+
+```
+ 
 
 ## CFSAN-snp
 * The FDA uses a core genome SNP-based approach with CFSAN-snp.
