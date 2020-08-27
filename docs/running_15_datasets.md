@@ -220,3 +220,6 @@ screen -x run_sal_ms_lyve
 ```
 nextflow run main_combined_pipeline.nf --reference_genome /tempalloc/noyes042/WGS_project/ref_L_monocytogenes_NC_003210.fasta --reads '/tempalloc/noyes042/WGS_project/genomes_List_high_quality/*_{1,2}.fastq.gz' -profile singularity --output /tempalloc/noyes042/WGS_project/L_monocytogenes_IBM_WGS_results --threads 20 -w /tempalloc/noyes042/WGS_project/work_ibm_list -resume -with-report List_IBM_WGS_tools.report -with-trace -with-timeline
 ```
+
+cfsan
+/tempalloc/noyes042/WGS_project/work_ibm_list/1e/5ddc19dff0ed16720e49848b6b7fa9/CFSAN_snp_results
