@@ -95,6 +95,10 @@ Elapsed time = 5655.657072067261
 # RunLYVESET (null); status: RUNNING; exit: -; error: -; workDir:
 screen -x run_ecoli_lyve
 /tempalloc/noyes042/WGS_project/work_ecoli_SD/18/8f1dd5cada35dfaf6706aa356d4842
+After many failed attempts
+launch_set.pl:  Finished at 2020-08-26 07:23:36
+launch_set.pl:  Duration: 425 minutes, 10 seconds
+
 
 # kSNP3 
 /tempalloc/noyes042/WGS_project/work_ecoli_SD/5e/68619add4d52fe6eccebe4188cfec4
