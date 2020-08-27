@@ -1,6 +1,13 @@
 # Overview
 
 Unfortunately, running the full nextflow pipeline still has issues for each 
+```
+module load bowtie2
+module load perl/modules.centos7.5.26.1
+module load  ncbi_toolkit
+# make sure samtools v1.9 is in your PATH
+```
+
 
 Anaconda environments
 ```
