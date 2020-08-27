@@ -40,7 +40,18 @@ escherichia_coli
 
 # Outbreak 
 
-E coli outbreak genomes
+## Listeria NY + outbreak
+# kSNP
+/tempalloc/noyes042/WGS_project/work_ny_outbreak_list/a7/8963a9f49da039eb7b9d7d0786d48f
+
+# Lyveset
+/tempalloc/noyes042/WGS_project/work_ny_outbreak_list/b9/40e300f7da48aad4e2c82fdd3c9cd4
+
+# cfsan
+/tempalloc/noyes042/WGS_project/work_ny_outbreak_list/7d/46ddda65c6fd897f78b6afab06f96e
+
+
+## E coli romaine outbreak genomes
 ```
 screen -x run_Ecoli
 
