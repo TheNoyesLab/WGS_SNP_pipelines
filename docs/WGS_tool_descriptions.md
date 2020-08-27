@@ -33,6 +33,7 @@ Includes presets for Salmonella, Listeria
   * [Detailed description of each output file](https://github.com/lskatz/lyve-SET/blob/master/docs/OUTPUT.md)
   * [Visualizing the output files](https://github.com/lskatz/lyve-SET/blob/master/docs/VIZ.md)
     * If available, we recommend using Geneious to visualize the tree.dnd file.
+  * align_out.fasta.gz imported into geneious
 
 ## CFSAN-snp
 * The FDA uses a core genome SNP-based approach with CFSAN-snp.
