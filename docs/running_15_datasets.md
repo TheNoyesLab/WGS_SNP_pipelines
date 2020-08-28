@@ -49,6 +49,9 @@ escherichia_coli
 
 # cfsan
 /tempalloc/noyes042/WGS_project/work_ny_outbreak_list/7d/46ddda65c6fd897f78b6afab06f96e
+2020-08-27 18:13:30 cfsan_snp_pipeline combine_metrics finished
+Elapsed time = 10366.468556404114
+2020-08-27 18:13:30 cfsan_snp_pipeline run finished
 
 
 ## E coli romaine outbreak genomes
