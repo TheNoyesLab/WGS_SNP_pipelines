@@ -46,6 +46,8 @@ escherichia_coli
 
 # Lyveset
 /tempalloc/noyes042/WGS_project/work_ny_outbreak_list/b9/40e300f7da48aad4e2c82fdd3c9cd4
+launch_set.pl:  Finished at 2020-08-28 11:05:42
+launch_set.pl:  Duration: 1188 minutes, 5 seconds
 
 # cfsan
 /tempalloc/noyes042/WGS_project/work_ny_outbreak_list/7d/46ddda65c6fd897f78b6afab06f96e
