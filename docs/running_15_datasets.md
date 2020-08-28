@@ -41,15 +41,15 @@ escherichia_coli
 # Outbreak 
 
 ## Listeria NY + outbreak
-# kSNP
+### kSNP
 /tempalloc/noyes042/WGS_project/work_ny_outbreak_list/a7/8963a9f49da039eb7b9d7d0786d48f
 
-# Lyveset
+### Lyveset
 /tempalloc/noyes042/WGS_project/work_ny_outbreak_list/b9/40e300f7da48aad4e2c82fdd3c9cd4
 launch_set.pl:  Finished at 2020-08-28 11:05:42
 launch_set.pl:  Duration: 1188 minutes, 5 seconds
 
-# cfsan
+### cfsan
 /tempalloc/noyes042/WGS_project/work_ny_outbreak_list/7d/46ddda65c6fd897f78b6afab06f96e
 2020-08-27 18:13:30 cfsan_snp_pipeline combine_metrics finished
 Elapsed time = 10366.468556404114
