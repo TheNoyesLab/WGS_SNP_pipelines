@@ -50,6 +50,8 @@ removeUninformativeSites.pl --gaps-allowed --ambiguities-allowed out.aln.fas > v
 pairwiseDistances.pl --numcpus 12 variantSites.fasta | sort -k3,3n | tee pairwise.tsv | pairwiseTo2d.pl > pairwise.matrix.tsv && rm variantSites.fasta
 set_indexCase.pl pairwise.tsv | sort -k2,2nr > eigen.tsv # Figure out the most "connected" genome which is the most likely index case
 launch_raxml.sh -n 12 out.aln.fas informative # create a tree with the suffix 'informative'
+# Note the "-O" options which lets raxML skip errors due to identical sequences
+/home/noyes046/shared/tools/lyve-SET-1.1.4g/scripts/raxmlHPC-PTHREADS -f a -s out.aln.fas.phy -n informative -T 100 -p 4956 -x 12379 -N 100 -m ASC_GTRGAMMA --asc-corr=lewis -O
 applyFstToTree.pl --numcpus 12 -t RAxML_bipartitions.informative -p pairwise.tsv --outprefix fst --outputType averages > fst.avg.tsv  # look at the Fst for your tree (might result in an error for some trees, like polytomies)
 applyFstToTree.pl --numcpus 12 -t RAxML_bipartitions.informative -p pairwise.tsv --outprefix fst --outputType samples > fst.samples.tsv  # instead of average Fst values per tree node, shows you each repetition
 
