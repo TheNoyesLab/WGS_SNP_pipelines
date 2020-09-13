@@ -65,8 +65,17 @@ From: debian:jessie-slim
     make
     cd ~
     echo 'export PATH=/usr/local/samtools-1.9/:$PATH' >> $SINGULARITY_ENVIRONMENT
-    make
 
+
+    # Install bowtie2 from binary
+    #cd /usr/local
+    #wget https://github.com/BenLangmead/bowtie2/archive/v2.3.5.1.tar.gz
+    #tar -vxf v2.3.5.1.tar.gz
+    #cd bowtie2-2.3.5.1/
+    #make
+    #cd ~
+    #echo 'export PATH=/usr/local/bowtie2-2.3.5.1/:$PATH' >> $SINGULARITY_ENVIRONMENT
+    
 
     # Automatic quake installation causes error
     #make install-quake    
@@ -75,12 +84,11 @@ From: debian:jessie-slim
     
     echo 'export PATH=$PATH:/usr/local/lyve-SET-2.0.1/build/Quake/bin' >> $SINGULARITY_ENVIRONMENT
     
-
-    #Installing Anaconda 2 and Conda 4.5.11
-    wget -c https://repo.continuum.io/archive/Anaconda2-5.3.0-Linux-x86_64.sh
-    sh Anaconda2-5.3.0-Linux-x86_64.sh -bfp /usr/local
+    #Installing Anaconda 3 and Anaconda3-2020.07-Linux-x86_64.sh
+    wget -c https://repo.continuum.io/archive/Anaconda3-2020.07-Linux-x86_64.sh
+    sh Anaconda3-2020.07-Linux-x86_64.sh -bfp /usr/local
 
     # install java
-    conda install -c anaconda openjdk
+    conda install -c anaconda openjdk bowtie2
     
 %test
