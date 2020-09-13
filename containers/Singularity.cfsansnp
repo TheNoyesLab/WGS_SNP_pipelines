@@ -19,9 +19,9 @@ From: debian:jessie-slim
     # Not my favorite workaround, but to get cfsan snp to work with samtools, we have to change which libncurses library is used. Problem is anaconda doesn't have the right version of samtools.
     sudo ln -s /lib/x86_64-linux-gnu/libncursesw.so.5  /lib/x86_64-linux-gnu/libncursesw.so.6
 
-    #Installing Anaconda 2 and Conda 4.5.11
-    wget -c https://repo.continuum.io/archive/Anaconda3-5.3.1-Linux-x86_64.sh
-    sh Anaconda3-5.3.1-Linux-x86_64.sh -bfp /usr/local
+    #Installing Anaconda 3 and Anaconda3-2020.07-Linux-x86_64.sh
+    wget -c https://repo.continuum.io/archive/Anaconda3-2020.07-Linux-x86_64.sh
+    sh Anaconda3-2020.07-Linux-x86_64.sh -bfp /usr/local
 
     # add bioconda channels
     conda config --add channels defaults
