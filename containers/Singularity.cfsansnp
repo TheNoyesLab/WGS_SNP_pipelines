@@ -46,7 +46,6 @@ From: debian:jessie-slim
     make
     cd ~
     echo 'export PATH=/usr/local/samtools-1.9/:$PATH' >> $SINGULARITY_ENVIRONMENT
-    make
     
     #Still experimenting with how to change $PATH location. Need to remove GATK jar file to work with cfsan snp
     #echo 'export PATH=$PATH:/usr/local/envs/snp-tools/bin/' >> $SINGULARITY_ENVIRONMENT
