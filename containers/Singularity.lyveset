@@ -28,9 +28,6 @@ From: debian:jessie-slim
     cpanm URI::Escape --force
     cpanm Bio::FeatureIO --force
     
-    #cpanm Bio::DB::EUtilities
-    
-
     # Install blast
     cd /usr/local
     wget https://ftp.ncbi.nlm.nih.gov/blast/executables/blast+/2.10.1/ncbi-blast-2.10.1+-x64-linux.tar.gz 
@@ -76,7 +73,6 @@ From: debian:jessie-slim
     #cd ~
     #echo 'export PATH=/usr/local/bowtie2-2.3.5.1/:$PATH' >> $SINGULARITY_ENVIRONMENT
     
-
     # Automatic quake installation causes error
     #make install-quake    
     wget http://www.cbcb.umd.edu/software/quake/downloads/quake-0.3.5.tar.gz -O /usr/local/lyve-SET-2.0.1/build/quake-0.3.5.tar.gz
