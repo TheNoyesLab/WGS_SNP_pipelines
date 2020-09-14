@@ -85,6 +85,6 @@ From: debian:jessie-slim
     sh Anaconda3-2020.07-Linux-x86_64.sh -bfp /usr/local
 
     # install java
-    conda install -c anaconda openjdk bowtie2
+    conda install -c anaconda -c bioconda bowtie2 openjdk
     
 %test
