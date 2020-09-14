@@ -33,9 +33,9 @@ From: debian:jessie-slim
 
     # Install blast
     cd /usr/local
-    wget https://ftp.ncbi.nlm.nih.gov/blast/executables/LATEST/ncbi-blast-2.10.0+-x64-linux.tar.gz
-    tar -xvzf ncbi-blast-2.10.0+-x64-linux.tar.gz
-    echo 'export PATH=$PATH:/usr/local/ncbi-blast-2.10.0+/bin' >> $SINGULARITY_ENVIRONMENT
+    wget https://ftp.ncbi.nlm.nih.gov/blast/executables/blast+/2.10.1/ncbi-blast-2.10.1+-x64-linux.tar.gz 
+    tar -xvzf ncbi-blast-2.10.1+-x64-linux.tar.gz
+    echo 'export PATH=$PATH:/usr/local/ncbi-blast-2.10.1+/bin' >> $SINGULARITY_ENVIRONMENT
 
     cd /usr/local
     wget https://github.com/lskatz/lyve-SET/archive/v2.0.1.zip
