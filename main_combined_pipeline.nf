@@ -156,7 +156,7 @@ process RunKSNP3 {
     tag { sample_id }
 
     module 'singularity'
-    container 'shub://TheNoyesLab/WGS_SNP_pipelines:kSNP3_cfsansnp'    
+    container 'shub://TheNoyesLab/WGS_SNP_pipelines:ksnp3_cfsansnp'    
     publishDir "${params.output}/kSNP3_results", mode: "copy"
     errorStrategy 'ignore'
 
