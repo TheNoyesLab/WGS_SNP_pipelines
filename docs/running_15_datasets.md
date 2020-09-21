@@ -230,12 +230,29 @@ screen -x run_sal_ms_lyve
 
 # High quality
 
-## Listeria - high-quality - 6539 + Listeria outbreak genomes
+## Listeria - high-quality - 6539 + Listeria outbreak genomes = 6622
 * started running September 13, 2020 @ 9:40pm
 
 ```
 nextflow run main_combined_pipeline.nf --reference_genome /tempalloc/noyes042/WGS_project/ref_L_monocytogenes_NC_003210.fasta --reads '/tempalloc/noyes042/WGS_project/genomes_List_high_quality/*_{1,2}.fastq.gz' -profile singularity --output /tempalloc/noyes042/WGS_project/L_monocytogenes_IBM_WGS_results --threads 20 -w /tempalloc/noyes042/WGS_project/work_ibm_list -resume -with-report List_IBM_WGS_tools.report -with-trace -with-timeline
+
+~> TaskHandler[id: 14960; name: RunLYVESET (null); status: RUNNING; exit: -; error: -; workDir: /tempalloc/noyes042/WGS_project/work_ibm_list/21/60f214886c89135b054becd03d9d09]
+~> TaskHandler[id: 19874; name: etoki_align (null); status: RUNNING; exit: -; error: -; workDir: /tempalloc/noyes042/WGS_project/work_ibm_list/69/aeabc11219d6827bf0cb156fe39af9]
+
+
+##CFSAN
+/tempalloc/noyes042/WGS_project/work_ibm_list/23/1cb94e8db85bf17db2c839160fc2ce
+
+Exiting now ...
+# 2020-09-16 03:37:14 
+# Restarted Mon Sep 21 12:50:00 CDT 2020
+
+## kSNP3
+/tempalloc/noyes042/WGS_project/work_ibm_list/88/7618b34bbba9d4fe7d831bd9a291bc
+# Restarted Mon Sep 21 12:52:27 CDT 2020
+
+
 ```
 
-cfsan
-/tempalloc/noyes042/WGS_project/work_ibm_list/1e/5ddc19dff0ed16720e49848b6b7fa9/CFSAN_snp_results
+
+
