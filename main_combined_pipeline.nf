@@ -36,6 +36,7 @@ threads = params.threads
 output = params.output
 
 threshold = params.threshold
+species = params.species
 
 min = params.min
 max = params.max
@@ -47,12 +48,6 @@ trailing = params.trailing
 slidingwindow = params.slidingwindow
 minlen = params.minlen
 
-/*
-Channel
-    .fromFilePairs( params.reference_genome, size: 1)
-    .ifEmpty { exit 1, "Reference genome could not be found: ${params.reference_genome}" }
-    .set { reference_genome }
-*/
 
 Channel
     .fromFilePairs( params.reads, flat: true )
@@ -70,7 +65,7 @@ process RunFastqConvert {
 
     module 'singularity'
     errorStrategy 'ignore'
-    publishDir "${params.output}/processed_reads", mode: "symlink"
+    publishDir "${params.output}/Interleaved_fasta", mode: "symlink"
 
 
     input:
@@ -86,7 +81,7 @@ process RunFastqConvert {
     shuffleSplitReads.pl --numcpus ${threads} -o interleaved_reads/ *_{1,2}.fastq.gz
     cp interleaved_reads/${sample_id}.fastq.gz ${sample_id}.cp.fastq.gz
     zcat ${sample_id}.cp.fastq.gz | paste - - - - | sed 's/^@/>/g'| cut -f1-2 | tr '\t' '\n' > ${sample_id}.fasta
-    echo '${params.output}/processed_reads/${sample_id}.fasta\t${sample_id}' > ${sample_id}.ksnp3_genome_list.tsv
+    echo '${params.output}/Interleaved_fasta/${sample_id}.fasta\t${sample_id}' > ${sample_id}.ksnp3_genome_list.tsv
 
     mkdir ${sample_id}
     mv ${forward} ${sample_id}/
@@ -125,14 +120,14 @@ process RunMakeList {
 
 /*
 Run CFSAN
+container 'docker://staphb/cfsan-snp-pipeline'
 */
 
 process RunCFSAN {
 
-    module 'singularity'
-    container 'docker://staphb/cfsan-snp-pipeline'
     errorStrategy 'ignore'
-
+    module 'singularity'
+    container 'shub://TheNoyesLab/WGS_SNP_pipelines:cfsansnp'     
     publishDir "${params.output}/CFSAN", mode: "copy"
 
     input:
@@ -161,6 +156,7 @@ process RunKSNP3 {
     tag { sample_id }
 
     module 'singularity'
+    container 'shub://TheNoyesLab/WGS_SNP_pipelines:kSNP3_cfsansnp'    
     publishDir "${params.output}/kSNP3_results", mode: "copy"
     errorStrategy 'ignore'
 
@@ -179,13 +175,15 @@ process RunKSNP3 {
 
 /*
 Run Lyveset
+container 'docker://staphb/lyveset:1.1.4f'
 */
 
 
 process RunLYVESET {
     tag { sample_id }
+    
     module 'singularity'
-    container 'docker://staphb/lyveset:1.1.4f'
+    container 'shub://TheNoyesLab/WGS_SNP_pipelines:lyveset'
     errorStrategy 'ignore'
     publishDir "${params.output}/Lyveset_results", mode: "copy"
 
@@ -201,21 +199,19 @@ process RunLYVESET {
     mv ${combined_interleaved_fastq} Lyveset_results/reads/
     mv ${reference_genome} Lyveset_results/reference/ref_genome.fasta
     mkdir Lyveset_temp/
-    launch_set.pl --numcpus ${threads} -ref Lyveset_results/reference/ref_genome.fasta Lyveset_results --noqsub --read_cleaner CGP --tmpdir Lyveset_temp/
+    launch_set.pl --numcpus ${threads} -ref Lyveset_results/reference/ref_genome.fasta Lyveset_results --noqsub --read_cleaner CGP --tmpdir Lyveset_temp/ --presets ${species}
     #rm -rf Lyveset_results/reads/
     """
 }
-
 
 
 process etoki_FastqQC {
     tag {sample_id}
 
     module 'singularity'
+    container 'shub://TheNoyesLab/WGS_SNP_pipelines:etoki'
     errorStrategy 'ignore'
     publishDir "${params.output}/etoki_fastqQC", mode: "symlink"
-
-    container 'shub://TheNoyesLab/WGS_SNP_pipelines:etoki'
 
     input:
       set sample_id, file(forward), file(reverse) from etoki_reads
@@ -272,11 +268,10 @@ process etoki_align {
 
     """
     python /usr/local/EToKi/EToKi.py align -r ${reference_genome} -a -p align_out ${all_assembled_genomes}
-    python /usr/local/EToKi/EToKi.py phylo -p phylo_tree -s align_out.matrix.gz -m align_out.fasta.gz
+    python /usr/local/EToKi/EToKi.py phylo -t all -p phylo_tree -s align_out.matrix.gz -m align_out.fasta.gz
     rm *assemble.result*
     """
 }
-
 
 
 def nextflow_version_error() {
