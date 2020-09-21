@@ -51,12 +51,17 @@ The overall goal of this project is to support an accurate, reproducible, transp
 * This pipeline requires singularity to be installed and available in your $PATH.
 
 
-### Example command
+### Example commands
 ```bash
+## Main steps
+# Load singularity module 
+# Make sure nextflow is installed and in your $PATH
+# Download this git repository, navigate inside it and modify the commands below to suit your data
+# Remeber to change the "species" flag. Options are: escherichia_coli, salmonella_enterica, and listeria_monocytogenes
 
 # Main combined pipeline
 # Input is paired end reads
-nextflow run main_combined_pipeline.nf --reference_genome /scratch.global/Salmonella_WGS/ref_L_monocytogenes_NC_003210.fasta --reads "/scratch.global/Salmonella_WGS/List_test_genomes/*_{1,2}.fastq.gz" -profile test_singularity_pbs --output /scratch.global/Salmonella_WGS/test_GenomeTrakr_L_monocytogenes_WGS_results --threads 128 -w /scratch.global/Salmonella_WGS/work_test_qsub_l_latest -resume -with-report test_250_Listeria_WGS_tools.report -with-trace -with-timeline
+nextflow run main_combined_pipeline.nf --species "salmonella_enterica" --reference_genome /scratch.global/Salmonella_WGS/ref_L_monocytogenes_NC_003210.fasta --reads "/scratch.global/Salmonella_WGS/List_test_genomes/*_{1,2}.fastq.gz" -profile test_singularity_pbs --output /scratch.global/Salmonella_WGS/test_GenomeTrakr_L_monocytogenes_WGS_results --threads 20 -w /scratch.global/Salmonella_WGS/work_test_qsub_l_latest -resume -with-report test_250_Listeria_WGS_tools.report -with-trace -with-timeline
 
 
 # Lyveset
