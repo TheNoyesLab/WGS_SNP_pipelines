@@ -53,11 +53,17 @@ The overall goal of this project is to support an accurate, reproducible, transp
 
 ### Example commands
 ```bash
+## Download genomes from ncbi
+# On MSI, you can use the scripts in the "bin" directory to download SRA files.
+# Make a text file with one SRA value per row.
+# Modify the "prefetch_SRA_from_file.sh" to point to your file with SRA values. NB. This will download prefetch values to your default location (usually in $HOME). Run this script using bash, or submit as a job to MSI by removing the first "#" in the first few rows of the script.
+# Modify the "fastq_dump_from_sra.sh" to point to the location of the SRA files and to output the fastq files into your desired output directory.
+
 ## Main steps
 # Load singularity module 
 # Make sure nextflow is installed and in your $PATH
 # Download this git repository, navigate inside it and modify the commands below to suit your data
-# Remeber to change the "species" flag. Options are: escherichia_coli, salmonella_enterica, and listeria_monocytogenes
+# Remember to change the "species" flag. Options are: escherichia_coli, salmonella_enterica, and listeria_monocytogenes
 
 # Main combined pipeline
 # Input is paired end reads
