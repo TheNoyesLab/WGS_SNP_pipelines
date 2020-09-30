@@ -3,7 +3,7 @@
 Unfortunately, running the full nextflow pipeline still has issues for lyveset and cfsan-snp
 Run the commands below to load the correct tools:
 ```
-module load bowtie2
+module load bowtie2/2.3.1
 module load perl/modules.centos7.5.26.1
 module load  ncbi_toolkit
 # make sure samtools v1.9 is in your PATH
@@ -251,6 +251,9 @@ Exiting now ...
 /tempalloc/noyes042/WGS_project/work_ibm_list/88/7618b34bbba9d4fe7d831bd9a291bc
 # Restarted Mon Sep 21 12:52:27 CDT 2020
 
+
+# Lyvest
+# Restarting Sep 29, 2020 at 9:23pm
 
 ```
 
