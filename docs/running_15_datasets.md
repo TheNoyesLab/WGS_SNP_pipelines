@@ -95,36 +95,12 @@ Ignored     : 1
 # Geography
 
 ## E coli - South Dakota - 
-screen -x run_Ecoli
+November 6, 2020 @ 10:50am - Started re-running with Ecoli outbreak genomes included
 /tempalloc/noyes042/WGS_project/run_Ecoli_WGS_SNP_pipelines
+
 
 ```
 nextflow run main_combined_pipeline.nf --reference_genome /tempalloc/noyes042/WGS_project/ref_Ecoli_NC_000913.fasta --reads '/tempalloc/noyes042/WGS_project/genomes_Ecoli_SD/*_{1,2}.fastq.gz' -profile singularity --output /tempalloc/noyes042/WGS_project/E_coli_SD_WGS_results --threads 30 -w /tempalloc/noyes042/WGS_project/work_ecoli_SD -resume -with-report Ecoli_SD_WGS_tools.report -with-trace -with-timeline
-
-
-# Failed after 1 day, started each pipeline below at 10pm
-
-# RunCFSAN
-screen -x run_ecoli_cfsan
-/tempalloc/noyes042/WGS_project/work_ecoli_SD/75/65ae63e8499faa9b7246ffc028e578
-There were errors processing some samples.
-See the log file CFSAN_snp_results/error.log for a summary of errors.
-Elapsed time = 5655.657072067261
-
-# 2020-08-24 16:25:24 cfsan_snp_pipeline run finished
-
-
-# Lyve set
-# RunLYVESET (null); status: RUNNING; exit: -; error: -; workDir:
-screen -x run_ecoli_lyve
-/tempalloc/noyes042/WGS_project/work_ecoli_SD/18/8f1dd5cada35dfaf6706aa356d4842
-After many failed attempts
-launch_set.pl:  Finished at 2020-08-26 07:23:36
-launch_set.pl:  Duration: 425 minutes, 10 seconds
-
-
-# kSNP3 
-/tempalloc/noyes042/WGS_project/work_ecoli_SD/5e/68619add4d52fe6eccebe4188cfec4
 
 
 ```
