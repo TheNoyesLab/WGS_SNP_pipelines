@@ -153,7 +153,10 @@ java  -jar /home/noyes046/edoster/.conda/envs/WGS_tools/share/picard-2.21.6-0/pi
  ```
   
 ## Salmonella - Mississippi - 697
-  
+ 
+Restarting with outbreak genomes
+Started November 6, 2020 @ 11:45am.
+
 * Downloading files on July 20, 2020.
 * Results: /home/noyes046/shared/projects/WGS_project/Salmonella_Mississippi_WGS_results
 * Enterobase completed in 3d 23h 45m 17s
