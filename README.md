@@ -32,6 +32,7 @@ The overall goal of this project is to support an accurate, reproducible, transp
     * [wgMLST/BioNumerics](https://www.applied-maths.com/applications/wgmlst)
   * Other tools to explore
     * Simultaneous inference of phylogenetic and transmission trees in infectious disease outbreaks - https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1005495
+    * Nucleotide-resolution bacterial pan-genomics with reference graphs - https://www.biorxiv.org/content/10.1101/2020.11.12.380378v2
  
 * [Repository of useful docker containers](https://hub.docker.com/r/staphb/lyveset)
 
