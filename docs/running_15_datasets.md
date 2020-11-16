@@ -5,7 +5,7 @@ Run the commands below to load the correct tools:
 ```
 module load bowtie2/2.3.1
 module load perl/modules.centos7.5.26.1
-module load  ncbi_toolkit
+module load ncbi_toolkit
 # make sure samtools v1.9 is in your PATH
 ```
 
@@ -100,7 +100,39 @@ November 6, 2020 @ 10:50am - Started re-running with Ecoli outbreak genomes incl
 
 
 ```
-nextflow run main_combined_pipeline.nf --reference_genome /tempalloc/noyes042/WGS_project/ref_Ecoli_NC_000913.fasta --reads '/tempalloc/noyes042/WGS_project/genomes_Ecoli_SD/*_{1,2}.fastq.gz' -profile singularity --output /tempalloc/noyes042/WGS_project/E_coli_SD_WGS_results --threads 30 -w /tempalloc/noyes042/WGS_project/work_ecoli_SD -resume -with-report Ecoli_SD_WGS_tools.report -with-trace -with-timeline
+nextflow run main_combined_pipeline.nf --reference_genome /tempalloc/noyes042/WGSroject/ref_Ecoli_NC_000913.fasta --reads '/tempalloc/noyes042/WGS_project/genomes_Ecoli_SD/*_{1,2}.fastq.gz' -profile singularity --output /tempalloc/noyes042/WGS_project/E_coli_SD_WGS_results --threads 20 -w /tempalloc/noyes042/WGS_project/work_ecoli_SD -resume -with-report Ecoli_SD_WGS_tools.report -with-trace -with-timeline
+N E X T F L O W  ~  version 20.07.1
+Launching `main_combined_pipeline.nf` [mighty_leavitt] - revision: 1fbb31dc02
+executor >  local (1004)
+[ad/f8e662] process > RunFastqConvert (ecolioutbreakSRR3371990) [100%] 333 of 333 ✔
+[fc/3eabb7] process > RunMakeList (null)                        [100%] 1 of 1 ✔
+[b8/a22934] process > RunCFSAN                                  [100%] 1 of 1, failed: 1 ✔
+[36/c88f9d] process > RunKSNP3 (null)                           [100%] 1 of 1 ✔
+[79/6534ce] process > RunLYVESET (null)                         [100%] 1 of 1, failed: 1 ✔
+[7a/1f5c25] process > etoki_FastqQC (ecolioutbreakSRR3371990)   [100%] 333 of 333 ✔
+[89/e08e1a] process > etoki_assemble (ecolioutbreakSRR3371990)  [100%] 333 of 333 ✔
+[3b/d8b6da] process > etoki_align (null)                        [100%] 1 of 1 ✔
+Waiting files transfer to complete (10 files)
+Completed at: 09-Nov-2020 18:03:42
+Duration    : 3d 7h 13m 27s
+CPU hours   : 361.9 (8.2% failed)
+Succeeded   : 1'002
+Ignored     : 2
+Failed      : 2
+
+
+
+# Run lyveset
+# Started 2020-15-11 @11:08pm
+# 106175.run_ecoli_lyve
+/tempalloc/noyes042/WGS_project/work_ecoli_SD/79/6534cec04fc1302cb843404cdcfb57
+
+
+# Run CFSAN
+# Started 2020-15-11 @11pm
+# 102110.run_ecoli_cfsan
+/tempalloc/noyes042/WGS_project/work_ecoli_SD/b8/a229343a8c9969a968f0aaf92225c7
+
 
 
 ```
