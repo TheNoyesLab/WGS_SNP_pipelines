@@ -145,35 +145,17 @@ Failed      : 2
 
 ## Listeria - New York - 56
 
-* All pipelines completed and results were copied over to /home/noyes046/shared/projects/WGS_project/List_NY_WGS_results/
+* Re-running with outbreak genomes
+* Started: 12:48pm 2020-11-20
 
 ```
-
-nextflow run main_combined_pipeline.nf --reference_genome /tempalloc/noyes042/WGS_project/ref_L_monocytogenes_NC_003210.fasta --reads '/tempalloc/noyes042/WGS_project/genomes_NY_L_monocytogenes/*_{1,2}.fastq.gz' -profile singularity --output /tempalloc/noyes042/WGS_project/L_monocytogenes_NewYork_WGS_results --threads 20 -w /tempalloc/noyes042/WGS_project/work_ny_list -resume -with-report List_NY_WGS_tools.report -with-trace -with-timeline
-
-~> TaskHandler[id: 110; name: RunLYVESET (null); status: RUNNING; exit: -; error: -; workDir: /tempalloc/noyes042/WGS_project/work_ny_list/e3/b8f8b722b12e5b100a34c6ea27f1b2]
-~> TaskHandler[id: 109; name: RunCFSAN; status: RUNNING; exit: -; error: -; workDir: /tempalloc/noyes042/WGS_project/work_ny_list/a2/9ab363096d39db6fea5fdd16fefded]
-~> TaskHandler[id: 111; name: RunKSNP3 (null); status: RUNNING; exit: -; error: -; workDir: /tempalloc/noyes042/WGS_project/work_ny_list/55/85fb31df01ba6d0c688b0e612bc3d5]
-~> TaskHandler[id: 155; name: etoki_align (null); status: RUNNING; exit: -; error: -; workDir: /tempalloc/noyes042/WGS_project/work_ny_list/5e/2a63eda264d37b79bc31728903b0bd]
-
+nextflow run main_combined_pipeline.nf --reference_genome /tempalloc/noyes042/WGS_project/ref_L_monocytogenes_NC_003210.fasta --reads '/tempalloc/noyes042/WGS_project/genomes_NY_L_monocytogenes/*_{1,2}.fastq.gz' -profile singularity --output /tempalloc/noyes042/WGS_project/L_monocytogenes_NewYork_WGS_results --threads 20 -w /tempalloc/noyes042/WGS_project/work_ny_list --species listeria_monocytogenes -with-report List_NY_WGS_tools.report -with-trace -with-timeline
 
 ```
-
-* Lyveset
-  * screen -x run_list_NY_lyve
-  * Aug 5, 2020 - 7:08pm
-* kSNP
-  * Most output was done by August 8, but NJ tree step kept getting stuck
-  * copied over results August 11, 2020
-  Thu Aug 13 17:02:32 CDT 2020
-Elapsed time for kSNP in hours: 2.51305555555556
-
-* cfsansnp
-  * completed July 13, 2020
-* enterobase
-  * completed July 13, 2020
-
+/tempalloc/noyes042/WGS_project/work_ecoli_SD/b8/a229343a8c9969a968f0aaf92225c7
  
+java -Xmx2000m -jar /panfs/roc/msisoft/picard/2.18.16/picard.jar MarkDuplicates INPUT=CFSAN_snp_results/samples/SRR8095943/reads.sorted.bam OUTPUT=CFSAN_snp_results/samples/SRR8095943/reads.sorted.deduped.bam METRICS_FILE=CFSAN_snp_results/samples/SRR8095943/duplicate_reads_metrics.txt VERBOSITY=WARNING
+
  
  ```
 https://github.com/samtools/htsjdk/issues/677
