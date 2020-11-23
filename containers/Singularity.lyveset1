@@ -1,5 +1,5 @@
 Bootstrap: docker
-From: debian:jessie-slim
+From: ubuntu:xenial
 
 #Includes cfsan-snp-pipeline smalt picard varscan tabix bcftools bowtie2 bwa gatk libdeflate samtools
 
