@@ -51,4 +51,6 @@ From: ubuntu:xenial
     make install -e PREFIX=/usr/local/lyve-SET &&\
     make env -e PREFIX=/usr/local/lyve-SET
     
+    cd ../
+    
 %test
