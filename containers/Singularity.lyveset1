@@ -37,20 +37,22 @@ From: ubuntu:xenial
       cd edirect &&\
       ./setup.sh
     
-    wget https://github.com/lskatz/lyve-SET/archive/v1.1.4f.tar.gz &&\
-      tar -xzvf v1.1.4f.tar.gz &&\
-      rm v1.1.4f.tar.gz &&\
-      mv lyve-SET-1.1.4f lyve-SET
+
     
     # Add env
     echo 'export PATH=$PATH:/usr/local/lyve-SET/scripts' >> $SINGULARITY_ENVIRONMENT
     echo 'export PATH=$PATH:/edirect' >> $SINGULARITY_ENVIRONMENT
     
     cpanm Test::Most Bio::FeatureIO String::Escape File::Slurp URI::Escape Math::Round Schedule::SGE --force
-    cd lyve-SET
-    make install -e PREFIX=/usr/local/lyve-SET &&\
-    make env -e PREFIX=/usr/local/lyve-SET
     
+    
+    wget https://github.com/lskatz/lyve-SET/archive/v1.1.4f.tar.gz &&\
+      tar -xzvf v1.1.4f.tar.gz &&\
+      rm v1.1.4f.tar.gz &&\
+      mv lyve-SET-1.1.4f lyve-SET    
+    cd lyve-SET
+    make install
+    make env
     cd ../
     
 %test
