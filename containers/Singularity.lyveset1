@@ -42,7 +42,7 @@ From: ubuntu:xenial
       rm v1.1.4f.tar.gz &&\
       mv lyve-SET-1.1.4f lyve-SET
     
-    
+    # Add env
     echo 'export PATH=$PATH:/usr/local/lyve-SET/scripts' >> $SINGULARITY_ENVIRONMENT
     echo 'export PATH=$PATH:/edirect' >> $SINGULARITY_ENVIRONMENT
     
