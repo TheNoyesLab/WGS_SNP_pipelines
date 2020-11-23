@@ -47,7 +47,8 @@ From: ubuntu:xenial
     echo 'export PATH=$PATH:/edirect' >> $SINGULARITY_ENVIRONMENT
     
     cpanm Test::Most Bio::FeatureIO String::Escape File::Slurp URI::Escape Math::Round Schedule::SGE --force
-    make -C /lyve-SET install -e PREFIX=/lyve-SET &&\
-    make -C /lyve-SET env -e PREFIX=/lyve-SET
+    cd lyve-SET
+    make install -e PREFIX=/usr/local/lyve-SET &&\
+    make env -e PREFIX=/usr/local/lyve-SET
     
 %test
