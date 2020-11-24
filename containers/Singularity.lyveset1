@@ -45,7 +45,7 @@ From: ubuntu:xenial
     
     cpanm Test::Most Bio::FeatureIO String::Escape File::Slurp URI::Escape Math::Round Schedule::SGE --force
     
-    
+    cd /usr/local/
     wget https://github.com/lskatz/lyve-SET/archive/v1.1.4f.tar.gz &&\
       tar -xzvf v1.1.4f.tar.gz &&\
       rm v1.1.4f.tar.gz &&\
