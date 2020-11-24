@@ -24,7 +24,7 @@ From: ubuntu:xenial
             make \
             perl \
             bzip2 \
-            python3 \
+            python3.6 \
             python3-dev \
             wget \
                     tabix \
@@ -43,8 +43,8 @@ From: ubuntu:xenial
     cd /usr/local
 
   # install pip (code originally from Justin)
-  wget https://bootstrap.pypa.io/get-pip.py -q \
-  	&& python get-pip.py
+  #wget https://bootstrap.pypa.io/get-pip.py -q \
+  #	&& python get-pip.py
 
   # install samtools, since the version in apt-get is too far out-of-date
   mkdir samtools &&\
