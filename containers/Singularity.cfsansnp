@@ -19,8 +19,8 @@ From: ubuntu:xenial
             make \
             perl \
             bzip2 \
-            python \
-            python-dev \
+            python3 \
+            python3-dev \
             wget \
                     tabix \
                     libncurses5-dev \
