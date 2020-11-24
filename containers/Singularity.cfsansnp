@@ -25,6 +25,7 @@ From: ubuntu:xenial
             perl \
             bzip2 \
             python3 \
+            python3-pip \
             python3-dev \
             wget \
                     tabix \
@@ -91,6 +92,7 @@ From: ubuntu:xenial
 
   # get VarScan and SRA-toolkit
   cd /usr/local
+  mkdir /tmp/
   wget http://downloads.sourceforge.net/project/varscan/VarScan.v2.3.7.jar -q \
   	&& cp VarScan.v2.3.7.jar /usr/bin/VarScan.jar \
   	&& wget http://www.niehs.nih.gov/research/resources/assets/docs/artsrcchocolatecherrycake031915linuxtgz.tgz -q \
