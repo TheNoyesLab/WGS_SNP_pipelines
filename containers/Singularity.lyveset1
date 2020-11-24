@@ -1,7 +1,7 @@
 Bootstrap: docker
 From: ubuntu:xenial
 
-#Includes cfsan-snp-pipeline smalt picard varscan tabix bcftools bowtie2 bwa gatk libdeflate samtools
+# Lyveset singularity container
 
 %environment
     export LC_ALL=C
@@ -31,20 +31,17 @@ From: ubuntu:xenial
        apt-get clean && apt-get autoclean && \
        rm -rf /var/lib/apt/lists/*
     
+    # Download edirect for test data
     wget ftp.ncbi.nlm.nih.gov/entrez/entrezdirect/edirect.tar.gz &&\
       tar -xzvf edirect.tar.gz &&\
       rm edirect.tar.gz &&\
       cd edirect &&\
       ./setup.sh
     
-
-    
-    # Add env
-    echo 'export PATH=$PATH:/usr/local/lyve-SET/scripts' >> $SINGULARITY_ENVIRONMENT
-    echo 'export PATH=$PATH:/edirect' >> $SINGULARITY_ENVIRONMENT
-    
+    # Install perl modules
     cpanm Test::Most Bio::FeatureIO String::Escape File::Slurp URI::Escape Math::Round Schedule::SGE --force
     
+    # install lyveset v1.1.4f
     cd /usr/local/
     wget https://github.com/lskatz/lyve-SET/archive/v1.1.4f.tar.gz &&\
       tar -xzvf v1.1.4f.tar.gz &&\
@@ -54,5 +51,9 @@ From: ubuntu:xenial
     make install
     make env
     cd ../
+    
+    # Add env
+    echo 'export PATH=$PATH:/usr/local/lyve-SET/scripts' >> $SINGULARITY_ENVIRONMENT
+    echo 'export PATH=$PATH:/edirect' >> $SINGULARITY_ENVIRONMENT
     
 %test
