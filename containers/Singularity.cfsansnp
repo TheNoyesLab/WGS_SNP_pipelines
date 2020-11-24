@@ -1,5 +1,5 @@
 Bootstrap: docker
-From: debian:jessie-slim
+From: ubuntu:xenial
 
 #Includes cfsan-snp-pipeline smalt picard varscan tabix bcftools bowtie2 bwa gatk libdeflate samtools
 
@@ -7,52 +7,116 @@ From: debian:jessie-slim
     export LC_ALL=C
 
 %post
-    apt update \
-    && apt install -y --no-install-recommends bash\
-    build-essential ca-certificates sudo tcsh\
-    git make automake autoconf wget gzip unzip sed\
-    zlib1g-dev curl libbz2-dev locales libncurses5-dev liblzma-dev libcurl4-openssl-dev software-properties-common apt-transport-https\
-    libcurl4-openssl-dev libssl-dev zlib1g-dev fonts-texgyre \
-    gcc g++ gfortran libblas-dev liblapack-dev dos2unix\
-    && rm -rf /var/lib/apt/lists/*
+    apt-get update -y \
+        && apt-get install -y \
+            bowtie2 \
+            openjdk-8-jre \
+            g++ \
+            gcc \
+            gsl-bin \
+            libgsl0-dev \
+            make \
+                    perl \
+                    bzip2 \
+            python \
+            python-dev \
+            wget \
+                    tabix \
+                    libncurses5-dev \
+                    libbz2-dev \
+                    liblzma-dev \
+                    libcurl4-gnutls-dev \
+                    zlib1g-dev \
+                    libssl-dev \
+                    build-essential \
+                    ca-certificates \
+                    libperl-dev \
+        && apt-get clean
 
-    # Not my favorite workaround, but to get cfsan snp to work with samtools, we have to change which libncurses library is used. Problem is anaconda doesn't have the right version of samtools.
-    sudo ln -s /lib/x86_64-linux-gnu/libncursesw.so.5  /lib/x86_64-linux-gnu/libncursesw.so.6
-
-    #Installing Anaconda 3 and Anaconda3-2020.07-Linux-x86_64.sh
-    wget -c https://repo.continuum.io/archive/Anaconda3-2020.07-Linux-x86_64.sh
-    sh Anaconda3-2020.07-Linux-x86_64.sh -bfp /usr/local
-
-    # add bioconda channels
-    conda config --add channels defaults
-    conda config --add channels conda-forge
-    conda config --add channels bioconda
-    conda config --add channels cyclus
-    
-    # install bulk of bioinformatic tools using conda
-    # Install openjdk because cfsansnp require java v8
-    conda install picard varscan snp-pipeline bowtie2 tabix htslib bcftools openjdk
-    
-    ## Workaround to get 3.8 version of GenomeAnalysisTK.jar
-    git clone https://github.com/EnriqueDoster/sing_biotools.git
-    mv sing_biotools/bin/GenomeAnalysisTK.jar /usr/local/bin/GenomeAnalysisTK.jar
-    
-    #ln -s /usr/local/envs/snp-tools/bin/* /usr/local/bin/
-        
-    # Install samtools from binary
+    # Change directory
     cd /usr/local
-    wget https://github.com/samtools/samtools/releases/download/1.9/samtools-1.9.tar.bz2
-    tar -vxjf samtools-1.9.tar.bz2
-    cd samtools-1.9
-    make
-    cd ~
-    echo 'export PATH=/usr/local/samtools-1.9/:$PATH' >> $SINGULARITY_ENVIRONMENT
+
+  # install pip (code originally from Justin)
+  wget https://bootstrap.pypa.io/get-pip.py -q \
+  	&& python get-pip.py
+
+  # install samtools, since the version in apt-get is too far out-of-date
+  mkdir samtools &&\
+    cd samtools &&\
+    wget https://github.com/samtools/samtools/releases/download/1.9/samtools-1.9.tar.bz2 &&\
+    tar -xjf samtools-1.9.tar.bz2 &&\
+    rm samtools-1.9.tar.bz2 &&\
+    cd samtools-1.9 &&\
+    ./configure &&\
+    make &&\
+    make install
+
+  # install bcftools
+  cd /usr/local
+  mkdir bcftools &&\
+      cd bcftools &&\
+      wget https://github.com/samtools/bcftools/releases/download/1.9/bcftools-1.9.tar.bz2 &&\
+      tar -xjf bcftools-1.9.tar.bz2 &&\
+      rm bcftools-1.9.tar.bz2 &&\
+      cd bcftools-1.9 &&\
+      ./configure &&\
+      make &&\
+      make install
+
+  # get picard jar file
+  cd /usr/local
+  mkdir /picard &&\
+      cd /picard &&\
+      wget https://github.com/broadinstitute/picard/releases/download/2.18.4/picard.jar
+
+  # get GATK 3.8-1-0 jar flie
+  cd /usr/local
+  mkdir /gatk &&\
+      cd /gatk &&\
+      wget -O ./gatk.tar.bz2 'https://software.broadinstitute.org/gatk/download/auth?package=GATK-archive&version=3.8-1-0-gf15c1c3ef' &&\
+      tar -xjf gatk.tar.bz2 &&\
+      rm gatk.tar.bz2
+
+  # get VarScan and SRA-toolkit
+  cd /usr/local
+  wget http://downloads.sourceforge.net/project/varscan/VarScan.v2.3.7.jar -q \
+  	&& cp VarScan.v2.3.7.jar /usr/bin/VarScan.jar \
+  	&& wget http://www.niehs.nih.gov/research/resources/assets/docs/artsrcchocolatecherrycake031915linuxtgz.tgz -q \
+  	&& tar -zxf /tmp/artsrcchocolatecherrycake031915linuxtgz.tgz \
+  	&& cd /tmp/art_src_ChocolateCherryCake_Linux \
+  	&& ./configure \
+  	&& make \
+  	&& make install \
+  	&& cd /tmp/ \
+  	&& wget http://ftp-trace.ncbi.nlm.nih.gov/sra/sdk/2.3.5-2/sratoolkit.2.3.5-2-ubuntu64.tar.gz -q \
+  	&& tar -zxf /tmp/sratoolkit.2.3.5-2-ubuntu64.tar.gz \
+  	&& cp /tmp/sratoolkit.2.3.5-2-ubuntu64/bin/fastq-dump.2.3.5.2 /usr/bin/fastq-dump \
+  	&& rm -r /tmp/*
+
+  #install snp-pipeline and snp-mutator
+  cd /usr/local
+  pip install numpy snp-pipeline biopython snp-mutator
+  
+  # Test snp_pipeline (code originally from Justin). Running copy_snppipeline_data.py generates an message the the script is deprecated
+  # but I figured I would leave it since the below commands test that the image runs properly.
+  #WORKDIR /test/
+  #copy_snppipeline_data.py lambdaVirusInputs testLambdaVirus \
+  #	&& cd testLambdaVirus \
+  #	&& run_snp_pipeline.sh -s samples reference/lambda_virus.fasta \
+  #	&& copy_snppipeline_data.py lambdaVirusExpectedResults expectedResults \
+  #	&& diff -q snplist.txt expectedResults/snplist.txt \
+  #	&& diff -q snpma.fasta expectedResults/snpma.fasta \
+  #	&& diff -q referenceSNP.fasta expectedResults/referenceSNP.fasta
+
     
     #Still experimenting with how to change $PATH location. Need to remove GATK jar file to work with cfsan snp
-    #echo 'export PATH=$PATH:/usr/local/envs/snp-tools/bin/' >> $SINGULARITY_ENVIRONMENT
-    echo 'export CLASSPATH=/usr/local/share/varscan-2.4.4-0/VarScan.jar:$CLASSPATH' >> $SINGULARITY_ENVIRONMENT
-    echo 'export CLASSPATH=/usr/local/share/picard-2.23.8-0/picard.jar:$CLASSPATH' >> $SINGULARITY_ENVIRONMENT
-    echo 'export CLASSPATH=/usr/local/bin/GenomeAnalysisTK.jar:$CLASSPATH' >> $SINGULARITY_ENVIRONMENT
+    echo 'export CLASSPATH=/usr/local/VarScan.jar:$CLASSPATH' >> $SINGULARITY_ENVIRONMENT
+    echo 'export CLASSPATH=/usr/local/picard/picard-2.23.8-0/picard.jar:$CLASSPATH' >> $SINGULARITY_ENVIRONMENT
+    echo 'export CLASSPATH=/usr/local/gatk/GenomeAnalysisTK-3.8-1-0-gf15c1c3ef/GenomeAnalysisTK.jar:$CLASSPATH' >> $SINGULARITY_ENVIRONMENT
+
+  # set java CLASSPATH variables
+  #ENV CLASSPATH /usr/bin/VarScan.jar:/picard/picard.jar:/gatk/GenomeAnalysisTK-3.8-1-0-gf15c1c3ef/GenomeAnalysisTK.jar
+
 
     # Make sure all the tools have the right permissions to use the tools
     chmod -R 777 /usr/local/
