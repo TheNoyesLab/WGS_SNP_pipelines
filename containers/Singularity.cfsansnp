@@ -1,7 +1,12 @@
 Bootstrap: docker
 From: ubuntu:xenial
 
-#Includes cfsan-snp-pipeline smalt picard varscan tabix bcftools bowtie2 bwa gatk libdeflate samtools
+#Includes cfsan-snp-pipeline singularity container
+# # This Singularity recipe is based on a Docker file from Justin Payne which can be found here:
+# https://hub.docker.com/r/crashfrog/snp-pipeline/dockerfile
+# The dockerfile has been modified from it's original form by Curtis Kapsak and can be found here:
+# https://github.com/StaPH-B/docker-builds/blob/master/cfsan-snp-pipeline/2.0.2/Dockerfile
+# Enrique Doster added further modifications to troubleshoot errors with GATK and switch to python 3.
 
 %environment
     export LC_ALL=C
