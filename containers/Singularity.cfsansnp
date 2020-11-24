@@ -24,7 +24,7 @@ From: ubuntu:xenial
             make \
             perl \
             bzip2 \
-            python3.6 \
+            python3 \
             python3-dev \
             wget \
                     tabix \
