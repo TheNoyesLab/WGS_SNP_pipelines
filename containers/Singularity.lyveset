@@ -1,90 +1,59 @@
 Bootstrap: docker
-From: debian:jessie-slim
+From: ubuntu:xenial
 
-#Includes cfsan-snp-pipeline smalt picard varscan tabix bcftools bowtie2 bwa gatk libdeflate samtools
+# Lyveset singularity container
 
 %environment
     export LC_ALL=C
 
-%post
-    apt update \
-    && apt install -y --no-install-recommends perl \
-    build-essential ca-certificates sudo tcsh \
-    git make automake autoconf wget gzip unzip sed\
-    zlib1g-dev curl libbz2-dev locales libncurses5-dev libncursesw5-dev liblzma-dev libcurl4-openssl-dev software-properties-common apt-transport-https\
-    python3-pip python3-docopt python3-pytest python-dev python3-dev\
-    libcurl4-openssl-dev libssl-dev zlib1g-dev fonts-texgyre \
-    gcc-multilib gfortran libblas-dev liblapack-dev dos2unix\
-    && rm -rf /var/lib/apt/lists/*
+%post  
+    apt-get update && apt-get install -y\
+       perl\
+       libfile-slurp-perl\
+       openjdk-9-jre\
+       bioperl\
+       wget\
+       libz-dev\
+       git\
+       libncurses5-dev\
+       libncursesw5-dev\
+       build-essential\
+       ncbi-blast+\
+       libsvn-perl\
+       subversion\
+       libsvn1\
+       automake1.11\
+       libpthread-stubs0-dev\
+       cpanminus\
+       mpich\
+       clang\
+       smalt && \
+       apt-get clean && apt-get autoclean && \
+       rm -rf /var/lib/apt/lists/*
     
-    #sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-5 60 --slave /usr/bin/g++ g++ /usr/bin/g++-5
+    # Download edirect for test data
+    wget ftp.ncbi.nlm.nih.gov/entrez/entrezdirect/edirect.tar.gz &&\
+      tar -xzvf edirect.tar.gz &&\
+      rm edirect.tar.gz &&\
+      cd edirect &&\
+      ./setup.sh
     
-    #apt-utils
+    # Install perl modules
+    cpanm Test::Most Bio::FeatureIO String::Escape File::Slurp URI::Escape Math::Round Schedule::SGE --force
     
-    # Install perl cpanm and other modules
-    curl -L https://cpanmin.us | perl - --sudo App::cpanminus
-    cpanm Bio::Perl --force
-    cpanm File::Slurp --force
-    cpanm URI::Escape --force
-    cpanm Bio::FeatureIO --force
-    
-    # Install blast
-    cd /usr/local
-    wget https://ftp.ncbi.nlm.nih.gov/blast/executables/blast+/2.10.1/ncbi-blast-2.10.1+-x64-linux.tar.gz 
-    tar -xvzf ncbi-blast-2.10.1+-x64-linux.tar.gz
-    echo 'export PATH=$PATH:/usr/local/ncbi-blast-2.10.1+/bin' >> $SINGULARITY_ENVIRONMENT
-
-    cd /usr/local
-    wget https://github.com/lskatz/lyve-SET/archive/v2.0.1.zip
-    unzip v2.0.1.zip
-    cd lyve-SET-2.0.1
-    make install-config
-    make install-perlModules
-    make install-smalt
-    make install-CGP
-    make install-SGELK
-    make install-vcftools
-    make install-varscan
-    make install-snpEff
-    make install-bcftools
-    make install-raxml
-    make install-snap
-    #make install
+    # install lyveset v1.1.4f
+    cd /usr/local/
+    wget https://github.com/lskatz/lyve-SET/archive/v1.1.4f.tar.gz &&\
+      tar -xzvf v1.1.4f.tar.gz &&\
+      rm v1.1.4f.tar.gz &&\
+      mv lyve-SET-1.1.4f lyve-SET    
+    cd lyve-SET
+    make install
     make env
-        
-    echo 'export PATH=$PATH:/usr/local/lyve-SET-2.0.1/scripts' >> $SINGULARITY_ENVIRONMENT
+    cd ../
     
-    # Install samtools from binary
-    cd /usr/local
-    wget https://github.com/samtools/samtools/releases/download/1.9/samtools-1.9.tar.bz2
-    tar -vxjf samtools-1.9.tar.bz2
-    cd samtools-1.9
-    make
-    cd ~
-    echo 'export PATH=/usr/local/samtools-1.9/:$PATH' >> $SINGULARITY_ENVIRONMENT
-
-
-    # Install bowtie2 from binary
-    #cd /usr/local
-    #wget https://github.com/BenLangmead/bowtie2/archive/v2.3.5.1.tar.gz
-    #tar -vxf v2.3.5.1.tar.gz
-    #cd bowtie2-2.3.5.1/
-    #make
-    #cd ~
-    #echo 'export PATH=/usr/local/bowtie2-2.3.5.1/:$PATH' >> $SINGULARITY_ENVIRONMENT
-    
-    # Automatic quake installation causes error
-    #make install-quake    
-    wget http://www.cbcb.umd.edu/software/quake/downloads/quake-0.3.5.tar.gz -O /usr/local/lyve-SET-2.0.1/build/quake-0.3.5.tar.gz
-    tar zxvf /usr/local/lyve-SET-2.0.1/build/quake-0.3.5.tar.gz
-    
-    echo 'export PATH=$PATH:/usr/local/lyve-SET-2.0.1/build/Quake/bin' >> $SINGULARITY_ENVIRONMENT
-    
-    #Installing Anaconda 3 and Anaconda3-2020.07-Linux-x86_64.sh
-    wget -c https://repo.continuum.io/archive/Anaconda3-2020.07-Linux-x86_64.sh
-    sh Anaconda3-2020.07-Linux-x86_64.sh -bfp /usr/local
-
-    # install java
-    conda install -c anaconda -c bioconda bowtie2 openjdk
+    # Add env
+    echo 'export PATH=$PATH:/usr/local/lyve-SET/scripts' >> $SINGULARITY_ENVIRONMENT
+    echo 'export PATH=$PATH:/edirect' >> $SINGULARITY_ENVIRONMENT
     
 %test
