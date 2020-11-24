@@ -8,6 +8,7 @@ From: ubuntu:xenial
 
 %post  
     apt-get update && apt-get install -y\
+       git\
        perl\
        libfile-slurp-perl\
        openjdk-9-jre\
