@@ -71,11 +71,17 @@ From: ubuntu:xenial
 
   # get GATK 3.8-1-0 jar flie
   cd /usr/local
-  mkdir /gatk &&\
-      cd /gatk &&\
-      wget -O ./gatk.tar.bz2 'https://software.broadinstitute.org/gatk/download/auth?package=GATK-archive&version=3.8-1-0-gf15c1c3ef' &&\
-      tar -xjf gatk.tar.bz2 &&\
-      rm gatk.tar.bz2
+  git clone https://github.com/EnriqueDoster/sing_biotools.git
+  mv sing_biotools/bin/GenomeAnalysisTK.jar /usr/local/bin/GenomeAnalysisTK.jar
+  
+  # Code below causes this error:Reusing existing connection to gatk.broadinstitute.org:443.
+  #HTTP request sent, awaiting response... 403 Forbidden
+  #2020-11-24 13:55:44 ERROR 403: Forbidden.
+  #mkdir /gatk &&\
+  #    cd /gatk &&\
+  #    wget -O ./gatk.tar.bz2 'https://software.broadinstitute.org/gatk/download/auth?package=GATK-archive&version=3.8-1-0-gf15c1c3ef' &&\
+  #    tar -xjf gatk.tar.bz2 &&\
+  #    rm gatk.tar.bz2
 
   # get VarScan and SRA-toolkit
   cd /usr/local
@@ -111,8 +117,8 @@ From: ubuntu:xenial
     
     #Still experimenting with how to change $PATH location. Need to remove GATK jar file to work with cfsan snp
     echo 'export CLASSPATH=/usr/local/VarScan.jar:$CLASSPATH' >> $SINGULARITY_ENVIRONMENT
-    echo 'export CLASSPATH=/usr/local/picard/picard-2.23.8-0/picard.jar:$CLASSPATH' >> $SINGULARITY_ENVIRONMENT
-    echo 'export CLASSPATH=/usr/local/gatk/GenomeAnalysisTK-3.8-1-0-gf15c1c3ef/GenomeAnalysisTK.jar:$CLASSPATH' >> $SINGULARITY_ENVIRONMENT
+    echo 'export CLASSPATH=/usr/local/picard/picard.jar:$CLASSPATH' >> $SINGULARITY_ENVIRONMENT
+    echo 'export CLASSPATH=/usr/local/bin/GenomeAnalysisTK.jar' >> $SINGULARITY_ENVIRONMENT
 
   # set java CLASSPATH variables
   #ENV CLASSPATH /usr/bin/VarScan.jar:/picard/picard.jar:/gatk/GenomeAnalysisTK-3.8-1-0-gf15c1c3ef/GenomeAnalysisTK.jar
