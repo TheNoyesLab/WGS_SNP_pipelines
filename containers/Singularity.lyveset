@@ -55,6 +55,6 @@ From: ubuntu:xenial
     
     # Add env
     echo 'export PATH=$PATH:/usr/local/lyve-SET/scripts' >> $SINGULARITY_ENVIRONMENT
-    echo 'export PATH=$PATH:/edirect' >> $SINGULARITY_ENVIRONMENT
+    echo 'export PATH=$PATH:/usr/local/edirect' >> $SINGULARITY_ENVIRONMENT
     
 %test
