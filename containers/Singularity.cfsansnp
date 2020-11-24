@@ -9,6 +9,7 @@ From: ubuntu:xenial
 %post
     apt-get update -y \
         && apt-get install -y \
+            git \
             bowtie2 \
             openjdk-8-jre \
             g++ \
@@ -16,8 +17,8 @@ From: ubuntu:xenial
             gsl-bin \
             libgsl0-dev \
             make \
-                    perl \
-                    bzip2 \
+            perl \
+            bzip2 \
             python \
             python-dev \
             wget \
