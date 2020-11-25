@@ -8,6 +8,7 @@ From: ubuntu:xenial
 
 %post  
     apt-get update && apt-get install -y\
+       git\
        perl\
        libfile-slurp-perl\
        openjdk-9-jre\
@@ -32,7 +33,6 @@ From: ubuntu:xenial
        rm -rf /var/lib/apt/lists/*
     
     # Download edirect for test data
-    cd /usr/local/
     wget ftp.ncbi.nlm.nih.gov/entrez/entrezdirect/edirect.tar.gz &&\
       tar -xzvf edirect.tar.gz &&\
       rm edirect.tar.gz &&\
@@ -55,6 +55,6 @@ From: ubuntu:xenial
     
     # Add env
     echo 'export PATH=$PATH:/usr/local/lyve-SET/scripts' >> $SINGULARITY_ENVIRONMENT
-    echo 'export PATH=$PATH:/usr/local/edirect' >> $SINGULARITY_ENVIRONMENT
+    echo 'export PATH=$PATH:/edirect' >> $SINGULARITY_ENVIRONMENT
     
 %test
