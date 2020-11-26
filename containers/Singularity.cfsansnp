@@ -15,7 +15,6 @@ From: ubuntu:xenial
     apt-get update -y \
         && apt-get install -y \
             git \
-            bowtie2 \
             openjdk-8-jre \
             g++ \
             gcc \
@@ -40,6 +39,9 @@ From: ubuntu:xenial
         && apt-get clean
 
     apt-get update
+    # Set locale for perl5
+    export LC_ALL=C
+    
     # Change directory
     cd /usr/local
     
@@ -52,11 +54,18 @@ From: ubuntu:xenial
     make install
     
     update-alternatives --install /usr/bin/python python /usr/local/Python-3.6.3/python 10
-    
+
     echo 'export PATH=/usr/local/Python-3.6.3/:$PATH' >> $SINGULARITY_ENVIRONMENT
-    #echo 'export PATH=/usr/local/Python-3.6.3/:$PATH' >> $SINGULARITY_ENVIRONMENT
-   
-    #/usr/local/.local/bin
+
+    # install bowtie2
+    # create and go to install directory
+    cd /usr/local/
+    # download Ubuntu/Linux version
+    wget https://sourceforge.net/projects/bowtie-bio/files/bowtie2/2.3.4.1/bowtie2-2.3.4.1-linux-x86_64.zip/download
+    # decompress
+    unzip download
+    # add location to system PATH
+    echo 'export PATH=/usr/local/bowtie2-2.3.4.1-linux-x86_64:$PATH' >> $SINGULARITY_ENVIRONMENT
     
 
   # install pip (code originally from Justin)
