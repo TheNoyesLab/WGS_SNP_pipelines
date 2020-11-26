@@ -56,49 +56,13 @@ cat sampleDirectories.txt | xargs -n 1 -P $numCores cfsan_snp_pipeline call_site
 
 
  ## Lyve-set 
- 
- 
- 
- ```
-module load  ncbi_toolkit
-# Load the correct perl module (the default does not support perl module installation)
-module load perl/modules.centos7.5.26.1
 
-make install
-
-
-make env
-
-perl -MCPAN -Mlocal::lib -e 'CPAN::install(File::Basename)'
-
-perl -MCPAN -Mlocal::lib -e 'CPAN::install(Bio::FeatureIO)'
-
-
-```
- 
  
 ```
  #https://github.com/lskatz/lyve-SET
-conda install -c hcc lyve-set
-## Has to be java 8
-conda install -c cyclus java-jdk
-# need zsh shell
-conda install -c conda-forge zsh
-
-# log into perl shell, install tools
-perl -MCPAN -e shell
-install File::Slurp
-install URI::Escape
-install CPAN
-install Sgtty
-install Term::ReadKey
-
-# https://github.com/lskatz/Schedule--SGELK
-perl -MSchedule::SGELK -e '$sge=Schedule::SGELK->new(numnodes=>5); for(1..3){$sge->pleaseExecute("sleep 3");}$sge->wrapItUp();'
-install Schedule::SGELK
-PREFIX=~/perl5lib/ LIB=~/perl5lib/lib INSTALLMAN1DIR=~/perl5lib/man1 INSTALLMAN3DIR=~/perl5lib/man3
-PERL5LIB=~/perl5lib/lib
-export PERL5LIB
+# anaconda installation did not work correctly and was limited to v2 of lyve-SET instead of the more stable 1.4v
+# Created singularity container that works correctly as of November 25, 2020
+singularity pull shub://TheNoyesLab/WGS_SNP_pipelines:lyveset
 
 ```
 
@@ -106,8 +70,11 @@ Lyve-SET installation on UMN's servers
 
 ```
 
+module load  ncbi_toolkit
+# Load the correct perl module (the default does not support perl module installation)
+module load perl/modules.centos7.5.26.1
 
-# On MSI, had to be done from shell
+# On MSI, installing perl modules had to be done from shell
 perl -MCPAN -e shell
 install XML::DOM::XPath
 install Bio::FeatureIO
