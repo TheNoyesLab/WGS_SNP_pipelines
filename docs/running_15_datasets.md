@@ -97,7 +97,11 @@ Ignored     : 1
 ## E coli - South Dakota - 
 November 6, 2020 @ 10:50am - Started re-running with Ecoli outbreak genomes included
 /tempalloc/noyes042/WGS_project/run_Ecoli_WGS_SNP_pipelines
-
+* completed:
+  * lyveset
+  * enterobase
+  * kSNP3
+  
 
 ```
 nextflow run main_combined_pipeline.nf --reference_genome /tempalloc/noyes042/WGSroject/ref_Ecoli_NC_000913.fasta --reads '/tempalloc/noyes042/WGS_project/genomes_Ecoli_SD/*_{1,2}.fastq.gz' -profile singularity --output /tempalloc/noyes042/WGS_project/E_coli_SD_WGS_results --threads 20 -w /tempalloc/noyes042/WGS_project/work_ecoli_SD -resume -with-report Ecoli_SD_WGS_tools.report -with-trace -with-timeline
@@ -126,6 +130,8 @@ Failed      : 2
 # Started 2020-15-11 @11:08pm
 # 106175.run_ecoli_lyve
 /tempalloc/noyes042/WGS_project/work_ecoli_SD/79/6534cec04fc1302cb843404cdcfb57
+#launch_set.pl:  Finished at 2020-11-18 00:39:57
+# launch_set.pl:  Duration: 2913 minutes, 25 seconds
 
 
 # Run CFSAN
@@ -147,6 +153,7 @@ Failed      : 2
 
 * Re-running with outbreak genomes
 * Started: 12:48pm 2020-11-20
+* ksnp and enterobase done - 11/27/2020
 
 ```
 nextflow run main_combined_pipeline.nf --reference_genome /tempalloc/noyes042/WGS_project/ref_L_monocytogenes_NC_003210.fasta --reads '/tempalloc/noyes042/WGS_project/genomes_NY_L_monocytogenes/*_{1,2}.fastq.gz' -profile singularity --output /tempalloc/noyes042/WGS_project/L_monocytogenes_NewYork_WGS_results --threads 20 -w /tempalloc/noyes042/WGS_project/work_ny_list --species listeria_monocytogenes -with-report List_NY_WGS_tools.report -with-trace -with-timeline
@@ -222,31 +229,45 @@ screen -x run_sal_ms_lyve
 
 
 # High quality
+11/27/2020
+kSNP still running
+Lyveset error with specific sample
 
 ## Listeria - high-quality - 6539 + Listeria outbreak genomes = 6622
 * started running September 13, 2020 @ 9:40pm
 
 ```
-nextflow run main_combined_pipeline.nf --reference_genome /tempalloc/noyes042/WGS_project/ref_L_monocytogenes_NC_003210.fasta --reads '/tempalloc/noyes042/WGS_project/genomes_List_high_quality/*_{1,2}.fastq.gz' -profile singularity --output /tempalloc/noyes042/WGS_project/L_monocytogenes_IBM_WGS_results --threads 20 -w /tempalloc/noyes042/WGS_project/work_ibm_list -resume -with-report List_IBM_WGS_tools.report -with-trace -with-timeline
+Sep-13 22:42:00.443 [main] DEBUG nextflow.cli.Launcher - $> nextflow run main_combined_pipeline.nf --reference_genome /tempalloc/noyes042/WGS_project/ref_L_monocytogenes_NC_003210.fasta --reads '/tempalloc/noyes042/WGS_project/genomes_List_high_quality/*_{1,2}.fastq.gz' -profile singularity --output /tempalloc/noyes042/WGS_project/L_monocytogenes_IBM_WGS_results --threads 20 -w /tempalloc/noyes042/WGS_project/work_ibm_list -resume -with-report List_IBM_WGS_tools.report -with-trace -with-timeline
 
+# Enterobase was only one to finish without errors
+# Lyveset and CFSAN error
 ~> TaskHandler[id: 14960; name: RunLYVESET (null); status: RUNNING; exit: -; error: -; workDir: /tempalloc/noyes042/WGS_project/work_ibm_list/21/60f214886c89135b054becd03d9d09]
-~> TaskHandler[id: 19874; name: etoki_align (null); status: RUNNING; exit: -; error: -; workDir: /tempalloc/noyes042/WGS_project/work_ibm_list/69/aeabc11219d6827bf0cb156fe39af9]
 
 
 ##CFSAN
 /tempalloc/noyes042/WGS_project/work_ibm_list/23/1cb94e8db85bf17db2c839160fc2ce
+edoster@cn1107 [/tempalloc/noyes042/WGS_project/work_ibm_list/23/1cb94e8db85bf17db2c839160fc2ce/CFSAN_snp_results] % du --max-depth=1 -h
+144K    ./logs-20200916.033051
+15M     ./reference
+16T     ./samples
+144K    ./logs-20200921.124929
+1.1G    ./logs-20200929.211745
+16T     .
+# Not sure, but this could be the end ofcfsan
+# 2020-10-06 22:27:39 cfsan_snp_pipeline map_reads finished
 
-Exiting now ...
-# 2020-09-16 03:37:14 
-# Restarted Mon Sep 21 12:50:00 CDT 2020
 
 ## kSNP3
 /tempalloc/noyes042/WGS_project/work_ibm_list/88/7618b34bbba9d4fe7d831bd9a291bc
 # Restarted Mon Sep 21 12:52:27 CDT 2020
+# Got stuck on "step 3" so restarted on Thu Nov 26 15:46:44 CST 2020
+
 
 
 # Lyvest
-# Restarting Sep 29, 2020 at 9:23pm
+# Restarting Sep 29, 2020 at 9:23pm , but getting strange error about the wrong FASTQ/GASTA
+# Still freezing up, re-started 11/26/2020 @3:10pm after erasing all temporary files
+
 
 ```
 
