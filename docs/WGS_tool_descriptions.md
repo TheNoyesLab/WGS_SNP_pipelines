@@ -27,7 +27,22 @@
 
 ### lyve-set workflow
 
-Includes presets for Salmonella, Listeria
+# Lyveset ``--presets`` for modifying pipeline parameters
+listeria_monocytogenes	(like default settings)
+* min_coverage = 10
+* min_alt_frac = 0.75
+
+salmonella_enterica	
+* min_coverage = 20
+* min_alt_frac = 0.95
+* allowedFlanking = 5
+* mask-phages = 1
+
+escherichia_coli	
+* min_coverage = 20
+* min_alt_frac = 0.95
+* allowedFlanking = 5
+* mask-phages = 1
 
 ### Lyve-SET Output Files
   * [Detailed description of each output file](https://github.com/lskatz/lyve-SET/blob/master/docs/OUTPUT.md)
