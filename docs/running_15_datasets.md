@@ -19,10 +19,15 @@ On a browser, on your personal computer:
   * Host (573 unique host values) - bovine associated (3802) genomes - 757 SRA values
     * ``` taxgroup_name:"E.coli and Shigella" AND (host:"Bos taurus" OR host:"Bos taurus taurus" OR host:"cattle" OR host:"beef cattle" OR host:"Bovine" OR host:"Cattle" OR host:"cow" OR host:"cows" OR host:"bovine" OR host:"Bos primigenius") ``` 
     * variable ```<empty>``` - 78196 genomes
+
 * Salmonella enterica - 323,597 total genomes
   * Host (307 variables) - Poultry associated - 916 genomes - 510 SRA
     * ``` taxgroup_name:"Salmonella enterica"  AND ( host:"Gallus gallus" OR host:"chicken"OR host:"Chicken"OR host:"broiler chicken" OR host:"Gallus gallus domesticus" OR host:"Poultry" OR host:"poultry" OR host:"chicken") ```
-    * variable ```<empty>``` 242 781 genomes
+    * variable ```<empty>``` 242,781 genomes
+  * Sample type "Isolation Source" (7218 unique variables) - Chicken breast - 3094 genomes
+    * ```taxgroup_name:"Salmonella enterica"  AND (isolation_source:"chicken breast" OR isolation_source:"Chicken Breasts") ```
+    * variable ```<empty>``` - 147,352 genomes
+  
     
 * Listeria monocytogenes - 40,351 total genomes
   * Host (75 variables) - human associated - 6,670 genomes - 5,966 SRA
@@ -30,80 +35,46 @@ On a browser, on your personal computer:
     * variable ```<empty>``` 30,961 genomes
 
   
- 
+-----
+## Initial analysis of outbreak genomes in study
 
-# Outbreak 
-
-## Listeria NY + outbreak
-### kSNP
-/tempalloc/noyes042/WGS_project/work_ny_outbreak_list/a7/8963a9f49da039eb7b9d7d0786d48f
-
-### Lyveset
-/tempalloc/noyes042/WGS_project/work_ny_outbreak_list/b9/40e300f7da48aad4e2c82fdd3c9cd4
-launch_set.pl:  Finished at 2020-08-28 11:05:42
-launch_set.pl:  Duration: 1188 minutes, 5 seconds
-
-### cfsan
-/tempalloc/noyes042/WGS_project/work_ny_outbreak_list/7d/46ddda65c6fd897f78b6afab06f96e
-2020-08-27 18:13:30 cfsan_snp_pipeline combine_metrics finished
-Elapsed time = 10366.468556404114
-2020-08-27 18:13:30 cfsan_snp_pipeline run finished
-
-
-## E coli romaine outbreak genomes
+# Ecoli 
+Running on cn4201 - 4 threads, 4 forks
+Started Nov-28  02:17 PM CST
 ```
-screen -x run_Ecoli
+nextflow run main_combined_pipeline.nf --reference_genome /tempalloc/noyes042/FMPRE_clean/Host_genomes/ref_Ecoli_NC_000913.fasta --reads '/tempalloc/noyes042/FMPRE_clean/Raw_datasets/Outbreak_genomes/genomes_final_ecoli_outbreak/*_{1,2}.fastq.gz' -profile singularity --output /tempalloc/noyes042/FMPRE_clean/ALL_results/temp_results/E_coli_OUTBREAK_WGS_results --threads 4 -w /tempalloc/noyes042/FMPRE_clean/ALL_results/temp_results/work_ecoli_outbreak -resume -with-report Ecoli_outbreak_WGS_tools.report -with-trace -with-timeline --species escherichia_coli
+```
 
-nextflow run final_no_etoki_combined_pipeline.nf --reference_genome /tempalloc/noyes042/WGS_project/ref_Ecoli_NC_000913.fasta --reads '/tempalloc/noyes042/WGS_project/genomes_romaine_outbreak/*_{1,2}.fastq.gz' -profile singularity --output /tempalloc/noyes042/WGS_project/E_coli_romaine_oubtbreak_WGS_results --threads 20 -w /tempalloc/noyes042/WGS_project/work_ecoli_outbreak -resume -with-report Ecoli_outbreak_WGS_tools.report -with-trace -with-timeline
 
 
-nextflow run final_only_etoki_pipeline.nf --reference_genome /tempalloc/noyes042/WGS_project/ref_Ecoli_NC_000913.fasta --reads '/tempalloc/noyes042/WGS_project/genomes_romaine_outbreak/*_{1,2}.fastq.gz' -profile singularity --output /tempalloc/noyes042/WGS_project/E_coli_romaine_oubtbreak_etoki_WGS_results --threads 20 -w /tempalloc/noyes042/WGS_project/work_ecoli_etoki_outbreak -resume -with-report Ecoli_outbreak_etoki_WGS_tools.report -with-trace -with-timeline
 
+-----
+## 100 genome subsets
+
+### 100 genome subset - E coli - Host bovine associated
+Started Nov-27 17:40:30 CST
 
 ```
-* kSNP3
-  * Starting kSNP - Fri Aug 21 20:47:40 CDT 2020
-  * Finished running kSNP - Sat Aug 22 06:28:49 CDT 2020 Elapsed time for kSNP in hours: 9.6858333333333
-* Cfsan-snp
-  * re-started 9/22/2020 at 8:13pm CST
-  * 2020-08-23 15:57:06 cfsan_snp_pipeline run finished
-* lyve-set
-  * launch_set.pl:  Finished at 2020-08-24 05:31:36
-  * launch_set.pl:  Duration: 1985 minutes, 42 seconds
-* Enterobase
+Nov-27 17:40:30.349 [main] DEBUG nextflow.cli.Launcher - $> nextflow run main_combined_pipeline.nf --reference_genome /tempalloc/noyes042/FMPRE_clean/Host_genomes/ref_Ecoli_NC_000913.fasta --reads '/tempalloc/noyes042/FMPRE_clean/Raw_datasets/100_genome_datasets/100genomes_Ecoli_host_cattle/*_{1,2}.fastq.gz' -profile singularity --output /tempalloc/noyes042/FMPRE_clean/ALL_results/temp_results/E_coli_Host_bovine_WGS_results --threads 20 -w /tempalloc/noyes042/FMPRE_clean/ALL_results/temp_results/work_ecoli_host -resume -with-report Ecoli_host_WGS_tools.report -with-trace -with-timeline --species escherichia_coli
 
-Completed at: 25-Aug-2020 07:16:28
-Duration    : 14h 7m 57s
-CPU hours   : 66.9 (17.2% cached, 0.4% failed)
-Succeeded   : 243
-Cached      : 243
-Ignored     : 1
+```
+
+## 100 genome subset - Salmonella - Host poultry associated
+Started Nov-28 01:57:20.181 AM CST
+```
+nextflow run main_combined_pipeline.nf --reference_genome /tempalloc/noyes042/FMPRE_clean/Host_genomes/Senterica_LT2_ref_genome.fasta --reads '/tempalloc/noyes042/FMPRE_clean/Raw_datasets/100_genome_datasets/100genomes_Salm_host_poultry/*_{1,2}.fastq.gz' -profile singularity --output /tempalloc/noyes042/FMPRE_clean/ALL_results/temp_results/Salm_Host_Poultry_WGS_results --threads 20 -w /tempalloc/noyes042/FMPRE_clean/ALL_results/temp_results/work_salm_poultry_host -resume -with-report Poultry_host_WGS_tools.report -with-trace -with-timeline --species salmonella_enterica
+```
+
+## 100 genome subset - Listeria - Host human associated
+Started Nov-28  02:06 PM CST
+```
+nextflow run main_combined_pipeline.nf --reference_genome /tempalloc/noyes042/FMPRE_clean/Host_genomes/ref_L_monocytogenes_NC_003210.fasta --reads '/tempalloc/noyes042/FMPRE_clean/Raw_datasets/100_genome_datasets/100genomes_Listeria_host_human/*_{1,2}.fastq.gz' -profile singularity --output /tempalloc/noyes042/FMPRE_clean/ALL_results/temp_results/100genome_Listeria_Host_human_WGS_results --threads 20 -w /tempalloc/noyes042/FMPRE_clean/ALL_results/temp_results/work_list_human_host -resume -with-report List_host_WGS_tools.report -with-trace -with-timeline --species listeria_monocytogenes
+```
 
 -----
 # Host 
 
 
-## 
-
-### 100 genome subset - E coli - Host bovine associated
-Started Nov-27 17:40:30
-```
-Nov-27 17:40:30.349 [main] DEBUG nextflow.cli.Launcher - $> nextflow run main_combined_pipeline.nf --reference_genome /tempalloc/noyes042/FMPRE_clean/Host_genomes/ref_Ecoli_NC_000913.fasta --reads '/tempalloc/noyes042/FMPRE_clean/Raw_datasets/100_genome_datasets/100genomes_Ecoli_host_cattle/*_{1,2}.fastq.gz' -profile singularity --output /tempalloc/noyes042/FMPRE_clean/ALL_results/temp_results/E_coli_Host_bovine_WGS_results --threads 20 -w /tempalloc/noyes042/FMPRE_clean/ALL_results/temp_results/work_ecoli_host -resume -with-report Ecoli_host_WGS_tools.report -with-trace -with-timeline --species escherichia_coli
-
-
-
-```
-
-## 100 genome subset - Host poultry associated
-Started Nov-27 17:40:30
-```
-nextflow run main_combined_pipeline.nf --reference_genome /tempalloc/noyes042/FMPRE_clean/Host_genomes/Senterica_LT2_ref_genome.fasta --reads '/tempalloc/noyes042/FMPRE_clean/Raw_datasets/100_genome_datasets/100genomes_Salm_host_poultry/*_{1,2}.fastq.gz' -profile singularity --output /tempalloc/noyes042/FMPRE_clean/ALL_results/temp_results/Salm_Host_Poultry_WGS_results --threads 20 -w /tempalloc/noyes042/FMPRE_clean/ALL_results/temp_results/work_salm_poultry_host -resume -with-report Poultry_host_WGS_tools.report -with-trace -with-timeline --species salmonella_enterica
-```
-
-
-
-
------
 
 # Geography
 
@@ -115,6 +86,7 @@ November 6, 2020 @ 10:50am - Started re-running with Ecoli outbreak genomes incl
   * enterobase
   * kSNP3
   
+
 
 ```
 nextflow run main_combined_pipeline.nf --reference_genome /tempalloc/noyes042/WGSroject/ref_Ecoli_NC_000913.fasta --reads '/tempalloc/noyes042/WGS_project/genomes_Ecoli_SD/*_{1,2}.fastq.gz' -profile singularity --output /tempalloc/noyes042/WGS_project/E_coli_SD_WGS_results --threads 20 -w /tempalloc/noyes042/WGS_project/work_ecoli_SD -resume -with-report Ecoli_SD_WGS_tools.report -with-trace -with-timeline
@@ -151,9 +123,6 @@ Failed      : 2
 # Started 2020-15-11 @11pm
 # 102110.run_ecoli_cfsan
 /tempalloc/noyes042/WGS_project/work_ecoli_SD/b8/a229343a8c9969a968f0aaf92225c7
-
-
-
 ```
 
 
@@ -286,6 +255,38 @@ edoster@cn1107 [/tempalloc/noyes042/WGS_project/work_ibm_list/23/1cb94e8db85bf17
 
 
 ```
+
+---- 
+# Outbreak for collaborator
+## E coli romaine outbreak genomes
+```
+screen -x run_Ecoli
+
+nextflow run final_no_etoki_combined_pipeline.nf --reference_genome /tempalloc/noyes042/WGS_project/ref_Ecoli_NC_000913.fasta --reads '/tempalloc/noyes042/WGS_project/genomes_romaine_outbreak/*_{1,2}.fastq.gz' -profile singularity --output /tempalloc/noyes042/WGS_project/E_coli_romaine_oubtbreak_WGS_results --threads 20 -w /tempalloc/noyes042/WGS_project/work_ecoli_outbreak -resume -with-report Ecoli_outbreak_WGS_tools.report -with-trace -with-timeline
+
+
+nextflow run final_only_etoki_pipeline.nf --reference_genome /tempalloc/noyes042/WGS_project/ref_Ecoli_NC_000913.fasta --reads '/tempalloc/noyes042/WGS_project/genomes_romaine_outbreak/*_{1,2}.fastq.gz' -profile singularity --output /tempalloc/noyes042/WGS_project/E_coli_romaine_oubtbreak_etoki_WGS_results --threads 20 -w /tempalloc/noyes042/WGS_project/work_ecoli_etoki_outbreak -resume -with-report Ecoli_outbreak_etoki_WGS_tools.report -with-trace -with-timeline
+
+
+```
+* kSNP3
+  * Starting kSNP - Fri Aug 21 20:47:40 CDT 2020
+  * Finished running kSNP - Sat Aug 22 06:28:49 CDT 2020 Elapsed time for kSNP in hours: 9.6858333333333
+* Cfsan-snp
+  * re-started 9/22/2020 at 8:13pm CST
+  * 2020-08-23 15:57:06 cfsan_snp_pipeline run finished
+* lyve-set
+  * launch_set.pl:  Finished at 2020-08-24 05:31:36
+  * launch_set.pl:  Duration: 1985 minutes, 42 seconds
+* Enterobase
+
+Completed at: 25-Aug-2020 07:16:28
+Duration    : 14h 7m 57s
+CPU hours   : 66.9 (17.2% cached, 0.4% failed)
+Succeeded   : 243
+Cached      : 243
+Ignored     : 1
+
 
 
 
