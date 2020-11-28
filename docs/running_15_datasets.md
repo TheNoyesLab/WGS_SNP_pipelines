@@ -11,19 +11,18 @@ module load ncbi_toolkit
 
 Anaconda environments
 ```
-AmrPlusPlus_env          /home/noyes046/edoster/.conda/envs/AmrPlusPlus_env
-WGS_tools                /home/noyes046/edoster/.conda/envs/WGS_tools
-catch                    /home/noyes046/edoster/.conda/envs/catch
 cfsan_snp                /home/noyes046/edoster/.conda/envs/cfsan_snp
 compute                  /home/noyes046/edoster/.conda/envs/compute
 ksnp3_env                /home/noyes046/edoster/.conda/envs/ksnp3_env
-lyve_set_conda           /home/noyes046/edoster/.conda/envs/lyve_set_conda
 ```
 
-# Datasets
+# Datasets - updated 2020-11-27
 
-* Escherichia coli
-  * Host - bovine associated
+* Escherichia coli and Shigella - 138,244 genomes
+  * Host (573 unique host values) - bovine associated (3802) genomes - 757 SRA values
+    * variable "<empty>"
+    * ``` taxgroup_name:"E.coli and Shigella" AND (host:"Bos taurus" OR host:"Bos taurus taurus" OR host:"cattle" OR host:"beef cattle" OR host:"Bovine" OR host:"Cattle" OR host:"cow" OR host:"cows" OR host:"bovine" OR host:"Bos primigenius")``` 
+    * 
   
 
 # Outbreak 
