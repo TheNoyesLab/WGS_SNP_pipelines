@@ -1,32 +1,34 @@
 # Overview
 
-Unfortunately, running the full nextflow pipeline still has issues for lyveset and cfsan-snp
-Run the commands below to load the correct tools:
-```
-module load bowtie2/2.3.1
-module load perl/modules.centos7.5.26.1
-module load ncbi_toolkit
-# make sure samtools v1.9 is in your PATH
-```
+General steps to acquire a dataset for analysis
 
-Anaconda environments
-```
-cfsan_snp                /home/noyes046/edoster/.conda/envs/cfsan_snp
-compute                  /home/noyes046/edoster/.conda/envs/compute
-ksnp3_env                /home/noyes046/edoster/.conda/envs/ksnp3_env
-```
+On a browser, on your personal computer:
+1. Collect metadata for isolates in question. We specifically need the "Run" ID for each isolate.
+2. We use the "Isolate browser" (https://www.ncbi.nlm.nih.gov/pathogens/isolates/) to find correct set of isolates.
+    * Here's an example of an entrez query we can use to select all Listeria isolates associated with a human a host. Notice the case-sensitive values for the host variable.
+
+``` taxgroup_name:"Listeria monocytogenes" AND (host:"Homo sapiens" OR host:"homo sapiens") ```
+
+3. Expand the metadata file using "Choose columns" button to inlude all possible metadata variables.
+4. Click on "Download" to get the metadata file
+5. Use excel or an AWK command to only get the values from the "Run" column, remove the column name, and create a text file with just these values. This is often significantly less isolates than included in your metadata sheet.
 
 ## Datasets - updated 2020-11-27
 
 * Escherichia coli and Shigella - 138,244 genomes
   * Host (573 unique host values) - bovine associated (3802) genomes - 757 SRA values
-    * variable ```<empty>``` - 78196 genomes
     * ``` taxgroup_name:"E.coli and Shigella" AND (host:"Bos taurus" OR host:"Bos taurus taurus" OR host:"cattle" OR host:"beef cattle" OR host:"Bovine" OR host:"Cattle" OR host:"cow" OR host:"cows" OR host:"bovine" OR host:"Bos primigenius") ``` 
-    * 
-* Salmonella enterica - 323,597 genomes
-  * Host (307 variables)
-    * variable ```<empty>``` 242 781 genomes
+    * variable ```<empty>``` - 78196 genomes
+* Salmonella enterica - 323,597 total genomes
+  * Host (307 variables) - Poultry associated - 916 genomes - 510 SRA
     * ``` taxgroup_name:"Salmonella enterica"  AND ( host:"Gallus gallus" OR host:"chicken"OR host:"Chicken"OR host:"broiler chicken" OR host:"Gallus gallus domesticus" OR host:"Poultry" OR host:"poultry" OR host:"chicken") ```
+    * variable ```<empty>``` 242 781 genomes
+    
+* Listeria monocytogenes - 40,351 total genomes
+  * Host (75 variables) - human associated - 6,670 genomes - 5,966 SRA
+    * ``` taxgroup_name:"Listeria monocytogenes" AND (host:"Homo sapiens" OR host:"homo sapiens") ```
+    * variable ```<empty>``` 30,961 genomes
+
   
  
 
