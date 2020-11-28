@@ -36,7 +36,7 @@ On a browser, on your personal computer:
 
   
 -----
-## Initial analysis of outbreak genomes in study
+# Initial analysis of outbreak genomes in study
 
 # Ecoli 
 Running on cn4201 - 4 threads, 4 forks
@@ -49,7 +49,7 @@ nextflow run main_combined_pipeline.nf --reference_genome /tempalloc/noyes042/FM
 
 
 -----
-## 100 genome subsets
+# 100 genome subsets
 
 ### 100 genome subset - E coli - Host bovine associated
 Started Nov-27 17:40:30 CST
@@ -72,13 +72,16 @@ nextflow run main_combined_pipeline.nf --reference_genome /tempalloc/noyes042/FM
 ```
 
 -----
-# Host 
+# Analysis by factor, species
+
+
+## Host 
 
 
 
-# Geography
+## Geography
 
-## E coli - South Dakota - 
+### E coli - South Dakota - 
 November 6, 2020 @ 10:50am - Started re-running with Ecoli outbreak genomes included
 /tempalloc/noyes042/WGS_project/run_Ecoli_WGS_SNP_pipelines
 * completed:
@@ -131,7 +134,7 @@ Failed      : 2
 
 
 
-## Listeria - New York - 56
+### Listeria - New York - 56
 
 * Re-running with outbreak genomes
 * Started: 12:48pm 2020-11-20
@@ -155,7 +158,7 @@ java  -jar /home/noyes046/edoster/.conda/envs/WGS_tools/share/picard-2.21.6-0/pi
  
  ```
   
-## Salmonella - Mississippi - 697
+### Salmonella - Mississippi - 697
  
 Restarting with outbreak genomes
 Started November 6, 2020 @ 11:45am.
@@ -213,12 +216,12 @@ screen -x run_sal_ms_lyve
 
 
 
-# High quality
+## High quality
 11/27/2020
 kSNP still running
 Lyveset error with specific sample
 
-## Listeria - high-quality - 6539 + Listeria outbreak genomes = 6622
+### Listeria - high-quality - 6539 + Listeria outbreak genomes = 6622
 * started running September 13, 2020 @ 9:40pm
 
 ```
