@@ -38,7 +38,7 @@ On a browser, on your personal computer:
 -----
 # Initial analysis of outbreak genomes in study
 
-# Ecoli 
+### Ecoli 
 Running on cn4201 - 4 threads, 4 forks
 Started Nov-28  02:17 PM CST
 ```
