@@ -16,7 +16,7 @@ compute                  /home/noyes046/edoster/.conda/envs/compute
 ksnp3_env                /home/noyes046/edoster/.conda/envs/ksnp3_env
 ```
 
-# Datasets - updated 2020-11-27
+## Datasets - updated 2020-11-27
 
 * Escherichia coli and Shigella - 138,244 genomes
   * Host (573 unique host values) - bovine associated (3802) genomes - 757 SRA values
@@ -72,12 +72,22 @@ Succeeded   : 243
 Cached      : 243
 Ignored     : 1
 
+-----
+# Host 
+
+
+## E coli - Host bovine associated
+
+### 100 genome subset
+```
+Nov-27 17:40:30.349 [main] DEBUG nextflow.cli.Launcher - $> nextflow run main_combined_pipeline.nf --reference_genome /tempalloc/noyes042/FMPRE_clean/Host_genomes/ref_Ecoli_NC_000913.fasta --reads '/tempalloc/noyes042/FMPRE_clean/Raw_datasets/100_genome_datasets/100genomes_Ecoli_host_cattle/*_{1,2}.fastq.gz' -profile singularity --output /tempalloc/noyes042/FMPRE_clean/ALL_results/temp_results/E_coli_Host_bovine_WGS_results --threads 20 -w /tempalloc/noyes042/FMPRE_clean/ALL_results/temp_results/work_ecoli_host -resume -with-report Ecoli_host_WGS_tools.report -with-trace -with-timeline --species escherichia_coli
 
 
 
+```
 
 
-
+-----
 
 # Geography
 
