@@ -20,23 +20,11 @@ ksnp3_env                /home/noyes046/edoster/.conda/envs/ksnp3_env
 lyve_set_conda           /home/noyes046/edoster/.conda/envs/lyve_set_conda
 ```
 
-# Lyveset ``--presets``
-listeria_monocytogenes	(like default settings)
-* min_coverage = 10
-* min_alt_frac = 0.75
+# Datasets
 
-salmonella_enterica	
-* min_coverage = 20
-* min_alt_frac = 0.95
-* allowedFlanking = 5
-* mask-phages = 1
-
-escherichia_coli	
-* min_coverage = 20
-* min_alt_frac = 0.95
-* allowedFlanking = 5
-* mask-phages = 1
-
+* Escherichia coli
+  * Host - bovine associated
+  
 
 # Outbreak 
 
