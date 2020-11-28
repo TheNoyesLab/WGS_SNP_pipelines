@@ -23,7 +23,10 @@ ksnp3_env                /home/noyes046/edoster/.conda/envs/ksnp3_env
     * variable "<empty>"
     * ``` taxgroup_name:"E.coli and Shigella" AND (host:"Bos taurus" OR host:"Bos taurus taurus" OR host:"cattle" OR host:"beef cattle" OR host:"Bovine" OR host:"Cattle" OR host:"cow" OR host:"cows" OR host:"bovine" OR host:"Bos primigenius")``` 
     * 
-  
+* Salmonella enterica - 323,597 genomes
+  * Host (307 variables)
+  * variable "<empty>" 242 781 
+ 
 
 # Outbreak 
 
