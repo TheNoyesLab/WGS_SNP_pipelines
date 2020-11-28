@@ -79,15 +79,24 @@ Ignored     : 1
 # Host 
 
 
-## E coli - Host bovine associated
+## 
 
-### 100 genome subset
+### 100 genome subset - E coli - Host bovine associated
+Started Nov-27 17:40:30
 ```
 Nov-27 17:40:30.349 [main] DEBUG nextflow.cli.Launcher - $> nextflow run main_combined_pipeline.nf --reference_genome /tempalloc/noyes042/FMPRE_clean/Host_genomes/ref_Ecoli_NC_000913.fasta --reads '/tempalloc/noyes042/FMPRE_clean/Raw_datasets/100_genome_datasets/100genomes_Ecoli_host_cattle/*_{1,2}.fastq.gz' -profile singularity --output /tempalloc/noyes042/FMPRE_clean/ALL_results/temp_results/E_coli_Host_bovine_WGS_results --threads 20 -w /tempalloc/noyes042/FMPRE_clean/ALL_results/temp_results/work_ecoli_host -resume -with-report Ecoli_host_WGS_tools.report -with-trace -with-timeline --species escherichia_coli
 
 
 
 ```
+
+## 100 genome subset - Host poultry associated
+Started Nov-27 17:40:30
+```
+nextflow run main_combined_pipeline.nf --reference_genome /tempalloc/noyes042/FMPRE_clean/Host_genomes/Senterica_LT2_ref_genome.fasta --reads '/tempalloc/noyes042/FMPRE_clean/Raw_datasets/100_genome_datasets/100genomes_Salm_host_poultry/*_{1,2}.fastq.gz' -profile singularity --output /tempalloc/noyes042/FMPRE_clean/ALL_results/temp_results/Salm_Host_Poultry_WGS_results --threads 20 -w /tempalloc/noyes042/FMPRE_clean/ALL_results/temp_results/work_salm_poultry_host -resume -with-report Poultry_host_WGS_tools.report -with-trace -with-timeline --species salmonella_enterica
+```
+
+
 
 
 -----
@@ -182,6 +191,9 @@ Started November 6, 2020 @ 11:45am.
 * Results: /home/noyes046/shared/projects/WGS_project/Salmonella_Mississippi_WGS_results
 * Enterobase completed in 3d 23h 45m 17s
 * ksnp3: Elapsed time for kSNP in hours: 176.629166666667
+
+
+
 
 ```
 nextflow run main_combined_pipeline.nf --reference_genome /tempalloc/noyes042/WGS_project/Senterica_LT2_ref_genome.fasta --reads '/tempalloc/noyes042/WGS_project/genomes_Salm_MS/*_{1,2}.fastq.gz' -profile singularity --output /tempalloc/noyes042/WGS_project/S_enterica_MS_WGS_results --threads 20 -w /tempalloc/noyes042/WGS_project/work_salm_ms -resume -with-report Salm_MS_WGS_tools_20200721.report -with-trace -with-timeline
