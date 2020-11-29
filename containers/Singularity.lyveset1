@@ -28,11 +28,7 @@ From: ubuntu:xenial
        cpanminus\
        mpich\
        clang\
-       smalt \     
-       # Packages for cmake and freebayes
-       libbz2-dev \
-       liblzma-dev \
-       cmake && \
+       smalt && \
        apt-get clean && apt-get autoclean && \
        rm -rf /var/lib/apt/lists/*
     
@@ -58,10 +54,10 @@ From: ubuntu:xenial
     cd ../
     
     # Install freebayes
-    cd /usr/local
-    git clone --recursive git://github.com/ekg/freebayes.git
-    cd freebayes
-    make
+    cd /usr/local/bin
+    wget https://github.com/ekg/freebayes/releases/download/v1.3.1/freebayes-v1.3.1
+    mv freebayes-v1.3.1 freebayes
+    chmod 755 freebayes
     cd /
     
     # Add env
