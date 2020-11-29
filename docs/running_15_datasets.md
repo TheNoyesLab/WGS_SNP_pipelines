@@ -75,6 +75,8 @@ Started Nov-29  02:14 PM CST
 ```
 nextflow run main_combined_pipeline.nf --reference_genome /tempalloc/noyes042/FMPRE_clean/Host_genomes/Senterica_LT2_ref_genome.fasta --reads '/tempalloc/noyes042/FMPRE_clean/Raw_datasets/Outbreak_genomes/genomes_final_salmonella_outbreak/*_{1,2}.fastq.gz' -profile singularity --output /tempalloc/noyes042/FMPRE_clean/ALL_results/temp_results/Salmonella_OUTBREAK_WGS_results --threads 15 -w /tempalloc/noyes042/FMPRE_clean/ALL_results/temp_results/work_salm_outbreak -resume -with-report Salm_outbreak_WGS_tools.report -with-trace -with-timeline --species salmonella_enterica
 
+# Re-started Lyveset ~2:10pm MST
+
 ```
 
 ### Listeria outbreak genomes
