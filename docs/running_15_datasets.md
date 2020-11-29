@@ -80,9 +80,28 @@ nextflow run main_combined_pipeline.nf --reference_genome /tempalloc/noyes042/FM
 ```
 
 ### Listeria outbreak genomes
-
+Started Nov-28 14:04:59.586 CST
 ```
-nextflow run main_combined_pipeline.nf --reference_genome /tempalloc/noyes042/FMPRE_clean/Host_genomes/ref_L_monocytogenes_NC_003210.fasta --reads '/tempalloc/noyes042/FMPRE_clean/Raw_datasets/Outbreak_genomes/genomes_final_listeria_outbreak/*_{1,2}.fastq.gz' -profile singularity --output /tempalloc/noyes042/FMPRE_clean/ALL_results/temp_results/Listeria_OUTBREAK_WGS_results --threads 15 -w /tempalloc/noyes042/FMPRE_clean/ALL_results/temp_results/work_list_outbreak -resume -with-report Listeria_outbreak_WGS_tools.report -with-trace -with-timeline --species listeria_monocytogenes
+nextflow run main_combined_pipeline.nf --reference_genome /tempalloc/noyes042/FMPRE_clean/Host_genomes/ref_L_monocytogenes_NC_003210.fasta --reads '/tempalloc/noyes042/FMPRE_clean/Raw_datasets/100_genome_datasets/100genomes_Listeria_host_human/*_{1,2}.fastq.gz' -profile singularity --output /tempalloc/noyes042/FMPRE_clean/ALL_results/temp_results/100genome_Listeria_Host_human_WGS_results --threads 20 -w /tempalloc/noyes042/FMPRE_clean/ALL_results/temp_results/work_list_human_host -resume -with-report List_host_WGS_tools.report -with-trace -with-timeline --species listeria_monocytogenes
+N E X T F L O W  ~  version 20.07.1
+Launching `main_combined_pipeline.nf` [suspicious_curie] - revision: 1c8a4a77a8
+executor >  local (523)
+[25/d9c539] process > RunFastqConvert (SRR2062685) [100%] 173 of 173, cached: 1 ✔
+[17/a57db7] process > RunMakeList (null)           [100%] 1 of 1 ✔
+[14/358a75] process > RunCFSAN                     [100%] 1 of 1 ✔
+[62/575602] process > RunKSNP3 (null)              [100%] 1 of 1 ✔
+[96/dc1227] process > RunLYVESET (null)            [100%] 1 of 1, failed: 1 ✔
+[2e/8c5443] process > etoki_FastqQC (SRR2062685)   [100%] 173 of 173 ✔
+[1d/0ad241] process > etoki_assemble (SRR10766058) [100%] 173 of 173 ✔
+[06/326815] process > etoki_align (null)           [100%] 1 of 1 ✔
+[96/dc1227] NOTE: Process `RunLYVESET (null)` terminated with an error exit status (25) -- Error is ignored
+Completed at: 29-Nov-2020 14:58:45
+Duration    : 1d 53m 44s
+CPU hours   : 88.9 (0% cached, 26.4% failed)
+Succeeded   : 522
+Cached      : 1
+Ignored     : 1
+Failed      : 1
 
 ```
 
