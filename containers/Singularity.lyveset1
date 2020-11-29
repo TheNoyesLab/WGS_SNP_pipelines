@@ -31,7 +31,7 @@ From: ubuntu:xenial
        smalt \     
        # Packages for cmake and freebayes
        libbz2-dev \
-       liblzma-dev
+       liblzma-dev \
        cmake && \
        apt-get clean && apt-get autoclean && \
        rm -rf /var/lib/apt/lists/*
