@@ -64,6 +64,8 @@ Failed      : 1
 
 # Lyveset
 # Restarted on Nov-28  11:55 PM CST
+# Still got error and after troubleshooting a few different options, discovered that the error was somehow associated with using 4 threads and changing it to 14 fixed the isuee.
+# Final start at 01:50 PM CST
 /tempalloc/noyes042/FMPRE_clean/ALL_results/temp_results/work_ecoli_outbreak/13/4aef4a41789f0bac7622becd1fb29e
 
 
