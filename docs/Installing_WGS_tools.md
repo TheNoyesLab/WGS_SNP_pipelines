@@ -107,11 +107,21 @@ make env
 cp /home/noyes046/edoster/.conda/envs/lyve_set_conda/bin/varscan /home/noyes046/edoster/.conda/envs/lyve_set_conda/bin/varscan.sh
 # error with location of /panfs/roc/groups/11/noyes046/edoster/.conda/envs/lyve_set_conda/bin/VarScan.jar
 cp /home/noyes046/edoster/.conda/envs/lyve_set_conda/share/varscan-2.4.4-0/VarScan.jar /home/noyes046/edoster/.conda/envs/lyve_set_conda/bin/VarScan.jar
-
-
-
 ```
 
+Troubleshooting errors with Lyve-set
+
+I can't seem to explain what caused the error below, as it wsa fixed by simply increased the number of threads from 4 to 14
+```
+set_findPhages.pl: main: Tempdir is /tmp/phast0yqfYw
+set_findPhages.pl: phast: Running blastx against /usr/local/lyve-SET/scripts/../lib/phast/phast.faa
+cat: '/tmp/phast0yqfYw/phastfg2fmJ/*.fna.bls': No such file or directory
+set_findPhages.pl: main::phast: ERROR with cat on /tmp/phast0yqfYw/phastfg2fmJ/*.fna.bls at /usr/local/lyve-SET/scripts/set_findPhages.pl line 69, <GEN0> line 1.
+QSUB ERROR
+256
+launch_set.pl: Schedule::SGELK::command: ERROR with command: Inappropriate ioctl for device
+ 
+```
 
 
 
