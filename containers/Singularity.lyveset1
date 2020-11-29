@@ -19,8 +19,6 @@ From: ubuntu:xenial
        libncurses5-dev\
        libncursesw5-dev\
        build-essential\
-       libbz2-dev \
-       cmake \
        ncbi-blast+\
        libsvn-perl\
        subversion\
@@ -30,7 +28,11 @@ From: ubuntu:xenial
        cpanminus\
        mpich\
        clang\
-       smalt && \
+       smalt \     
+       # Packages for cmake and freebayes
+       libbz2-dev \
+       liblzma-dev
+       cmake && \
        apt-get clean && apt-get autoclean && \
        rm -rf /var/lib/apt/lists/*
     
