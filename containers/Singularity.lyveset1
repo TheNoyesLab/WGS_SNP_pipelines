@@ -10,6 +10,7 @@ From: ubuntu:xenial
     apt-get update && apt-get install -y\
        git\
        perl\
+       freebayes \
        libfile-slurp-perl\
        openjdk-9-jre\
        bioperl\
@@ -53,8 +54,17 @@ From: ubuntu:xenial
     make env
     cd ../
     
+    # Install freebayes
+    cd /usr/local
+    git clone --recursive git://github.com/ekg/freebayes.git
+    cd freebayes
+    make
+    cd /
+    
     # Add env
-    echo 'export PATH=$PATH:/usr/local/lyve-SET/scripts' >> $SINGULARITY_ENVIRONMENT
-    echo 'export PATH=$PATH:/edirect' >> $SINGULARITY_ENVIRONMENT
+    echo 'export PATH=/usr/local/lyve-SET/scripts:$PATH' >> $SINGULARITY_ENVIRONMENT
+    echo 'export PATH=/edirect:$PATH' >> $SINGULARITY_ENVIRONMENT
+    echo 'export PATH=/usr/local/freebayes/bin/:$PATH' >> $SINGULARITY_ENVIRONMENT
+    echo 'export PATH=/usr/local/freebayes/vcflib/bin/:$PATH' >> $SINGULARITY_ENVIRONMENT
     
 %test
