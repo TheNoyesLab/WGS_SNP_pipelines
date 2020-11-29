@@ -43,6 +43,28 @@ Running on cn4201 - 4 threads, 4 forks
 Started Nov-28  02:17 PM CST
 ```
 nextflow run main_combined_pipeline.nf --reference_genome /tempalloc/noyes042/FMPRE_clean/Host_genomes/ref_Ecoli_NC_000913.fasta --reads '/tempalloc/noyes042/FMPRE_clean/Raw_datasets/Outbreak_genomes/genomes_final_ecoli_outbreak/*_{1,2}.fastq.gz' -profile singularity --output /tempalloc/noyes042/FMPRE_clean/ALL_results/temp_results/E_coli_OUTBREAK_WGS_results --threads 4 -w /tempalloc/noyes042/FMPRE_clean/ALL_results/temp_results/work_ecoli_outbreak -resume -with-report Ecoli_outbreak_WGS_tools.report -with-trace -with-timeline --species escherichia_coli
+
+
+Launching `main_combined_pipeline.nf` [fervent_nobel] - revision: 4e6438034a
+executor >  local (47)
+[c6/8fc9f2] process > RunFastqConvert (ecolioutbreakSRR3371990) [100%] 14 of 14 ✔
+[4b/976a2d] process > RunMakeList (null)                        [100%] 1 of 1 ✔
+[41/e472e2] process > RunCFSAN                                  [100%] 1 of 1 ✔
+[e7/a723ef] process > RunKSNP3 (null)                           [100%] 1 of 1 ✔
+[13/4aef4a] process > RunLYVESET (null)                         [100%] 1 of 1, failed: 1 ✔
+[dd/1b9db4] process > etoki_FastqQC (ecolioutbreakSRR3371990)   [100%] 14 of 14 ✔
+[c9/dbf9f6] process > etoki_assemble (ecolioutbreakSRR2481229)  [100%] 14 of 14 ✔
+[88/369a5b] process > etoki_align (null)                        [100%] 1 of 1 ✔
+Completed at: 28-Nov-2020 16:50:19
+Duration    : 2h 34m 45s
+CPU hours   : 11.5 (3.5% failed)
+Succeeded   : 46
+Ignored     : 1
+Failed      : 1
+
+# Lyveset
+/tempalloc/noyes042/FMPRE_clean/ALL_results/temp_results/work_ecoli_outbreak/13/4aef4a41789f0bac7622becd1fb29e
+
 ```
 
 
