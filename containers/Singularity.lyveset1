@@ -19,6 +19,7 @@ From: ubuntu:xenial
        libncurses5-dev\
        libncursesw5-dev\
        build-essential\
+       cmake \
        ncbi-blast+\
        libsvn-perl\
        subversion\
