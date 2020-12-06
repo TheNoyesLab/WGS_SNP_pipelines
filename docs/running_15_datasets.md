@@ -19,7 +19,9 @@ On a browser, on your personal computer:
   * Host (573 unique host values) - bovine associated (3802) genomes - 757 SRA values
     * ``` taxgroup_name:"E.coli and Shigella" AND (host:"Bos taurus" OR host:"Bos taurus taurus" OR host:"cattle" OR host:"beef cattle" OR host:"Bovine" OR host:"Cattle" OR host:"cow" OR host:"cows" OR host:"bovine" OR host:"Bos primigenius") ``` 
     * variable ```<empty>``` - 78196 genomes
- * Sample type/ Isolation Source (2426 variables) - ground beef (1397 genomes) - 
+  * Sample type/ Isolation Source (2426 variables) - ground beef (1397 genomes) - 
+    * ``` taxgroup_name:"E.coli OR Shigella" AND (isolation_source:"Ground Beef" OR isolation_source:"product-raw-intact-beef" OR  isolation_source:"comminuted beef" OR  isolation_source:"ground beef" ) ```
+    * variable ```<empty>``` - 61945 genomes
 
 * Salmonella enterica - 323,597 total genomes
   * Host (307 variables) - Poultry associated - 916 genomes - 510 SRA
@@ -27,13 +29,15 @@ On a browser, on your personal computer:
     * variable ```<empty>``` 242,781 genomes
   * Sample type "Isolation Source" (7218 unique variables) - Chicken breast - 3094 genomes - 2759 SRA values
     * ```taxgroup_name:"Salmonella enterica"  AND (isolation_source:"chicken breast" OR isolation_source:"Chicken Breasts") ```
-    * variable ```<empty>``` - 147,352 genomes
+    * variable ```<empty>``` - 148,085 genomes
   
     
 * Listeria monocytogenes - 40,351 total genomes
   * Host (75 variables) - human associated - 6,670 genomes - 5,966 SRA
     * ``` taxgroup_name:"Listeria monocytogenes" AND (host:"Homo sapiens" OR host:"homo sapiens") ```
     * variable ```<empty>``` 30,961 genomes
+  * Sample type (2796 variables) - Environmental sponge -
+    * variable ```<empty>``` 2,796 genomes
 
   
 -----
@@ -148,7 +152,7 @@ nextflow run main_combined_pipeline.nf --reference_genome /tempalloc/noyes042/FM
 
 ## 100 genome subset - Salmonella - Sample type chicken breast associated
 
-Started Nov-6 1:28 AM CST
+Started Dec-6 1:28 AM CST
 ```
 nextflow run main_combined_pipeline.nf --reference_genome /tempalloc/noyes042/FMPRE_clean/Host_genomes/Senterica_LT2_ref_genome.fasta --reads '/tempalloc/noyes042/FMPRE_clean/Raw_datasets/100_genome_datasets/100genomes_Salm_sampletype_chickenbreast/*_{1,2}.fastq.gz' -profile singularity --output /tempalloc/noyes042/FMPRE_clean/ALL_results/temp_results/100_Salm_Sampletype_ChickenBreast_WGS_results --threads 20 -w /tempalloc/noyes042/FMPRE_clean/ALL_results/temp_results/work_salm_sampletype -resume -with-report SampleType_ChickenBreast_WGS_tools.report -with-trace -with-timeline --species salmonella_enterica
 ```
@@ -164,6 +168,15 @@ Started Nov-28  02:06 PM CST
 ```
 nextflow run main_combined_pipeline.nf --reference_genome /tempalloc/noyes042/FMPRE_clean/Host_genomes/ref_L_monocytogenes_NC_003210.fasta --reads '/tempalloc/noyes042/FMPRE_clean/Raw_datasets/100_genome_datasets/100genomes_Listeria_host_human/*_{1,2}.fastq.gz' -profile singularity --output /tempalloc/noyes042/FMPRE_clean/ALL_results/temp_results/100genome_Listeria_Host_human_WGS_results --threads 20 -w /tempalloc/noyes042/FMPRE_clean/ALL_results/temp_results/work_list_human_host -resume -with-report List_host_WGS_tools.report -with-trace -with-timeline --species listeria_monocytogenes
 ```
+
+## 100 genome subset - Listeria - Environmental swab
+Started Dec-6  02:00 AM CST
+```
+nextflow run main_combined_pipeline.nf --reference_genome /tempalloc/noyes042/FMPRE_clean/Host_genomes/ref_L_monocytogenes_NC_003210.fasta --reads '/tempalloc/noyes042/FMPRE_clean/Raw_datasets/100_genome_datasets/100genomes_Listeria_sampletype_envswab/*_{1,2}.fastq.gz' -profile singularity --output /tempalloc/noyes042/FMPRE_clean/ALL_results/temp_results/100genome_Listeria_sampletype_envswab_WGS_results --threads 20 -w /tempalloc/noyes042/FMPRE_clean/ALL_results/temp_results/work_list_sampletype_envswab -resume -with-report List_sampletype_envswab_WGS_tools.report -with-trace -with-timeline --species listeria_monocytogenes
+```
+
+
+
 
 -----
 # Analysis by factor, species
