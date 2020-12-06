@@ -35,6 +35,8 @@
 ### Ecoli outbreak genomes
 Running on cn4201 - 4 threads, 4 forks
 Started Nov-28  02:17 PM CST
+Lyveset error
+Done Nov 29 18:21 CST
 ```
 nextflow run main_combined_pipeline.nf --reference_genome /tempalloc/noyes042/FMPRE_clean/Host_genomes/ref_Ecoli_NC_000913.fasta --reads '/tempalloc/noyes042/FMPRE_clean/Raw_datasets/Outbreak_genomes/genomes_final_ecoli_outbreak/*_{1,2}.fastq.gz' -profile singularity --output /tempalloc/noyes042/FMPRE_clean/ALL_results/temp_results/E_coli_OUTBREAK_WGS_results --threads 4 -w /tempalloc/noyes042/FMPRE_clean/ALL_results/temp_results/work_ecoli_outbreak -resume -with-report Ecoli_outbreak_WGS_tools.report -with-trace -with-timeline --species escherichia_coli
 
@@ -60,46 +62,39 @@ Failed      : 1
 # Restarted on Nov-28  11:55 PM CST
 # Still got error and after troubleshooting a few different options, discovered that the error was somehow associated with using 4 threads and changing it to 14 fixed the isuee.
 # Final start at 01:50 PM CST
+# Finished Nov 29 18:21 CST 
 /tempalloc/noyes042/FMPRE_clean/ALL_results/temp_results/work_ecoli_outbreak/13/4aef4a41789f0bac7622becd1fb29e
+
 ```
 
 ### Salmonella outbreak genomes
 Running on cn1107 - 15 threads, 4 forks
 Started Nov-29  02:14 PM CST
+Lyveset error
+Done Nov 30 02:59 CST
 ```
 nextflow run main_combined_pipeline.nf --reference_genome /tempalloc/noyes042/FMPRE_clean/Host_genomes/Senterica_LT2_ref_genome.fasta --reads '/tempalloc/noyes042/FMPRE_clean/Raw_datasets/Outbreak_genomes/genomes_final_salmonella_outbreak/*_{1,2}.fastq.gz' -profile singularity --output /tempalloc/noyes042/FMPRE_clean/ALL_results/temp_results/Salmonella_OUTBREAK_WGS_results --threads 15 -w /tempalloc/noyes042/FMPRE_clean/ALL_results/temp_results/work_salm_outbreak -resume -with-report Salm_outbreak_WGS_tools.report -with-trace -with-timeline --species salmonella_enterica
 
 # Re-started Lyveset ~2:10pm MST
 
+# Keep having issue with this output file. It somehow has a symlink to a file that is not actually present. I'm not able to move or cp this file.
+lrwxrwxrwx.  1 edoster noyes046   22 Nov 30 02:59 tree.dnd -> out.RAxML_bipartitions
+
 ```
 
 ### Listeria outbreak genomes
-Started Nov-28 14:04:59.586 CST
+Started Nov-29 14:18:54 CST
+Lyveset error
+Done 2020-11-30 03:02:22
 ```
-nextflow run main_combined_pipeline.nf --reference_genome /tempalloc/noyes042/FMPRE_clean/Host_genomes/ref_L_monocytogenes_NC_003210.fasta --reads '/tempalloc/noyes042/FMPRE_clean/Raw_datasets/100_genome_datasets/100genomes_Listeria_host_human/*_{1,2}.fastq.gz' -profile singularity --output /tempalloc/noyes042/FMPRE_clean/ALL_results/temp_results/100genome_Listeria_Host_human_WGS_results --threads 20 -w /tempalloc/noyes042/FMPRE_clean/ALL_results/temp_results/work_list_human_host -resume -with-report List_host_WGS_tools.report -with-trace -with-timeline --species listeria_monocytogenes
-N E X T F L O W  ~  version 20.07.1
-Launching `main_combined_pipeline.nf` [suspicious_curie] - revision: 1c8a4a77a8
-executor >  local (523)
-[25/d9c539] process > RunFastqConvert (SRR2062685) [100%] 173 of 173, cached: 1 ✔
-[17/a57db7] process > RunMakeList (null)           [100%] 1 of 1 ✔
-[14/358a75] process > RunCFSAN                     [100%] 1 of 1 ✔
-[62/575602] process > RunKSNP3 (null)              [100%] 1 of 1 ✔
-[96/dc1227] process > RunLYVESET (null)            [100%] 1 of 1, failed: 1 ✔
-[2e/8c5443] process > etoki_FastqQC (SRR2062685)   [100%] 173 of 173 ✔
-[1d/0ad241] process > etoki_assemble (SRR10766058) [100%] 173 of 173 ✔
-[06/326815] process > etoki_align (null)           [100%] 1 of 1 ✔
-[96/dc1227] NOTE: Process `RunLYVESET (null)` terminated with an error exit status (25) -- Error is ignored
-Completed at: 29-Nov-2020 14:58:45
-Duration    : 1d 53m 44s
-CPU hours   : 88.9 (0% cached, 26.4% failed)
-Succeeded   : 522
-Cached      : 1
-Ignored     : 1
-Failed      : 1
+Nov-29 14:18:54.288 [main] DEBUG nextflow.cli.Launcher - $> nextflow run main_combined_pipeline.nf --reference_genome /tempalloc/noyes042/FMPRE_clean/Host_genomes/ref_L_monocytogenes_NC_003210.fasta --reads '/tempalloc/noyes042/FMPRE_clean/Raw_datasets/Outbreak_genomes/genomes_final_listeria_outbreak/*_{1,2}.fastq.gz' -profile singularity --output /tempalloc/noyes042/FMPRE_clean/ALL_results/temp_results/Listeria_OUTBREAK_WGS_results --threads 15 -w /tempalloc/noyes042/FMPRE_clean/ALL_results/temp_results/work_list_outbreak -resume -with-report Listeria_outbreak_WGS_tools.report -with-trace -with-timeline --species listeria_monocytogenes
 
-# Lyveset
-# erase possible problem sample - ERR3604679
-# Re-started 5:49 pm CST
+# Lyveset error
+# launch_set.pl:  Lyve-SET started at 2020-11-29 14:49:39
+/tempalloc/noyes042/FMPRE_clean/ALL_results/temp_results/work_list_outbreak/44/268294f8df99e15a29d272ccf4adf8
+#launch_set.pl:  Finished at 2020-11-30 03:02:22
+#launch_set.pl:  Duration: 732 minutes, 43 seconds
+
 
 ```
 
@@ -135,6 +130,9 @@ nextflow run main_combined_pipeline.nf --reference_genome /tempalloc/noyes042/FM
 
 ## 100 genome subset - Salmonella - Host poultry associated
 Started Nov-28 01:57:20.181 AM CST
+Finished by Dec-02 10:02:44 AM CST
+Results moved to /tempalloc/noyes042/FMPRE_clean/ALL_results/100_genome_results/100_genome_Salm_Host_Poultry_WGS_results
+
 ```
 nextflow run main_combined_pipeline.nf --reference_genome /tempalloc/noyes042/FMPRE_clean/Host_genomes/Senterica_LT2_ref_genome.fasta --reads '/tempalloc/noyes042/FMPRE_clean/Raw_datasets/100_genome_datasets/100genomes_Salm_host_poultry/*_{1,2}.fastq.gz' -profile singularity --output /tempalloc/noyes042/FMPRE_clean/ALL_results/temp_results/Salm_Host_Poultry_WGS_results --threads 20 -w /tempalloc/noyes042/FMPRE_clean/ALL_results/temp_results/work_salm_poultry_host -resume -with-report Poultry_host_WGS_tools.report -with-trace -with-timeline --species salmonella_enterica
 ```
@@ -147,15 +145,34 @@ nextflow run main_combined_pipeline.nf --reference_genome /tempalloc/noyes042/FM
 ```
 
 
-
-
-
-
-
 ## 100 genome subset - Listeria - Host human associated
 Started Nov-28  02:06 PM CST
 ```
 nextflow run main_combined_pipeline.nf --reference_genome /tempalloc/noyes042/FMPRE_clean/Host_genomes/ref_L_monocytogenes_NC_003210.fasta --reads '/tempalloc/noyes042/FMPRE_clean/Raw_datasets/100_genome_datasets/100genomes_Listeria_host_human/*_{1,2}.fastq.gz' -profile singularity --output /tempalloc/noyes042/FMPRE_clean/ALL_results/temp_results/100genome_Listeria_Host_human_WGS_results --threads 20 -w /tempalloc/noyes042/FMPRE_clean/ALL_results/temp_results/work_list_human_host -resume -with-report List_host_WGS_tools.report -with-trace -with-timeline --species listeria_monocytogenes
+N E X T F L O W  ~  version 20.07.1
+Launching `main_combined_pipeline.nf` [suspicious_curie] - revision: 1c8a4a77a8
+executor >  local (523)
+[25/d9c539] process > RunFastqConvert (SRR2062685) [100%] 173 of 173, cached: 1 ✔
+[17/a57db7] process > RunMakeList (null)           [100%] 1 of 1 ✔
+[14/358a75] process > RunCFSAN                     [100%] 1 of 1 ✔
+[62/575602] process > RunKSNP3 (null)              [100%] 1 of 1 ✔
+[96/dc1227] process > RunLYVESET (null)            [100%] 1 of 1, failed: 1 ✔
+[2e/8c5443] process > etoki_FastqQC (SRR2062685)   [100%] 173 of 173 ✔
+[1d/0ad241] process > etoki_assemble (SRR10766058) [100%] 173 of 173 ✔
+[06/326815] process > etoki_align (null)           [100%] 1 of 1 ✔
+[96/dc1227] NOTE: Process `RunLYVESET (null)` terminated with an error exit status (25) -- Error is ignored
+Completed at: 29-Nov-2020 14:58:45
+Duration    : 1d 53m 44s
+CPU hours   : 88.9 (0% cached, 26.4% failed)
+Succeeded   : 522
+Cached      : 1
+Ignored     : 1
+Failed      : 1
+
+# Lyveset
+# erase possible problem sample - ERR3604679
+# Re-started Nov 29 - 5:49 pm CST
+/tempalloc/noyes042/FMPRE_clean/ALL_results/temp_results/work_list_human_host/96/dc1227a5571c0c0d2790ab7d1e2634
 ```
 
 ## 100 genome subset - Listeria - Environmental swab
