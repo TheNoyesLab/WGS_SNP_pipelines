@@ -46,6 +46,7 @@ nextflow run main_combined_pipeline.nf --reference_genome /tempalloc/noyes042/FM
 # Listeria
 ## 100 genome subset - Listeria - Host human associated
 Started Nov-28  02:06 PM CST
+Results moved to /tempalloc/noyes042/FMPRE_clean/ALL_results/100_genome_results/100genome_Listeria_Host_human_WGS_results
 ```
 nextflow run main_combined_pipeline.nf --reference_genome /tempalloc/noyes042/FMPRE_clean/Host_genomes/ref_L_monocytogenes_NC_003210.fasta --reads '/tempalloc/noyes042/FMPRE_clean/Raw_datasets/100_genome_datasets/100genomes_Listeria_host_human/*_{1,2}.fastq.gz' -profile singularity --output /tempalloc/noyes042/FMPRE_clean/ALL_results/temp_results/100genome_Listeria_Host_human_WGS_results --threads 20 -w /tempalloc/noyes042/FMPRE_clean/ALL_results/temp_results/work_list_human_host -resume -with-report List_host_WGS_tools.report -with-trace -with-timeline --species listeria_monocytogenes
 N E X T F L O W  ~  version 20.07.1
