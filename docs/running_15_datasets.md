@@ -19,12 +19,13 @@ On a browser, on your personal computer:
   * Host (573 unique host values) - bovine associated (3802) genomes - 757 SRA values
     * ``` taxgroup_name:"E.coli and Shigella" AND (host:"Bos taurus" OR host:"Bos taurus taurus" OR host:"cattle" OR host:"beef cattle" OR host:"Bovine" OR host:"Cattle" OR host:"cow" OR host:"cows" OR host:"bovine" OR host:"Bos primigenius") ``` 
     * variable ```<empty>``` - 78196 genomes
+ * Sample type/ Isolation Source (2426 variables) - ground beef (1397 genomes) - 
 
 * Salmonella enterica - 323,597 total genomes
   * Host (307 variables) - Poultry associated - 916 genomes - 510 SRA
     * ``` taxgroup_name:"Salmonella enterica"  AND ( host:"Gallus gallus" OR host:"chicken"OR host:"Chicken"OR host:"broiler chicken" OR host:"Gallus gallus domesticus" OR host:"Poultry" OR host:"poultry" OR host:"chicken") ```
     * variable ```<empty>``` 242,781 genomes
-  * Sample type "Isolation Source" (7218 unique variables) - Chicken breast - 3094 genomes
+  * Sample type "Isolation Source" (7218 unique variables) - Chicken breast - 3094 genomes - 2759 SRA values
     * ```taxgroup_name:"Salmonella enterica"  AND (isolation_source:"chicken breast" OR isolation_source:"Chicken Breasts") ```
     * variable ```<empty>``` - 147,352 genomes
   
@@ -118,6 +119,7 @@ Failed      : 1
 
 ### 100 genome subset - E coli - Host bovine associated
 Started Nov-27 17:40:30 CST
+Moved final results to: /tempalloc/noyes042/FMPRE_clean/ALL_results/100_genome_results/100_genome_Ecoli_Host_bovine_WGS_results
 
 ```
 Nov-27 17:40:30.349 [main] DEBUG nextflow.cli.Launcher - $> nextflow run main_combined_pipeline.nf --reference_genome /tempalloc/noyes042/FMPRE_clean/Host_genomes/ref_Ecoli_NC_000913.fasta --reads '/tempalloc/noyes042/FMPRE_clean/Raw_datasets/100_genome_datasets/100genomes_Ecoli_host_cattle/*_{1,2}.fastq.gz' -profile singularity --output /tempalloc/noyes042/FMPRE_clean/ALL_results/temp_results/E_coli_Host_bovine_WGS_results --threads 20 -w /tempalloc/noyes042/FMPRE_clean/ALL_results/temp_results/work_ecoli_host -resume -with-report Ecoli_host_WGS_tools.report -with-trace -with-timeline --species escherichia_coli
@@ -125,15 +127,37 @@ Nov-27 17:40:30.349 [main] DEBUG nextflow.cli.Launcher - $> nextflow run main_co
 # lyveset error
 # Trimming step was frozen on a sample for > 1 hour
 # restarted 2020-11-29 14:40:20
-
+# finished Nov 30 11:23 CST
 
 ```
+### 100 genome subset - E coli - Beef associated
+Started
+
+```
+nextflow run main_combined_pipeline.nf --reference_genome /tempalloc/noyes042/FMPRE_clean/Host_genomes/ref_Ecoli_NC_000913.fasta --reads '/tempalloc/noyes042/FMPRE_clean/Raw_datasets/100_genome_datasets/100genomes_Ecoli_sampletype_beef/*_{1,2}.fastq.gz' -profile singularity --output /tempalloc/noyes042/FMPRE_clean/ALL_results/temp_results/100genomes_E_coli_sampletype_beef_WGS_results --threads 20 -w /tempalloc/noyes042/FMPRE_clean/ALL_results/temp_results/work_ecoli_sampletype -resume -with-report Ecoli_sampletype_WGS_tools.report -with-trace -with-timeline --species escherichia_coli
+```
+
+
+
 
 ## 100 genome subset - Salmonella - Host poultry associated
 Started Nov-28 01:57:20.181 AM CST
 ```
 nextflow run main_combined_pipeline.nf --reference_genome /tempalloc/noyes042/FMPRE_clean/Host_genomes/Senterica_LT2_ref_genome.fasta --reads '/tempalloc/noyes042/FMPRE_clean/Raw_datasets/100_genome_datasets/100genomes_Salm_host_poultry/*_{1,2}.fastq.gz' -profile singularity --output /tempalloc/noyes042/FMPRE_clean/ALL_results/temp_results/Salm_Host_Poultry_WGS_results --threads 20 -w /tempalloc/noyes042/FMPRE_clean/ALL_results/temp_results/work_salm_poultry_host -resume -with-report Poultry_host_WGS_tools.report -with-trace -with-timeline --species salmonella_enterica
 ```
+
+## 100 genome subset - Salmonella - Sample type chicken breast associated
+
+Started Nov-6 1:28 AM CST
+```
+nextflow run main_combined_pipeline.nf --reference_genome /tempalloc/noyes042/FMPRE_clean/Host_genomes/Senterica_LT2_ref_genome.fasta --reads '/tempalloc/noyes042/FMPRE_clean/Raw_datasets/100_genome_datasets/100genomes_Salm_sampletype_chickenbreast/*_{1,2}.fastq.gz' -profile singularity --output /tempalloc/noyes042/FMPRE_clean/ALL_results/temp_results/100_Salm_Sampletype_ChickenBreast_WGS_results --threads 20 -w /tempalloc/noyes042/FMPRE_clean/ALL_results/temp_results/work_salm_sampletype -resume -with-report SampleType_ChickenBreast_WGS_tools.report -with-trace -with-timeline --species salmonella_enterica
+```
+
+
+
+
+
+
 
 ## 100 genome subset - Listeria - Host human associated
 Started Nov-28  02:06 PM CST
