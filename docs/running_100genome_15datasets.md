@@ -3,6 +3,8 @@
 -----
 # 100 genome subsets
 
+
+# E coli
 ### 100 genome subset - E coli - Host bovine associated
 Started Nov-27 17:40:30 CST
 Moved final results to: /tempalloc/noyes042/FMPRE_clean/ALL_results/100_genome_results/100_genome_Ecoli_Host_bovine_WGS_results
@@ -18,14 +20,13 @@ Nov-27 17:40:30.349 [main] DEBUG nextflow.cli.Launcher - $> nextflow run main_co
 ```
 ### 100 genome subset - E coli - Beef associated
 Started
-
 ```
 nextflow run main_combined_pipeline.nf --reference_genome /tempalloc/noyes042/FMPRE_clean/Host_genomes/ref_Ecoli_NC_000913.fasta --reads '/tempalloc/noyes042/FMPRE_clean/Raw_datasets/100_genome_datasets/100genomes_Ecoli_sampletype_beef/*_{1,2}.fastq.gz' -profile singularity --output /tempalloc/noyes042/FMPRE_clean/ALL_results/temp_results/100genomes_E_coli_sampletype_beef_WGS_results --threads 20 -w /tempalloc/noyes042/FMPRE_clean/ALL_results/temp_results/work_ecoli_sampletype -resume -with-report Ecoli_sampletype_WGS_tools.report -with-trace -with-timeline --species escherichia_coli
 ```
 
 
 
-
+# Salmonella
 ## 100 genome subset - Salmonella - Host poultry associated
 Started Nov-28 01:57:20.181 AM CST
 Finished by Dec-02 10:02:44 AM CST
@@ -42,7 +43,7 @@ Started Dec-6 1:28 AM CST
 nextflow run main_combined_pipeline.nf --reference_genome /tempalloc/noyes042/FMPRE_clean/Host_genomes/Senterica_LT2_ref_genome.fasta --reads '/tempalloc/noyes042/FMPRE_clean/Raw_datasets/100_genome_datasets/100genomes_Salm_sampletype_chickenbreast/*_{1,2}.fastq.gz' -profile singularity --output /tempalloc/noyes042/FMPRE_clean/ALL_results/temp_results/100_Salm_Sampletype_ChickenBreast_WGS_results --threads 20 -w /tempalloc/noyes042/FMPRE_clean/ALL_results/temp_results/work_salm_sampletype -resume -with-report SampleType_ChickenBreast_WGS_tools.report -with-trace -with-timeline --species salmonella_enterica
 ```
 
-
+# Listeria
 ## 100 genome subset - Listeria - Host human associated
 Started Nov-28  02:06 PM CST
 ```
@@ -71,11 +72,26 @@ Failed      : 1
 # erase possible problem sample - ERR3604679
 # Re-started Nov 29 - 5:49 pm CST
 /tempalloc/noyes042/FMPRE_clean/ALL_results/temp_results/work_list_human_host/96/dc1227a5571c0c0d2790ab7d1e2634
+# Still had error, but seemed to go further so re-started once again on Dec 6 - 12:16 pm CST
+launch_set.pl:  Finished at 2020-12-06 13:22:42
+launch_set.pl:  Duration: 66 minutes, 46 seconds
+
+
 ```
 
 ## 100 genome subset - Listeria - Environmental swab
 Started Dec-6  02:00 AM CST
 ```
 nextflow run main_combined_pipeline.nf --reference_genome /tempalloc/noyes042/FMPRE_clean/Host_genomes/ref_L_monocytogenes_NC_003210.fasta --reads '/tempalloc/noyes042/FMPRE_clean/Raw_datasets/100_genome_datasets/100genomes_Listeria_sampletype_envswab/*_{1,2}.fastq.gz' -profile singularity --output /tempalloc/noyes042/FMPRE_clean/ALL_results/temp_results/100genome_Listeria_sampletype_envswab_WGS_results --threads 20 -w /tempalloc/noyes042/FMPRE_clean/ALL_results/temp_results/work_list_sampletype_envswab -resume -with-report List_sampletype_envswab_WGS_tools.report -with-trace -with-timeline --species listeria_monocytogenes
+
 ```
 
+
+## 100 genome subset - Listeria - IBM high quality
+Run on cn4201
+Started Dec 6 2020 - 2:12pm CST
+```
+nextflow run main_combined_pipeline.nf --reference_genome /tempalloc/noyes042/FMPRE_clean/Host_genomes/ref_L_monocytogenes_NC_003210.fasta --reads '/tempalloc/noyes042/FMPRE_clean/Raw_datasets/100_genome_datasets/100genomes_Listeria_HighQuality_IBM/*_{1,2}.fastq.gz' -profile singularity --output /tempalloc/noyes042/FMPRE_clean/ALL_results/temp_results/100genome_Listeria_HighQuality_IBM_WGS_results --threads 7 -w /tempalloc/noyes042/FMPRE_clean/ALL_results/temp_results/work_list_HighQuality_IBM -resume -with-report Listeria_HighQuality_IBM_WGS_tools.report -with-trace -with-timeline --species listeria_monocytogenes
+
+
+```
