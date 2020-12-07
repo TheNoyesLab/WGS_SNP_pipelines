@@ -19,10 +19,20 @@ Nov-27 17:40:30.349 [main] DEBUG nextflow.cli.Launcher - $> nextflow run main_co
 
 ```
 ### 100 genome subset - E coli - Beef associated
-Started
+Started Dec-06 00:56:37.026 CST
 ```
 nextflow run main_combined_pipeline.nf --reference_genome /tempalloc/noyes042/FMPRE_clean/Host_genomes/ref_Ecoli_NC_000913.fasta --reads '/tempalloc/noyes042/FMPRE_clean/Raw_datasets/100_genome_datasets/100genomes_Ecoli_sampletype_beef/*_{1,2}.fastq.gz' -profile singularity --output /tempalloc/noyes042/FMPRE_clean/ALL_results/temp_results/100genomes_E_coli_sampletype_beef_WGS_results --threads 20 -w /tempalloc/noyes042/FMPRE_clean/ALL_results/temp_results/work_ecoli_sampletype -resume -with-report Ecoli_sampletype_WGS_tools.report -with-trace -with-timeline --species escherichia_coli
 ```
+
+
+### 100 genome subset - E coli - IBM high quality
+Started Dec-6 9:38pm CST
+```
+nextflow run main_combined_pipeline.nf --reference_genome /tempalloc/noyes042/FMPRE_clean/Host_genomes/ref_Ecoli_NC_000913.fasta --reads '/tempalloc/noyes042/FMPRE_clean/Raw_datasets/100_genome_datasets/100genomes_Ecoli_HighQuality_IBM/*_{1,2}.fastq.gz' -profile singularity --output /tempalloc/noyes042/FMPRE_clean/ALL_results/temp_results/100genomes_E_coli_HighQuality_IBM_WGS_results --threads 20 -w /tempalloc/noyes042/FMPRE_clean/ALL_results/temp_results/work_ecoli_IBM -resume -with-report Ecoli_HighQuality_IBM_WGS_tools.report -with-trace -with-timeline --species escherichia_coli
+```
+100genomes_Ecoli_HighQuality_IBM/
+
+
 
 
 
