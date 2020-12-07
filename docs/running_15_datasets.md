@@ -11,6 +11,9 @@
   * Sample type/ Isolation Source (2426 variables) - ground beef (1397 genomes) - 
     * ``` taxgroup_name:"E.coli OR Shigella" AND (isolation_source:"Ground Beef" OR isolation_source:"product-raw-intact-beef" OR  isolation_source:"comminuted beef" OR  isolation_source:"ground beef" ) ```
     * variable ```<empty>``` - 61945 genomes
+  * Geography/ Location (1027 variables) - South Dakota (SD) (431 genomes)
+    * ``` taxgroup_name:"E.coli OR Shigella" and (isolation_source:"Ground Beef" OR isolation_source:"product-raw-intact-beef" OR  isolation_source:"comminuted beef" OR  isolation_source:"ground beef" ) ```
+    * variable ```<empty>``` - 11313 genomes
 
 * Salmonella enterica - 323,597 total genomes
   * Host (307 variables) - Poultry associated - 916 genomes - 510 SRA
@@ -19,14 +22,19 @@
   * Sample type "Isolation Source" (7218 unique variables) - Chicken breast - 3094 genomes - 2759 SRA values
     * ```taxgroup_name:"Salmonella enterica"  AND (isolation_source:"chicken breast" OR isolation_source:"Chicken Breasts") ```
     * variable ```<empty>``` - 148,085 genomes
+  * Geography (731 variables) - South Dakota (SD) (756 genomes)
+    * variable ```<empty>``` - 20,373 genomes
   
     
 * Listeria monocytogenes - 40,351 total genomes
   * Host (75 variables) - human associated - 6,670 genomes - 5,966 SRA
     * ``` taxgroup_name:"Listeria monocytogenes" AND (host:"Homo sapiens" OR host:"homo sapiens") ```
     * variable ```<empty>``` 30,961 genomes
-  * Sample type (2796 variables) - Environmental sponge -
+  * Sample type (2796 variables) - Environmental sponge (1078 genomes)
+    * ``` taxgroup_name:"Listeria monocytogenes" AND (isolation_source:"Environmental sponge" OR host:"Environmental Sponge" OR host:"sponge" OR host:"environmental sponge" OR host:"EMP Sponge") 
     * variable ```<empty>``` 2,796 genomes
+  * Geography (293 variables) - New York (1773 genomes)
+    * variable ```<empty>``` 4864 genomes
 
   
 -----
