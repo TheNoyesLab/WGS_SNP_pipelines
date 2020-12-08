@@ -22,6 +22,35 @@ Nov-27 17:40:30.349 [main] DEBUG nextflow.cli.Launcher - $> nextflow run main_co
 Started Dec-06 00:56:37.026 CST
 ```
 nextflow run main_combined_pipeline.nf --reference_genome /tempalloc/noyes042/FMPRE_clean/Host_genomes/ref_Ecoli_NC_000913.fasta --reads '/tempalloc/noyes042/FMPRE_clean/Raw_datasets/100_genome_datasets/100genomes_Ecoli_sampletype_beef/*_{1,2}.fastq.gz' -profile singularity --output /tempalloc/noyes042/FMPRE_clean/ALL_results/temp_results/100genomes_E_coli_sampletype_beef_WGS_results --threads 20 -w /tempalloc/noyes042/FMPRE_clean/ALL_results/temp_results/work_ecoli_sampletype -resume -with-report Ecoli_sampletype_WGS_tools.report -with-trace -with-timeline --species escherichia_coli
+
+N E X T F L O W  ~  version 20.07.1
+Launching `main_combined_pipeline.nf` [cranky_boyd] - revision: 4e6438034a
+executor >  local (347)
+[00/f1de45] process > RunFastqConvert (SRR12974196) [100%] 114 of 114 ✔
+[4b/9e9f57] process > RunMakeList (null)            [100%] 1 of 1 ✔
+[09/532e21] process > RunCFSAN                      [100%] 1 of 1 ✔
+[23/f7b482] process > RunKSNP3 (null)               [100%] 1 of 1 ✔
+[c4/0209be] process > RunLYVESET (null)             [100%] 1 of 1, failed: 1 ✔
+[be/eb7cdb] process > etoki_FastqQC (SRR12974196)   [100%] 114 of 114 ✔
+[aa/0b78b5] process > etoki_assemble (SRR12974196)  [100%] 114 of 114 ✔
+[55/e3831d] process > etoki_align (null)            [100%] 1 of 1 ✔
+Waiting files transfer to complete (1 files)
+Completed at: 06-Dec-2020 17:14:00
+Duration    : 16h 17m 21s
+CPU hours   : 80.1 (17.4% failed)
+Succeeded   : 346
+Ignored     : 1
+Failed      : 1
+
+# Lyveset error
+sort -k1,1d -k2,2n
+sort: cannot create temporary file in '': Read-only file system
+QSUB ERROR
+36096
+launch_set.pl: Schedule::SGELK::command: ERROR with command: Inappropriate ioctl for device
+  /usr/bin/perl /tempalloc/noyes042/FMPRE_clean/ALL_results/temp_results/work_ecoli_sampletype/c4/0209be9b5619a6d1c8e46c0ad08158/Lyveset_results/log/SGELK/qsub.964901.pl
+Stopped at /usr/local/lyve-SET/scripts/../lib/Schedule/SGELK.pm line 661.
+# Restart at December 8,2020 2:31AM CST
 ```
 
 
