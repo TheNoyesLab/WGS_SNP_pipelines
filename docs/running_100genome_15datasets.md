@@ -80,6 +80,16 @@ nextflow run main_combined_pipeline.nf --reference_genome /tempalloc/noyes042/FM
 Started Dec-6 1:28 AM CST
 ```
 nextflow run main_combined_pipeline.nf --reference_genome /tempalloc/noyes042/FMPRE_clean/Host_genomes/Senterica_LT2_ref_genome.fasta --reads '/tempalloc/noyes042/FMPRE_clean/Raw_datasets/100_genome_datasets/100genomes_Salm_sampletype_chickenbreast/*_{1,2}.fastq.gz' -profile singularity --output /tempalloc/noyes042/FMPRE_clean/ALL_results/temp_results/100_Salm_Sampletype_ChickenBreast_WGS_results --threads 20 -w /tempalloc/noyes042/FMPRE_clean/ALL_results/temp_results/work_salm_sampletype -resume -with-report SampleType_ChickenBreast_WGS_tools.report -with-trace -with-timeline --species salmonella_enterica
+Completed at: 06-Dec-2020 22:57:52
+Duration    : 21h 30m 4s
+CPU hours   : 100.0 (15.9% failed)
+Succeeded   : 493
+Ignored     : 1
+Failed      : 1
+
+# Lyveset error
+# Restart 2020-12-8 2:35pm CST
+
 ```
 
 # Listeria
@@ -123,6 +133,16 @@ launch_set.pl:  Duration: 66 minutes, 46 seconds
 Started Dec-6  02:00 AM CST
 ```
 nextflow run main_combined_pipeline.nf --reference_genome /tempalloc/noyes042/FMPRE_clean/Host_genomes/ref_L_monocytogenes_NC_003210.fasta --reads '/tempalloc/noyes042/FMPRE_clean/Raw_datasets/100_genome_datasets/100genomes_Listeria_sampletype_envswab/*_{1,2}.fastq.gz' -profile singularity --output /tempalloc/noyes042/FMPRE_clean/ALL_results/temp_results/100genome_Listeria_sampletype_envswab_WGS_results --threads 20 -w /tempalloc/noyes042/FMPRE_clean/ALL_results/temp_results/work_list_sampletype_envswab -resume -with-report List_sampletype_envswab_WGS_tools.report -with-trace -with-timeline --species listeria_monocytogenes
+
+Completed at: 06-Dec-2020 17:58:41
+Duration    : 15h 53m 25s
+CPU hours   : 65.6 (22.5% failed)
+Succeeded   : 556
+Ignored     : 1
+Failed      : 1
+
+#Lyveset error
+# Restarted 2020-12-8 at 2:36pm CST
 
 ```
 
