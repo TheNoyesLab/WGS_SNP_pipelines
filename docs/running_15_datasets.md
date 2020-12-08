@@ -4,7 +4,7 @@
 
 ## Datasets - updated 2020-11-27
 
-* Escherichia coli and Shigella - 138,244 genomes
+* Escherichia coli and Shigella - 138,627 genomes
   * Host (573 unique host values) - bovine associated (3802) genomes - 757 SRA values
     * ``` taxgroup_name:"E.coli and Shigella" AND (host:"Bos taurus" OR host:"Bos taurus taurus" OR host:"cattle" OR host:"beef cattle" OR host:"Bovine" OR host:"Cattle" OR host:"cow" OR host:"cows" OR host:"bovine" OR host:"Bos primigenius") ``` 
     * variable ```<empty>``` - 78196 genomes
@@ -15,7 +15,7 @@
     * ``` taxgroup_name:"E.coli OR Shigella" and (isolation_source:"Ground Beef" OR isolation_source:"product-raw-intact-beef" OR  isolation_source:"comminuted beef" OR  isolation_source:"ground beef" ) ```
     * variable ```<empty>``` - 11313 genomes
 
-* Salmonella enterica - 323,597 total genomes
+* Salmonella enterica - 323,687 total genomes
   * Host (307 variables) - Poultry associated - 916 genomes - 510 SRA
     * ``` taxgroup_name:"Salmonella enterica"  AND ( host:"Gallus gallus" OR host:"chicken"OR host:"Chicken"OR host:"broiler chicken" OR host:"Gallus gallus domesticus" OR host:"Poultry" OR host:"poultry" OR host:"chicken") ```
     * variable ```<empty>``` 242,781 genomes
