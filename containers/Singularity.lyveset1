@@ -65,5 +65,6 @@ From: ubuntu:xenial
     echo 'export PATH=/edirect:$PATH' >> $SINGULARITY_ENVIRONMENT
     echo 'export PATH=/usr/local/freebayes/bin/:$PATH' >> $SINGULARITY_ENVIRONMENT
     echo 'export PATH=/usr/local/freebayes/vcflib/bin/:$PATH' >> $SINGULARITY_ENVIRONMENT
+    echo 'export PERL5LIB=/usr/local/lyve-SET/lib/Schedule/:$PERL5LIB' >> $SINGULARITY_ENVIRONMENT
     
 %test
