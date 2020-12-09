@@ -176,5 +176,7 @@ Failed      : 1
 
 # lyveset error again
 # restarted Dec-9 9:22 am CST
-
+# Issues with samples being incomplete:
+-rw-r--r--.  1 edoster noyes046   20 Dec  6 15:35 ERR1100936.fastq.gz
+-rw-r--r--.  1 edoster noyes046   20 Dec  6 15:40 ERR1100964.fastq.gz
 ```
