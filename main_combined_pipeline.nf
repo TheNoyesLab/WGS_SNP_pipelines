@@ -183,7 +183,7 @@ process RunLYVESET {
     tag { sample_id }
     
     module 'singularity'
-    container 'shub://TheNoyesLab/WGS_SNP_pipelines:lyveset'
+    container 'shub://TheNoyesLab/WGS_SNP_pipelines:lyveset1'
     errorStrategy 'ignore'
     publishDir "${params.output}/Lyveset_results", mode: "copy"
 
@@ -211,7 +211,7 @@ process etoki_FastqQC {
     module 'singularity'
     container 'shub://TheNoyesLab/WGS_SNP_pipelines:etoki'
     errorStrategy 'ignore'
-    publishDir "${params.output}/etoki_fastqQC", mode: "symlink"
+    publishDir "${params.output}/Enterobase/etoki_fastqQC", mode: "symlink"
 
     input:
       set sample_id, file(forward), file(reverse) from etoki_reads
@@ -230,7 +230,7 @@ process etoki_assemble {
 
     module 'singularity'
     errorStrategy 'ignore'
-    publishDir "${params.output}/etoki_assemble", mode: "symlink"
+    publishDir "${params.output}/Enterobase/etoki_assemble", mode: "symlink"
 
     container 'shub://TheNoyesLab/WGS_SNP_pipelines:etoki'
 
@@ -253,7 +253,7 @@ process etoki_align {
 
     module 'singularity'
     errorStrategy 'ignore'
-    publishDir "${params.output}/etoki_align", mode: "symlink"
+    publishDir "${params.output}/Enterobase/etoki_align", mode: "symlink"
 
     container 'shub://TheNoyesLab/WGS_SNP_pipelines:etoki'
 
