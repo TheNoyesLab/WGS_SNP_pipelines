@@ -58,6 +58,20 @@ Stopped at /usr/local/lyve-SET/scripts/../lib/Schedule/SGELK.pm line 661.
 Started Dec-6 9:38pm CST
 ```
 nextflow run main_combined_pipeline.nf --reference_genome /tempalloc/noyes042/FMPRE_clean/Host_genomes/ref_Ecoli_NC_000913.fasta --reads '/tempalloc/noyes042/FMPRE_clean/Raw_datasets/100_genome_datasets/100genomes_Ecoli_HighQuality_IBM/*_{1,2}.fastq.gz' -profile singularity --output /tempalloc/noyes042/FMPRE_clean/ALL_results/temp_results/100genomes_E_coli_HighQuality_IBM_WGS_results --threads 20 -w /tempalloc/noyes042/FMPRE_clean/ALL_results/temp_results/work_ecoli_IBM -resume -with-report Ecoli_HighQuality_IBM_WGS_tools.report -with-trace -with-timeline --species escherichia_coli
+
+Completed at: 07-Dec-2020 12:25:42
+Duration    : 14h 47m 34s
+CPU hours   : 48.6 (28.8% failed)
+Succeeded   : 265
+Ignored     : 1
+Failed      : 1
+
+
+
+
+# Lyveset error again
+# Restart Dec-9 8:48am CST
+
 ```
 100genomes_Ecoli_HighQuality_IBM/
 
@@ -153,5 +167,14 @@ Started Dec 6 2020 - 2:12pm CST
 ```
 nextflow run main_combined_pipeline.nf --reference_genome /tempalloc/noyes042/FMPRE_clean/Host_genomes/ref_L_monocytogenes_NC_003210.fasta --reads '/tempalloc/noyes042/FMPRE_clean/Raw_datasets/100_genome_datasets/100genomes_Listeria_HighQuality_IBM/*_{1,2}.fastq.gz' -profile singularity --output /tempalloc/noyes042/FMPRE_clean/ALL_results/temp_results/100genome_Listeria_HighQuality_IBM_WGS_results --threads 7 -w /tempalloc/noyes042/FMPRE_clean/ALL_results/temp_results/work_list_HighQuality_IBM -resume -with-report Listeria_HighQuality_IBM_WGS_tools.report -with-trace -with-timeline --species listeria_monocytogenes
 
+Completed at: 07-Dec-2020 05:29:59
+Duration    : 15h 20m 35s
+CPU hours   : 64.0 (10.8% failed)
+Succeeded   : 499
+Ignored     : 1
+Failed      : 1
+
+# lyveset error again
+# restarted Dec-9 9:22 am CST
 
 ```
