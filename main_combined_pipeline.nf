@@ -64,6 +64,7 @@ process RunFastqConvert {
     tag {sample_id}
 
     module 'singularity'
+    container 'shub://TheNoyesLab/WGS_SNP_pipelines:lyveset1'
     errorStrategy 'ignore'
     publishDir "${params.output}/Interleaved_fasta", mode: "symlink"
 
@@ -100,8 +101,6 @@ interleaved_fastq.toSortedList().set { combined_interleaved_fastq }
 
 process RunMakeList {
     tag { sample_id }
-
-    module 'singularity'
 
     publishDir "${params.output}/Fasta_location_file", mode: "copy"
 
@@ -229,10 +228,9 @@ process etoki_assemble {
     tag {sample_id}
 
     module 'singularity'
+    container 'shub://TheNoyesLab/WGS_SNP_pipelines:etoki'
     errorStrategy 'ignore'
     publishDir "${params.output}/Enterobase/etoki_assemble", mode: "symlink"
-
-    container 'shub://TheNoyesLab/WGS_SNP_pipelines:etoki'
 
     input:
       set sample_id, file(forward), file(reverse) from trimmed_fastq
@@ -252,10 +250,9 @@ process etoki_align {
     tag {sample_id}
 
     module 'singularity'
+    container 'shub://TheNoyesLab/WGS_SNP_pipelines:etoki'
     errorStrategy 'ignore'
     publishDir "${params.output}/Enterobase/etoki_align", mode: "symlink"
-
-    container 'shub://TheNoyesLab/WGS_SNP_pipelines:etoki'
 
 
     input:
