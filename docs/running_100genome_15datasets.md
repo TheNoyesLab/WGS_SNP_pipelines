@@ -20,6 +20,7 @@ Nov-27 17:40:30.349 [main] DEBUG nextflow.cli.Launcher - $> nextflow run main_co
 ```
 ### 100 genome subset - E coli - Beef associated
 Started Dec-06 00:56:37.026 CST
+Finished December 10, 2020 - 12:54AM CST
 ```
 nextflow run main_combined_pipeline.nf --reference_genome /tempalloc/noyes042/FMPRE_clean/Host_genomes/ref_Ecoli_NC_000913.fasta --reads '/tempalloc/noyes042/FMPRE_clean/Raw_datasets/100_genome_datasets/100genomes_Ecoli_sampletype_beef/*_{1,2}.fastq.gz' -profile singularity --output /tempalloc/noyes042/FMPRE_clean/ALL_results/temp_results/100genomes_E_coli_sampletype_beef_WGS_results --threads 20 -w /tempalloc/noyes042/FMPRE_clean/ALL_results/temp_results/work_ecoli_sampletype -resume -with-report Ecoli_sampletype_WGS_tools.report -with-trace -with-timeline --species escherichia_coli
 
@@ -51,6 +52,7 @@ launch_set.pl: Schedule::SGELK::command: ERROR with command: Inappropriate ioctl
   /usr/bin/perl /tempalloc/noyes042/FMPRE_clean/ALL_results/temp_results/work_ecoli_sampletype/c4/0209be9b5619a6d1c8e46c0ad08158/Lyveset_results/log/SGELK/qsub.964901.pl
 Stopped at /usr/local/lyve-SET/scripts/../lib/Schedule/SGELK.pm line 661.
 # Restart at December 8,2020 2:31AM CST
+# Finished December 10, 2020 - 12:54AM CST
 ```
 
 
@@ -73,15 +75,19 @@ Failed      : 1
 # Restart Dec-9 8:48am CST
 
 ```
-100genomes_Ecoli_HighQuality_IBM/
 
 
 
+
+
+-----
 
 
 # Salmonella
 ## 100 genome subset - Salmonella - Host poultry associated
+
 Started Nov-28 01:57:20.181 AM CST
+
 Finished by Dec-02 10:02:44 AM CST
 Results moved to /tempalloc/noyes042/FMPRE_clean/ALL_results/100_genome_results/100_genome_Salm_Host_Poultry_WGS_results
 
@@ -92,6 +98,8 @@ nextflow run main_combined_pipeline.nf --reference_genome /tempalloc/noyes042/FM
 ## 100 genome subset - Salmonella - Sample type chicken breast associated
 
 Started Dec-6 1:28 AM CST
+Completed December 10, 2020 @8:43pm CST
+Results moved to: /tempalloc/noyes042/FMPRE_clean/ALL_results/100_genome_results/100_Salm_Sampletype_ChickenBreast_WGS_results/ 
 ```
 nextflow run main_combined_pipeline.nf --reference_genome /tempalloc/noyes042/FMPRE_clean/Host_genomes/Senterica_LT2_ref_genome.fasta --reads '/tempalloc/noyes042/FMPRE_clean/Raw_datasets/100_genome_datasets/100genomes_Salm_sampletype_chickenbreast/*_{1,2}.fastq.gz' -profile singularity --output /tempalloc/noyes042/FMPRE_clean/ALL_results/temp_results/100_Salm_Sampletype_ChickenBreast_WGS_results --threads 20 -w /tempalloc/noyes042/FMPRE_clean/ALL_results/temp_results/work_salm_sampletype -resume -with-report SampleType_ChickenBreast_WGS_tools.report -with-trace -with-timeline --species salmonella_enterica
 Completed at: 06-Dec-2020 22:57:52
@@ -103,12 +111,20 @@ Failed      : 1
 
 # Lyveset error
 # Restart 2020-12-8 2:35pm CST
+# Nodes got migrated and interrupted some projects but this finished at December 10, 2020 @8:43pm CST
 
 ```
+
+
+
+
+
+-----
 
 # Listeria
 ## 100 genome subset - Listeria - Host human associated
 Started Nov-28  02:06 PM CST
+Finished at 2020-12-06 13:22:42
 Results moved to /tempalloc/noyes042/FMPRE_clean/ALL_results/100_genome_results/100genome_Listeria_Host_human_WGS_results
 ```
 nextflow run main_combined_pipeline.nf --reference_genome /tempalloc/noyes042/FMPRE_clean/Host_genomes/ref_L_monocytogenes_NC_003210.fasta --reads '/tempalloc/noyes042/FMPRE_clean/Raw_datasets/100_genome_datasets/100genomes_Listeria_host_human/*_{1,2}.fastq.gz' -profile singularity --output /tempalloc/noyes042/FMPRE_clean/ALL_results/temp_results/100genome_Listeria_Host_human_WGS_results --threads 20 -w /tempalloc/noyes042/FMPRE_clean/ALL_results/temp_results/work_list_human_host -resume -with-report List_host_WGS_tools.report -with-trace -with-timeline --species listeria_monocytogenes
@@ -145,6 +161,8 @@ launch_set.pl:  Duration: 66 minutes, 46 seconds
 
 ## 100 genome subset - Listeria - Environmental swab
 Started Dec-6  02:00 AM CST
+Finished December 10, 2020 - 12:11AM CST
+
 ```
 nextflow run main_combined_pipeline.nf --reference_genome /tempalloc/noyes042/FMPRE_clean/Host_genomes/ref_L_monocytogenes_NC_003210.fasta --reads '/tempalloc/noyes042/FMPRE_clean/Raw_datasets/100_genome_datasets/100genomes_Listeria_sampletype_envswab/*_{1,2}.fastq.gz' -profile singularity --output /tempalloc/noyes042/FMPRE_clean/ALL_results/temp_results/100genome_Listeria_sampletype_envswab_WGS_results --threads 20 -w /tempalloc/noyes042/FMPRE_clean/ALL_results/temp_results/work_list_sampletype_envswab -resume -with-report List_sampletype_envswab_WGS_tools.report -with-trace -with-timeline --species listeria_monocytogenes
 
@@ -157,6 +175,7 @@ Failed      : 1
 
 #Lyveset error
 # Restarted 2020-12-8 at 2:36pm CST
+# Finished December 10, 2020 - 12:11AM CST
 
 ```
 
