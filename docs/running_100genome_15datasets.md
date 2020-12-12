@@ -95,7 +95,7 @@ Results moved to /tempalloc/noyes042/FMPRE_clean/ALL_results/100_genome_results/
 nextflow run main_combined_pipeline.nf --reference_genome /tempalloc/noyes042/FMPRE_clean/Host_genomes/Senterica_LT2_ref_genome.fasta --reads '/tempalloc/noyes042/FMPRE_clean/Raw_datasets/100_genome_datasets/100genomes_Salm_host_poultry/*_{1,2}.fastq.gz' -profile singularity --output /tempalloc/noyes042/FMPRE_clean/ALL_results/temp_results/Salm_Host_Poultry_WGS_results --threads 20 -w /tempalloc/noyes042/FMPRE_clean/ALL_results/temp_results/work_salm_poultry_host -resume -with-report Poultry_host_WGS_tools.report -with-trace -with-timeline --species salmonella_enterica
 ```
 
-## 100 genome subset - Salmonella - Sample type chicken breast associated
+## 100 genome subset - Salmonella - Sample type - chicken breast associated
 
 Started Dec-6 1:28 AM CST
 Completed December 10, 2020 @8:43pm CST
@@ -115,7 +115,12 @@ Failed      : 1
 
 ```
 
+## 100 genome subset - Salmonella - High quality IBM 
 
+Started Dec 12 - 5:07pm CST
+```
+nextflow run main_combined_pipeline.nf --reference_genome /tempalloc/noyes042/FMPRE_clean/Host_genomes/Senterica_LT2_ref_genome.fasta --reads '/tempalloc/noyes042/FMPRE_clean/Raw_datasets/100_genome_datasets/100genomes_Salm_HighQuality_IBM/*_{1,2}.fastq.gz' -profile singularity --output /tempalloc/noyes042/FMPRE_clean/ALL_results/temp_results/100_Salm_HighQuality_IBM_WGS_results --threads 20 -w /tempalloc/noyes042/FMPRE_clean/ALL_results/temp_results/workSalm_HighQuality_IBM -resume -with-report Salm_HighQuality_IBM_WGS_tools.report -with-trace -with-timeline --species salmonella_enterica
+```
 
 
 
