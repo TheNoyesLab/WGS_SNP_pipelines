@@ -70,9 +70,12 @@ Failed      : 1
 
 
 
-
 # Lyveset error again
 # Restart Dec-9 8:48am CST
+# Failed with transition to SLURM in nodes
+# Re-started Dec 16, 2020 at 12:38pm
+cd /tempalloc/noyes042/FMPRE_clean/ALL_results/temp_results/work_ecoli_IBM/da/c8fe4639824d400f17823143933a93
+launch_set.pl --numcpus 20 -ref Lyveset_results/reference/ref_genome.fasta Lyveset_results --noqsub --read_cleaner CGP --tmpdir Lyveset_temp/ --presets escherichia_coli
 
 ```
 
@@ -118,6 +121,9 @@ Failed      : 1
 ## 100 genome subset - Salmonella - High quality IBM 
 
 Started Dec 12 - 5:07pm CST
+Got cancelled due to login node restrictions after SLURM transition. 
+srun --time=3-23 --nodelist cn1107 -p noyes --pty bash
+Re-started Dec 16, 2020 at 12:27pm
 ```
 nextflow run main_combined_pipeline.nf --reference_genome /tempalloc/noyes042/FMPRE_clean/Host_genomes/Senterica_LT2_ref_genome.fasta --reads '/tempalloc/noyes042/FMPRE_clean/Raw_datasets/100_genome_datasets/100genomes_Salm_HighQuality_IBM/*_{1,2}.fastq.gz' -profile singularity --output /tempalloc/noyes042/FMPRE_clean/ALL_results/temp_results/100_Salm_HighQuality_IBM_WGS_results --threads 20 -w /tempalloc/noyes042/FMPRE_clean/ALL_results/temp_results/workSalm_HighQuality_IBM -resume -with-report Salm_HighQuality_IBM_WGS_tools.report -with-trace -with-timeline --species salmonella_enterica
 ```
@@ -203,4 +209,5 @@ Failed      : 1
 # Issues with samples being incomplete:
 -rw-r--r--.  1 edoster noyes046   20 Dec  6 15:35 ERR1100936.fastq.gz
 -rw-r--r--.  1 edoster noyes046   20 Dec  6 15:40 ERR1100964.fastq.gz
+# Finished Dec-10 9:27pm CST
 ```
