@@ -128,7 +128,7 @@ Got cancelled due to login node restrictions after SLURM transition.
 srun --time=3-0 --nodelist cn1107 -p noyes --pty bash
 
 # Tried again requesting just 24 hours and that seemed to work
-srun --time=3-0 --nodelist cn1107 -p noyes --pty bash
+srun --time=24:00:00 --nodelist cn1107 -p noyes --pty bash
 
 # Re-started Dec 17, 2020 at 1:27am CST
 nextflow run main_combined_pipeline.nf --reference_genome /tempalloc/noyes042/FMPRE_clean/Host_genomes/Senterica_LT2_ref_genome.fasta --reads '/tempalloc/noyes042/FMPRE_clean/Raw_datasets/100_genome_datasets/100genomes_Salm_HighQuality_IBM/*_{1,2}.fastq.gz' -profile singularity --output /tempalloc/noyes042/FMPRE_clean/ALL_results/temp_results/100_Salm_HighQuality_IBM_WGS_results --threads 20 -w /tempalloc/noyes042/FMPRE_clean/ALL_results/temp_results/workSalm_HighQuality_IBM -resume -with-report Salm_HighQuality_IBM_WGS_tools.report -with-trace -with-timeline --species salmonella_enterica
@@ -221,9 +221,11 @@ Failed      : 1
 
 
 ## 100 genome subset - Listeria - Geography - New York
-
-
+Started Dec-17 2020 @ 7:22pm CST
+edoster@ln1001
+tmux session 0
+srun --time=24:00:00 --nodelist cn1107 -p noyes --pty bash
 ```
-# Re-started 
+ 
 nextflow run main_combined_pipeline.nf --reference_genome /tempalloc/noyes042/FMPRE_clean/Host_genomes/ref_L_monocytogenes_NC_003210.fasta --reads '/tempalloc/noyes042/FMPRE_clean/Raw_datasets/100_genome_datasets/100genomes_Listeria_geography_NY/*_{1,2}.fastq.gz' -profile singularity --output /tempalloc/noyes042/FMPRE_clean/ALL_results/temp_results/100genome_Listeria_geography_NY_WGS_results --threads 7 -w /tempalloc/noyes042/FMPRE_clean/ALL_results/temp_results/work_list_geography_NY -resume -with-report Listeria_geography_NY_WGS_tools.report -with-trace -with-timeline --species listeria_monocytogenes
 ```
