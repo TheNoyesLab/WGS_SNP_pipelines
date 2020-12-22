@@ -230,6 +230,8 @@ Started Dec-17 2020 @ 7:22pm CST
 edoster@ln1001
 tmux session 0
 srun --time=24:00:00 --nodelist cn1107 -p noyes --pty bash
+
+srun -N 1 --ntasks-per-node=2 --nodelist cn1107 -t 24:00:00 -p noyes --pty bash
 ```
  
 nextflow run main_combined_pipeline.nf --reference_genome /tempalloc/noyes042/FMPRE_clean/Host_genomes/ref_L_monocytogenes_NC_003210.fasta --reads '/tempalloc/noyes042/FMPRE_clean/Raw_datasets/100_genome_datasets/100genomes_Listeria_geography_NY/*_{1,2}.fastq.gz' -profile singularity --output /tempalloc/noyes042/FMPRE_clean/ALL_results/temp_results/100genome_Listeria_geography_NY_WGS_results --threads 7 -w /tempalloc/noyes042/FMPRE_clean/ALL_results/temp_results/work_list_geography_NY -resume -with-report Listeria_geography_NY_WGS_tools.report -with-trace -with-timeline --species listeria_monocytogenes
