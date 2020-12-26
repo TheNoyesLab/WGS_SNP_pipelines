@@ -136,6 +136,8 @@ tmux attach -t 2
 ln0004
 
 # Submited SBATCH on cn4201
+# Submission didn't seem to work, finally got confirmation that computing nodes would be fixed back to normal (without queue)
+# Restarted 4:40pm CST
 nextflow run main_combined_pipeline.nf --reference_genome /tempalloc/noyes042/FMPRE_clean/Host_genomes/Senterica_LT2_ref_genome.fasta --reads '/tempalloc/noyes042/FMPRE_clean/Raw_datasets/100_genome_datasets/100genomes_Salm_HighQuality_IBM/*_{1,2}.fastq.gz' -profile singularity --output /tempalloc/noyes042/FMPRE_clean/ALL_results/temp_results/100_Salm_HighQuality_IBM_WGS_results --threads 20 -w /tempalloc/noyes042/FMPRE_clean/ALL_results/temp_results/workSalm_HighQuality_IBM -resume -with-report Salm_HighQuality_IBM_WGS_tools.report -with-trace -with-timeline --species salmonella_enterica
 ```
 
@@ -233,6 +235,17 @@ srun --time=24:00:00 --nodelist cn1107 -p noyes --pty bash
 
 srun -N 1 --ntasks-per-node=2 --nodelist cn1107 -t 24:00:00 -p noyes --pty bash
 ```
- 
+# Restarted 4:40pm CST
 nextflow run main_combined_pipeline.nf --reference_genome /tempalloc/noyes042/FMPRE_clean/Host_genomes/ref_L_monocytogenes_NC_003210.fasta --reads '/tempalloc/noyes042/FMPRE_clean/Raw_datasets/100_genome_datasets/100genomes_Listeria_geography_NY/*_{1,2}.fastq.gz' -profile singularity --output /tempalloc/noyes042/FMPRE_clean/ALL_results/temp_results/100genome_Listeria_geography_NY_WGS_results --threads 7 -w /tempalloc/noyes042/FMPRE_clean/ALL_results/temp_results/work_list_geography_NY -resume -with-report Listeria_geography_NY_WGS_tools.report -with-trace -with-timeline --species listeria_monocytogenes
+ 
+Completed at: 26-Dec-2020 07:10:44
+Duration    : 14h 21m 40s
+CPU hours   : 53.0 (25.1% failed)
+Succeeded   : 472
+Ignored     : 1
+Failed      : 1
+
+# Lyveset failed
+# Restarted at 10:30am CST
+
 ```
