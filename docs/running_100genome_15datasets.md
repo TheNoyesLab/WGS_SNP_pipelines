@@ -68,14 +68,20 @@ Succeeded   : 265
 Ignored     : 1
 Failed      : 1
 
-
-
 # Lyveset error again
 # Restart Dec-9 8:48am CST
 # Failed with transition to SLURM in nodes
 # Re-started Dec 17, 2020 at 1:28am CST
+# Re-started 
 cd /tempalloc/noyes042/FMPRE_clean/ALL_results/temp_results/work_ecoli_IBM/da/c8fe4639824d400f17823143933a93
 launch_set.pl --numcpus 20 -ref Lyveset_results/reference/ref_genome.fasta Lyveset_results --noqsub --read_cleaner CGP --tmpdir Lyveset_temp/ --presets escherichia_coli
+
+The following genomes kept causing errors one-by-one so I started looking them up and found they belonged to Listeria monocytogenes 
+ERR1590275
+ERR1599710
+ERR1599881
+ERR1599736
+ERR1599881
 
 ```
 
@@ -137,9 +143,18 @@ ln0004
 
 # Submited SBATCH on cn4201
 # Submission didn't seem to work, finally got confirmation that computing nodes would be fixed back to normal (without queue)
-# Restarted 4:40pm CST
+# Restarted Dec 26, 2020 4:40pm CST
 nextflow run main_combined_pipeline.nf --reference_genome /tempalloc/noyes042/FMPRE_clean/Host_genomes/Senterica_LT2_ref_genome.fasta --reads '/tempalloc/noyes042/FMPRE_clean/Raw_datasets/100_genome_datasets/100genomes_Salm_HighQuality_IBM/*_{1,2}.fastq.gz' -profile singularity --output /tempalloc/noyes042/FMPRE_clean/ALL_results/temp_results/100_Salm_HighQuality_IBM_WGS_results --threads 20 -w /tempalloc/noyes042/FMPRE_clean/ALL_results/temp_results/workSalm_HighQuality_IBM -resume -with-report Salm_HighQuality_IBM_WGS_tools.report -with-trace -with-timeline --species salmonella_enterica
 ```
+
+## 100 genome subset - Salmonella - Geography MS
+
+Started running December 27, 2020 @ 12:49AM CST
+```
+nextflow run main_combined_pipeline.nf --reference_genome /tempalloc/noyes042/FMPRE_clean/Host_genomes/Senterica_LT2_ref_genome.fasta --reads '/tempalloc/noyes042/FMPRE_clean/Raw_datasets/100_genome_datasets/100genomes_Salm_geography_MS/*_{1,2}.fastq.gz' -profile singularity --output /tempalloc/noyes042/FMPRE_clean/ALL_results/temp_results/100genomes_Salm_geography_MS_WGS_results --threads 20 -w /tempalloc/noyes042/FMPRE_clean/ALL_results/temp_results/workSalm_geo_MS -resume -with-report Salm_Geo_MS_WGS_tools.report -with-trace -with-timeline --species salmonella_enterica
+```
+
+
 
 
 
