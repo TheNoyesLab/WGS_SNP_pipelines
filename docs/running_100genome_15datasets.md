@@ -83,6 +83,9 @@ ERR1599881
 ERR1599736
 ERR1599881
 
+# Removed another sample, and restarted 9:18pm CST
+SRR1153448
+
 ```
 
 
@@ -151,6 +154,29 @@ ln0004
 # Submission didn't seem to work, finally got confirmation that computing nodes would be fixed back to normal (without queue)
 # Restarted Dec 26, 2020 4:40pm CST
 nextflow run main_combined_pipeline.nf --reference_genome /tempalloc/noyes042/FMPRE_clean/Host_genomes/Senterica_LT2_ref_genome.fasta --reads '/tempalloc/noyes042/FMPRE_clean/Raw_datasets/100_genome_datasets/100genomes_Salm_HighQuality_IBM/*_{1,2}.fastq.gz' -profile singularity --output /tempalloc/noyes042/FMPRE_clean/ALL_results/temp_results/100_Salm_HighQuality_IBM_WGS_results --threads 20 -w /tempalloc/noyes042/FMPRE_clean/ALL_results/temp_results/workSalm_HighQuality_IBM -resume -with-report Salm_HighQuality_IBM_WGS_tools.report -with-trace -with-timeline --species salmonella_enterica
+
+[9c/3bb829] process > RunFastqConvert (ERR217462) [100%] 113 of 113 ✔
+[dc/ecdbfa] process > RunMakeList (null)          [100%] 1 of 1 ✔
+[39/40630a] process > RunCFSAN                    [100%] 1 of 1 ✔
+[a3/c69b10] process > RunKSNP3 (null)             [100%] 1 of 1 ✔
+[c0/efd6e4] process > RunLYVESET (null)           [100%] 1 of 1, failed: 1 ✔
+[bd/c818f2] process > etoki_FastqQC (ERR217462)   [100%] 113 of 113 ✔
+[14/408530] process > etoki_assemble (ERR217462)  [100%] 113 of 113, failed: 9 ✔
+[00/ad2908] process > etoki_align (null)          [100%] 1 of 1 ✔
+Completed at: 28-Dec-2020 07:13:26
+Duration    : 8h 45m 46s
+CPU hours   : 42.0 (17.1% failed)
+Succeeded   : 334
+Ignored     : 10
+Failed      : 10
+
+# Restarted at 9:14pm CST
+# [0] smalt.c:807 ERROR: wrong FASTQ/FASTA format
+# launch_smalt.pl: main::mapReads: Died
+ERR279139
+ERR314382
+
+
 ```
 
 ## 100 genome subset - Salmonella - Geography MS
