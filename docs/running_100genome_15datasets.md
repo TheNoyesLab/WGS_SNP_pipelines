@@ -85,6 +85,14 @@ ERR1599881
 
 # Removed another sample, and restarted 9:18pm CST
 SRR1153448
+SRR1506606
+# Restarted 10:46pm CST
+SRR1640089
+SRR1695788
+SRR2048048
+SRR2540519
+SRR2982245
+SRR3037948
 
 ```
 
@@ -92,9 +100,12 @@ SRR1153448
 ### 100 genome subset - E coli - Geography - South Dakota
 
 Started Dec-28 1:05am CST
-running on cn4201
+running on cn4201 - 
+Re-started Dec-30 10:51pm CST
 ```
-nextflow run main_combined_pipeline.nf --reference_genome /tempalloc/noyes042/FMPRE_clean/Host_genomes/ref_Ecoli_NC_000913.fasta --reads '/tempalloc/noyes042/FMPRE_clean/Raw_datasets/100_genome_datasets/100genomes_Ecoli_Geo_SD/*_{1,2}.fastq.gz' -profile singularity --output /tempalloc/noyes042/FMPRE_clean/ALL_results/temp_results/100genomes_E_coli_Geo_SD_results --threads 8 -w /tempalloc/noyes042/FMPRE_clean/ALL_results/temp_results/work_ecoli_Geo_SD -resume -with-report Ecoli_Geo_SD_WGS_tools.report -with-trace -with-timeline --species escherichia_coli
+nextflow run main_combined_pipeline.nf --reference_genome /tempalloc/noyes042/FMPRE_clean/Host_genomes/ref_Ecoli_NC_000913.fasta --reads '/tempalloc/noyes042/FMPRE_clean/Raw_datasets/100_genome_datasets/100genomes_Ecoli_geography_SD/*_{1,2}.fastq.gz' -profile singularity --output /tempalloc/noyes042/FMPRE_clean/ALL_results/temp_results/100genomes_E_coli_Geo_SD_results --threads 8 -w /tempalloc/noyes042/FMPRE_clean/ALL_results/temp_results/work_ecoli_Geo_SD -resume -with-report Ecoli_Geo_SD_WGS_tools.report -with-trace -with-timeline --species escherichia_coli
+
+
 ```
 
 
@@ -175,7 +186,7 @@ Failed      : 10
 # launch_smalt.pl: main::mapReads: Died
 ERR279139
 ERR314382
-
+ERR338163
 
 ```
 
