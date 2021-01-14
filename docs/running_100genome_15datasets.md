@@ -117,6 +117,16 @@ launch_set.pl --numcpus 8 -ref Lyveset_results/reference/ref_genome.fasta Lyvese
 
 ```
 
+### 100 genome subset - E coli - all genomes - random subset
+
+
+```
+nextflow run main_combined_pipeline.nf --reference_genome /tempalloc/noyes042/FMPRE_clean/Host_genomes/ref_Ecoli_NC_000913.fasta --reads '/tempalloc/noyes042/FMPRE_clean/Raw_datasets/100_genome_datasets/100genomes_Ecoli_all_genomes/*_{1,2}.fastq.gz' -profile singularity --output /tempalloc/noyes042/FMPRE_clean/ALL_results/temp_results/100genomes_Ecoli_all_genomes_WGS_results --threads 8 -w /tempalloc/noyes042/FMPRE_clean/ALL_results/temp_results/work_ecoli_all -resume -with-report Ecoli_all_genomes_WGS_tools.report -with-trace -with-timeline --species escherichia_coli
+```
+
+
+
+
 
 -----
 
@@ -216,6 +226,14 @@ nextflow run main_combined_pipeline.nf --reference_genome /tempalloc/noyes042/FM
 ```
 
 
+
+## 100 genome subset - Salmonella - random subset from all genomes
+
+
+```
+nextflow run main_combined_pipeline.nf --reference_genome /tempalloc/noyes042/FMPRE_clean/Host_genomes/Senterica_LT2_ref_genome.fasta --reads '/tempalloc/noyes042/FMPRE_clean/Raw_datasets/100_genome_datasets/100genomes_Salmonella_all_genomes/*_{1,2}.fastq.gz' -profile singularity --output /tempalloc/noyes042/FMPRE_clean/ALL_results/temp_results/100genomes_Salmonella_all_genomes_WGS_results --threads 20 -w /tempalloc/noyes042/FMPRE_clean/ALL_results/temp_results/workSalm_all -resume -with-report Salm_all_genomes_tools.report -with-trace -with-timeline --species salmonella_enterica
+
+```
 
 
 
@@ -323,5 +341,14 @@ Failed      : 1
 
 # Lyveset failed
 # Restarted at 10:30am CST
+
+```
+
+
+## 100 genome subset - Listeria - all genomes -random subset
+
+
+```
+nextflow run main_combined_pipeline.nf --reference_genome /tempalloc/noyes042/FMPRE_clean/Host_genomes/ref_L_monocytogenes_NC_003210.fasta --reads '/tempalloc/noyes042/FMPRE_clean/Raw_datasets/100_genome_datasets/100genomes_Listeria_all_genomes/*_{1,2}.fastq.gz' -profile singularity --output /tempalloc/noyes042/FMPRE_clean/ALL_results/temp_results/100genomes_Listeria_all_genomes_WGS_results --threads 7 -w /tempalloc/noyes042/FMPRE_clean/ALL_results/temp_results/work_list_all -resume -with-report Listeria_all_genomes_WGS_tools.report -with-trace -with-timeline --species listeria_monocytogenes
 
 ```
