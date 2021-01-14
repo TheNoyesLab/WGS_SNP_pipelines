@@ -83,7 +83,7 @@ ERR1599881
 ERR1599736
 ERR1599881
 
-# Removed another sample, and restarted 9:18pm CST
+# Removed another sample, and restarted Dec 17, 2020 at 9:18pm CST
 SRR1153448
 SRR1506606
 # Restarted 10:46pm CST
@@ -93,6 +93,10 @@ SRR2048048
 SRR2540519
 SRR2982245
 SRR3037948
+
+# After issues with cn1107 and workshop. Removed another sample, restarted Jan 11, 2021 at 4:12pm CST
+SRR3112625
+
 
 ```
 
@@ -104,6 +108,11 @@ running on cn4201 -
 Re-started Dec-30 10:51pm CST
 ```
 nextflow run main_combined_pipeline.nf --reference_genome /tempalloc/noyes042/FMPRE_clean/Host_genomes/ref_Ecoli_NC_000913.fasta --reads '/tempalloc/noyes042/FMPRE_clean/Raw_datasets/100_genome_datasets/100genomes_Ecoli_geography_SD/*_{1,2}.fastq.gz' -profile singularity --output /tempalloc/noyes042/FMPRE_clean/ALL_results/temp_results/100genomes_E_coli_Geo_SD_results --threads 8 -w /tempalloc/noyes042/FMPRE_clean/ALL_results/temp_results/work_ecoli_Geo_SD -resume -with-report Ecoli_Geo_SD_WGS_tools.report -with-trace -with-timeline --species escherichia_coli
+
+# restarted Jan 11, 2021 at 4:16pm CST
+/tempalloc/noyes042/FMPRE_clean/ALL_results/temp_results/work_ecoli_Geo_SD/8b/8a478b0f913b886c969e07c5cad0ea
+
+launch_set.pl --numcpus 8 -ref Lyveset_results/reference/ref_genome.fasta Lyveset_results --noqsub --read_cleaner CGP --tmpdir Lyveset_temp/ --presets escherichia_coli
 
 
 ```
@@ -164,6 +173,7 @@ ln0004
 # Submited SBATCH on cn4201
 # Submission didn't seem to work, finally got confirmation that computing nodes would be fixed back to normal (without queue)
 # Restarted Dec 26, 2020 4:40pm CST
+/tempalloc/noyes042/FMPRE_clean/Pipeline_runs/salm_WGS_SNP_pipelines
 nextflow run main_combined_pipeline.nf --reference_genome /tempalloc/noyes042/FMPRE_clean/Host_genomes/Senterica_LT2_ref_genome.fasta --reads '/tempalloc/noyes042/FMPRE_clean/Raw_datasets/100_genome_datasets/100genomes_Salm_HighQuality_IBM/*_{1,2}.fastq.gz' -profile singularity --output /tempalloc/noyes042/FMPRE_clean/ALL_results/temp_results/100_Salm_HighQuality_IBM_WGS_results --threads 20 -w /tempalloc/noyes042/FMPRE_clean/ALL_results/temp_results/workSalm_HighQuality_IBM -resume -with-report Salm_HighQuality_IBM_WGS_tools.report -with-trace -with-timeline --species salmonella_enterica
 
 [9c/3bb829] process > RunFastqConvert (ERR217462) [100%] 113 of 113 ✔
@@ -181,12 +191,20 @@ Succeeded   : 334
 Ignored     : 10
 Failed      : 10
 
-# Restarted at 9:14pm CST
+# Restarted lyveset Dec 17, 2020 at 9:14pm CST
+/tempalloc/noyes042/FMPRE_clean/ALL_results/temp_results/workSalm_HighQuality_IBM/c0/efd6e41588307612bc7e96e5219947
 # [0] smalt.c:807 ERROR: wrong FASTQ/FASTA format
 # launch_smalt.pl: main::mapReads: Died
 ERR279139
 ERR314382
 ERR338163
+
+launch_set.pl --numcpus 20 -ref Lyveset_results/reference/ref_genome.fasta Lyveset_results --noqsub --read_cleaner CGP --tmpdir Lyveset_temp/ --presets salmonella_enterica
+# Erase more samples
+ERR998620
+
+
+
 
 ```
 
