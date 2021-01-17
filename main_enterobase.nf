@@ -47,6 +47,9 @@ trailing = params.trailing
 slidingwindow = params.slidingwindow
 minlen = params.minlen
 
+fasta_allele = file(params.fasta_allele)
+
+
 /*
 Channel
     .fromFilePairs( params.reference_genome, size: 1)
@@ -101,7 +104,7 @@ process etoki_assemble {
       file reference_genome
 
     output:
-      file("${sample_id}_assemble.result.fasta") into (assembled_fasta)
+      file("${sample_id}_assemble.result.fasta") into (assembled_fasta,assembled_fasta_list)
 
     """
     python /usr/local/EToKi/EToKi.py assemble --pe ${forward},${reverse} -p ${sample_id}_assemble --assembler megahit --reassemble
@@ -109,7 +112,62 @@ process etoki_assemble {
 }
 
 
-assembled_fasta.toSortedList().set { all_assembled_genomes }
+
+/*
+Etoki MLST analysis
+*/
+
+process etoki_prep_MLST {
+    tag {sample_id}
+
+    module 'singularity'
+    errorStrategy 'ignore'
+    publishDir "${params.output}/etoki_ref_MLST", mode: "symlink"
+
+    container 'shub://TheNoyesLab/WGS_SNP_pipelines:etoki'
+
+    input:
+      file allele_fasta
+
+    output:
+      file("reference_alleles.fasta") into (reference_alleles)
+      file("lookup_alleles") into (lookup_alleles)
+    
+
+    """
+    python /usr/local/EToKi/EToKi.py MLSTdb -i ${allele_fasta} -r reference_alleles.fasta -d lookup_alleles
+    """
+}
+
+
+process etoki_MLST_type {
+    tag {sample_id}
+
+    module 'singularity'
+    errorStrategy 'ignore'
+    publishDir "${params.output}/etoki_MLST_results", mode: "symlink"
+
+    container 'shub://TheNoyesLab/WGS_SNP_pipelines:etoki'
+
+    input:
+      file reference_alleles
+      file lookup_alleles
+
+    output:
+      file("calculated_allele.convert.tab") into (calculated_alleles)
+
+    """
+    python /usr/local/EToKi/EToKi.py MLSTdb -i ${assembled_fasta} -r ${reference_alleles} -d ${lookup_alleles} -k ${sample_id} -o ${sample_id}_generated_alleles.fasta
+    """
+}
+
+/*
+Etoki alignment and phylogenetic tree
+*/
+
+
+
+assembled_fasta_list.toSortedList().set { all_assembled_genomes }
 
 process etoki_align {
     tag {etoki_align}
@@ -153,7 +211,6 @@ process etoki_phylo_tree {
     python /usr/local/EToKi/EToKi.py phylo -t snp2mut -p phylo_tree -s ${phylo_output}
     """
 }
-
 
 
 
