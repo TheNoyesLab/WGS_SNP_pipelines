@@ -57,7 +57,7 @@ Stopped at /usr/local/lyve-SET/scripts/../lib/Schedule/SGELK.pm line 661.
 
 
 ### 100 genome subset - E coli - IBM high quality
-Started Dec-6 9:38pm CST
+Started Dec-6 2020 9:38pm CST
 ```
 nextflow run main_combined_pipeline.nf --reference_genome /tempalloc/noyes042/FMPRE_clean/Host_genomes/ref_Ecoli_NC_000913.fasta --reads '/tempalloc/noyes042/FMPRE_clean/Raw_datasets/100_genome_datasets/100genomes_Ecoli_HighQuality_IBM/*_{1,2}.fastq.gz' -profile singularity --output /tempalloc/noyes042/FMPRE_clean/ALL_results/temp_results/100genomes_E_coli_HighQuality_IBM_WGS_results --threads 20 -w /tempalloc/noyes042/FMPRE_clean/ALL_results/temp_results/work_ecoli_IBM -resume -with-report Ecoli_HighQuality_IBM_WGS_tools.report -with-trace -with-timeline --species escherichia_coli
 
@@ -97,7 +97,17 @@ SRR3037948
 # After issues with cn1107 and workshop. Removed another sample, restarted Jan 11, 2021 at 4:12pm CST
 SRR3112625
 
+# Still getting the following errors:
+launch_varscan.pl: Sorting mpileup results into a combined file
+launch_varscan.pl: main::varscan: ERROR: the pileup is a zero-byte file
 
+# removed 
+SRR3345288
+SRR3394979
+SRR3395011
+SRR5016787
+SRR7912033
+SRR8271946
 ```
 
 
@@ -106,6 +116,10 @@ SRR3112625
 Started Dec-28 1:05am CST
 running on cn4201 - 
 Re-started Dec-30 10:51pm CST
+Finished at 2021-01-12 21:00:29
+Results moved to: /tempalloc/noyes042/FMPRE_clean/ALL_results/100_genome_results/100genomes_E_coli_Geo_SD_results/
+
+
 ```
 nextflow run main_combined_pipeline.nf --reference_genome /tempalloc/noyes042/FMPRE_clean/Host_genomes/ref_Ecoli_NC_000913.fasta --reads '/tempalloc/noyes042/FMPRE_clean/Raw_datasets/100_genome_datasets/100genomes_Ecoli_geography_SD/*_{1,2}.fastq.gz' -profile singularity --output /tempalloc/noyes042/FMPRE_clean/ALL_results/temp_results/100genomes_E_coli_Geo_SD_results --threads 8 -w /tempalloc/noyes042/FMPRE_clean/ALL_results/temp_results/work_ecoli_Geo_SD -resume -with-report Ecoli_Geo_SD_WGS_tools.report -with-trace -with-timeline --species escherichia_coli
 
@@ -113,13 +127,15 @@ nextflow run main_combined_pipeline.nf --reference_genome /tempalloc/noyes042/FM
 /tempalloc/noyes042/FMPRE_clean/ALL_results/temp_results/work_ecoli_Geo_SD/8b/8a478b0f913b886c969e07c5cad0ea
 
 launch_set.pl --numcpus 8 -ref Lyveset_results/reference/ref_genome.fasta Lyveset_results --noqsub --read_cleaner CGP --tmpdir Lyveset_temp/ --presets escherichia_coli
+launch_set.pl:  Finished at 2021-01-12 21:00:29
+launch_set.pl:  Duration: 1725 minutes, 2 seconds
 
 
 ```
 
 ### 100 genome subset - E coli - all genomes - random subset
 
-
+Started Jan-14 2021 11:38am CST
 ```
 nextflow run main_combined_pipeline.nf --reference_genome /tempalloc/noyes042/FMPRE_clean/Host_genomes/ref_Ecoli_NC_000913.fasta --reads '/tempalloc/noyes042/FMPRE_clean/Raw_datasets/100_genome_datasets/100genomes_Ecoli_all_genomes/*_{1,2}.fastq.gz' -profile singularity --output /tempalloc/noyes042/FMPRE_clean/ALL_results/temp_results/100genomes_Ecoli_all_genomes_WGS_results --threads 8 -w /tempalloc/noyes042/FMPRE_clean/ALL_results/temp_results/work_ecoli_all -resume -with-report Ecoli_all_genomes_WGS_tools.report -with-trace -with-timeline --species escherichia_coli
 ```
@@ -213,7 +229,14 @@ launch_set.pl --numcpus 20 -ref Lyveset_results/reference/ref_genome.fasta Lyves
 # Erase more samples
 ERR998620
 
+# Still getting this error: 
+[0] smalt.c:807 ERROR: wrong FASTQ/FASTA format
+launch_smalt.pl: main::mapReads: Died
+# The sample with the error, SRR1578439, actually is from Salmonella
 
+# Other samples
+SRR1814254
+SRR949877
 
 
 ```
@@ -223,6 +246,10 @@ ERR998620
 Started running December 27, 2020 @ 12:49AM CST
 ```
 nextflow run main_combined_pipeline.nf --reference_genome /tempalloc/noyes042/FMPRE_clean/Host_genomes/Senterica_LT2_ref_genome.fasta --reads '/tempalloc/noyes042/FMPRE_clean/Raw_datasets/100_genome_datasets/100genomes_Salm_geography_MS/*_{1,2}.fastq.gz' -profile singularity --output /tempalloc/noyes042/FMPRE_clean/ALL_results/temp_results/100genomes_Salm_geography_MS_WGS_results --threads 20 -w /tempalloc/noyes042/FMPRE_clean/ALL_results/temp_results/workSalm_geo_MS -resume -with-report Salm_Geo_MS_WGS_tools.report -with-trace -with-timeline --species salmonella_enterica
+
+
+# Lyveset error again
+/tempalloc/noyes042/FMPRE_clean/ALL_results/temp_results/workSalm_geo_MS/22/379965423d935f5df9b02a77aab248
 ```
 
 
@@ -301,6 +328,9 @@ Failed      : 1
 ## 100 genome subset - Listeria - IBM high quality
 Run on cn4201
 Started Dec 6 2020 - 2:12pm CST
+Finished Dec-10 9:27pm CST
+Moved to: /tempalloc/noyes042/FMPRE_clean/ALL_results/100_genome_results/100genome_Listeria_HighQuality_IBM_WGS_results/
+
 ```
 nextflow run main_combined_pipeline.nf --reference_genome /tempalloc/noyes042/FMPRE_clean/Host_genomes/ref_L_monocytogenes_NC_003210.fasta --reads '/tempalloc/noyes042/FMPRE_clean/Raw_datasets/100_genome_datasets/100genomes_Listeria_HighQuality_IBM/*_{1,2}.fastq.gz' -profile singularity --output /tempalloc/noyes042/FMPRE_clean/ALL_results/temp_results/100genome_Listeria_HighQuality_IBM_WGS_results --threads 7 -w /tempalloc/noyes042/FMPRE_clean/ALL_results/temp_results/work_list_HighQuality_IBM -resume -with-report Listeria_HighQuality_IBM_WGS_tools.report -with-trace -with-timeline --species listeria_monocytogenes
 
@@ -350,5 +380,15 @@ Failed      : 1
 
 ```
 nextflow run main_combined_pipeline.nf --reference_genome /tempalloc/noyes042/FMPRE_clean/Host_genomes/ref_L_monocytogenes_NC_003210.fasta --reads '/tempalloc/noyes042/FMPRE_clean/Raw_datasets/100_genome_datasets/100genomes_Listeria_all_genomes/*_{1,2}.fastq.gz' -profile singularity --output /tempalloc/noyes042/FMPRE_clean/ALL_results/temp_results/100genomes_Listeria_all_genomes_WGS_results --threads 7 -w /tempalloc/noyes042/FMPRE_clean/ALL_results/temp_results/work_list_all -resume -with-report Listeria_all_genomes_WGS_tools.report -with-trace -with-timeline --species listeria_monocytogenes
+
+Completed at: 15-Jan-2021 04:16:55
+Duration    : 16h 32m 30s
+CPU hours   : 61.6 (23.4% failed)
+Succeeded   : 547
+Ignored     : 1
+Failed      : 1
+
+# Lyveset failed, continued on 16-Jan-2021 10:06 pm CST
+/tempalloc/noyes042/FMPRE_clean/ALL_results/temp_results/work_list_all/df/538b906bb95de76502c7693da3138f
 
 ```
