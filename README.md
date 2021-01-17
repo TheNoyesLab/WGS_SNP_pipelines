@@ -92,6 +92,10 @@ nextflow run main_CFSAN_snp.nf --reference_genome /scratch.global/Salmonella_WGS
 # Example below
 # /path/to/file/SRR10001252.fasta    SRR10001252
 nextflow run main_kSNP3.nf --reference_genome /scratch.global/Salmonella_WGS/ref_L_monocytogenes_NC_003210.fasta --genomes /scratch.global/Salmonella_WGS/WGS_SNP_pipelines/Listeria_genome_location.tsv -profile singularity_pbs --output /scratch.global/Salmonella_WGS/kSNP3_GenomeTrakr_L_monocytogenes_WGS_results --threads 128 -w /scratch.global/Salmonella_WGS/work_kSNP3_l_latest -resume -with-report kSNP3_Listeria_WGS_tools.report -with-trace -with-timeline
+
+
+# Enterobase
+nextflow run main_enterobase.nf --reference_genome /tempalloc/noyes042/FMPRE_clean/Host_genomes/Senterica_LT2_ref_genome.fasta --reads '/tempalloc/noyes042/FMPRE_clean/Raw_datasets/Outbreak_genomes/genomes_final_salmonella_outbreak/*_{1,2}.fastq.gz' -profile singularity --output /tempalloc/noyes042/FMPRE_clean/ALL_results/temp_results/Salmonella_MLST_OUTBREAK_WGS_results --threads 15 -w /tempalloc/noyes042/FMPRE_clean/ALL_results/temp_results/work_salm_outbreak_MLST -resume -with-report Salm_MLST_outbreak_WGS_tools.report -with-trace -with-timeline --species salmonella_enterica --allele_fasta data/7gene_MLST_schemes/Salmonella_7gene_Achtman_MLST.fasta.gz
 ```
 
 
