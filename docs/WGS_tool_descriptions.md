@@ -25,9 +25,11 @@
       * Similarly, other user-defined regions in a BED-formatted file can be supplied to mask unwanted sequences from SNP calling. One example is that, although phages can be useful for typing in their own right (Chen and Knabel, 2008), phage sequences should be removed from a SNP analysis because they often display different rates of mutation than bacterial core genomes. If phages appear to contribute to phylogenetic noise in an investigation, Lyve-SET can provide phage sequence identification with a script set_findPhages.pl which is based on a BLAST search against the PHAST database (Zhou et al., 2011).
       * Another way for Lyve-SET to detect troublesome regions is to discard clustered SNPs. For most organisms, this option is preset to 5 bp, such that only one SNP per 5 bp passes the filter. Much like MLST, discarding clustered SNPs reduces noise introduced by horizontal gene transfer. This flanking distance hypothetically should approximate the average recombination cassette length (Vos and Didelot, 2009), but empirically we have found that having a low flanking distance, e.g., 5 bp, is sufficient. 
 
-### lyve-set workflow
 
-# Lyveset ``--presets`` for modifying pipeline parameters
+
+## lyve-set workflow
+
+### Lyveset ``--presets`` for modifying pipeline parameters
 listeria_monocytogenes	(like default settings)
 * min_coverage = 10
 * min_alt_frac = 0.75
@@ -143,15 +145,24 @@ bacterial genomes.
 -----
 # GUI tools
 
-## Enterobase
+
+# Enterobase
 * [ENTEROBASE](https://github.com/zheminzhou/EToKi)
+
+
+## Enterobase MLST schemes
+
+It was challenging to find where to download the required MLST alleles for cgMLST analysis with lyve-SET, but they must be downloaded from the GUI browser application. This is pretty confusing and difficult for the wgMLST scheme which would require the individual download of ~500 genes.
 
 * Downloading MLST profiles and allele sequences
   * wgMLST E coli/Shigella: 25002
   * cgMLST V1 + HierCC V1: 2513
   * 7 gene Achtman allele set
+  
+  
+  
 
-## BioNumerics
+# BioNumerics
 * PulseNet International has recommended a so-called whole-genome MLST approach (wgMLST) in which genomes are compared on a gene-by-gene basis.
 * [wgMLST/BioNumerics](https://www.applied-maths.com/applications/wgmlst)
   * Cost
