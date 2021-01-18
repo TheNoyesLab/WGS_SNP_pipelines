@@ -58,6 +58,8 @@ Stopped at /usr/local/lyve-SET/scripts/../lib/Schedule/SGELK.pm line 661.
 
 ### 100 genome subset - E coli - IBM high quality
 Started Dec-6 2020 9:38pm CST
+launch_set.pl:  Finished at 2021-01-17 14:28:38
+
 ```
 nextflow run main_combined_pipeline.nf --reference_genome /tempalloc/noyes042/FMPRE_clean/Host_genomes/ref_Ecoli_NC_000913.fasta --reads '/tempalloc/noyes042/FMPRE_clean/Raw_datasets/100_genome_datasets/100genomes_Ecoli_HighQuality_IBM/*_{1,2}.fastq.gz' -profile singularity --output /tempalloc/noyes042/FMPRE_clean/ALL_results/temp_results/100genomes_E_coli_HighQuality_IBM_WGS_results --threads 20 -w /tempalloc/noyes042/FMPRE_clean/ALL_results/temp_results/work_ecoli_IBM -resume -with-report Ecoli_HighQuality_IBM_WGS_tools.report -with-trace -with-timeline --species escherichia_coli
 
@@ -108,6 +110,10 @@ SRR3395011
 SRR5016787
 SRR7912033
 SRR8271946
+
+launch_set.pl:  Finished at 2021-01-17 14:28:38
+launch_set.pl:  Duration: 87 minutes, 44 seconds
+
 ```
 
 
