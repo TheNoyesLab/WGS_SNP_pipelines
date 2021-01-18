@@ -59,7 +59,7 @@ Stopped at /usr/local/lyve-SET/scripts/../lib/Schedule/SGELK.pm line 661.
 ### 100 genome subset - E coli - IBM high quality
 Started Dec-6 2020 9:38pm CST
 launch_set.pl:  Finished at 2021-01-17 14:28:38
-
+Results moved to: /tempalloc/noyes042/FMPRE_clean/ALL_results/100_genome_results/100genomes_E_coli_HighQuality_IBM_WGS_results
 ```
 nextflow run main_combined_pipeline.nf --reference_genome /tempalloc/noyes042/FMPRE_clean/Host_genomes/ref_Ecoli_NC_000913.fasta --reads '/tempalloc/noyes042/FMPRE_clean/Raw_datasets/100_genome_datasets/100genomes_Ecoli_HighQuality_IBM/*_{1,2}.fastq.gz' -profile singularity --output /tempalloc/noyes042/FMPRE_clean/ALL_results/temp_results/100genomes_E_coli_HighQuality_IBM_WGS_results --threads 20 -w /tempalloc/noyes042/FMPRE_clean/ALL_results/temp_results/work_ecoli_IBM -resume -with-report Ecoli_HighQuality_IBM_WGS_tools.report -with-trace -with-timeline --species escherichia_coli
 
@@ -250,12 +250,18 @@ SRR949877
 ## 100 genome subset - Salmonella - Geography MS
 
 Started running December 27, 2020 @ 12:49AM CST
+launch_set.pl:  Finished at 2021-01-18 00:24:20
+
+Results moved to : /tempalloc/noyes042/FMPRE_clean/ALL_results/100_genome_results/100genomes_Salm_geography_MS_WGS_results/
 ```
 nextflow run main_combined_pipeline.nf --reference_genome /tempalloc/noyes042/FMPRE_clean/Host_genomes/Senterica_LT2_ref_genome.fasta --reads '/tempalloc/noyes042/FMPRE_clean/Raw_datasets/100_genome_datasets/100genomes_Salm_geography_MS/*_{1,2}.fastq.gz' -profile singularity --output /tempalloc/noyes042/FMPRE_clean/ALL_results/temp_results/100genomes_Salm_geography_MS_WGS_results --threads 20 -w /tempalloc/noyes042/FMPRE_clean/ALL_results/temp_results/workSalm_geo_MS -resume -with-report Salm_Geo_MS_WGS_tools.report -with-trace -with-timeline --species salmonella_enterica
 
 
 # Lyveset error again
 /tempalloc/noyes042/FMPRE_clean/ALL_results/temp_results/workSalm_geo_MS/22/379965423d935f5df9b02a77aab248
+launch_set.pl:  Finished at 2021-01-18 00:24:20
+launch_set.pl:  Duration: 728 minutes, 8 seconds
+
 ```
 
 
