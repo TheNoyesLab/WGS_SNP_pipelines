@@ -208,6 +208,8 @@ ln0004
 /tempalloc/noyes042/FMPRE_clean/Pipeline_runs/salm_WGS_SNP_pipelines
 nextflow run main_combined_pipeline.nf --reference_genome /tempalloc/noyes042/FMPRE_clean/Host_genomes/Senterica_LT2_ref_genome.fasta --reads '/tempalloc/noyes042/FMPRE_clean/Raw_datasets/100_genome_datasets/100genomes_Salm_HighQuality_IBM/*_{1,2}.fastq.gz' -profile singularity --output /tempalloc/noyes042/FMPRE_clean/ALL_results/temp_results/100_Salm_HighQuality_IBM_WGS_results --threads 20 -w /tempalloc/noyes042/FMPRE_clean/ALL_results/temp_results/workSalm_HighQuality_IBM -resume -with-report Salm_HighQuality_IBM_WGS_tools.report -with-trace -with-timeline --species salmonella_enterica
 
+
+
 [9c/3bb829] process > RunFastqConvert (ERR217462) [100%] 113 of 113 ✔
 [dc/ecdbfa] process > RunMakeList (null)          [100%] 1 of 1 ✔
 [39/40630a] process > RunCFSAN                    [100%] 1 of 1 ✔
@@ -243,6 +245,10 @@ launch_smalt.pl: main::mapReads: Died
 # Other samples
 SRR1814254
 SRR949877
+
+
+launch_set.pl:  Finished at 2021-01-18 18:13:44
+launch_set.pl:  Duration: 456 minutes, 45 seconds
 
 
 ```
@@ -389,7 +395,7 @@ Failed      : 1
 
 ## 100 genome subset - Listeria - all genomes -random subset
 
-
+Moved to: /tempalloc/noyes042/FMPRE_clean/ALL_results/100_genome_results/100genomes_Listeria_all_genomes_WGS_results
 ```
 nextflow run main_combined_pipeline.nf --reference_genome /tempalloc/noyes042/FMPRE_clean/Host_genomes/ref_L_monocytogenes_NC_003210.fasta --reads '/tempalloc/noyes042/FMPRE_clean/Raw_datasets/100_genome_datasets/100genomes_Listeria_all_genomes/*_{1,2}.fastq.gz' -profile singularity --output /tempalloc/noyes042/FMPRE_clean/ALL_results/temp_results/100genomes_Listeria_all_genomes_WGS_results --threads 7 -w /tempalloc/noyes042/FMPRE_clean/ALL_results/temp_results/work_list_all -resume -with-report Listeria_all_genomes_WGS_tools.report -with-trace -with-timeline --species listeria_monocytogenes
 
@@ -402,5 +408,9 @@ Failed      : 1
 
 # Lyveset failed, continued on 16-Jan-2021 10:06 pm CST
 /tempalloc/noyes042/FMPRE_clean/ALL_results/temp_results/work_list_all/df/538b906bb95de76502c7693da3138f
+
+launch_set.pl:  Finished at 2021-01-19 13:56:10
+launch_set.pl:  Duration: 1648 minutes, 5 seconds
+
 
 ```
