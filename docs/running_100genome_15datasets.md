@@ -144,6 +144,12 @@ launch_set.pl:  Duration: 1725 minutes, 2 seconds
 Started Jan-14 2021 11:38am CST
 ```
 nextflow run main_combined_pipeline.nf --reference_genome /tempalloc/noyes042/FMPRE_clean/Host_genomes/ref_Ecoli_NC_000913.fasta --reads '/tempalloc/noyes042/FMPRE_clean/Raw_datasets/100_genome_datasets/100genomes_Ecoli_all_genomes/*_{1,2}.fastq.gz' -profile singularity --output /tempalloc/noyes042/FMPRE_clean/ALL_results/temp_results/100genomes_Ecoli_all_genomes_WGS_results --threads 8 -w /tempalloc/noyes042/FMPRE_clean/ALL_results/temp_results/work_ecoli_all -resume -with-report Ecoli_all_genomes_WGS_tools.report -with-trace -with-timeline --species escherichia_coli
+
+# Lyveset run didn't fail but seemed to stall after 5 days
+# Lyve-SET started at 2021-01-23 17:35:13
+/tempalloc/noyes042/FMPRE_clean/ALL_results/temp_results/work_ecoli_all/91/7e1118abe219ef49d8189b06d436b3
+
+
 ```
 
 
@@ -277,6 +283,11 @@ launch_set.pl:  Duration: 728 minutes, 8 seconds
 
 ```
 nextflow run main_combined_pipeline.nf --reference_genome /tempalloc/noyes042/FMPRE_clean/Host_genomes/Senterica_LT2_ref_genome.fasta --reads '/tempalloc/noyes042/FMPRE_clean/Raw_datasets/100_genome_datasets/100genomes_Salmonella_all_genomes/*_{1,2}.fastq.gz' -profile singularity --output /tempalloc/noyes042/FMPRE_clean/ALL_results/temp_results/100genomes_Salmonella_all_genomes_WGS_results --threads 20 -w /tempalloc/noyes042/FMPRE_clean/ALL_results/temp_results/workSalm_all -resume -with-report Salm_all_genomes_tools.report -with-trace -with-timeline --species salmonella_enterica
+
+
+# Lyveset run didn't fail but seemed to stall after 5 days
+# Lyve-SET started at 2021-01-23 17:37:25
+/tempalloc/noyes042/FMPRE_clean/ALL_results/temp_results/workSalm_all/5e/c796c268e31ec38189dd468dae5b4e
 
 ```
 
