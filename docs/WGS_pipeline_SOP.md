@@ -13,6 +13,13 @@ On a browser, on your personal computer:
 3. Expand the metadata file using "Choose columns" button to inlude all possible metadata variables.
 4. Click on "Download" to get the metadata file
 5. Use excel or an AWK command to only get the values from the "Run" column, remove the column name, and create a text file with just these values. This is often significantly less isolates than included in your metadata sheet.
-6. 
+
+
+```
+awk -F "\t" '{print $34}' All_Ecoli_metadata.tsv > RUNS_All_Ecoli_metadata.tsv
+sed -i '/^Run/d' RUNS_All_Ecoli_metadata.tsv
+sed -i '/^$/d' RUNS_All_Ecoli_metadata.tsv
+shuf -n 100 RUNS_All_Ecoli_metadata.tsv > 100_RUNS_All_Ecoli_metadata.tsv
+```
 
 ##  Steps for running the pipeline
