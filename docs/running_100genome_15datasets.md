@@ -150,6 +150,10 @@ nextflow run main_combined_pipeline.nf --reference_genome /tempalloc/noyes042/FM
 /tempalloc/noyes042/FMPRE_clean/ALL_results/temp_results/work_ecoli_all/91/7e1118abe219ef49d8189b06d436b3
 
 
+launch_set.pl:  Finished at 2021-01-25 06:59:50
+launch_set.pl:  Duration: 2244 minutes, 37 seconds
+
+
 ```
 
 
@@ -288,6 +292,9 @@ nextflow run main_combined_pipeline.nf --reference_genome /tempalloc/noyes042/FM
 # Lyveset run didn't fail but seemed to stall after 5 days
 # Lyve-SET started at 2021-01-23 17:37:25
 /tempalloc/noyes042/FMPRE_clean/ALL_results/temp_results/workSalm_all/5e/c796c268e31ec38189dd468dae5b4e
+launch_set.pl:  Finished at 2021-01-25 05:03:20
+launch_set.pl:  Duration: 2125 minutes, 55 seconds
+
 
 ```
 
