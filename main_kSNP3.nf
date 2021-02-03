@@ -32,7 +32,6 @@ if(params.kraken_db) {
 
 clusterOptions = ''
 
-genomes = file(params.genomes)
 threads = params.threads
 output = params.output
 
@@ -48,6 +47,11 @@ trailing = params.trailing
 slidingwindow = params.slidingwindow
 minlen = params.minlen
 
+
+Channel
+    .fromFilePairs( params.reads, flat: true )
+    .ifEmpty { exit 1, "Read pair files could not be found: ${params.reads}" }
+    .into { reads; etoki_reads }
 
 
 /*
