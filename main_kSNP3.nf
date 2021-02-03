@@ -49,20 +49,79 @@ slidingwindow = params.slidingwindow
 minlen = params.minlen
 
 
+
+/*
+Process reads to fasta
+*/
+
+process RunFastqConvert {
+    tag {sample_id}
+
+    module 'singularity'
+    container 'shub://TheNoyesLab/WGS_SNP_pipelines:lyveset1'
+    errorStrategy 'ignore'
+    publishDir "${params.output}/Interleaved_fasta", mode: "symlink"
+
+
+    input:
+      set sample_id, file(forward), file(reverse) from reads
+
+    output:
+      file("interleaved_reads/${sample_id}.fastq.gz") into (interleaved_fastq)
+      file("${sample_id}.ksnp3_genome_list.tsv") into (genome_list)
+      file("${sample_id}/") into (fastq_dir)
+      file("${sample_id}.fasta") into (fasta_files)
+
+    """
+    shuffleSplitReads.pl --numcpus ${threads} -o interleaved_reads/ *_{1,2}.fastq.gz
+    cp interleaved_reads/${sample_id}.fastq.gz ${sample_id}.cp.fastq.gz
+    zcat ${sample_id}.cp.fastq.gz | paste - - - - | sed 's/^@/>/g'| cut -f1-2 | tr '\t' '\n' > ${sample_id}.fasta
+    echo '${params.output}/Interleaved_fasta/${sample_id}.fasta\t${sample_id}' > ${sample_id}.ksnp3_genome_list.tsv
+
+    mkdir ${sample_id}
+    mv ${forward} ${sample_id}/
+    mv ${reverse} ${sample_id}/
+    """
+}
+
+/* Files to make genome location list for kSNP3 */
+genome_list.toSortedList().set { combined_genome_path }
+
+
+process RunMakeList {
+    tag { sample_id }
+
+    publishDir "${params.output}/Fasta_location_file", mode: "copy"
+
+    input:
+      file combined_genome_path
+
+    output:
+      file "fasta_genome_location.tsv" into (full_genome_list)
+
+    """
+    cat $combined_genome_path > fasta_genome_location.tsv
+
+    """
+}
+
 process RunKSNP3 {
     tag { sample_id }
 
     module 'singularity'
-    publishDir "${params.output}/kSNP3_results", mode: "copy"
+    container 'shub://TheNoyesLab/WGS_SNP_pipelines:ksnp3_cfsansnp'    
+    publishDir "${params.output}/kSNP3_results", mode: "symlink"
+    errorStrategy 'ignore'
 
     input:
-      file genomes
+      file full_genome_list
 
     output:
       file "kSNP3_results/*" into (ksnp3_results)
 
     """
-    kSNP3 -in ${genomes} -CPU ${threads} -NJ -ML -core -vcf -min_frac 0.5 -k 31 -outdir kSNP3_results -annotate annotated_genomes | tee kSNP3RunLogfile
+    kSNP3 -in ${full_genome_list} -CPU ${threads} -NJ -ML -core -vcf -min_frac 0.5 -k 31 -outdir kSNP3_results -annotate annotated_genomes | tee kSNP3RunLogfile
+    rm -rf kSNP3_results/TemporaryFilesToDelete/
     """
 }
 
