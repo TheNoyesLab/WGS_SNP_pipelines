@@ -90,14 +90,18 @@ process RunFastqConvert {
     """
 }
 
-/* Files to make genome location list for kSNP3 */
-genome_list.toSortedList().set { combined_genome_path }
+
 
 /* Directories with files in them for CFSAN */
 fastq_dir.toSortedList().set { all_fastq_dir }
 
 /* Directories with files in them for lyveset */
 interleaved_fastq.toSortedList().set { combined_interleaved_fastq }
+
+/* Files to make genome location list for kSNP3 */
+genome_list.toSortedList().set { combined_genome_path }
+
+/* Make list for kSNP3 */
 
 process RunMakeList {
     tag { sample_id }
