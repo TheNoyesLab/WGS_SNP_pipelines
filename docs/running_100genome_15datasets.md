@@ -116,6 +116,14 @@ launch_set.pl:  Duration: 87 minutes, 44 seconds
 
 ```
 
+```
+
+nextflow run main_combined_pipeline.nf --reference_genome /home/noyes046/shared/projects/FMPRE_WGS_project/Host_genomes/ref_Ecoli_NC_000913.fasta --reads '/home/noyes046/shared/projects/FMPRE_WGS_project/Raw_datasets/100_genome_datasets/100genomes_Ecoli_HighQuality_IBM/*_{1,2}.fastq.gz' -profile singularity --output 100genomes_E_coli_HighQuality_IBM_WGS_results_updated --threads 20 -w work_ecoli_IBM -resume -with-report Ecoli_HighQuality_IBM_WGS_tools.report -with-trace -with-timeline --species escherichia_coli
+
+```
+
+
+
 
 ### 100 genome subset - E coli - Geography - South Dakota
 
@@ -260,8 +268,22 @@ SRR949877
 launch_set.pl:  Finished at 2021-01-18 18:13:44
 launch_set.pl:  Duration: 456 minutes, 45 seconds
 
+```
+
 
 ```
+nextflow run main_combined_pipeline.nf --reference_genome /home/noyes046/shared/projects/FMPRE_WGS_project/Host_genomes/Senterica_LT2_ref_genome.fasta --reads '/home/noyes046/shared/projects/FMPRE_WGS_project/Raw_datasets/100_genome_datasets/100genomes_Ecoli_HighQuality_IBM/*_{1,2}.fastq.gz' -profile singularity --output 100_Salm_HighQuality_IBM_WGS_results --threads 7 -w workSalm_HighQuality_IBM -resume -with-report Salm_HighQuality_IBM_WGS_tools.report -with-trace -with-timeline --species salmonella_enterica
+
+# erase
+# come up as Listeria
+ERR1431100
+ERR1600131
+ERR538125
+ERR555040
+ERR760535
+
+```
+
 
 ## 100 genome subset - Salmonella - Geography MS
 
@@ -383,6 +405,12 @@ Failed      : 1
 -rw-r--r--.  1 edoster noyes046   20 Dec  6 15:35 ERR1100936.fastq.gz
 -rw-r--r--.  1 edoster noyes046   20 Dec  6 15:40 ERR1100964.fastq.gz
 # Finished Dec-10 9:27pm CST
+```
+
+
+```
+nextflow run main_combined_pipeline.nf --reference_genome /home/noyes046/shared/projects/FMPRE_WGS_project/Host_genomes/ref_L_monocytogenes_NC_003210.fasta --reads '/home/noyes046/shared/projects/FMPRE_WGS_project/Raw_datasets/100_genome_datasets/100genomes_Listeria_HighQuality_IBM/*_{1,2}.fastq.gz' -profile singularity --output 100genome_Listeria_HighQuality_IBM_WGS_results --threads 7 -w work_list_HighQuality_IBM -resume -with-report Listeria_HighQuality_IBM_WGS_tools.report -with-trace -with-timeline --species listeria_monocytogenes
+
 ```
 
 
