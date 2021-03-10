@@ -272,15 +272,9 @@ launch_set.pl:  Duration: 456 minutes, 45 seconds
 
 
 ```
-nextflow run main_combined_pipeline.nf --reference_genome /home/noyes046/shared/projects/FMPRE_WGS_project/Host_genomes/Senterica_LT2_ref_genome.fasta --reads '/home/noyes046/shared/projects/FMPRE_WGS_project/Raw_datasets/100_genome_datasets/100genomes_Ecoli_HighQuality_IBM/*_{1,2}.fastq.gz' -profile singularity --output 100_Salm_HighQuality_IBM_WGS_results --threads 7 -w workSalm_HighQuality_IBM -resume -with-report Salm_HighQuality_IBM_WGS_tools.report -with-trace -with-timeline --species salmonella_enterica
+nextflow run main_combined_pipeline.nf --reference_genome /home/noyes046/shared/projects/FMPRE_WGS_project/Host_genomes/Senterica_LT2_ref_genome.fasta --reads '/home/noyes046/shared/projects/FMPRE_WGS_project/Raw_datasets/100_genome_datasets/100genomes_Salm_HighQuality_IBM/*_{1,2}.fastq.gz' -profile singularity --output 100_Salm_HighQuality_IBM_WGS_results --threads 7 -w workSalm_HighQuality_IBM -resume -with-report Salm_HighQuality_IBM_WGS_tools.report -with-trace -with-timeline --species salmonella_enterica
 
-# erase
-# come up as Listeria
-ERR1431100
-ERR1600131
-ERR538125
-ERR555040
-ERR760535
+
 
 ```
 
@@ -410,6 +404,43 @@ Failed      : 1
 
 ```
 nextflow run main_combined_pipeline.nf --reference_genome /home/noyes046/shared/projects/FMPRE_WGS_project/Host_genomes/ref_L_monocytogenes_NC_003210.fasta --reads '/home/noyes046/shared/projects/FMPRE_WGS_project/Raw_datasets/100_genome_datasets/100genomes_Listeria_HighQuality_IBM/*_{1,2}.fastq.gz' -profile singularity --output 100genome_Listeria_HighQuality_IBM_WGS_results --threads 7 -w work_list_HighQuality_IBM -resume -with-report Listeria_HighQuality_IBM_WGS_tools.report -with-trace -with-timeline --species listeria_monocytogenes
+
+
+
+
+rm -rf run_samples/ERR1431100
+rm -rf run_samples/ERR538125
+rm -rf run_samples/ERR555040
+rm -rf run_samples/SRR1030346
+rm -rf run_samples/SRR1217480
+rm -rf run_samples/SRR1451258
+rm -rf run_samples/SRR1463364
+rm -rf run_samples/SRR1506609
+rm -rf run_samples/SRR1569799
+rm -rf run_samples/SRR1597492
+rm -rf run_samples/SRR1639787
+rm -rf run_samples/SRR1665066
+rm -rf run_samples/SRR1695787
+rm -rf run_samples/SRR1695825
+rm -rf run_samples/SRR1988215
+rm -rf run_samples/SRR2047278
+rm -rf run_samples/SRR2047543
+rm -rf run_samples/SRR2134941
+rm -rf run_samples/SRR2341564
+rm -rf run_samples/SRR2540921
+rm -rf run_samples/SRR3122774
+rm -rf run_samples/SRR3173672
+rm -rf run_samples/SRR3395014
+rm -rf run_samples/SRR3473936
+rm -rf run_samples/SRR3489990
+rm -rf run_samples/SRR4244325
+rm -rf run_samples/SRR7912073
+ERR1163338
+ERR1718928
+ERR271508
+ERR434518
+
+
 
 ```
 
